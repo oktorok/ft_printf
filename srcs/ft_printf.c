@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/07 00:52:41 by jagarcia         ###   ########.fr       */
+/*   Updated: 2017/12/07 01:12:49 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,17 @@ static int		search_command(char *fmt, int *cant_print)
 
 static int		istype(char c)
 {
-	char types[27] ="sSpdDioOuUxXcCeEfFgGaAnbrk";
+	char	types[27] ="sSpdDioOuUxXcCeEfFgGaAnbrk";
+	int		i;
 
-		return (1);
-	return (0);
+	i = 0;
+	while (c != types[i])
+	{
+		if (!types[i])
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 static void		read_command(char *format)
