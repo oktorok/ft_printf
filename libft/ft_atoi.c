@@ -3,66 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/12 19:12:45 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/11/21 00:09:25 by jagarcia         ###   ########.fr       */
+/*   Created: 2017/11/12 19:02:00 by mrodrigu          #+#    #+#             */
+/*   Updated: 2017/11/15 00:50:07 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	size_t	numlen(const char *str2)
+static int		convert(const char *str)
 {
-	char	*str2cpy;
-	size_t	len;
+	int n;
+	int i;
 
-	len = 0;
-	str2cpy = (char *)str2;
-	while ((*(str2cpy + 1) >= '0' && *(str2cpy + 1) <= '9'))
-	{
-		str2cpy++;
-		len++;
-	}
-	return (len);
-}
-
-static	int		jumps(char **s)
-{
-	int a;
-
-	a = 1;
-	while (**s == ' ' || (**s == '+' && (*((*s) + 1)
-						>= '0' && *((*s) + 1) <= '9')) || **s == '\v'
-				|| **s == '\n' || **s == '\t' || **s == '\f'
-				|| **s == '\r')
-		(*s)++;
-	if (**s == '-' && (*(*s + 1) >= '0' && *(*s + 1) <= '9'))
-	{
-		a = -1;
-		(*s)++;
-	}
-	return (a);
+	i = 0;
+	n = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+		n = (n * 10) + (str[i++] - '0');
+	return (n);
 }
 
 int				ft_atoi(const char *str)
 {
-	char	*strcpy;
-	int		res;
-	size_t	len;
-	int		i[2];
+	int		i;
+	int		ten;
 
-	strcpy = (char *)str;
-	i[1] = jumps(&strcpy);
-	if (*strcpy < '0' || *strcpy > '9')
-		return (0);
-	len = numlen(strcpy);
-	res = 0;
-	i[0] = len;
-	while (i[0] >= 0)
+	ten = 0;
+	i = 0;
+	while (str[i])
 	{
-		res = res + ((strcpy[i[0]] - 48) * ft_pow(10, (len) - i[0]));
-		i[0]--;
+		if ((str[i] == ' ') || (str[i] == '\f') || (str[i] == '\n') ||
+				(str[i] == '\r') || (str[i] == '\t') || (str[i] == '\v'))
+			i++;
+		else if (str[i] == '+' || str[i] == '-' ||
+				(str[i] >= '0' && str[i] <= '9'))
+		{
+			if (str[i] == '-')
+				return (-(convert(str + (++i))));
+			else if (str[i] == '+')
+				return (convert(str + (++i)));
+			return (convert(str + i));
+		}
+		else
+			return (0);
 	}
-	return (i[1] * res);
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2017/12/06 21:35:15 by jagarcia         ###   ########.fr        #
+#    Updated: 2017/12/07 02:12:10 by mrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ LIBFT_SRCS = ft_strncpy.c \
 			 ft_strlen.c \
 			 ft_putnbr.c \
 			 ft_putchar.c \
-			 ft_strsub.c 
+			 ft_strsub.c \
+			 ft_atoi.c
 
 LIBFT_DIR = libft/
 
