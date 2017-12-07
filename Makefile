@@ -6,17 +6,19 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2017/12/07 02:12:10 by mrodrigu         ###   ########.fr        #
+#    Updated: 2017/12/08 00:10:57 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY : all clean fclean re
+.PHONY : compile norme all clean fclean re
 
 NAME = libftprintf.a
 
 FLAGS = -Wall -Wextra -Werror
 
-SRCS = ft_printf.c
+SRCS = ft_printf.c \
+	   ft_realloc_printf.c \
+	   ft_sS_func.c 
 
 SRCS_PATH = $(patsubst %.c, srcs/%.c,$(SRCS))
 
@@ -27,6 +29,10 @@ LIBFT_SRCS = ft_strncpy.c \
 			 ft_putnbr.c \
 			 ft_putchar.c \
 			 ft_strsub.c \
+			 ft_strdup.c \
+			 ft_strjoin.c \
+			 ft_strcat.c \
+			 ft_memcpy.c \
 			 ft_atoi.c
 
 LIBFT_DIR = libft/

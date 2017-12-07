@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prueba.c                                           :+:      :+:    :+:   */
+/*   ft_realloc_printf.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/08 00:17:51 by jagarcia         ###   ########.fr       */
+/*   Created: 2017/12/07 23:48:09 by jagarcia          #+#    #+#             */
+/*   Updated: 2017/12/08 00:01:51 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
-int		main(void)
+char *ft_realloc_printf(char *dst, char *src)
 {
-//	printf("holal2icaracola%d",ft_atoi("-2147483650"));
-	if ((ft_printf("ASAFAWFA%0-43sasda%s%+-sdasdas") < 0))
-		ft_putstr("ERROR");
-	return (0);
+	if (!dst)
+	{
+		if (!(dst = ft_strdup(src)))
+			return (NULL);
+		return (dst);
+	}
+	if (!(dst = ft_strjoin(dst, src)))
+		return (NULL);
+	return (dst);
 }
-
