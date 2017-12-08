@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2017/12/08 00:10:57 by jagarcia         ###   ########.fr        #
+#    Updated: 2017/12/08 04:46:46 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FLAGS = -Wall -Wextra -Werror
 
 SRCS = ft_printf.c \
 	   ft_realloc_printf.c \
-	   ft_sS_func.c 
+	   ft_s_func.c 
 
 SRCS_PATH = $(patsubst %.c, srcs/%.c,$(SRCS))
 
@@ -33,7 +33,9 @@ LIBFT_SRCS = ft_strncpy.c \
 			 ft_strjoin.c \
 			 ft_strcat.c \
 			 ft_memcpy.c \
-			 ft_atoi.c
+			 ft_atoi.c \
+			 ft_isdigit.c \
+			 ft_memset.c
 
 LIBFT_DIR = libft/
 
