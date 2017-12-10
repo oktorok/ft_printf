@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/08 05:25:14 by jagarcia         ###   ########.fr       */
+/*   Updated: 2017/12/10 05:22:54 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ static int		search_command(char *fmt, int *cant_print)
 		return (-1);
 }
 
-static int		exec_command(char *format, char **res, va_list ap)
+static int		exec_command(char *format, t_list **res_tmp, va_list ap)
 {
 	int		comm_end;
 	int		i;
 	int		j;
+	void	*formated;
 
+	formated = NULL;
 	comm_end = 1;
 	j = 0;
 	i = 0;
@@ -53,14 +55,26 @@ static int		exec_command(char *format, char **res, va_list ap)
 			comm_end++;
 		}
 	}
-	*res = ft_realloc_printf(*res,
-			(*type_function[j])(ft_strsub(format, 1, comm_end - 1), ap));
+	i = (*type_function[j])(&formated, ft_strsub(format, 1, comm_end - 1), ap);
+	*res_tmp = ft_realloc_printf(res_tmp, formated, i);
+	ft_putbytes((*res_tmp)->content, (*res_tmp)->content_size);
 	return (comm_end + 1);
+}
+
+void static		writer(t_list *final)
+{
+	while (final)
+	{
+		ft_putbytes(final->content, final->content_size);
+		final = final->next;
+	}
+	return;
 }
 
 int				ft_printf(const char *format, ...)
 {
-	char		*res;
+	t_list		*res;
+	t_list		*tmp;
 	int			pos_for;
 	int			cant_print;
 	va_list		ap;
@@ -70,14 +84,15 @@ int				ft_printf(const char *format, ...)
 	res = NULL;
 	while ((pos_for = search_command((char *)format, &cant_print)) >= 0)
 	{
-		if (!(res = ft_realloc_printf(res, ft_strsub(format, 0, pos_for))))
+		if (!(tmp = ft_realloc_printf(&res, ft_strsub(format, 0, pos_for), pos_for)))
 			return (-1);
 		format = format + pos_for;
-		format = format + exec_command((char *)format, &res, ap);
+		format = format + exec_command((char *)format, &tmp, ap);
 	}
-	if (!(res = ft_realloc_printf(res, (char *)format)))
-		return (-1);
-	ft_putstr(res);
+	if (*format)
+		if (!(tmp = ft_realloc_printf(&tmp, (char *)format, ft_strlen((char *)format))))
+			return (-1);
+	writer(res);
 	va_end(ap);
 	return (1);
 }

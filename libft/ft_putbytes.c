@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc_printf.c                                :+:      :+:    :+:   */
+/*   ft_putbytes.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/07 23:48:09 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/10 04:57:42 by jagarcia         ###   ########.fr       */
+/*   Created: 2017/12/10 05:01:56 by jagarcia          #+#    #+#             */
+/*   Updated: 2017/12/10 05:06:14 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
-t_list	*ft_realloc_printf(t_list **dst, void *content, int content_size)
+void	ft_putbytes(void *src, int size)
 {
-	if (!*dst)
-	{
-		if (!(*dst = ft_lstnew(content, content_size)))
-			return (NULL);
-		return (*dst);
-	}
-	if (!((*dst)->next = ft_lstnew(content, content_size)))
-		return (NULL);
-	return ((*dst)->next);
+	write(1, src, size);
 }

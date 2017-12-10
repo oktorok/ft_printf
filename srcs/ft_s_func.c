@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/08 05:25:11 by jagarcia         ###   ########.fr       */
+/*   Updated: 2017/12/10 03:57:25 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char		*writer(int *siz_cuant, int minus, char *variab, char *modif)
 	return (tmp);
 }
 
-char			*ft_s_func(char *comm, va_list ap)
+int				ft_s_func(void **fin, char *comm, va_list ap)
 {
 	int		minus;
 	int		siz_cuant[2];
@@ -53,5 +53,6 @@ char			*ft_s_func(char *comm, va_list ap)
 		comm++;
 //	if (*comm == 'l' || *comm == 'S')
 //		variab = (wchar_t *)variab;
-	return (writer(siz_cuant, minus, variab, ft_strnew(siz_cuant[0] + 1)));
+	*fin = writer(siz_cuant, minus, variab, ft_strnew(siz_cuant[0] + 1));
+	return (sizeof(char) * siz_cuant[0]);
 }
