@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/11 21:09:06 by jagarcia         ###   ########.fr       */
+/*   Updated: 2017/12/11 21:40:28 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		main(void)
 //	write(1, (void*)pe, 8);
 
 //	write(1, "\n", 1);
-//	printf("%C",csa);
+//	printf("%020i",1234567890);
 	ft_printf("El mio: ERES UNA <%-20.5s> PUTA", "MALDITA");
 	return (0);
 }
