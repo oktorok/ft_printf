@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/11 21:09:06 by jagarcia         ###   ########.fr       */
+/*   Updated: 2017/12/12 02:02:41 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 #include <unistd.h>
 #include <locale.h>
 #include <stdlib.h>
+
+char	*ft_utf_8(wchar_t caca);
+
 void print_bytes(void *ptr, int size) 
 {
 	unsigned char *p = ptr;
@@ -29,7 +32,11 @@ void print_bytes(void *ptr, int size)
 int		main(void)
 {
 	setlocale(LC_ALL, "");
-//	wchar_t		*csa = L"\x19B";
+	char		*str;
+	wchar_t		csa = L'\x64F0';
+	str = ft_utf_8(csa);
+	print_bytes(str, ft_strlen(str));
+	ft_putstr(str);
 //	wchar_t		*csa = L"\x9094E3";
 //	void		*casa = csa;
 //	char		*csa2 = (char *)csa;
@@ -44,6 +51,6 @@ int		main(void)
 
 //	write(1, "\n", 1);
 //	printf("%C",csa);
-	ft_printf("El mio: ERES UNA <%-20.5s> PUTA", "MALDITA");
+//	ft_printf("El mio: ERES UNA <%-20.5s> PUTA", "MALDITA");
 	return (0);
 }
