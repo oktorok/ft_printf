@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2017/12/11 19:04:29 by jagarcia         ###   ########.fr        #
+#    Updated: 2017/12/11 21:24:49 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ FLAGS = -Wall -Wextra -Werror
 SRCS = ft_printf.c \
 	   ft_realloc_printf.c 
 	
-FORMAT_FUNC =
+FORMAT_FUNC = ft_field_func.c
 
 FORMAT_DIR = srcs/format_functions/
 

@@ -6,7 +6,11 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2017/12/12 02:02:41 by mrodrigu         ###   ########.fr       */
+=======
+/*   Updated: 2017/12/11 21:40:28 by jagarcia         ###   ########.fr       */
+>>>>>>> bf060ae127a50d10f93ec92637f8c4c56a027033
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +54,12 @@ int		main(void)
 //	write(1, (void*)pe, 8);
 
 //	write(1, "\n", 1);
+<<<<<<< HEAD
 //	printf("%C",csa);
 //	ft_printf("El mio: ERES UNA <%-20.5s> PUTA", "MALDITA");
+=======
+//	printf("%020i",1234567890);
+	ft_printf("El mio: ERES UNA <%-20.5s> PUTA", "MALDITA");
+>>>>>>> bf060ae127a50d10f93ec92637f8c4c56a027033
 	return (0);
 }

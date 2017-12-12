@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/11 21:09:10 by jagarcia         ###   ########.fr       */
+/*   Updated: 2017/12/12 01:55:45 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,7 @@ int				ft_s_func(void **fin, char *comm, va_list ap)
 		comm++;
 		minus = 1;
 	}
-	if ((siz_cuant[0] = siz_cuant[1]) < ft_atoi(comm))
-		siz_cuant[0] = ft_atoi(comm);
-	while (ft_isdigit(*comm))
-		comm++;
-	if (*comm == '.')
-	{
-		comm++;
-		siz_cuant[1] = ft_atoi(comm);
-	}
-	while (ft_isdigit(ft_atoi(comm)))
-		comm++;
+	ft_field_func(siz_cuant, &comm);
 //	if (*comm == 'l' || *comm == 'S')
 //		variab = (wchar_t *)variab;
 	*fin = writer(siz_cuant, minus, variab, ft_strnew(siz_cuant[0] + 1));
