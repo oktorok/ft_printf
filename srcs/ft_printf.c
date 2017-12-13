@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/13 02:12:41 by jagarcia         ###   ########.fr       */
+/*   Updated: 2017/12/13 17:53:22 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,30 +33,23 @@ static int		exec_command(char *format, t_list **res_tmp, va_list ap)
 {
 	int		comm_end;
 	int		i;
-	int		j;
+	int		content_size;
 	void	*formated;
 
 	formated = NULL;
 	comm_end = 1;
-	j = 0;
 	i = 0;
-	while (format[comm_end] != g_types[j][i])
+	while (format[comm_end] != g_types[i])
 	{
 		i++;
-		if (!g_types[j][i])
+		if (!g_types[i])
 		{
-			i = 0;
-			j++;
-		}
-		if (j == 14)
-		{
-			j = 0;
 			i = 0;
 			comm_end++;
 		}
 	}
-	i = (*type_function[j])(&formated, ft_strsub(format, 1, comm_end), ap);
-	*res_tmp = ft_realloc_printf(res_tmp, formated, i);
+	content_size = (*type_function[0])(&formated, ft_strsub(format, 1, comm_end), ap);
+	*res_tmp = ft_realloc_printf(res_tmp, formated, content_size);
 	return (comm_end + 1);
 }
 

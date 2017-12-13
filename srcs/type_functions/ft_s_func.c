@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/13 02:47:30 by jagarcia         ###   ########.fr       */
+/*   Updated: 2017/12/13 17:44:27 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,17 @@ static char		*writer(int *siz_cuant, int minus, char *variab, char *modif)
 static char		*wcharlector(char *variab)
 {
 	wchar_t *aux;
+	char *aux2[2];
 	char *res;
 	aux = (wchar_t *)variab;
-	res = (char *)malloc(sizeof(wchar_t) * ft_wstrlen(aux));
-	res = ft_strcat(res, ft_utf_8(*aux));
-	aux++;
+	res = ft_strnew(0);
 	while (*aux)
 	{
-		res = ft_strcat(res, ft_utf_8(*aux));
+		aux2[0] = res;
+		aux2[1] = ft_utf_8(*aux);
+		res = ft_strjoin(aux2[0], aux2[1]);
+		ft_strdel(&aux2[0]);
+		ft_strdel(&aux2[1]);
 		aux++;
 	}
 	return (res);

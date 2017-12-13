@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2017/12/13 02:01:41 by jagarcia         ###   ########.fr        #
+#    Updated: 2017/12/13 17:42:48 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,8 @@ LIBFT_SRCS = ft_strncpy.c \
 			 ft_lstnew.c \
 			 ft_memalloc.c \
 			 ft_putbytes.c \
-			 ft_wstrlen.c
+			 ft_wstrlen.c \
+			 ft_strdel.c
 
 LIBFT_DIR = libft/
 

@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:11:20 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/13 02:01:10 by jagarcia         ###   ########.fr       */
+/*   Updated: 2017/12/13 17:51:17 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@
 # include <stdarg.h>
 # include "../libft/libft.h"
 
-static const char g_types[14][4] = {{"sS"}, {"p"}, {"dDi"}, {"oO"},
-	{"uU"}, {"xX"}, {"cC"}, {"eE"},
-	{"fF"}, {"gG"}, {"aA"}, {"n"},
-	{"brk"}};
+static const char g_types[26] = {"sSpdDioOuUxXcCeEfFgGaAnbrk"};
 
 int		ft_s_func(void **fin, char *str, va_list ap);
 char	*ft_utf_8(wchar_t num);
