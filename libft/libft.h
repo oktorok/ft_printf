@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 00:15:11 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/10 05:07:24 by jagarcia         ###   ########.fr       */
+/*   Updated: 2017/12/13 01:42:09 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,5 @@ void				ft_sort_pos_int(int *arr);
 void				ft_debug(const char a, const char *str);
 void				ft_debug_num(const char a, const int str);
 void				ft_putbytes(void *src, int size);
+size_t				ft_wstrlen(const wchar_t *str);
 #endif

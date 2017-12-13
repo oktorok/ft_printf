@@ -6,13 +6,13 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 02:05:22 by mrodrigu          #+#    #+#             */
-/*   Updated: 2017/12/12 02:07:31 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2017/12/12 02:34:49 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*ft_7f(wchar_t num)
+static char	*ft_7f(wchar_t num)
 {
 	char	*str;
 
@@ -22,7 +22,7 @@ char	*ft_7f(wchar_t num)
 	return (str);
 }
 
-char	*ft_7ff(wchar_t num)
+static char	*ft_7ff(wchar_t num)
 {
 	char	*str;
 
@@ -33,7 +33,7 @@ char	*ft_7ff(wchar_t num)
 	return (str);
 }
 
-char	*ft_ffff(wchar_t num)
+static char	*ft_ffff(wchar_t num)
 {
 	char	*str;
 
@@ -45,7 +45,7 @@ char	*ft_ffff(wchar_t num)
 	return (str);
 }
 
-char	*ft_1fffff(wchar_t num)
+static char	*ft_1fffff(wchar_t num)
 {
 	char	*str;
 
@@ -60,8 +60,6 @@ char	*ft_1fffff(wchar_t num)
 
 char	*ft_utf_8(wchar_t num)
 {
-	char	*str;
-
 	if (num < 0x7F)
 		return (ft_7f(num));
 	if (num >= 0x7F && num <= 0x7FF)

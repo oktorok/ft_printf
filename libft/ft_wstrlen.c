@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_field_func.c                                    :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/11 21:13:24 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/13 02:36:16 by jagarcia         ###   ########.fr       */
+/*   Created: 2017/11/07 10:25:35 by jagarcia          #+#    #+#             */
+/*   Updated: 2017/12/13 01:42:36 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
-void	ft_field_func(int *size_cuant, char **command)
+size_t		ft_wstrlen(const wchar_t *str)	
 {
-	size_cuant[0] = size_cuant[1];
-	if (size_cuant[1] < ft_atoi(*command))
-		size_cuant[0] = ft_atoi(*command);
-	while (ft_isdigit(**command))
-		(*command)++;
-	if (**command == '.')
+	size_t		i;
+
+	i = 0;
+	if (str)
 	{
-		(*command)++;
-		size_cuant[1] = ft_atoi(*command);
+		while (*str)
+		{
+			i++;
+			str++;
+		}
 	}
-	while (ft_isdigit(ft_atoi(*command)))
-		(*command)++;
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:11:20 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/11 21:25:46 by jagarcia         ###   ########.fr       */
+/*   Updated: 2017/12/13 02:01:10 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static const char g_types[14][4] = {{"sS"}, {"p"}, {"dDi"}, {"oO"},
 	{"brk"}};
 
 int		ft_s_func(void **fin, char *str, va_list ap);
+char	*ft_utf_8(wchar_t num);
 void	ft_field_func(int *size_cuant, char **command);
 t_list	*ft_realloc_printf(t_list **dst, void *src, int content_size);
 int		ft_printf(const char *str, ...);

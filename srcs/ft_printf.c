@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/11 21:09:08 by jagarcia         ###   ########.fr       */
+/*   Updated: 2017/12/13 02:12:41 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int		exec_command(char *format, t_list **res_tmp, va_list ap)
 			comm_end++;
 		}
 	}
-	i = (*type_function[j])(&formated, ft_strsub(format, 1, comm_end - 1), ap);
+	i = (*type_function[j])(&formated, ft_strsub(format, 1, comm_end), ap);
 	*res_tmp = ft_realloc_printf(res_tmp, formated, i);
 	return (comm_end + 1);
 }

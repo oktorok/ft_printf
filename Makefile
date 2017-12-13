@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2017/12/11 21:24:49 by jagarcia         ###   ########.fr        #
+#    Updated: 2017/12/13 02:01:41 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ FLAGS = -Wall -Wextra -Werror
 SRCS = ft_printf.c \
 	   ft_realloc_printf.c 
 	
-FORMAT_FUNC = ft_field_func.c
+FORMAT_FUNC = ft_field_func.c \
+			  ft_utf_8.c
 
 FORMAT_DIR = srcs/format_functions/
 
@@ -43,7 +44,8 @@ LIBFT_SRCS = ft_strncpy.c \
 			 ft_memset.c \
 			 ft_lstnew.c \
 			 ft_memalloc.c \
-			 ft_putbytes.c
+			 ft_putbytes.c \
+			 ft_wstrlen.c
 
 LIBFT_DIR = libft/
 

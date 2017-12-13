@@ -6,11 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2017/12/12 02:02:41 by mrodrigu         ###   ########.fr       */
-=======
-/*   Updated: 2017/12/11 21:40:28 by jagarcia         ###   ########.fr       */
->>>>>>> bf060ae127a50d10f93ec92637f8c4c56a027033
+/*   Updated: 2017/12/13 02:53:27 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +32,11 @@ void print_bytes(void *ptr, int size)
 int		main(void)
 {
 	setlocale(LC_ALL, "");
-	char		*str;
-	wchar_t		csa = L'\x64F0';
-	str = ft_utf_8(csa);
-	print_bytes(str, ft_strlen(str));
-	ft_putstr(str);
+//	char		*str;
+//	wchar_t		csa = L'\x64F0';
+//	str = ft_utf_8(csa);
+//	print_bytes(str, ft_strlen(str));
+//	ft_putstr(str);
 //	wchar_t		*csa = L"\x9094E3";
 //	void		*casa = csa;
 //	char		*csa2 = (char *)csa;
@@ -54,12 +50,7 @@ int		main(void)
 //	write(1, (void*)pe, 8);
 
 //	write(1, "\n", 1);
-<<<<<<< HEAD
 //	printf("%C",csa);
-//	ft_printf("El mio: ERES UNA <%-20.5s> PUTA", "MALDITA");
-=======
-//	printf("%020i",1234567890);
-	ft_printf("El mio: ERES UNA <%-20.5s> PUTA", "MALDITA");
->>>>>>> bf060ae127a50d10f93ec92637f8c4c56a027033
+ft_printf("El mio: ERES UNA <%S> PUTA", L"\x64F0\x64F0");
 	return (0);
 }
