@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2017/12/13 17:42:48 by jagarcia         ###   ########.fr        #
+#    Updated: 2017/12/16 02:45:37 by mrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,15 @@
 
 NAME = libftprintf.a
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS =
 
 SRCS = ft_printf.c \
 	   ft_realloc_printf.c 
 	
 FORMAT_FUNC = ft_field_func.c \
-			  ft_utf_8.c
+			  ft_utf_8.c \
+			  ft_minus_func.c \
+			  ft_l_func.c 
 
 FORMAT_DIR = srcs/format_functions/
 
@@ -37,6 +39,7 @@ LIBFT_SRCS = ft_strncpy.c \
 			 ft_strsub.c \
 			 ft_strdup.c \
 			 ft_strjoin.c \
+			 ft_strjoinfree.c \
 			 ft_strcat.c \
 			 ft_memcpy.c \
 			 ft_atoi.c \
@@ -46,7 +49,9 @@ LIBFT_SRCS = ft_strncpy.c \
 			 ft_memalloc.c \
 			 ft_putbytes.c \
 			 ft_wstrlen.c \
-			 ft_strdel.c
+			 ft_strdel.c \
+			 ft_strchr.c \
+			 ft_strnjoin.c
 
 LIBFT_DIR = libft/
 

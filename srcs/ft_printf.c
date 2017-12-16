@@ -6,85 +6,89 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/13 17:53:22 by jagarcia         ###   ########.fr       */
+/*   Updated: 2017/12/16 02:53:12 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdio.h>
 
-static int		search_command(char *fmt, int *cant_print)
+static char				*search_command(char *str)
 {
-	int pos_fmt;
-
-	pos_fmt = 0;
-	while (fmt[pos_fmt] != '%' && fmt[pos_fmt] != '{' && fmt[pos_fmt])
-	{
-		(*cant_print)++;
-		pos_fmt++;
-	}
-	if (fmt[pos_fmt] == '%' || fmt[pos_fmt] == '{')
-		return (pos_fmt);
-	else
-		return (-1);
+	while (*str != '%' && *str != '{' && *str)
+		str++;
+	return (str);
 }
 
-static int		exec_command(char *format, t_list **res_tmp, va_list ap)
+static unsigned int		find_end(char **str)
 {
-	int		comm_end;
-	int		i;
-	int		content_size;
-	void	*formated;
+	unsigned int	pos;
+	unsigned int	end;
 
-	formated = NULL;
-	comm_end = 1;
-	i = 0;
-	while (format[comm_end] != g_types[i])
+	pos = 0;
+	end = 1;
+	while ((*str)[end] != g_types[pos])
 	{
-		i++;
-		if (!g_types[i])
+		pos++;
+		if (!g_types[pos])
 		{
-			i = 0;
-			comm_end++;
+			pos = 0;
+			end++;
 		}
 	}
-	content_size = (*type_function[0])(&formated, ft_strsub(format, 1, comm_end), ap);
-	*res_tmp = ft_realloc_printf(res_tmp, formated, content_size);
-	return (comm_end + 1);
+	*str += (end + 1);
+	return (end);
 }
 
-void static		writer(t_list *final)
+static char				selec_fun(char c)
 {
-	while (final)
-	{
-		ft_putbytes(final->content, final->content_size);
-		final = final->next;
-	}
-	return;
+	char	i;
+
+	i = 0;
+	while ((c != g_types[i]) && (i < 26))
+		i++;
+	return (i);
 }
 
-int				ft_printf(const char *format, ...)
+static char				*exec_command(char **str, va_list ap)
 {
-	t_list		*res;
-	t_list		*tmp;
-	int			pos_for;
-	int			cant_print;
+	char			*command;
+	char			*res;
+	char			n;
+
+	command = ft_strsub(*str, 1, find_end(str));
+	if ((n = selec_fun(*(*str - 1))) == 26)
+		return (NULL);
+	res = (*type_function[n])(command, ap);
+	ft_strdel(&command);
+	return (res);
+}
+
+int						ft_printf(const char *str, ...)
+{
+	char		*res;
+	char		*head_str;
+	char		*aux_str;
 	va_list		ap;
 
-	va_start(ap, format);
-	cant_print = 0;
-	res = NULL;
-	while ((pos_for = search_command((char *)format, &cant_print)) >= 0)
+	va_start(ap, str);
+	head_str = (char *)str;
+	if (!(res = ft_strnew(0)))
+		return (-1);
+	while (1)
 	{
-		if (!(tmp = ft_realloc_printf(&res, ft_strsub(format, 0, pos_for), pos_for)))
+		aux_str = search_command((char *)head_str);
+		if (!(res = ft_realloc_printf(res, head_str, aux_str)))
 			return (-1);
-		format = format + pos_for;
-		format = format + exec_command((char *)format, &tmp, ap);
+		if (*aux_str)
+			if (!(res = ft_realloc_printf(res,
+							exec_command(&aux_str, ap), NULL)))
+				return (-1);
+		head_str = aux_str;
+		if (!(*aux_str))
+			break ;
 	}
-	if (*format)
-		if (!(tmp = ft_realloc_printf(&tmp, (char *)format, ft_strlen((char *)format))))
-			return (-1);
-	writer(res);
+	ft_putstr(res);
 	va_end(ap);
 	return (1);
 }

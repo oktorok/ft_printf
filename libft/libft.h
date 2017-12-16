@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 00:15:11 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/13 01:42:09 by jagarcia         ###   ########.fr       */
+/*   Updated: 2017/12/16 03:01:30 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int					ft_strequ(char const *s1, char const *s2);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strjoinfree(char *s1, char *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(int n);
@@ -92,4 +93,5 @@ void				ft_debug(const char a, const char *str);
 void				ft_debug_num(const char a, const int str);
 void				ft_putbytes(void *src, int size);
 size_t				ft_wstrlen(const wchar_t *str);
+char				*ft_strnjoin(char const *s1, char const *s2, unsigned int n);
 #endif

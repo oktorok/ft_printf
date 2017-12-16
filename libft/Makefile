@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 21:23:52 by jagarcia          #+#    #+#              #
-#    Updated: 2017/12/13 01:37:47 by jagarcia         ###   ########.fr        #
+#    Updated: 2017/12/16 02:56:12 by mrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC = ft_isascii.c \
 	  ft_putstr.c \
 	  ft_strcpy.c \
 	  ft_strjoin.c	\
+	  ft_strjoinfree.c	\
 	  ft_strncmp.c \
 	  ft_strsplit.c \
 	  ft_isdigit.c \
@@ -82,7 +83,8 @@ SRC = ft_isascii.c \
 	  ft_debug.c \
 	  ft_debug_num.c \
 	  ft_putbytes.c \
-	  ft_wstrlen.c
+	  ft_wstrlen.c \
+	  ft_strnjoin.c
 
 OBJ = $(SRC:.c=.o)
 

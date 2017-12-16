@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc_printf.c                                :+:      :+:    :+:   */
+/*   ft_strjoinfree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/07 23:48:09 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/16 02:57:09 by mrodrigu         ###   ########.fr       */
+/*   Created: 2017/11/14 18:40:57 by jagarcia          #+#    #+#             */
+/*   Updated: 2017/12/16 02:00:04 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libft.h"
 
-char	*ft_realloc_printf(char *s, char *start, char *end)
+char	*ft_strjoinfree(char *s1, char *s2)
 {
-	char *str;
+	char *new;
 
-	if (!start)
+	if (s1 && s2)
 	{
-		ft_strdel(&s);
-		return (NULL);
-	}
-	if (!end)
-	{
-		if(!(str = ft_strjoin(s, start)))
+		new = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + 1);
+		if (new == NULL)
 			return (NULL);
-		ft_strdel(&s);
-		ft_strdel(&start);
-		return (str);
+		ft_memcpy(new, s1, ft_strlen(s1));
+		ft_strcat(new, s2);
+		ft_strdel(&s1);
+		ft_strdel(&s2);
+		return (new);
 	}
-	if (!(str = ft_strnjoin(s, start, (unsigned int)(end - start))))
-		return (NULL);
-	ft_strdel(&s);
-	return (str);
+	return (NULL);
 }

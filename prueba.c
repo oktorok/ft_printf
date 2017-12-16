@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/13 02:53:27 by jagarcia         ###   ########.fr       */
+/*   Updated: 2017/12/16 03:09:33 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,16 @@ int		main(void)
 //	wchar_t		*csa3 = (wchar_t *)csa2;
 //	char		csa4[3] = {0xC6,0x9B};
 //	print_bytes(&csa,sizeof(wchar_t));
-//	print_bytes(csa4, sizeof(char)*2);
+//	print_bytes(L"\x0050\x0041\x64F0\x0041", sizeof(wchar_t)*4);
 //	write(1, &csa, sizeof(wchar_t));
 //	write(1, (void*)pe, 8);
 
 //	write(1, "\n", 1);
 //	printf("%C",csa);
-ft_printf("El mio: ERES UNA <%S> PUTA", L"\x64F0\x64F0");
+ft_putstr("MIO: \n");
+//ft_printf("ERES UNA <%s> PUTA", "cacatua");
+ft_printf("ERES UNA <%-10.5ls> PUTA", L"\x0050\x0041\x64F0\x0041");
+ft_putstr("\nREAL: \n");
+printf("ERES UNA <%-10.5ls> PUTA", L"\x0050\x0041\x64F0\x0041");
 	return (0);
 }
