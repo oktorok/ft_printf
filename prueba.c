@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/16 06:09:16 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2017/12/17 02:45:15 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int		main(void)
 //	write(1, "\n", 1);
 //	printf("%C",csa);
 ft_putstr("MIO: \n");
-ft_printf("ERES UNA <%10.0c> PUTA", 50);
+ft_putnbr(ft_printf("ERES UNA <%10C> PUTA", L'\x48'));
 ft_putstr("\nREAL: \n");
-printf("ERES UNA <%10.0c> PUTA", 50);
-		return (0);
+ft_putnbr(printf("ERES UNA <%10C> PUTA", L'\x48'));
+	return (0);
 }

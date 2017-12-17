@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2017/12/16 05:06:21 by mrodrigu         ###   ########.fr        #
+#    Updated: 2017/12/17 02:40:19 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ FORMAT_DIR = srcs/format_functions/
 
 TYPE_FUNC = ft_s_func.c \
 			ft_ws_func.c \
-			ft_c_func.c
+			ft_c_func.c \
+			ft_wc_func.c
 
 TYPE_DIR = srcs/type_functions/
 
@@ -55,7 +56,9 @@ LIBFT_SRCS = ft_strncpy.c \
 			 ft_strdel.c \
 			 ft_strchr.c \
 			 ft_strnjoin.c \
-			 ft_strlen_free.c
+			 ft_strlen_free.c \
+			 ft_memalloc.c \
+			 ft_memdel.c
 
 LIBFT_DIR = libft/
 
