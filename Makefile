@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2017/12/17 05:02:17 by jagarcia         ###   ########.fr        #
+#    Updated: 2017/12/17 08:32:43 by mrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ MAIN_FUNCS = ft_printf.c \
 	 		 ft_realloc_printf.c 
 	
 FORMATS = ft_field_format.c \
-		  ft_minus_format.c
+		  ft_minus_format.c \
+		  ft_space_format.c \
+		  ft_plus_format.c
 
 MODS = ft_l_mod.c 
 
