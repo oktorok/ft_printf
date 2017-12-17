@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2017/12/17 04:52:02 by jagarcia         ###   ########.fr        #
+#    Updated: 2017/12/17 05:02:17 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,7 @@ MODS_DIR = srcs/mods/
 
 UTILS_DIR = srcs/utils/
 
-LIBFT_FUNCTIONS_DIR = libft/
+LIBFT_DIR = libft/
 
 OBJ_DIR = objects/
 
@@ -79,7 +79,7 @@ FORMATS_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o,$(FORMATS))
 
 TYPES_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o,$(TYPES))
 
-LIBFT_FUNCTIONS_OBJ = $(patsubst %.c, $(LIBFT_DIR)%.o, $(LIBFT_SRCS))
+LIBFT_OBJ = $(patsubst %.c, $(LIBFT_DIR)%.o, $(LIBFT_FUNCTIONS))
 
 MODS_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(MODS))
 
