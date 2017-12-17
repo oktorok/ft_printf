@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wc_func.c                                       :+:      :+:    :+:   */
+/*   ft_wc_type.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/17 02:57:20 by jagarcia         ###   ########.fr       */
+/*   Updated: 2017/12/17 03:40:39 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,21 @@ static char		*writer(int *siz_cuant, int minus, char *variab)
 	return (tmp);
 }
 
-char			*ft_wc_func(char *comm, va_list ap)
+char			*ft_wc_type(char *comm, va_list ap)
 {
 	int		siz_cuant[2];
 	int		*variable;
-	void	*mod_variable;
+	int		*mod_variable;
 	char	*res;
 
 	siz_cuant[1] = 0;
-	variable = ft_memalloc(sizeof(int));
-	*variable = va_arg(ap, int);
-	variable = ft_wchartype((void *)variable, siz_cuant, comm);
-	ft_field_func(siz_cuant, comm, (char *)variable);
+	mod_variable = ft_memalloc(sizeof(int));
+	*mod_variable = va_arg(ap, int);
+	variable = ft_wchar((void *)mod_variable, siz_cuant, comm);
+	ft_field_format(siz_cuant, comm, (char *)variable);
 	siz_cuant[1] = 1;
-	res = writer(siz_cuant, ft_minus_func(comm), (char *)variable);
+	res = writer(siz_cuant, ft_minus_format(comm), (char *)variable);
 	ft_memdel((void **)&variable);
+	ft_memdel((void **)&mod_variable);
 	return (res);
 }

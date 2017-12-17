@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2017/12/17 02:40:19 by jagarcia         ###   ########.fr        #
+#    Updated: 2017/12/17 03:44:30 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,86 +16,105 @@ NAME = libftprintf.a
 
 FLAGS =
 
-SRCS = ft_printf.c \
-	   ft_realloc_printf.c 
+MAIN_FUNCS = ft_printf.c \
+	 		 ft_realloc_printf.c 
 	
-FORMAT_FUNC = ft_field_func.c \
-			  ft_utf_8.c \
-			  ft_minus_func.c \
-			  ft_l_func.c \
-			  ft_wchartype.c
+FORMATS = ft_field_format.c \
+		  ft_minus_format.c
 
-FORMAT_DIR = srcs/format_functions/
+MODS = ft_l_mod.c 
 
-TYPE_FUNC = ft_s_func.c \
-			ft_ws_func.c \
-			ft_c_func.c \
-			ft_wc_func.c
+UTILS = ft_wchar.c \
+		ft_utf8.c
 
-TYPE_DIR = srcs/type_functions/
+TYPES = ft_s_type.c \
+		ft_ws_type.c \
+		ft_c_type.c \
+		ft_wc_type.c
 
-LIBFT_SRCS = ft_strncpy.c \
-			 ft_putstr.c \
-			 ft_strnew.c \
-			 ft_strlen.c \
-			 ft_putnbr.c \
-			 ft_putchar.c \
-			 ft_strsub.c \
-			 ft_strdup.c \
-			 ft_strjoin.c \
-			 ft_strjoinfree.c \
-			 ft_strcat.c \
-			 ft_memcpy.c \
-			 ft_atoi.c \
-			 ft_isdigit.c \
-			 ft_memset.c \
-			 ft_lstnew.c \
-			 ft_memalloc.c \
-			 ft_putbytes.c \
-			 ft_wstrlen.c \
-			 ft_strdel.c \
-			 ft_strchr.c \
-			 ft_strnjoin.c \
-			 ft_strlen_free.c \
-			 ft_memalloc.c \
-			 ft_memdel.c
 
-LIBFT_DIR = libft/
+LIBFT_FUNCTIONS = ft_strncpy.c \
+				  ft_putstr.c \
+	 			  ft_strnew.c \
+		 		  ft_strlen.c \
+	 			  ft_putnbr.c \
+	 			  ft_putchar.c \
+	 			  ft_strsub.c \
+	 			  ft_strdup.c \
+	 			  ft_strjoin.c \
+	 			  ft_strjoinfree.c \
+	 			  ft_strcat.c \
+	 			  ft_memcpy.c \
+	 			  ft_atoi.c \
+	 			  ft_isdigit.c \
+	 			  ft_memset.c \
+	 			  ft_lstnew.c \
+	 			  ft_memalloc.c \
+	 			  ft_putbytes.c \
+	 			  ft_wstrlen.c \
+	 			  ft_strdel.c \
+	 			  ft_strchr.c \
+	 			  ft_strnjoin.c \
+	 			  ft_strlen_free.c \
+	 			  ft_memalloc.c \
+	 			  ft_memdel.c
 
-SRCS_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o,$(SRCS))
+TYPES_DIR = srcs/types/
 
-FORMAT_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o,$(FORMAT_FUNC))
+FORMATS_DIR = srcs/formats/
 
-TYPE_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o,$(TYPE_FUNC))
+MODS_DIR = srcs/mods/
 
-LIBFT_OBJ = $(patsubst %.c, $(LIBFT_DIR)%.o, $(LIBFT_SRCS))
+UTILS_DIR = srcs/utils/
 
-OBJ = $(SRCS_OBJ) $(FORMAT_OBJ) $(TYPE_OBJ) $(LIBFT_OBJ)
+LIBFT_FUNCTIONS_DIR = libft/
 
 OBJ_DIR = objects/
 
-SRC_DIR = srcs/
+MAINS_DIR = srcs/
+
+MAINS_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o,$(MAIN_FUNCS))
+
+FORMATS_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o,$(FORMATS))
+
+TYPES_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o,$(TYPES))
+
+LIBFT_FUNCTIONS_OBJ = $(patsubst %.c, $(LIBFT_DIR)%.o, $(LIBFT_SRCS))
+
+MODS_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(MODS))
+
+UTILS_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(UTILS))
+
+OBJ = $(MAINS_OBJ) $(FORMATS_OBJ) $(TYPES_OBJ) $(LIBFT_OBJ) $(MODS_OBJ) $(UTILS_OBJ)
 
 INCLUDES_DIR = includes/
 
 all : $(NAME)
 
-$(NAME) : $(SRCS_OBJ) $(TYPE_OBJ) $(FORMAT_OBJ) $(LIBFT_OBJ)
+$(NAME) : $(MAINS_OBJ) $(TYPES_OBJ) $(FORMATS_OBJ) $(MODS_OBJ) $(UTILS_OBJ) $(LIBFT_OBJ)
 	ar -rs $(NAME) $(OBJ) 
 	ranlib $(NAME)
 
 $(LIBFT_DIR)%.o : $(LIBFT_DIR)%.c
 	$(MAKE) -C $(LIBFT_DIR) --no-print-directory $(@F)
 
-$(OBJ_DIR)%.o : $(SRC_DIR)%.c | dir_objects
+$(OBJ_DIR)%.o : $(MAINS_DIR)%.c | dir_objects
 	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
 	mv -f $(@F) $(OBJ_DIR)
 
-$(OBJ_DIR)%.o : $(FORMAT_DIR)%.c | dir_objects
+$(OBJ_DIR)%.o : $(FORMATS_DIR)%.c | dir_objects
 	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
 	mv -f $(@F) $(OBJ_DIR)
 
-$(OBJ_DIR)%.o : $(TYPE_DIR)%.c | dir_objects
+$(OBJ_DIR)%.o : $(TYPES_DIR)%.c | dir_objects
+	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
+	mv -f $(@F) $(OBJ_DIR)
+
+$(OBJ_DIR)%.o : $(UTILS_DIR)%.c | dir_objects
+	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
+	mv -f $(@F) $(OBJ_DIR)
+
+$(OBJ_DIR)%.o : $(MODS_DIR)%.c | dir_objects
 	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
 	mv -f $(@F) $(OBJ_DIR)
 
@@ -112,8 +131,6 @@ fclean: clean
 re: fclean
 	make
 
-compile: all
+compile:
+	make
 	gcc $(FLAGS) prueba.c $(NAME) -I$(INCLUDES_DIR)
-
-norme:
-	norminette $(SRC) $(INCLUDES)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_c_func.c                                        :+:      :+:    :+:   */
+/*   ft_s_type.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/16 04:50:22 by mrodrigu          #+#    #+#             */
-/*   Updated: 2017/12/17 02:57:24 by jagarcia         ###   ########.fr       */
+/*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
+/*   Updated: 2017/12/17 03:40:23 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,20 @@ static char		*writer(int *siz_cuant, int minus, char *variab)
 	return (tmp);
 }
 
-char			*ft_c_func(char *comm, va_list ap)
+char			*ft_s_type(char *comm, va_list ap)
 {
 	int		siz_cuant[2];
-	int		*variable;
+	char	*variable;
 	void	*mod_variable;
 	char	*res;
 
 	siz_cuant[1] = 0;
-	variable = ft_memalloc(5);
-	*variable = va_arg(ap,int);
-	mod_variable = ft_l_func(siz_cuant, comm, (void *)variable);
+	variable = va_arg(ap, char *);
+	mod_variable = ft_l_mod(siz_cuant, comm, (void *)variable);
 	if (mod_variable)
-	{
-		ft_memdel((void **)&variable);
-		variable = (int *)mod_variable;
-	}
-	ft_field_func(siz_cuant, comm, (char *)variable);
-	siz_cuant[1] = 1;
-	res = writer(siz_cuant, ft_minus_func(comm), (char *)variable);
+		variable = (char *)mod_variable;
+	ft_field_format(siz_cuant, comm, variable);
+	res = writer(siz_cuant, ft_minus_format(comm), variable);
 	mod_variable = (char *)mod_variable;
 	ft_strdel((char **)(&mod_variable));
 	return (res);
