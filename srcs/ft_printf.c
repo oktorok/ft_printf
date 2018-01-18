@@ -6,12 +6,11 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/18 18:11:31 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/18 22:38:11 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
 static char				*search_command(char *str)
 {
@@ -40,28 +39,29 @@ static unsigned int		find_end(char **str)
 	return (end);
 }
 
-static char				selec_fun(char c)
-{
-	char	i;
-
-	i = 0;
-	while ((c != g_types[i]) && (i < 26))
-		i++;
-	return (i);
-}
-
 static char				*exec_command(char **str, va_list ap, va_list ap2)
 {
 	char			*command;
 	char			*res;
 	char			n;
 
+	n = 0;
 	command = ft_strsub(*str, 1, find_end(str));
-	if ((n = selec_fun(*(*str - 1))) == 26)
+	while (((*(*str - 1)) != g_types[n]) && (n < 26))
+		n++;
+	if (n == 26)
 		return (NULL);
 	res = (*type_function[n])(command, ap, ap2);
 	ft_strdel(&command);
 	return (res);
+}
+
+static size_t			finish_printf(char *res, va_list ap, va_list ap2)
+{
+	ft_putstr(res);
+	va_end(ap);
+	va_end(ap2);
+	return (ft_strlen_free(res));
 }
 
 int						ft_printf(const char *str, ...)
@@ -90,8 +90,5 @@ int						ft_printf(const char *str, ...)
 		if (!(*aux_str))
 			break ;
 	}
-	ft_putstr(res);
-	va_end(ap);
-	va_end(ap2);
-	return (ft_strlen_free(res));
+	return (finish_printf(res, ap, ap2));
 }
