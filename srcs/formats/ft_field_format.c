@@ -6,49 +6,52 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 21:13:24 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/16 06:06:37 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/18 22:17:53 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static void		box_size(char *dot_pos, int *size_cuant)
+static int		size(char **command, va_list ap, va_list ap2)
 {
-	if (ft_isdigit(*dot_pos))
-	{
-		if (ft_atoi(dot_pos) < size_cuant[1])
-			size_cuant[0] = size_cuant[1];
-		else
-			size_cuant[0] = ft_atoi(dot_pos);
-	}
-	else
-		size_cuant[0] = size_cuant[1];
+	char *aux;
 
+	while (!ft_isdigit(**command) && **command != '*' && **command != '.' && **command)
+		(*command)++;
+	aux = *command;
+	while (ft_isdigit(**command) && **command)
+		(*command)++;
+	if (**command == '$')
+		return (-1);
+	if (**command == '*')
+	{
+		if (ft_isdigit(*(*command + 1)))
+			return ((int)ft_locate_variable(*command + 1, ap, ap2));
+		return (va_arg(ap2, int));
+	}
+	return (ft_atoi(aux));
 }
 
-static void		precision(char *num_pos, int *size_cuant, int length)
+static int		cuant(char *command, va_list ap, va_list ap2)
 {
-	if (num_pos && *num_pos == '.' && !size_cuant[1])
+	char *aux;
+
+	if ((aux = ft_strchr(command, '.')))
 	{
-		if (!ft_isdigit(*(num_pos + 1)))
-			size_cuant[1] = 0;
-		else if (ft_atoi(num_pos + 1) > length)
-			size_cuant[1] = length;
-		else
-			size_cuant[1] = ft_atoi(num_pos + 1);
+		if (*(aux + 1) == '*')
+		{
+			if (ft_isdigit(*(aux + 2)))
+				return ((int)ft_locate_variable(aux + 2, ap, ap2));
+			return (va_arg(ap2, int));
+		}
+		return (ft_atoi(aux + 1));
 	}
-	else if (!size_cuant[1])
-		size_cuant[1] = length;
+	return (-1);
 }
-void			ft_field_func(int *size_cuant, char *command, char *variable)
+void			ft_field_format(int *size_cuant, char *command, va_list ap, va_list ap2)
 {	
-	char	*aux;
-	int		length;
-
-	length = ft_strlen(variable);
-	aux = ft_strchr(command, '.');
-	precision(aux, size_cuant, length);
-	while (!ft_isdigit(*command) && command != aux  && *command)
-		command++;
-	box_size(command, size_cuant);
+	size_cuant[0] = -1;
+	while (size_cuant[0] < 0)
+		size_cuant[0] = size(&command, ap, ap2);
+	size_cuant[1] = cuant(command, ap, ap2);
 }

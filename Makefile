@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2017/12/17 08:32:43 by mrodrigu         ###   ########.fr        #
+#    Updated: 2018/01/18 19:41:17 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,11 @@ FORMATS = ft_field_format.c \
 MODS = ft_l_mod.c 
 
 UTILS = ft_wchar.c \
-		ft_utf8.c
+		ft_utf8.c \
+		ft_locate_variable.c
 
 TYPES = ft_s_type.c \
-		ft_ws_type.c \
+#		ft_ws_type.c \
 		ft_c_type.c \
 		ft_wc_type.c
 
@@ -94,31 +95,36 @@ INCLUDES_DIR = includes/
 all : $(NAME)
 
 $(NAME) : $(MAINS_OBJ) $(TYPES_OBJ) $(FORMATS_OBJ) $(MODS_OBJ) $(UTILS_OBJ) $(LIBFT_OBJ)
-	ar -rs $(NAME) $(OBJ) 
 	ranlib $(NAME)
 
 $(LIBFT_DIR)%.o : $(LIBFT_DIR)%.c
 	$(MAKE) -C $(LIBFT_DIR) --no-print-directory $(@F)
+	ar -rs $(NAME) $@ 
 
 $(OBJ_DIR)%.o : $(MAINS_DIR)%.c | dir_objects
 	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
 	mv -f $(@F) $(OBJ_DIR)
+	ar -rs $(NAME) $@ 
 
 $(OBJ_DIR)%.o : $(FORMATS_DIR)%.c | dir_objects
 	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
 	mv -f $(@F) $(OBJ_DIR)
+	ar -rs $(NAME) $@ 
 
 $(OBJ_DIR)%.o : $(TYPES_DIR)%.c | dir_objects
 	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
 	mv -f $(@F) $(OBJ_DIR)
+	ar -rs $(NAME) $@ 
 
 $(OBJ_DIR)%.o : $(UTILS_DIR)%.c | dir_objects
 	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
 	mv -f $(@F) $(OBJ_DIR)
+	ar -rs $(NAME) $@ 
 
 $(OBJ_DIR)%.o : $(MODS_DIR)%.c | dir_objects
 	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
 	mv -f $(@F) $(OBJ_DIR)
+	ar -rs $(NAME) $@ 
 
 dir_objects:
 	mkdir -p $(OBJ_DIR)

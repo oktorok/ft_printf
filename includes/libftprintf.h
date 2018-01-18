@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:11:20 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/17 03:53:25 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/18 19:42:21 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 
 static const char	g_types[26] = {"sScCpdDioOuUxXeEfFgGaAnbrk"};
 static const char	g_length_modifiers[6][8] = {{"di"},{"ouxX"},{"n"},{"aAeEfFgG"},{"cs"}};
-static char		*(*type_function [4])(char *, va_list) = {ft_s_type, ft_ws_type, ft_c_type, ft_wc_type};
-static void		*(*mod_func[1])(void *, int *, char *) = {ft_wchar};
+static char		*(*type_function [4])(char *, va_list, va_list) = {ft_s_type};
+static void		*(*mod_func[1])(va_list, int *, char *) = {ft_wchar};
 //char			*ft_s_type(char *str, va_list ap);
 //char			*ft_ws_type(char *str, va_list ap);
 //char			*ft_c_type(char *str, va_list ap);

@@ -6,20 +6,21 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 04:34:49 by mrodrigu          #+#    #+#             */
-/*   Updated: 2017/12/17 03:43:39 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/17 20:24:44 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	*ft_wchar(void *variable, int *siz_cuant, char *command)
+void	*ft_wchar(va_list ap, int *siz_cuant, char *command)
 {
 	wchar_t		*wvariable;
 	char		*res;
 	int			i;
 
 	i = -1;
-	wvariable = (wchar_t *)variable;
+	wvariable = va_arg(ap, wchar_t *);
+	//wvariable = ft_locate-variable(comm, ap, 4);
 	res = ft_strnew(0);
 	while (wvariable[++i])
 		res = ft_strjoinfree(res, ft_utf8(wvariable[i]));

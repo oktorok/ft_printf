@@ -6,13 +6,13 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 01:33:10 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/16 05:40:10 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/17 19:34:36 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	*ft_l_func(int *siz_cuant, char *command, void *variable)
+void	*ft_l_mod(int *siz_cuant, char *command, va_list ap)
 {
 	int		i;
 	int		j;
@@ -28,7 +28,7 @@ void	*ft_l_func(int *siz_cuant, char *command, void *variable)
 		while (g_length_modifiers[i][j])
 		{
 			if (command[k + 1] == g_length_modifiers[i][j])
-				return ((mod_func[0])(variable, siz_cuant, command));
+				return ((mod_func[0])(ap, siz_cuant, command));
 			i++;
 		}
 		j++;

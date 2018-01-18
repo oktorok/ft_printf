@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/17 02:51:52 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/18 18:11:31 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static char				selec_fun(char c)
 	return (i);
 }
 
-static char				*exec_command(char **str, va_list ap)
+static char				*exec_command(char **str, va_list ap, va_list ap2)
 {
 	char			*command;
 	char			*res;
@@ -59,7 +59,7 @@ static char				*exec_command(char **str, va_list ap)
 	command = ft_strsub(*str, 1, find_end(str));
 	if ((n = selec_fun(*(*str - 1))) == 26)
 		return (NULL);
-	res = (*type_function[n])(command, ap);
+	res = (*type_function[n])(command, ap, ap2);
 	ft_strdel(&command);
 	return (res);
 }
@@ -70,8 +70,10 @@ int						ft_printf(const char *str, ...)
 	char		*head_str;
 	char		*aux_str;
 	va_list		ap;
+	va_list		ap2;
 
 	va_start(ap, str);
+	va_copy(ap2, ap);
 	head_str = (char *)str;
 	if (!(res = ft_strnew(0)))
 		return (-1);
@@ -82,7 +84,7 @@ int						ft_printf(const char *str, ...)
 			return (-1);
 		if (*aux_str)
 			if (!(res = ft_realloc_printf(res,
-							exec_command(&aux_str, ap), NULL)))
+							exec_command(&aux_str, ap, ap2), NULL)))
 				return (-1);
 		head_str = aux_str;
 		if (!(*aux_str))
@@ -90,5 +92,6 @@ int						ft_printf(const char *str, ...)
 	}
 	ft_putstr(res);
 	va_end(ap);
+	va_end(ap2);
 	return (ft_strlen_free(res));
 }

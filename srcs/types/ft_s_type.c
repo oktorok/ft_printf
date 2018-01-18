@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/17 03:40:23 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/18 22:17:54 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,20 @@ static char		*writer(int *siz_cuant, int minus, char *variab)
 	return (tmp);
 }
 
-char			*ft_s_type(char *comm, va_list ap)
+char		*ft_s_type(char *comm, va_list ap, va_list ap2)
 {
 	int		siz_cuant[2];
 	char	*variable;
-	void	*mod_variable;
 	char	*res;
 
 	siz_cuant[1] = 0;
-	variable = va_arg(ap, char *);
-	mod_variable = ft_l_mod(siz_cuant, comm, (void *)variable);
-	if (mod_variable)
-		variable = (char *)mod_variable;
-	ft_field_format(siz_cuant, comm, variable);
+	ft_field_format(siz_cuant, comm, ap, ap2);
+	if (!(variable = (char *)(ft_l_mod(siz_cuant, comm, ap))))
+		variable = (char *)ft_locate_variable(comm, ap, ap2);
+	if (siz_cuant[1] > ft_strlen(variable) || siz_cuant[1] < 0)
+		siz_cuant[1] = ft_strlen(variable);
+	if (!siz_cuant[0])
+		siz_cuant[0] = siz_cuant[1];
 	res = writer(siz_cuant, ft_minus_format(comm), variable);
-	mod_variable = (char *)mod_variable;
-	ft_strdel((char **)(&mod_variable));
 	return (res);
 }
