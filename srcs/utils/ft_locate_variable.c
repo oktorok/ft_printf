@@ -6,20 +6,20 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 18:32:01 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/18 20:01:40 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/18 22:57:46 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	*ft_locate_variable(char *comm, va_list ap, va_list ap2)
+void		*ft_locate_variable(char *comm, va_list ap, va_list ap2)
 {
 	int		loc;
 	int		i;
-	va_list ap3;
-	void 	*variable;
+	va_list	ap3;
+	void	*variable;
 
-	while (*comm != '*' && *comm != '$' && *comm)	/* solo leo el primer dolar por lo que hay que mover comando antes de enviarlo aqui */
+	while (*comm != '*' && *comm != '$' && *comm)
 		comm++;
 	if (*comm-- != '$')
 		return (va_arg(ap2, void *));
@@ -29,7 +29,7 @@ void	*ft_locate_variable(char *comm, va_list ap, va_list ap2)
 	loc = ft_atoi(++comm);
 	while (loc > 1)
 	{
-		va_arg(ap3, void *); /* leaks quiza? */
+		va_arg(ap3, void *);
 		loc--;
 	}
 	variable = va_arg(ap3, void *);

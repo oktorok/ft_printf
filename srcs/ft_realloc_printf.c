@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:48:09 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/16 02:57:09 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/18 22:55:22 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_realloc_printf(char *s, char *start, char *end)
 	}
 	if (!end)
 	{
-		if(!(str = ft_strjoin(s, start)))
+		if (!(str = ft_strjoin(s, start)))
 			return (NULL);
 		ft_strdel(&s);
 		ft_strdel(&start);
