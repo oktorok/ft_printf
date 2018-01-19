@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 21:13:24 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/18 22:50:50 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/19 15:53:47 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static int		size(char **command, va_list ap, va_list ap2)
 {
-	char *aux;
+	char	*aux;
+	int		*tmp;
 
 	while (!ft_isdigit(**command) && **command != '*'
 			&& **command != '.' && **command)
@@ -27,7 +28,10 @@ static int		size(char **command, va_list ap, va_list ap2)
 	if (**command == '*')
 	{
 		if (ft_isdigit(*(*command + 1)))
-			return ((int)ft_locate_variable(*command + 1, ap, ap2));
+		{
+			tmp = (int *)ft_locate_date(*command + 1, 5, ap, ap2);
+			return (*tmp);
+		}
 		return (va_arg(ap2, int));
 	}
 	return (ft_atoi(aux));
@@ -35,14 +39,18 @@ static int		size(char **command, va_list ap, va_list ap2)
 
 static int		cuant(char *command, va_list ap, va_list ap2)
 {
-	char *aux;
+	char	*aux;
+	int		*tmp;
 
 	if ((aux = ft_strchr(command, '.')))
 	{
 		if (*(aux + 1) == '*')
 		{
 			if (ft_isdigit(*(aux + 2)))
-				return ((int)ft_locate_variable(aux + 2, ap, ap2));
+			{
+				tmp = (int *)ft_locate_date(aux + 2, 5, ap, ap2);
+				return (*tmp);
+			}
 			return (va_arg(ap2, int));
 		}
 		return (ft_atoi(aux + 1));

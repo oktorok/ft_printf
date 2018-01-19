@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_l_func.c                                        :+:      :+:    :+:   */
+/*   ft_locate_pointer.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/14 01:33:10 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/19 18:11:01 by jagarcia         ###   ########.fr       */
+/*   Created: 2018/01/17 18:32:01 by jagarcia          #+#    #+#             */
+/*   Updated: 2018/01/19 15:24:14 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	*ft_l_mod(int *siz_cuant, char *comm, va_list ap, va_list ap2)
+void		*ft_locate_pointer(char *comm, va_list ap, va_list ap2)
 {
+	int		loc;
 	int		i;
-	int		j;
-	int		k;
+	va_list	ap3;
+	void	*variable;
 
-	k = 0;
-	while (comm[k] != 'l' && comm[k])
-		k++;
-	j = 0;
-	while (g_length_modifiers[j] && (comm[k] == 'l' && comm[k + 1] != 'l'))
+	while (*comm != '*' && *comm != '$' && *comm)
+		comm++;
+	if (*comm-- != '$')
 	{
-		i = 0;
-		while (g_length_modifiers[i][j])
-		{
-			if (comm[k + 1] == g_length_modifiers[i][j])
-				return ((mod_func[0])(ap, ap2, siz_cuant, comm));
-			i++;
-		}
-		j++;
+		variable = va_arg(ap2, void *);
+		return (variable);
 	}
-	return (NULL);
+	va_copy(ap3, ap);
+	while (ft_isdigit(*comm))
+		comm--;
+	loc = ft_atoi(++comm);
+	while (loc > 1)
+	{
+		va_arg(ap3, void *);
+		loc--;
+	}
+	variable = va_arg(ap3, void *);
+	va_end(ap3);
+	return (variable);
 }
