@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2017/12/17 03:40:39 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/19 18:12:12 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,26 @@ static char		*writer(int *siz_cuant, int minus, char *variab)
 {
 	char	*tmp;
 
-	if (siz_cuant[0] == 0)
-		return (NULL);
 	tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0]);
 	if (minus)
 		tmp = ft_strncpy(tmp, variab, siz_cuant[1]);
-	else	
+	else
 		ft_strncpy(tmp + siz_cuant[0] - siz_cuant[1], variab, siz_cuant[1]);
 	return (tmp);
 }
 
-char			*ft_wc_type(char *comm, va_list ap)
+char			*ft_wc_type(char *comm, va_list ap, va_list ap2)
 {
 	int		siz_cuant[2];
-	int		*variable;
-	int		*mod_variable;
+	char	*variable;
 	char	*res;
 
-	siz_cuant[1] = 0;
-	mod_variable = ft_memalloc(sizeof(int));
-	*mod_variable = va_arg(ap, int);
-	variable = ft_wchar((void *)mod_variable, siz_cuant, comm);
-	ft_field_format(siz_cuant, comm, (char *)variable);
-	siz_cuant[1] = 1;
-	res = writer(siz_cuant, ft_minus_format(comm), (char *)variable);
-	ft_memdel((void **)&variable);
-	ft_memdel((void **)&mod_variable);
+	ft_field_format(siz_cuant, comm, ap, ap2);
+	variable = (char *)ft_wchar(ap, ap2, siz_cuant, comm);
+	if (siz_cuant[1] > ft_strlen(variable) || siz_cuant[1] < 0)
+		siz_cuant[1] = ft_strlen(variable);
+	if (!siz_cuant[0])
+		siz_cuant[0] = siz_cuant[1];
+	res = writer(siz_cuant, ft_minus_format(comm), variable);
 	return (res);
 }

@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/01/18 19:41:17 by jagarcia         ###   ########.fr        #
+#    Updated: 2018/01/19 17:51:41 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,11 +28,12 @@ MODS = ft_l_mod.c
 
 UTILS = ft_wchar.c \
 		ft_utf8.c \
-		ft_locate_variable.c
+		ft_locate_pointer.c \
+		ft_locate_date.c
 
 TYPES = ft_s_type.c \
-#		ft_ws_type.c \
 		ft_c_type.c \
+		ft_ws_type.c \
 		ft_wc_type.c
 
 

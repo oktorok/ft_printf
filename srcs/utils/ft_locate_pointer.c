@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc_printf.c                                :+:      :+:    :+:   */
+/*   ft_locate_pointer.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/07 23:48:09 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/18 22:55:22 by jagarcia         ###   ########.fr       */
+/*   Created: 2018/01/17 18:32:01 by jagarcia          #+#    #+#             */
+/*   Updated: 2018/01/19 15:24:14 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*ft_realloc_printf(char *s, char *start, char *end)
+void		*ft_locate_pointer(char *comm, va_list ap, va_list ap2)
 {
-	char *str;
+	int		loc;
+	int		i;
+	va_list	ap3;
+	void	*variable;
 
-	if (!start)
+	while (*comm != '*' && *comm != '$' && *comm)
+		comm++;
+	if (*comm-- != '$')
 	{
-		ft_strdel(&s);
-		return (NULL);
+		variable = va_arg(ap2, void *);
+		return (variable);
 	}
-	if (!end)
+	va_copy(ap3, ap);
+	while (ft_isdigit(*comm))
+		comm--;
+	loc = ft_atoi(++comm);
+	while (loc > 1)
 	{
-		if (!(str = ft_strjoin(s, start)))
-			return (NULL);
-		ft_strdel(&s);
-		ft_strdel(&start);
-		return (str);
+		va_arg(ap3, void *);
+		loc--;
 	}
-	if (!(str = ft_strnjoin(s, start, (unsigned int)(end - start))))
-		return (NULL);
-	ft_strdel(&s);
-	return (str);
+	variable = va_arg(ap3, void *);
+	va_end(ap3);
+	return (variable);
 }
