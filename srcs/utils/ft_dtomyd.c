@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/21 01:24:44 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/21 18:56:33 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/21 19:44:54 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ t_myfloat	ft_dtomyd(unsigned long int d)
 	32 a la iquierda para movel el exponente a la posicion 32 para que
 	quepa en un int y despues aplicamos la mascara para eliminar los
 	posibles valores que queden de la mantissa*/
-	n.exponent = ((d << 1) >> 32) & 0xFFE00000;
+	n.exponent = ((d << 1) >> 53);
 	return (n);
 }

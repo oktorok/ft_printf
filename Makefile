@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/01/21 18:39:55 by mrodrigu         ###   ########.fr        #
+#    Updated: 2018/01/21 21:35:40 by mrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,10 @@ UTILS = ft_wchar.c \
 		ft_locate_date.c \
 		ft_choose_power.c \
 		ft_dtomyd.c \
-		ft_sige.c
+		ft_sige.c \
+		ft_take_power.c \
+		ft_multiply.c \
+		ft_grisu.c
 
 TYPES = ft_s_type.c \
 		ft_c_type.c \
