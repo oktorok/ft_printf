@@ -6,9 +6,11 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 15:57:39 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/19 18:55:04 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/21 18:39:32 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libftprintf.h"
 
 double	ft_sige(double x)
 {

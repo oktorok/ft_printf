@@ -6,11 +6,11 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:34:36 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/19 18:40:39 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/21 18:39:07 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include "libftprintf.h"
 
 int		ft_choose_power(int e, int alpha)
 {

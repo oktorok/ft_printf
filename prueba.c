@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/21 03:29:21 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/21 19:03:42 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,12 @@ ft_putstr("MIO: \n");
 ft_printf("ERES UNA <% '' 10i> PUTA",1000);
 
 printf("\nREAL: \n");
-printf("<%i>",123123);
+printf("<%i>\n",123123);
+
+double a = 13.18;
+void *p = &a;
+unsigned long int *l = (unsigned long int *)p;
+t_myfloat n = ft_dtomyd(*l);
+printf("Mantissa: %lu\nExponente: %u\n", n.mantissa, n.exponent);
+
 }
