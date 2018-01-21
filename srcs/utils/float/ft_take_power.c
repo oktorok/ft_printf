@@ -6,8 +6,11 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:31:00 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/19 18:34:19 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/21 00:59:21 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_take_power
+double	ft_take_power(int k)
+{
+	
+}
