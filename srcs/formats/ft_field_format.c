@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 21:13:24 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/19 15:53:47 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/21 02:57:52 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ static int		size(char **command, va_list ap, va_list ap2)
 	char	*aux;
 	int		*tmp;
 
-	while (!ft_isdigit(**command) && **command != '*'
+	while ((!ft_isdigit(**command) || **command == '0') && **command != '*'
 			&& **command != '.' && **command)
 		(*command)++;
 	aux = *command;
 	while (ft_isdigit(**command) && **command)
 		(*command)++;
-	if (**command == '$')
+	if (**command == '$' || **command == '0')
 		return (-1);
 	if (**command == '*')
 	{

@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prueba.c                                           :+:      :+:    :+:   */
+/*   ft_zero_func.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/21 03:29:21 by jagarcia         ###   ########.fr       */
+/*   Created: 2017/12/14 09:12:39 by jagarcia          #+#    #+#             */
+/*   Updated: 2018/01/21 03:19:38 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
-#include <unistd.h>
-#include <locale.h>
-#include <stdlib.h>
 
-char	*ft_utf_8(wchar_t caca);
-
-void print_bytes(void *ptr, int size) 
+int		ft_zero_format(char *command)
 {
-	unsigned char *p = ptr;
-	int i;
-	for (i=0; i<size; i++) {
-		printf("%02hhX ", p[i]);
+	while (*command)
+	{
+		if (ft_isdigit(*command) && *command != '0')
+			return (0);
+		if (*command == '0')
+		{
+			while (*command)
+				if (*command++ == '.')
+					return (0);
+			return (1);
+		}
+		command++;
 	}
-	printf("\n");
-}
-
-int		main(void)
-{
-	setlocale(LC_ALL, "");
-ft_putstr("MIO: \n");
-ft_printf("ERES UNA <% '' 10i> PUTA",1000);
-
-printf("\nREAL: \n");
-printf("<%i>",123123);
+	return (0);
 }

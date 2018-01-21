@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 21:23:52 by jagarcia          #+#    #+#              #
-#    Updated: 2017/12/16 04:02:20 by mrodrigu         ###   ########.fr        #
+#    Updated: 2018/01/20 20:53:20 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,8 @@ SRC = ft_isascii.c \
 	  ft_putbytes.c \
 	  ft_wstrlen.c \
 	  ft_strnjoin.c \
-	  ft_strlen_free.c
+	  ft_strlen_free.c \
+	  ft_itoa_base.c
 
 OBJ = $(SRC:.c=.o)
 
