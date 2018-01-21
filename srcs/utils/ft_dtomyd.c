@@ -6,11 +6,13 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/21 01:24:44 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/21 03:15:35 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/21 18:56:33 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-t_myfloat	ft_dtomyd(long int d)
+#include "libftprintf.h"
+
+t_myfloat	ft_dtomyd(unsigned long int d)
 {
 	t_myfloat	n;
 
