@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 15:57:39 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/21 18:39:32 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/21 23:03:01 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 double	ft_sige(double x)
 {
-	if (x > (int)x || x < (int)x)
-		return ((double)((int)x + 1));
-	else
-		return (x);
+	if  (x >= 0)
+	{
+		if (x > (int)x)
+			return ((double)((int)x + 1));
+	}
+	return ((double)((int)x));
 }

@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/21 20:52:23 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/21 21:43:46 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/22 03:38:20 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	grisu(double *d)
 	k = ft_choose_power(w.exponent + 64, alpha);
 	printf ("La mantissa vale: %lu\nEl exponente vale: %d\nk vale: %d\n",w.mantissa, w.exponent, k);
 	D = ft_multiply(w, ft_take_power(k));
+	printf("la mantissa de D vale: %lu\nEl exponente de D vale: %d\n", D.mantissa, D.exponent);
 	ft_cut(D, ps);
 	printf("%u%07u%07ue%d",ps[0], ps[1], ps[2], -k);
 }

@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/21 21:45:18 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/22 03:42:45 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <unistd.h>
 #include <locale.h>
 #include <stdlib.h>
+#include <math.h>
 
 char	*ft_utf_8(wchar_t caca);
 
@@ -36,6 +37,8 @@ ft_printf("ERES UNA <% '' 10i> PUTA",1000);
 
 printf("\nREAL: \n");
 printf("<%i>\n",123123);
+double u = -289.8918482441383782;
+printf("sige: %f\nceil: %f\n", ft_sige(u), ceil(u));
 
 double a = 13.18;
 void *p = &a;
