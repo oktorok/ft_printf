@@ -6,7 +6,11 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2018/01/22 00:35:27 by jagarcia         ###   ########.fr        #
+=======
+#    Updated: 2018/01/21 21:35:40 by mrodrigu         ###   ########.fr        #
+>>>>>>> 5ed7ced7c0a977b444cab732cadf697a5daae97b
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +22,7 @@ FLAGS =
 
 MAIN_FUNCS = ft_printf.c \
 	 		 ft_realloc_printf.c 
-	
+
 FORMATS = ft_field_format.c \
 		  ft_minus_format.c \
 		  ft_space_format.c \
@@ -39,7 +43,13 @@ MODS = ft_l_mod.c \
 UTILS = ft_wchar.c \
 		ft_utf8.c \
 		ft_locate_pointer.c \
-		ft_locate_date.c
+		ft_locate_date.c \
+		ft_choose_power.c \
+		ft_dtomyd.c \
+		ft_sige.c \
+		ft_take_power.c \
+		ft_multiply.c \
+		ft_grisu.c
 
 TYPES = ft_s_type.c \
 		ft_c_type.c \
