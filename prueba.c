@@ -7,10 +7,14 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*   Updated: 2018/01/22 04:21:12 by jagarcia         ###   ########.fr       */
 =======
 /*   Updated: 2018/01/21 21:45:18 by mrodrigu         ###   ########.fr       */
 >>>>>>> 5ed7ced7c0a977b444cab732cadf697a5daae97b
+=======
+/*   Updated: 2018/01/22 03:42:45 by mrodrigu         ###   ########.fr       */
+>>>>>>> float3
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +23,7 @@
 #include <unistd.h>
 #include <locale.h>
 #include <stdlib.h>
+#include <math.h>
 
 char	*ft_utf_8(wchar_t caca);
 
@@ -45,6 +50,8 @@ printf("\nREAL: \n");
 printf("ERES UNA <%-10.6i> PUTA",b);
 =======
 printf("<%i>\n",123123);
+double u = -289.8918482441383782;
+printf("sige: %f\nceil: %f\n", ft_sige(u), ceil(u));
 
 double a = 13.18;
 void *p = &a;
