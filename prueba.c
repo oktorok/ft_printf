@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/21 03:29:21 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/22 04:21:12 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,11 @@ void print_bytes(void *ptr, int size)
 int		main(void)
 {
 	setlocale(LC_ALL, "");
+	signed char a = 'a';
+	unsigned int b = 2147;
 ft_putstr("MIO: \n");
-ft_printf("ERES UNA <% '' 10i> PUTA",1000);
+ft_printf("ERES UNA <%-10.6i> PUTA",b);
 
 printf("\nREAL: \n");
-printf("<%i>",123123);
+printf("ERES UNA <%-10.6i> PUTA",b);
 }

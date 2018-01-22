@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/01/21 02:35:14 by jagarcia         ###   ########.fr        #
+#    Updated: 2018/01/22 00:35:27 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,15 @@ FORMATS = ft_field_format.c \
 		  ft_apostrophe_format.c \
 		  ft_zero_format.c
 
-MODS = ft_l_mod.c 
+MODS = ft_l_mod.c \
+	   ft_mods.c \
+	   ft_long.c \
+	   ft_int.c \
+	   ft_intmax.c \
+	   ft_sizet.c \
+	   ft_short.c \
+	   ft_signed_char.c \
+	   ft_uoctal.c
 
 UTILS = ft_wchar.c \
 		ft_utf8.c \
@@ -37,7 +45,9 @@ TYPES = ft_s_type.c \
 		ft_c_type.c \
 		ft_ws_type.c \
 		ft_wc_type.c \
-		ft_i_type.c
+		ft_id_type.c \
+		ft_li_type.c \
+		ft_o_type.c
 
 
 LIBFT_FUNCTIONS = ft_strncpy.c \
@@ -67,7 +77,9 @@ LIBFT_FUNCTIONS = ft_strncpy.c \
 	 			  ft_memalloc.c \
 	 			  ft_memdel.c \
 				  ft_strstr.c \
-				  ft_itoa.c
+				  ft_itoa.c \
+				  ft_ltoa.c \
+				  ft_uitoa_base.c 
 
 TYPES_DIR = srcs/types/
 

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_uitoa_base.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 22:18:25 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/22 00:03:13 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/22 00:34:14 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		calcdigits(int val, int bas)
+static int		calcdigits(unsigned int val, int bas)
 {
 	int dig;
 
@@ -25,9 +25,9 @@ static int		calcdigits(int val, int bas)
 	return (dig);
 }
 
-static void		calcnum(char *res, int *value, int base)
+static void		calcnum(char *res, unsigned int *value, int base)
 {
-	if (*value < base)
+	if (*value <(unsigned int)base)
 		*res = *value;
 	else
 		*res = *value % base;
@@ -38,30 +38,18 @@ static void		calcnum(char *res, int *value, int base)
 	*value = *value / base;
 }
 
-char			*ft_itoa_base(int value, int base)
+char			*ft_uitoa_base(unsigned int value, int base)
 {
 	int		digits;
-	int		neg;
 	char	*res;
 	int		i;
 
 	if (base < 2 || base > 16)
 		return (NULL);
-	neg = 0;
-	if (value < 0)
-	{
-		if (value == -2147483648)
-			return ("-2147483648");
-		value = -value;
-		if (base == 10)
-			neg = 1;
-	}
 	digits = calcdigits(value, base);
-	if (!(res = (char *)malloc(sizeof(char) * (neg + digits))))
+	if (!(res = (char *)malloc(sizeof(char) * (digits))))
 		return (NULL);
-	i = digits + neg - 1;
-	if (neg)
-		res[0] = '-';
+	i = digits - 1;
 	while (digits--)
 		calcnum(&(res[i--]), &value, base);
 	return (res);
