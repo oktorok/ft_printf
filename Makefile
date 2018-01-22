@@ -6,11 +6,8 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2018/01/22 00:35:27 by jagarcia         ###   ########.fr        #
-=======
+#    Updated: 2018/01/22 19:06:05 by mrodrigu         ###   ########.fr        #
 #    Updated: 2018/01/21 21:35:40 by mrodrigu         ###   ########.fr        #
->>>>>>> 5ed7ced7c0a977b444cab732cadf697a5daae97b
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +86,8 @@ LIBFT_FUNCTIONS = ft_strncpy.c \
 				  ft_strstr.c \
 				  ft_itoa.c \
 				  ft_ltoa.c \
-				  ft_uitoa_base.c 
+				  ft_uitoa_base.c \
+				  ft_strnjoinfree.c
 
 TYPES_DIR = srcs/types/
 
