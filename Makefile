@@ -6,11 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2018/01/22 00:35:27 by jagarcia         ###   ########.fr        #
-=======
-#    Updated: 2018/01/21 21:35:40 by mrodrigu         ###   ########.fr        #
->>>>>>> 5ed7ced7c0a977b444cab732cadf697a5daae97b
+#    Updated: 2018/01/23 03:40:39 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,12 +29,16 @@ FORMATS = ft_field_format.c \
 MODS = ft_l_mod.c \
 	   ft_mods.c \
 	   ft_long.c \
+	   ft_longlong.c \
 	   ft_int.c \
 	   ft_intmax.c \
 	   ft_sizet.c \
 	   ft_short.c \
 	   ft_signed_char.c \
-	   ft_uoctal.c
+	   ft_uioctal.c \
+	   ft_ulloctal.c \
+	   ft_uloctal.c \
+	   ft_ulong.c
 
 UTILS = ft_wchar.c \
 		ft_utf8.c \
@@ -89,7 +89,10 @@ LIBFT_FUNCTIONS = ft_strncpy.c \
 				  ft_strstr.c \
 				  ft_itoa.c \
 				  ft_ltoa.c \
-				  ft_uitoa_base.c 
+				  ft_lltoa.c \
+				  ft_uitoa_base.c \
+				  ft_ultoa_base.c \
+				  ft_ulltoa_base.c
 
 TYPES_DIR = srcs/types/
 

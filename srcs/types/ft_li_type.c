@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/22 00:12:58 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/22 18:56:07 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ char		*ft_li_type(char *comm, va_list ap, va_list ap2)
 	size_t	len;
 
 	ft_field_format(siz_cuant, comm, ap, ap2);
-	variable = (char *)(*mod_selector[1][0])(ap, ap2,
-			siz_cuant, comm);
+	variable = (char *)(*mod_selector[1][0])(ap, ap2, comm);
 	variable = ft_apostrophe_format(comm, variable);
 	len = ft_strlen(variable);
 	if (siz_cuant[1] <= len || siz_cuant[1] < 0)

@@ -6,11 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2018/01/22 04:21:12 by jagarcia         ###   ########.fr       */
-=======
-/*   Updated: 2018/01/21 21:45:18 by mrodrigu         ###   ########.fr       */
->>>>>>> 5ed7ced7c0a977b444cab732cadf697a5daae97b
+/*   Updated: 2018/01/23 03:38:31 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +16,7 @@
 #include <locale.h>
 #include <stdlib.h>
 
+char        *ft_alltoa_base(void *value, int base, size_t val_size, short unsig);
 char	*ft_utf_8(wchar_t caca);
 
 void print_bytes(void *ptr, int size) 
@@ -37,17 +34,15 @@ int		main(void)
 	setlocale(LC_ALL, "");
 	signed char a = 'a';
 	unsigned int b = 2147;
+	int unsigned long c = 18446744073709551615;
+	long long d =9223372036854775806;
 ft_putstr("MIO: \n");
-ft_printf("ERES UNA <%-10.6i> PUTA",b);
+ft_printf("ERES UNA <%lli> PUTA",d);
 
 printf("\nREAL: \n");
-<<<<<<< HEAD
-printf("ERES UNA <%-10.6i> PUTA",b);
-=======
-printf("<%i>\n",123123);
+printf("ERES UNA <%lli> PUTA",d);
 
-double a = 13.18;
-void *p = &a;
-grisu((double *)p);
->>>>>>> 5ed7ced7c0a977b444cab732cadf697a5daae97b
+//double a = 13.18;
+//void *p = &a;
+//grisu((double *)p);
 }

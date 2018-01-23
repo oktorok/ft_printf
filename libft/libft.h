@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 00:15:11 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/22 00:21:27 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/23 03:39:06 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
-
 void				ft_putchar(char c);
 void				ft_putstr(const char *str);
 size_t				ft_strlen(const char *str);
@@ -74,7 +73,9 @@ char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(int n);
 char				*ft_itoa_base(int n, int base);
 char				*ft_uitoa_base(unsigned int n, int base);
+char				*ft_ultoa_base(unsigned long n, int base);
 char				*ft_ltoa(long n);
+char				*ft_lltoa(long long n);
 void				ft_putendl(const char *str);
 void				ft_putendl_fd(const char *str, int fd);
 void				ft_putchar_fd(char c, int fd);

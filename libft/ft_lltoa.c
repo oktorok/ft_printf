@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_lltoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 23:38:40 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/22 18:14:24 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/22 18:33:45 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static long	final_step(long *n, int *len, char **res)
+static long long final_step(long long *n, int *len, char **res)
 {
 	int		i;
 
@@ -33,10 +33,10 @@ static long	final_step(long *n, int *len, char **res)
 	return (i);
 }
 
-static char	*exceptions(long n)
+static char	*exceptions(long long n)
 {
-	char *res;
-	long min_long;
+	char 		*res;
+	long long	min_long;
 
 	min_long = -9223372036854775807 - 1;
 	if (n == min_long)
@@ -54,11 +54,11 @@ static char	*exceptions(long n)
 	return (res);
 }
 
-char		*ft_ltoa(long n)
+char		*ft_lltoa(long long n)
 {
-	int		digit;
-	char	*res;
-	long	i;
+	int			digit;
+	char		*res;
+	long long	i;
 
 	digit = 0;
 	if (n == -2147483648 || n == 0)
