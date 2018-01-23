@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:31:00 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/21 21:10:46 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/22 17:54:40 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 t_myfloat	ft_take_power(int k)
 {
-	double	d;
-	void	*p;
+	t_myfloat	res;
+	int			index;
 
-	d = g_ten_powers[k];
-	p = &d;
-	return (ft_dtomyd(*((unsigned long int *)p)));
+	index = 343 + k;
+	res.mantissa = powers_ten[index];
+	res.exponent = powers_ten_e[index];
+	return (res);
 }

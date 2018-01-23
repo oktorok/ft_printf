@@ -6,13 +6,13 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:34:36 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/21 18:39:07 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/22 18:33:00 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../../includes/libftprintf.h"
 
 int		ft_choose_power(int e, int alpha)
 {
-	return (ft_sige((alpha -e + 63) * D1LOG210));
+	return (ft_sige((alpha - e + 63) * D1LOG210));
 }

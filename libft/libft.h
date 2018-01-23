@@ -6,7 +6,11 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 00:15:11 by jagarcia          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/01/23 03:39:06 by jagarcia         ###   ########.fr       */
+=======
+/*   Updated: 2018/01/22 19:04:55 by mrodrigu         ###   ########.fr       */
+>>>>>>> 52574106840366efbc282257eab4504a534b4c31
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +104,5 @@ size_t				ft_wstrlen(const wchar_t *str);
 char				*ft_strnjoin(char const *s1,
 char const *s2, unsigned int n);
 size_t				ft_strlen_free(char *str);
+char				*ft_strnjoinfree(char *s1, char *s2, unsigned int n);
 #endif

@@ -6,37 +6,57 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/21 20:52:23 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/21 21:43:46 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/23 03:40:09 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libftprintf.h"
-#include <stdio.h>
 #define TEN7  10000000
-
-void	ft_cut(t_myfloat D, unsigned int *ps)
+#include<stdio.h>
+void	ft_cut(t_myfloat m_prod, unsigned int *ps)
 {
 	unsigned long int tmp;
-	
-	ps[2] = (D.mantissa % (TEN7 >> D.exponent)) << D.exponent;
-	tmp = D.mantissa / (TEN7 >> D.exponent);
+
+	ps[2] = (m_prod.mantissa % (TEN7 >> m_prod.exponent)) << m_prod.exponent;
+	tmp = m_prod.mantissa / (TEN7 >> m_prod.exponent);
 	ps[1] = tmp % TEN7;
-	ps[0] = tmp /TEN7;
+	ps[0] = tmp / TEN7;
+}
+
+char	*ft_concatenate(unsigned int *ps, char *str, int n)
+{
+	char			*tmp;
+	char			*tmp2;
+	unsigned int	len;
+
+	if (!(tmp = ft_itoa(ps[n])))
+		return (NULL);
+	if ((len = ft_strlen(tmp)) < 7)
+	{
+		tmp2 = ft_strnew(7 - len);
+		ft_memset(tmp2, '0', 7 - len);
+		return (ft_strjoinfree(str, ft_strjoinfree(tmp2, tmp)));
+	}
+	return (ft_strjoinfree(str, tmp));
 }
 
 void	grisu(double *d)
 {
-	t_myfloat 		w;
+	t_myfloat		w;
 	unsigned int	ps[3];
-	t_myfloat		D;
-	int				alpha;
+	t_myfloat		m_prod;
+	char			*str;
 	int				k;
 
-	alpha = 0;
 	w = ft_dtomyd(*((unsigned long *)d));
-	k = ft_choose_power(w.exponent + 64, alpha);
-	printf ("La mantissa vale: %lu\nEl exponente vale: %d\nk vale: %d\n",w.mantissa, w.exponent, k);
-	D = ft_multiply(w, ft_take_power(k));
-	ft_cut(D, ps);
-	printf("%u%07u%07ue%d",ps[0], ps[1], ps[2], -k);
+	k = ft_choose_power(w.exponent + 64, 0);
+	m_prod = ft_multiply(w, ft_take_power(k));
+	ft_cut(m_prod, ps);
+	str = ft_strnew(0);
+	str = ft_strjoinfree(str, ft_itoa(ps[0]));
+	str = ft_concatenate(ps, str, 1);
+	str = ft_concatenate(ps, str, 2);
+	str = ft_strjoinfree(str, ft_strjoinfree(ft_memset(ft_strnew(1), 'e', 1), ft_itoa(-k)));
+	printf ("Num: %s\n", str);
+//	printf("Num: %s\n",ft_strjoin(ft_strjoin(), ft_itoa(ps[1])), ft_itoa(ps[2])));
 }

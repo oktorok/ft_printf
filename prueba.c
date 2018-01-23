@@ -6,7 +6,13 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/01/23 03:38:31 by jagarcia         ###   ########.fr       */
+=======
+/*   Updated: 2018/01/22 18:40:02 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/21 21:45:18 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/22 03:42:45 by mrodrigu         ###   ########.fr       */
+>>>>>>> 52574106840366efbc282257eab4504a534b4c31
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +21,7 @@
 #include <unistd.h>
 #include <locale.h>
 #include <stdlib.h>
+#include <math.h>
 
 char        *ft_alltoa_base(void *value, int base, size_t val_size, short unsig);
 char	*ft_utf_8(wchar_t caca);
@@ -32,7 +39,7 @@ void print_bytes(void *ptr, int size)
 int		main(void)
 {
 	setlocale(LC_ALL, "");
-	signed char a = 'a';
+//	signed char a = 'a';
 	unsigned int b = 2147;
 	int unsigned long c = 18446744073709551615;
 	long long d =9223372036854775806;
@@ -40,9 +47,20 @@ ft_putstr("MIO: \n");
 ft_printf("ERES UNA <%lli> PUTA",d);
 
 printf("\nREAL: \n");
+<<<<<<< HEAD
 printf("ERES UNA <%lli> PUTA",d);
 
 //double a = 13.18;
 //void *p = &a;
 //grisu((double *)p);
+=======
+printf("ERES UNA <%-10.6i> PUTA",b);
+printf("<%i>\n",123123);
+double u = -289.8918482441383782;
+printf("sige: %f\nceil: %f\n", ft_sige(u), ceil(u));
+
+double a = 13.18;
+void *p = &a;
+grisu((double *)p);
+>>>>>>> 52574106840366efbc282257eab4504a534b4c31
 }
