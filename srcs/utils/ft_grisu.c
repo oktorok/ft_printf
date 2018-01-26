@@ -6,7 +6,11 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/21 20:52:23 by mrodrigu          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/01/23 22:13:30 by mrodrigu         ###   ########.fr       */
+=======
+/*   Updated: 2018/01/23 04:06:12 by jagarcia         ###   ########.fr       */
+>>>>>>> a4a04a61d5a59f84065289d3b2684aeace144298
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +62,6 @@ void	grisu(double *d)
 	str = ft_concatenate(ps, str, 1);
 	str = ft_concatenate(ps, str, 2);
 	str = ft_strjoinfree(str, ft_strjoinfree(ft_memset(ft_strnew(1), 'e', 1), ft_itoa(-k)));
+	printf("mantisa: %lu\nexponente : %i\n", m_prod.mantissa, m_prod.exponent); 
 	printf ("Num: %s\n", str);
-//	printf("Num: %s\n",ft_strjoin(ft_strjoin(), ft_itoa(ps[1])), ft_itoa(ps[2])));
 }

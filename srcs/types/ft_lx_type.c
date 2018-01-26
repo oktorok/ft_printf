@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_li_type.c                                       :+:      :+:    :+:   */
+/*   ft_lx_type.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/25 21:34:53 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/26 16:39:36 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,16 @@ static char	*writer(int *siz_cuant, int minus, char *variab)
 {
 	char	*tmp;
 
+	tmp = variab;
+	while (*variab)
+	{
+		*variab = ft_toupper(*variab);
+		variab++;
+	}
+	variab = tmp;
 	tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0]);
 	if (minus)
-		ft_strcpy(tmp, variab);
+		ft_strncpy(tmp, variab, ft_strlen(variab));
 	else
 		ft_strcpy(tmp + siz_cuant[0] - ft_strlen(variab), variab);
 	return (tmp);
@@ -44,7 +51,7 @@ static void	*write_zeros(char *variable, int zero_cuant)
 	return (new_variab);
 }
 
-char		*ft_li_type(char *comm, va_list ap, va_list ap2)
+char		*ft_lx_type(char *comm, va_list ap, va_list ap2)
 {
 	int		siz_cuant[2];
 	char	*variable;
@@ -52,8 +59,8 @@ char		*ft_li_type(char *comm, va_list ap, va_list ap2)
 	size_t	len;
 
 	ft_field_format(siz_cuant, comm, ap, ap2);
-	variable = (*mod_selector[1])(ap, ap2, comm);
-	variable = ft_apostrophe_format(comm, variable);
+	variable = (*mod_selector[2])(ap, ap2, comm);
+	variable = ft_hash_format(comm, variable);
 	len = ft_strlen(variable);
 	if (siz_cuant[1] <= len || siz_cuant[1] < 0)
 		siz_cuant[1] = 0;
@@ -65,8 +72,6 @@ char		*ft_li_type(char *comm, va_list ap, va_list ap2)
 		variable = write_zeros(variable, siz_cuant[0] - len);
 	else
 		variable = write_zeros(variable, siz_cuant[1]);
-	variable = ft_space_format(comm, variable);
-	variable = ft_plus_format(comm, variable);
 	res = writer(siz_cuant, ft_minus_format(comm), variable);
 	return (res);
 }

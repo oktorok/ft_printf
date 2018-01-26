@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 04:34:49 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/21 21:49:58 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/25 21:29:35 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static	void	*selector(char *com, va_list ap, va_list ap2)
 	return (ft_locate_pointer(com, ap, ap2));
 }
 
-void			*ft_wchar(va_list ap, va_list ap2, int *siz_cuant, char *comm)
+char		*ft_wchar(va_list ap, va_list ap2, int *siz_cuant, char *comm)
 {
 	wchar_t		*wvariable;
 	char		*res;
@@ -45,5 +45,5 @@ void			*ft_wchar(va_list ap, va_list ap2, int *siz_cuant, char *comm)
 		}
 		i++;
 	}
-	return ((void *)res);
+	return (res);
 }

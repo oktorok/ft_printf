@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/20 21:26:07 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/25 21:37:06 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ char			*ft_s_type(char *comm, va_list ap, va_list ap2)
 	char	*res;
 
 	ft_field_format(siz_cuant, comm, ap, ap2);
-	if (!(variable = (char *)(ft_l_mod(siz_cuant, comm, ap, ap2))))
+	if (ft_mods(comm) == 2)
+		variable = ft_wchar(ap, ap2, siz_cuant, comm);
+	else
 		variable = (char *)ft_locate_pointer(comm, ap, ap2);
 	if (siz_cuant[1] > ft_strlen(variable) || siz_cuant[1] < 0)
 		siz_cuant[1] = ft_strlen(variable);
