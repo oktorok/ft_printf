@@ -6,11 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 21:23:52 by jagarcia          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2018/01/23 21:24:01 by mrodrigu         ###   ########.fr        #
-=======
-#    Updated: 2018/01/24 12:38:01 by jagarcia         ###   ########.fr        #
->>>>>>> a4a04a61d5a59f84065289d3b2684aeace144298
+#    Updated: 2018/01/26 22:25:37 by mrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,11 +89,8 @@ SRC = ft_isascii.c \
 	  ft_strlen_free.c \
 	  ft_itoa_base.c \
 	  ft_uitoa_base.c \
-<<<<<<< HEAD
 	  ft_ulltoa_base.c \
 	  ft_ultoa_base.c \
-=======
->>>>>>> a4a04a61d5a59f84065289d3b2684aeace144298
 	  ft_strnjoinfree.c
 
 OBJ = $(SRC:.c=.o)

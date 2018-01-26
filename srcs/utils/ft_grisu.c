@@ -6,17 +6,13 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/21 20:52:23 by mrodrigu          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2018/01/23 22:13:30 by mrodrigu         ###   ########.fr       */
-=======
-/*   Updated: 2018/01/23 04:06:12 by jagarcia         ###   ########.fr       */
->>>>>>> a4a04a61d5a59f84065289d3b2684aeace144298
+/*   Updated: 2018/01/26 22:29:35 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libftprintf.h"
 #define TEN7  10000000
-#include<stdio.h>
+
 void	ft_cut(t_myfloat m_prod, unsigned int *ps)
 {
 	unsigned long int tmp;
@@ -44,7 +40,7 @@ char	*ft_concatenate(unsigned int *ps, char *str, int n)
 	return (ft_strjoinfree(str, tmp));
 }
 
-void	grisu(double *d)
+char	*grisu(double *d)
 {
 	t_myfloat		w;
 	unsigned int	ps[3];
@@ -55,13 +51,11 @@ void	grisu(double *d)
 	w = ft_dtomyd(*((unsigned long *)d));
 	k = ft_choose_power(w.exponent + 64, 0);
 	m_prod = ft_multiply(w, ft_take_power(k));
-	printf("man: %lu\nexp: %d\n", w.mantissa, m_prod.exponent);
 	ft_cut(m_prod, ps);
 	str = ft_strnew(0);
 	str = ft_strjoinfree(str, ft_itoa(ps[0]));
 	str = ft_concatenate(ps, str, 1);
 	str = ft_concatenate(ps, str, 2);
 	str = ft_strjoinfree(str, ft_strjoinfree(ft_memset(ft_strnew(1), 'e', 1), ft_itoa(-k)));
-	printf("mantisa: %lu\nexponente : %i\n", m_prod.mantissa, m_prod.exponent); 
-	printf ("Num: %s\n", str);
+	return (str);
 }
