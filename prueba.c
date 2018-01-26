@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/26 22:09:42 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/26 22:49:08 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ unsigned int Mui = 4294967295;
 int Mi = 2147483647;
 int mi = -2147483648;
 int a = 123456789;
-ft_printf("ERES UNA <%#' +20.13i> PUTA",a);
+ft_printf("ERES UNA <%' +.11i> PUTA",a);
 
 printf("\nREAL: \n");
 void *caca = malloc(10);
-printf("ERES UNA <%#' +20.13i> PUTA\n",a);
+printf("ERES UNA <%' +.11i> PUTA\n",a);
 } 

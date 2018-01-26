@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/25 21:34:53 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/26 22:19:26 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ char		*ft_li_type(char *comm, va_list ap, va_list ap2)
 		variable = write_zeros(variable, siz_cuant[0] - len);
 	else
 		variable = write_zeros(variable, siz_cuant[1]);
-	variable = ft_space_format(comm, variable);
-	variable = ft_plus_format(comm, variable);
+	variable = ft_space_format(comm, variable, siz_cuant);
+	variable = ft_plus_format(comm, variable, siz_cuant);
 	res = writer(siz_cuant, ft_minus_format(comm), variable);
 	return (res);
 }
