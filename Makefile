@@ -6,12 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2018/01/23 03:40:39 by jagarcia         ###   ########.fr        #
-=======
-#    Updated: 2018/01/22 19:06:05 by mrodrigu         ###   ########.fr        #
-#    Updated: 2018/01/21 21:35:40 by mrodrigu         ###   ########.fr        #
->>>>>>> 52574106840366efbc282257eab4504a534b4c31
+#    Updated: 2018/01/26 16:41:09 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,22 +23,18 @@ FORMATS = ft_field_format.c \
 		  ft_minus_format.c \
 		  ft_space_format.c \
 		  ft_plus_format.c \
+		  ft_hash_format.c \
 		  ft_apostrophe_format.c \
 		  ft_zero_format.c
 
 MODS = ft_l_mod.c \
 	   ft_mods.c \
-	   ft_long.c \
-	   ft_longlong.c \
-	   ft_int.c \
-	   ft_intmax.c \
-	   ft_sizet.c \
-	   ft_short.c \
-	   ft_signed_char.c \
-	   ft_uioctal.c \
-	   ft_ulloctal.c \
-	   ft_uloctal.c \
-	   ft_ulong.c
+	   ft_h_mod.c \
+	   ft_ll_mod.c \
+	   ft_hh_mod.c \
+	   ft_j_mod.c \
+	   ft_z_mod.c \
+	   ft_none_mod.c
 
 UTILS = ft_wchar.c \
 		ft_utf8.c \
@@ -62,7 +53,11 @@ TYPES = ft_s_type.c \
 		ft_wc_type.c \
 		ft_id_type.c \
 		ft_li_type.c \
-		ft_o_type.c
+		ft_lolu_type.c \
+		ft_lx_type.c \
+		ft_x_type.c \
+		ft_p_type.c \
+		ft_ou_type.c
 
 
 LIBFT_FUNCTIONS = ft_strncpy.c \
@@ -93,16 +88,10 @@ LIBFT_FUNCTIONS = ft_strncpy.c \
 	 			  ft_memdel.c \
 				  ft_strstr.c \
 				  ft_itoa.c \
-				  ft_ltoa.c \
-<<<<<<< HEAD
-				  ft_lltoa.c \
-				  ft_uitoa_base.c \
+				  ft_ltoa_base.c \
 				  ft_ultoa_base.c \
-				  ft_ulltoa_base.c
-=======
-				  ft_uitoa_base.c \
-				  ft_strnjoinfree.c
->>>>>>> 52574106840366efbc282257eab4504a534b4c31
+				  ft_strnjoinfree.c \
+				  ft_toupper.c
 
 TYPES_DIR = srcs/types/
 

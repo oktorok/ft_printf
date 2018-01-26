@@ -6,11 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 00:15:11 by jagarcia          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2018/01/23 03:39:06 by jagarcia         ###   ########.fr       */
-=======
-/*   Updated: 2018/01/22 19:04:55 by mrodrigu         ###   ########.fr       */
->>>>>>> 52574106840366efbc282257eab4504a534b4c31
+/*   Updated: 2018/01/25 22:15:40 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +72,8 @@ char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(int n);
 char				*ft_itoa_base(int n, int base);
-char				*ft_uitoa_base(unsigned int n, int base);
+char				*ft_ltoa_base(long n, int base);
 char				*ft_ultoa_base(unsigned long n, int base);
-char				*ft_ltoa(long n);
-char				*ft_lltoa(long long n);
 void				ft_putendl(const char *str);
 void				ft_putendl_fd(const char *str, int fd);
 void				ft_putchar_fd(char c, int fd);

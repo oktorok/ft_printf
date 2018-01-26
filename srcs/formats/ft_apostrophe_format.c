@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/21 01:35:25 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/21 21:58:36 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/26 21:51:16 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_apostrophe_format(char *comm, char *variable)
 	while (*comm != '\'')
 		if (!(*comm++))
 			return (variable);
-	i = ft_strlen(variable) + ft_strlen(variable) / 3 - 1;
+	i = ft_strlen(variable) + ft_strlen(variable) / 3 - 2;
 	new_variab = ft_strnew(i + 1);
 	var_head = variable;
 	variable += ft_strlen(variable) - 1;
@@ -31,7 +31,7 @@ char	*ft_apostrophe_format(char *comm, char *variable)
 	{
 		new_variab[i--] = *variable--;
 		j++;
-		if (!(j % 3))
+		if (!(j % 3) && (i != 0))
 			new_variab[i--] = ',';
 	}
 	variable++;

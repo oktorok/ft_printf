@@ -6,15 +6,15 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 22:18:25 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/22 16:52:54 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/26 16:04:26 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		calcdigits(unsigned long val, int bas)
+static int		calcdigits(unsigned long val, long bas)
 {
-	int dig;
+	long dig;
 
 	dig = 1;
 	while (val / bas)
@@ -32,7 +32,7 @@ static void		calcnum(char *res, unsigned long *value, int base)
 	else
 		*res = *value % base;
 	if (*res >= 10)
-		*res += -10 + 'A';
+		*res += -10 + 'a';
 	else
 		*res += '0';
 	*value = *value / base;
