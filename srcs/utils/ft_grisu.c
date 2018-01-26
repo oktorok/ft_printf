@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/21 20:52:23 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/23 03:40:09 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/23 22:13:30 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	grisu(double *d)
 	w = ft_dtomyd(*((unsigned long *)d));
 	k = ft_choose_power(w.exponent + 64, 0);
 	m_prod = ft_multiply(w, ft_take_power(k));
+	printf("man: %lu\nexp: %d\n", w.mantissa, m_prod.exponent);
 	ft_cut(m_prod, ps);
 	str = ft_strnew(0);
 	str = ft_strjoinfree(str, ft_itoa(ps[0]));

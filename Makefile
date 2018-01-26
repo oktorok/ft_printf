@@ -6,12 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2018/01/23 03:40:39 by jagarcia         ###   ########.fr        #
-=======
-#    Updated: 2018/01/22 19:06:05 by mrodrigu         ###   ########.fr        #
-#    Updated: 2018/01/21 21:35:40 by mrodrigu         ###   ########.fr        #
->>>>>>> 52574106840366efbc282257eab4504a534b4c31
+#    Updated: 2018/01/26 01:35:10 by mrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +49,11 @@ UTILS = ft_wchar.c \
 		ft_sige.c \
 		ft_take_power.c \
 		ft_multiply.c \
-		ft_grisu.c
+		ft_grisu.c \
+		ft_dectobin.c \
+		ft_dectooct.c \
+		ft_dectohex.c
+
 
 TYPES = ft_s_type.c \
 		ft_c_type.c \
@@ -94,15 +93,11 @@ LIBFT_FUNCTIONS = ft_strncpy.c \
 				  ft_strstr.c \
 				  ft_itoa.c \
 				  ft_ltoa.c \
-<<<<<<< HEAD
 				  ft_lltoa.c \
 				  ft_uitoa_base.c \
 				  ft_ultoa_base.c \
-				  ft_ulltoa_base.c
-=======
-				  ft_uitoa_base.c \
-				  ft_strnjoinfree.c
->>>>>>> 52574106840366efbc282257eab4504a534b4c31
+				  ft_ulltoa_base.c \
+			      ft_strnjoinfree.c
 
 TYPES_DIR = srcs/types/
 
