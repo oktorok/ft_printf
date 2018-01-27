@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/01/26 22:23:37 by mrodrigu         ###   ########.fr        #
+#    Updated: 2018/01/26 23:26:39 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,6 @@ UTILS = ft_wchar.c \
 		ft_dectooct.c \
 		ft_dectohex.c
 
-
 TYPES = ft_s_type.c \
 		ft_c_type.c \
 		ft_ws_type.c \
@@ -62,7 +61,6 @@ TYPES = ft_s_type.c \
 		ft_x_type.c \
 		ft_p_type.c \
 		ft_ou_type.c
-
 
 LIBFT_FUNCTIONS = ft_strncpy.c \
 				  ft_strcpy.c \
@@ -92,12 +90,8 @@ LIBFT_FUNCTIONS = ft_strncpy.c \
 	 			  ft_memdel.c \
 				  ft_strstr.c \
 				  ft_itoa.c \
-				  ft_ltoa.c \
-				  ft_lltoa.c \
-				  ft_uitoa_base.c \
 				  ft_ultoa_base.c \
-				  ft_ulltoa_base.c \
-			      ft_strnjoinfree.c
+			      ft_strnjoinfree.c \
 				  ft_ltoa_base.c \
 				  ft_strnjoinfree.c \
 				  ft_toupper.c

@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 01:08:05 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/26 01:47:56 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/26 23:55:13 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ char	*ft_dectohex(void *num, size_t len)
 		str[s_len] = n[i] & 0xF;
 		str[s_len - 1] = (n[i] & 0xF0) >> 4;
 		if (str[s_len] >= 10)
-			str[s_len] = str[s_len] + 'A' - 10;
+			str[s_len] = str[s_len] + 'a' - 10;
 		else
 			str[s_len] = str[s_len] + 48;
 		if (str[s_len - 1] >= 10)
-			str[s_len - 1] = str[s_len - 1] + 'A' - 10;
+			str[s_len - 1] = str[s_len - 1] + 'a' - 10;
 		else
 			str[s_len - 1] = str[s_len - 1] + 48;
 		s_len -= 2;

@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/26 16:13:32 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/26 23:48:31 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char		*ft_lolu_type(char *comm, va_list ap, va_list ap2)
 
 	ft_field_format(siz_cuant, comm, ap, ap2);
 	variable = (*mod_selector[2])(ap, ap2, comm);
-	variable = ft_hash_format(comm, variable);
+	variable = ft_hash_format(comm, variable, siz_cuant);
 	variable = ft_apostrophe_format(comm, variable);
 	len = ft_strlen(variable);
 	if (siz_cuant[1] <= len || siz_cuant[1] < 0)

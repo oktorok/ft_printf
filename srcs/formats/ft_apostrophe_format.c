@@ -6,11 +6,19 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/21 01:35:25 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/26 21:51:16 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/27 01:30:08 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+static int cuantity(char *variable)
+{
+	if (ft_strlen(variable) % 3)
+		return (ft_strlen(variable) + ft_strlen(variable) / 3 - 1);
+	else
+		return (ft_strlen(variable) + ft_strlen(variable) / 3 - 2);
+}
 
 char	*ft_apostrophe_format(char *comm, char *variable)
 {
@@ -22,16 +30,18 @@ char	*ft_apostrophe_format(char *comm, char *variable)
 	while (*comm != '\'')
 		if (!(*comm++))
 			return (variable);
-	i = ft_strlen(variable) + ft_strlen(variable) / 3 - 2;
-	new_variab = ft_strnew(i + 1);
+	i = cuantity(variable);
+	new_variab = ft_strnew(i);
 	var_head = variable;
 	variable += ft_strlen(variable) - 1;
 	j = 0;
 	while (i >= 0)
 	{
 		new_variab[i--] = *variable--;
+		if (variable < var_head)
+			break ;
 		j++;
-		if (!(j % 3) && (i != 0))
+		if (!(j % 3))
 			new_variab[i--] = ',';
 	}
 	variable++;
