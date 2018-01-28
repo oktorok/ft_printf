@@ -6,11 +6,11 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/21 20:52:23 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/26 22:29:35 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/28 21:39:59 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libftprintf.h"
+#include "libftprintf.h"
 #define TEN7  10000000
 
 void	ft_cut(t_myfloat m_prod, unsigned int *ps)

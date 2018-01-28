@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_take_power.c                                    :+:      :+:    :+:   */
+/*   ft_sige.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/19 18:31:00 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/22 17:54:40 by mrodrigu         ###   ########.fr       */
+/*   Created: 2018/01/19 15:57:39 by mrodrigu          #+#    #+#             */
+/*   Updated: 2018/01/28 21:39:19 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libftprintf.h"
+#include "libftprintf.h"
 
-t_myfloat	ft_take_power(int k)
+double	ft_sige(double x)
 {
-	t_myfloat	res;
-	int			index;
-
-	index = 343 + k;
-	res.mantissa = powers_ten[index];
-	res.exponent = powers_ten_e[index];
-	return (res);
+	if (x >= 0)
+	{
+		if (x > (int)x)
+			return ((double)((int)x + 1));
+	}
+	return ((double)((int)x));
 }

@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/20 23:05:37 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/27 22:16:20 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ static unsigned int		find_end(char **str)
 	return (end);
 }
 
-static char				*exec_command(char **str, va_list ap, va_list ap2)
+static char				*exec_command(char **str, va_list ap,
+		va_list ap2, char *str2)
 {
 	char			*command;
 	char			*res;
@@ -51,6 +52,8 @@ static char				*exec_command(char **str, va_list ap, va_list ap2)
 		n++;
 	if (n == 26)
 		return (NULL);
+	if (command[ft_strlen(command) - 1] == 'n')
+		return (ft_n_type(command, ap, ap2, str2));
 	res = (*type_function[n])(command, ap, ap2);
 	ft_strdel(&command);
 	return (res);
@@ -84,7 +87,7 @@ int						ft_printf(const char *str, ...)
 			return (-1);
 		if (*aux_str)
 			if (!(res = ft_realloc_printf(res,
-							exec_command(&aux_str, ap, ap2), NULL)))
+							exec_command(&aux_str, ap, ap2, res), NULL)))
 				return (-1);
 		head_str = aux_str;
 		if (!(*aux_str))

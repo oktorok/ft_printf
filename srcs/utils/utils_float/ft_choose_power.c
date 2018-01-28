@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dtomyd.c                                        :+:      :+:    :+:   */
+/*   ft_choose_power.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/21 01:24:44 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/22 17:40:12 by mrodrigu         ###   ########.fr       */
+/*   Created: 2018/01/19 18:34:36 by mrodrigu          #+#    #+#             */
+/*   Updated: 2018/01/28 21:38:47 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libftprintf.h"
+#include "libftprintf.h"
 
-t_myfloat	ft_dtomyd(unsigned long int d)
+int		ft_choose_power(int e, int alpha)
 {
-	t_myfloat	n;
-
-	n.mantissa = ((d << 11) | 0x8000000000000000) >> 11;
-	n.exponent = ((d << 1) >> 53) - 1075;
-	return (n);
+	return (ft_sige((alpha - e + 63) * D1LOG210));
 }

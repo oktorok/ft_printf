@@ -6,11 +6,11 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/21 19:48:48 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/22 17:52:38 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/28 21:39:42 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libftprintf.h"
+#include "libftprintf.h"
 
 t_myfloat	ft_multiply(t_myfloat x, t_myfloat y)
 {

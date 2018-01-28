@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/01/26 23:26:39 by jagarcia         ###   ########.fr        #
+#    Updated: 2018/01/28 21:38:18 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,13 @@ UTILS = ft_wchar.c \
 		ft_dectooct.c \
 		ft_dectohex.c
 
+UTILS_FLOAT = ft_choose_power.c \
+			  ft_dtomyd.c \
+			  ft_grisu.c \
+			  ft_sige.c \
+			  ft_take_power.c \
+			  ft_multiply.c 
+
 TYPES = ft_s_type.c \
 		ft_c_type.c \
 		ft_ws_type.c \
@@ -60,7 +67,8 @@ TYPES = ft_s_type.c \
 		ft_lx_type.c \
 		ft_x_type.c \
 		ft_p_type.c \
-		ft_ou_type.c
+		ft_ou_type.c \
+		ft_n_type.c
 
 LIBFT_FUNCTIONS = ft_strncpy.c \
 				  ft_strcpy.c \
@@ -108,6 +116,8 @@ LIBFT_DIR = libft/
 
 OBJ_DIR = objects/
 
+UTILS_FLOAT_DIR = $(UTILS_DIR)utils_float/
+
 MAINS_DIR = srcs/
 
 MAINS_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o,$(MAIN_FUNCS))
@@ -122,7 +132,9 @@ MODS_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(MODS))
 
 UTILS_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(UTILS))
 
-OBJ = $(MAINS_OBJ) $(FORMATS_OBJ) $(TYPES_OBJ) $(LIBFT_OBJ) $(MODS_OBJ) $(UTILS_OBJ)
+UTILS_FLOAT_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(UTILS_FLOAT))
+
+OBJ = $(MAINS_OBJ) $(FORMATS_OBJ) $(TYPES_OBJ) $(LIBFT_OBJ) $(MODS_OBJ) $(UTILS_OBJ) $(UTILS_FLOAT_OBJ)
 
 INCLUDES_DIR = includes/
 
@@ -151,6 +163,11 @@ $(OBJ_DIR)%.o : $(TYPES_DIR)%.c | dir_objects
 	ar -rs $(NAME) $@ 
 
 $(OBJ_DIR)%.o : $(UTILS_DIR)%.c | dir_objects
+	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
+	mv -f $(@F) $(OBJ_DIR)
+	ar -rs $(NAME) $@ 
+
+$(OBJ_DIR)%.o : $(UTILS_FLOAT_DIR)%.c | dir_objects
 	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
 	mv -f $(@F) $(OBJ_DIR)
 	ar -rs $(NAME) $@ 

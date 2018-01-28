@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/26 22:19:26 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/28 21:28:10 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char		*ft_li_type(char *comm, va_list ap, va_list ap2)
 	size_t	len;
 
 	ft_field_format(siz_cuant, comm, ap, ap2);
-	variable = (*mod_selector[1])(ap, ap2, comm);
+	variable = ft_ltoa_base(*((long *)ft_locate_date(comm, 12, ap, ap2)), 10);
 	variable = ft_apostrophe_format(comm, variable);
 	len = ft_strlen(variable);
 	if (siz_cuant[1] <= len || siz_cuant[1] < 0)

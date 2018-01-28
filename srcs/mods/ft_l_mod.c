@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 01:33:10 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/26 23:23:28 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/28 21:32:31 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,19 @@ char	*ft_l_mod(va_list ap, va_list ap2, char *comm)
 	char comand;
 	
 	comand = comm[ft_strlen(comm) - 1];
-	if ((comand == 'd') || (comand == 'i'))
+	if ((comand == 'd') || (comand == 'i') || (comand == 'D'))
 		return (ft_ltoa_base(*((long *)ft_locate_date(comm,
-							sizeof(long), ap, ap2)), 10));
-	if (comand == 'u')
+							12, ap, ap2)), 10));
+	if ((comand == 'u') || (comand == 'U'))
 		return (ft_ultoa_base(*((unsigned long *)ft_locate_date(comm,
-							sizeof(unsigned long), ap, ap2)), 10));
+							9, ap, ap2)), 10));
 	if ((comand == 'o') || (comand == 'O'))
 		return (ft_dectooct(ft_locate_date(comm,
-						sizeof(unsigned long), ap, ap2),
+						9, ap, ap2),
 				sizeof(unsigned long)));
 	if ((comand == 'x') || (comand == 'X'))
 		return (ft_dectohex(ft_locate_date(comm,
-							sizeof(unsigned long), ap, ap2),
+							9, ap, ap2),
 					sizeof(unsigned long)));
-	if (comand == 'n')
-		return (NULL);
 	return (NULL);
 }

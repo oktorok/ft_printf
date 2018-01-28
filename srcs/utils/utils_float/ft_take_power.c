@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_choose_power.c                                  :+:      :+:    :+:   */
+/*   ft_take_power.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/19 18:34:36 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/22 18:33:00 by mrodrigu         ###   ########.fr       */
+/*   Created: 2018/01/19 18:31:00 by mrodrigu          #+#    #+#             */
+/*   Updated: 2018/01/28 21:39:31 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libftprintf.h"
+#include "libftprintf.h"
 
-int		ft_choose_power(int e, int alpha)
+t_myfloat	ft_take_power(int k)
 {
-	return (ft_sige((alpha - e + 63) * D1LOG210));
+	t_myfloat	res;
+	int			index;
+
+	index = 343 + k;
+	res.mantissa = powers_ten[index];
+	res.exponent = powers_ten_e[index];
+	return (res);
 }
