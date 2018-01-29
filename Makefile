@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/01/28 21:38:18 by jagarcia         ###   ########.fr        #
+#    Updated: 2018/01/29 05:40:11 by mrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,8 @@ TYPES = ft_s_type.c \
 		ft_x_type.c \
 		ft_p_type.c \
 		ft_ou_type.c \
-		ft_n_type.c
+		ft_n_type.c \
+		ft_e_type.c
 
 LIBFT_FUNCTIONS = ft_strncpy.c \
 				  ft_strcpy.c \

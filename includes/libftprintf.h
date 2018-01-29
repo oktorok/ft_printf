@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:11:20 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/28 17:53:58 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/29 05:39:24 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 static const char	g_types[26] = {"sScCidDoOuUxXpeEfFgGaAnbrk"};
 static const char	g_length_modifiers[6][8] = {{"di"},{"ouxX"},{"n"},
 	{"aAeEfFgG"},{"cs"}};
-static char		*(*type_function [14])(char *, va_list, va_list) =
+static char		*(*type_function [15])(char *, va_list, va_list) =
 {ft_s_type, ft_ws_type, ft_c_type, ft_wc_type, ft_id_type, ft_id_type,
 	ft_li_type, ft_ou_type, ft_lolu_type, ft_ou_type, ft_lolu_type,
-	ft_x_type, ft_lx_type, ft_p_type};
+ ft_x_type, ft_lx_type, ft_p_type, ft_e_type};
 static const char   mods[8][3] = {"ll", "l","hh", "h", "j", "z"};
 static char			*(*mod_selector[7])(va_list, va_list, char *) =
 {ft_none_mod, ft_ll_mod, ft_l_mod, ft_hh_mod, ft_h_mod, ft_j_mod, ft_z_mod};

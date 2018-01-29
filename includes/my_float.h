@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:41:29 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/26 22:29:20 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/29 05:43:24 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct			s_myfloat
 	int					exponent;
 }						t_myfloat;
 
-char		*grisu(double *d);
+char		*ft_grisu(double *d);
 t_myfloat	ft_take_power(int k);
 t_myfloat	ft_multiply(t_myfloat x, t_myfloat y);
 t_myfloat	ft_dtomyd(unsigned long int l);

@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/28 21:32:34 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/29 08:34:53 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,13 @@ int *bobo;
 short Ms = 32767;
 short ms = -32768;
 long gh = -1;
-
-ft_printf("ERES UNA <%o> PUTA", -1);
+double d = 9.99999999;
+ft_printf("grisu es: %s\n", ft_grisu(&d));
+ft_printf("ERES UNA <%f> PUTA", d);
 
 //ft_putnbr(*bobo);
 
 printf("\nREAL: \n");
-printf("ERES UNA <%o> PUTA\n", -1);
+printf("ERES UNA <%f> PUTA\n", d);
 //ft_putnbr(*bobo);
 } 

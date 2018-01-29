@@ -1,39 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_f_type.c                                        :+:      :+:    :+:   */
+/*   ft_e_type.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/29 04:38:02 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/29 09:17:03 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/29 08:41:25 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libftprintf.h"
 
-static char	*extract_n_part(char *d, int e)
+static char	*extract_exponent(int e)
 {
-	size_t	len;
+	char	*exp;
 
-	len = ft_strlen(d);
-	if (e < 0)
-		return (ft_strncpy(ft_strnew(len + e), d, len + e));
-	else
-		return (ft_strncpy(ft_memset(ft_strnew(len + e), '0', len + e), d, len));
-}
-
-static char	*extract_d_part(char *d, int e, int prec)
-{
-	size_t	len;
-
-	len = ft_strlen(d);
-	if (e < 0)
+	if (e >=0)
 	{
-		
+		if (e <= 9)
+		{
+			exp = ft_strnew(2);
+			exp[1] = '0';
+		}
+		else
+			exp = ft_strnew(1);
+		exp[0] = '+';
+	}
+	else if (e >= -9)
+	{
+		exp = ft_strnew(2);
+		exp[0] = '-';
+		exp[1] = '0';
+		e = -e;
 	}
 	else
-		return (ft_strncpy(ft_memset(ft_strnew(len + e), '0', len + e), d, len));
+		exp = ft_strnew(0);
+	return(ft_strjoinfree(exp, ft_itoa(e)));
 }
 
 static char	round_num(char *d, int prec)
@@ -69,19 +72,19 @@ static char	round_num(char *d, int prec)
 static char	*normalize(char *d, unsigned int prec)
 {
 	unsigned int	i;
-	int				exp;
-	char			*n_part;
-	char			*d_part;
+	char			*exp;
+	char			*str;
 
 	if (!prec)
 		prec = 6;
 	i = 0;
 	while (d[i] != 'e')
 		i++;
-	exp  = ft_atoi(d + i + 1) + i - 1 + round_num(d, prec);
+	if (!(exp  = extract_exponent(ft_atoi(d + i + 1) + i - 1 + round_num(d, prec))))
+		return (NULL);
 	d[i] = '\0';
-	n_part = extract_n_part(d, exp);
-	d_part = 
+	str = ft_strnew(prec + 3);
+	ft_memset(str, '0', prec + 3);
 	str[0] = d[0];
 	str[1] = '.';
 	if (prec < (i - 1))
@@ -95,7 +98,7 @@ static char	*normalize(char *d, unsigned int prec)
 	return (str);
 }
 
-char		*ft_f_type(char *comm, va_list ap, va_list ap2)
+char		*ft_e_type(char *comm, va_list ap, va_list ap2)
 {
 	int		siz_cuant[2];
 	char	*variable;

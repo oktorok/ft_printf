@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 18:32:01 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/28 21:32:33 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/29 04:51:14 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ static void		*selector2(int mem, va_list ap, void *variable)
 		*((uintmax_t *)variable) = va_arg(ap, uintmax_t);
 	else if (mem == 14)
 		*((size_t *)variable) = va_arg(ap, size_t);
+	else if (mem == 15)
+		*((double *)variable) = va_arg(ap, double);
 	return (variable);
 }
 

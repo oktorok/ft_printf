@@ -6,14 +6,14 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/21 20:52:23 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/28 21:39:59 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/29 05:42:52 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #define TEN7  10000000
 
-void	ft_cut(t_myfloat m_prod, unsigned int *ps)
+static void	ft_cut(t_myfloat m_prod, unsigned int *ps)
 {
 	unsigned long int tmp;
 
@@ -23,7 +23,7 @@ void	ft_cut(t_myfloat m_prod, unsigned int *ps)
 	ps[0] = tmp / TEN7;
 }
 
-char	*ft_concatenate(unsigned int *ps, char *str, int n)
+static char	*ft_concatenate(unsigned int *ps, char *str, int n)
 {
 	char			*tmp;
 	char			*tmp2;
@@ -40,7 +40,7 @@ char	*ft_concatenate(unsigned int *ps, char *str, int n)
 	return (ft_strjoinfree(str, tmp));
 }
 
-char	*grisu(double *d)
+char	*ft_grisu(double *d)
 {
 	t_myfloat		w;
 	unsigned int	ps[3];
