@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 01:33:10 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/28 21:12:01 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/29 22:40:48 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ char	*ft_none_mod(va_list ap, va_list ap2, char *comm)
 		return (ft_ultoa_base(*((unsigned int *)ft_locate_date(comm,
 							6, ap, ap2)), 10));
 	if (comand == 'o')
-		return (ft_dectooct(ft_locate_date(comm,
-							6, ap, ap2),
+		return (ft_dectooct(ft_locate_date(comm, 6, ap, ap2),
 				sizeof(unsigned int)));
 	if ((comand == 'x') || (comand == 'X'))
-		return (ft_dectohex(ft_locate_date(comm,
-							6, ap, ap2),
+		return (ft_dectohex(ft_locate_date(comm, 6, ap, ap2),
 				sizeof(unsigned int)));
+	if (comand == 'b')
+		return (ft_dectobin(ft_locate_date(comm, 6, ap, ap2),
+					sizeof(unsigned int)));
 	return (NULL);
 }

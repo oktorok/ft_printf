@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/29 08:34:53 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/29 23:16:22 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ unsigned long Mul = 18446744073709551615U;
 unsigned int Mui = 4294967295;
 int Mi = 2147483647;
 int mi = -2147483648;
-long a = 1234;
+int a =Mi;
 char *h = "una frase";
 void *caca = &Mul;
 int *bobo;
@@ -46,12 +46,12 @@ short Ms = 32767;
 short ms = -32768;
 long gh = -1;
 double d = 9.99999999;
-ft_printf("grisu es: %s\n", ft_grisu(&d));
-ft_printf("ERES UNA <%f> PUTA", d);
+//ft_printf("grisu es: %s\n", ft_grisu(&d));
+ft_printf("ERES UNA <%b> PUTA", a);
 
 //ft_putnbr(*bobo);
 
 printf("\nREAL: \n");
-printf("ERES UNA <%f> PUTA\n", d);
+printf("ERES UNA <%b> PUTA\n", a);
 //ft_putnbr(*bobo);
 } 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ou_type.c                                       :+:      :+:    :+:   */
+/*   ft_b_type.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/29 21:46:55 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/29 23:16:21 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	*write_zeros(char *variable, int zero_cuant)
 	return (new_variab);
 }
 
-char		*ft_ou_type(char *comm, va_list ap, va_list ap2)
+char		*ft_b_type(char *comm, va_list ap, va_list ap2)
 {
 	int		siz_cuant[2];
 	char	*variable;
@@ -53,8 +53,6 @@ char		*ft_ou_type(char *comm, va_list ap, va_list ap2)
 
 	ft_field_format(siz_cuant, comm, ap, ap2);
 	variable = (*mod_selector[ft_mods(comm)])(ap, ap2, comm);
-	ft_putstr(variable);
-	variable = ft_apostrophe_format(comm, variable);
 	len = ft_strlen(variable);
 	if (siz_cuant[1] <= len || siz_cuant[1] < 0)
 		siz_cuant[1] = 0;
