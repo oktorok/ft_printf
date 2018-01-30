@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/01/29 22:41:34 by jagarcia         ###   ########.fr        #
+#    Updated: 2018/01/30 14:56:40 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,8 @@ TYPES = ft_s_type.c \
 		ft_ou_type.c \
 		ft_n_type.c \
 		ft_e_type.c \
-		ft_b_type.c
+		ft_b_type.c \
+		ft_r_type.c
 
 LIBFT_FUNCTIONS = ft_strncpy.c \
 				  ft_strcpy.c \
@@ -195,3 +196,7 @@ re: fclean
 compile:
 	make
 	gcc $(FLAGS) prueba.c $(NAME) -I$(INCLUDES_DIR)
+
+compile2:
+	make
+	gcc $(FLAGS) prueba2.c $(NAME) -I$(INCLUDES_DIR)

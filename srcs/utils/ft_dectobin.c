@@ -6,11 +6,11 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 19:11:22 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/25 23:06:26 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/01/30 05:40:34 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libftprintf.h"
+#include "libftprintf.h"
 
 char	*ft_binsize(char *n, size_t len, size_t *i, char *j)
 {

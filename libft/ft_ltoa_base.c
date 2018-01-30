@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 22:18:25 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/26 16:04:17 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/30 11:32:50 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,15 @@ static void		calcnum(char *res, long *value, int base)
 	*value = *value / base;
 }
 
+static	char	*exception()
+{
+	char *str;
+
+	str = ft_strnew(20);
+	ft_strcpy(str,"-9223372036854775808");
+	return (str);
+}
+
 char			*ft_ltoa_base(long value, int base)
 {
 	int		digits;
@@ -51,13 +60,13 @@ char			*ft_ltoa_base(long value, int base)
 	if (value < 0)
 	{
 		if (value == -9223372036854775807 - 1)
-			return ("-9223372036854775808");
+			return (exception());
 		value = -value;
 		if (base == 10)
 			neg = 1;
 	}
 	digits = calcdigits(value, base);
-	if (!(res = (char *)malloc(sizeof(char) * (neg + digits))))
+	if (!(res = ft_strnew(neg + digits + 1)))
 		return (NULL);
 	i = digits + neg - 1;
 	if (neg)

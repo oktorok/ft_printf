@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 22:18:25 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/26 16:04:26 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/30 03:51:23 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char			*ft_ultoa_base(unsigned long value, int base)
 	if (base < 2 || base > 16)
 		return (NULL);
 	digits = calcdigits(value, base);
-	if (!(res = (char *)malloc(sizeof(char) * (digits))))
+	if (!(res = ft_strnew(digits)))
 		return (NULL);
 	i = digits - 1;
 	while (digits--)

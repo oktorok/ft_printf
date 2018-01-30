@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 13:07:11 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/29 23:16:19 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/30 01:45:48 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,33 +38,32 @@ static char	*ox_hash(char *variable, int *siz_cuant, int type)
 	return (variable);
 }
 
-static char	*b_hash(char *variable, int *siz_cuant)
+static char	*b_hash(char *var, int *siz_cuant)
 {
 	char	*aux;
-	char 	*var_head;
 	int		i;
 	int		j;
 
-	if (ft_strlen(variable) % 4)
-		i = ft_strlen(variable) + (ft_strlen(variable) / 4 - 1)
-			+ (ft_strlen(variable) / 8 - 1);	
-	else
-		i = ft_strlen(variable) + (ft_strlen(variable) / 4)
-			+ (ft_strlen(variable) / 8);
-	aux = ft_strnew(i);
-	var_head = variable;
-	variable += ft_strlen(variable) - 1;
+	j = 0;
+	i = ft_strlen(var) + (ft_strlen(var) / 4) + (ft_strlen(var) / 8 * 2);
+	if (!(ft_strlen(var) % 4))
+		i -= 3;
+	siz_cuant[0] += i - ft_strlen(var);
+	aux = ft_strnew(i--);
+	var += ft_strlen(var) - 1;
 	while (i >= 0)
 	{
-		aux[i--] = *variable--;
-		j++;
-		if (!(j % 4))
+		aux[i--] = *var--;
+		if (!(++j % 4))
 			aux[i--] = ' ';
 		if (!(j % 8))
+		{
+			aux[i--] = '|';
 			aux[i--] = ' ';
+		}
 	}
-	variable++;
-	ft_strdel(&variable);
+	var++;
+	ft_strdel(&var);
 	return (aux);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/27 22:16:20 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/30 13:29:12 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,14 @@ static char				*exec_command(char **str, va_list ap,
 
 static size_t			finish_printf(char *res, va_list ap, va_list ap2)
 {
+	int len;
+
+	len = ft_strlen(res);
 	ft_putstr(res);
 	va_end(ap);
 	va_end(ap2);
-	return (ft_strlen_free(res));
+	ft_strdel(&res);
+	return (len);
 }
 
 int						ft_printf(const char *str, ...)
