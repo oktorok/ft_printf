@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 23:11:18 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/29 23:22:26 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/31 17:29:20 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,17 @@ char	*ft_octsize(char *n, size_t len, size_t *s_len)
 			(j) = 0;
 		}
 	}
+//////////////////
+	if (i < 0)
+		i = 0;
+/////////////////
 	*s_len = ((len * 8) - ((((len - 1) - i) * 8) + (j)));
+	ft_putchar('\n');
 	if ((*s_len % 3))
 		*s_len = 1 + (*s_len / 3);
 	else
 		(*s_len) /= 3;
-	return (ft_strnew(sizeof(char) * (*s_len)));
+	return (ft_strnew(sizeof(char) * (*s_len) - 1));
 }
 
 size_t	ft_rd1(char *n, size_t i, size_t *j)
@@ -71,5 +76,6 @@ char	*ft_dectooct(void *num, size_t len)
 	s_len--;
 	while ((s_len + 1) > 0)
 		str[s_len--] = ft_rd1(n, i++, &j);
+	ft_putchar(*(str - 1));
 	return (str);
 }

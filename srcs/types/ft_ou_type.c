@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/29 23:23:13 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/31 17:31:18 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static char	*writer(int *siz_cuant, int minus, char *variab)
 		ft_strncpy(tmp, variab, ft_strlen(variab));
 	else
 		ft_strcpy(tmp + siz_cuant[0] - ft_strlen(variab), variab);
+	ft_strdel(&variab);
 	return (tmp);
 }
 
@@ -44,6 +45,23 @@ static void	*write_zeros(char *variable, int zero_cuant)
 	return (new_variab);
 }
 
+static void ajust_cuant_size(int *siz_cuant, char *variable)
+{
+    int neg;
+    int len;
+
+    neg = 0;
+    if (*variable == '-')
+        neg = 1;
+    len = ft_strlen(variable);
+    if (siz_cuant[1] <= len - neg || siz_cuant[1] < 0)
+        siz_cuant[1] = 0;
+    else
+        siz_cuant[1] -= (len - neg);
+    if (siz_cuant[0] < len + siz_cuant[1])
+        siz_cuant[0] = len + siz_cuant[1];
+}
+
 char		*ft_ou_type(char *comm, va_list ap, va_list ap2)
 {
 	int		siz_cuant[2];
@@ -55,14 +73,9 @@ char		*ft_ou_type(char *comm, va_list ap, va_list ap2)
 	variable = (*mod_selector[ft_mods(comm)])(ap, ap2, comm);
 	variable = ft_apostrophe_format(comm, variable);
 	len = ft_strlen(variable);
-	if (siz_cuant[1] <= len || siz_cuant[1] < 0)
-		siz_cuant[1] = 0;
-	else
-		siz_cuant[1] -= len;
-	if (siz_cuant[0] < len + siz_cuant[1])
-		siz_cuant[0] = len + siz_cuant[1];
+	ajust_cuant_size(siz_cuant, variable);
 	if (ft_zero_format(comm))
-		variable = write_zeros(variable, siz_cuant[0] - len);
+		variable = write_zeros(variable, siz_cuant[0] - ft_strlen(variable));
 	else
 		variable = write_zeros(variable, siz_cuant[1]);
 	variable = ft_hash_format(comm, variable, siz_cuant);

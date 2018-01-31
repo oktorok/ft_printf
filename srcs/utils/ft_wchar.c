@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 04:34:49 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/25 21:29:35 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/31 19:35:00 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ char		*ft_wchar(va_list ap, va_list ap2, int *siz_cuant, char *comm)
 	int			cuant;
 
 	i = -1;
-	wvariable = (wchar_t *)selector(comm, ap, ap2);
+	if (!(wvariable = (wchar_t *)selector(comm, ap, ap2)))
+		return (NULL);
 	res = ft_strnew(0);
 	while (wvariable[++i])
 		res = ft_strjoinfree(res, ft_utf8(wvariable[i]));

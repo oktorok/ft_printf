@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 06:28:21 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/30 18:09:43 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/31 13:23:43 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,21 @@ char	*ft_space_format(char *command, char *str, int *siz_cuant)
 	int		i;
 
 	i = 0;
-	while (str[i])
-		if (str[i++] == '-')
-			return (str);
-	while (*command && *str != ' ')
+	while (command[i] && *str != '-')
 	{
-		if (*command++ == ' ')
+		if (command[i++] == ' ')
 		{
-			if (!siz_cuant[1] && siz_cuant[0] == ft_strlen(str))
+			if (ft_zero_format(command) && (*str == '0') &&
+					(ft_isdigit(*(str + 1))))
 			{
 				*str = ' ';
 				return (str);
 			}
-			if (siz_cuant[0] == ft_strlen(str))
+			if (!(siz_cuant[0] >= ft_strlen(str) + 1))
 				siz_cuant[0]++;
 			new_str = ft_strjoin(" ",str);
 			ft_strdel(&str);
-			return(new_str);
+			return (new_str);
 		}
 	}
 	return (str);

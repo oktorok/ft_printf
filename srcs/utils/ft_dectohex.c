@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 01:08:05 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/28 20:02:00 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/31 17:35:30 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 char	*ft_hexsize(char *n, size_t len, size_t *s_len)
 {
-	size_t	i;
+//	size_t	i;
+	int		i;
 	char	j;
 
 	i = len - 1;
@@ -28,6 +29,10 @@ char	*ft_hexsize(char *n, size_t len, size_t *s_len)
 			(j) = 0;
 		}
 	}
+//////////////////////
+	if (i < 0)
+		i = 0;
+/////////////////////
 	*s_len = (((len * 8) - ((((len - 1) - i) * 8) + (j))) / 4) - 1;
 	return (ft_strnew(sizeof(char) * (*s_len + 1)));
 }

@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/30 18:09:44 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/31 20:14:18 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 static char	*writer(int *siz_cuant, int minus, char *variab)
 {
 	char	*tmp;
-	int		neg;
 
-	neg = 0;
 	tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0]);
 	if (minus)
 		ft_strncpy(tmp, variab, ft_strlen(variab));
@@ -56,6 +54,8 @@ static void ajust_cuant_size(int *siz_cuant, char *variable)
 	if (*variable == '-')
 		neg = 1;
 	len = ft_strlen(variable);
+	if (!siz_cuant[1] && *variable == '0')
+		*variable = '\0';
 	if (siz_cuant[1] <= len - neg || siz_cuant[1] < 0)
 		siz_cuant[1] = 0;
 	else

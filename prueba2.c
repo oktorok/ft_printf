@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/30 18:09:42 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/31 22:22:44 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ unsigned long Mul = 18446744073709551615U;
 unsigned int Mui = 4294967295;
 int Mi = 2147483647;
 int mi = -2147483648;
-int a = -1260996928;
+wchar_t *a = L"sdfsdf";
 char *h = "una frase";
 void *caca = &Mul;
 int *bobo;
@@ -45,17 +45,18 @@ short Ms = 32767;
 short ms = -32768;
 long gh = -1;
 double d = 9.99999999;
+char g = 1;
 int T;
 //ft_printf("grisu es: %s\n", ft_grisu(&d));
 
 ft_putstr("MIO: \n");
-T=ft_printf("% 9.2zi", a);
-ft_putnbr(T);
+T=ft_printf("<%.0d>\n<%+.i>\n<%   .0D>", 0, 0, 0);
 ft_putchar('\n');
+ft_putnbr(T);
 //ft_putnbr(*bobo);
 
 printf("\nREAL: \n");
-T=printf("% 9.2zi", a);
+T=printf("<%.0d>\n<%+.i>\n<%   .0D>", 3, 0, 0);;
 ft_putnbr(T);
 ft_putchar('\n');
 //ft_putnbr(*bobo);

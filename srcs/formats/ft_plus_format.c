@@ -6,36 +6,48 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 06:41:32 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/26 22:49:03 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/31 13:23:59 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*ft_plus_format(char *command, char *str, int *siz_cuant)
+char	*an_space(char *str)
 {
 	char *new_str;
 
-	while (*command && *str != '-')
+	if (*(str + 1) == '-')
+		new_str = ft_strdup(str + 1);
+	else
+		new_str = ft_strjoin("+", str + 1);
+	ft_strdel(&str);
+	return (new_str);
+}
+
+char	*ft_plus_format(char *command, char *str, int *siz_cuant)
+{
+	char	*new_str;
+	int		i;
+
+	i = 0;
+	while (command[i] && *str != '-')
 	{
-		if (*command == '+')
+		if (command[i++] == '+')
 		{
 			if (*str == ' ')
+				return (an_space(str));
+			if (ft_zero_format(command) && (*str == '0')
+					&& (ft_isdigit(*(str + 1))))
 			{
-				if (*(str + 1) == '-')
-					new_str = ft_strdup(str + 1);
-				else
-					new_str = ft_strjoin("+", str + 1);
-				ft_strdel(&str);
-				return (new_str);
+			   	*str = '+';
+		   		return (str);
 			}
-			if (siz_cuant[0] == ft_strlen(str))
+			if (!(siz_cuant[0] >= ft_strlen(str) + 1))
 				siz_cuant[0]++;
 			new_str = ft_strjoin("+", str);
 			ft_strdel(&(str));
 			return (new_str);
 		}
-		command++;
 	}
 	return (str);
 }

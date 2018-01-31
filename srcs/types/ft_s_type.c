@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/25 21:37:06 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/31 18:28:39 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,17 @@ char			*ft_s_type(char *comm, va_list ap, va_list ap2)
 		variable = ft_wchar(ap, ap2, siz_cuant, comm);
 	else
 		variable = (char *)ft_locate_pointer(comm, ap, ap2);
+	if (!variable)
+	{
+		ft_strdel(&variable);
+		variable = ft_strnew(6);
+		ft_strcpy(variable, "(null)");
+	}
 	if (siz_cuant[1] > ft_strlen(variable) || siz_cuant[1] < 0)
 		siz_cuant[1] = ft_strlen(variable);
-	if (!siz_cuant[0])
+	if (!siz_cuant[0] || siz_cuant[0] < ft_strlen(variable))
 		siz_cuant[0] = siz_cuant[1];
+	
 	res = writer(siz_cuant, ft_minus_format(comm), variable);
 	return (res);
 }
