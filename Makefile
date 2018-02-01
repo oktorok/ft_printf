@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/02/01 22:20:03 by mrodrigu         ###   ########.fr        #
+#    Updated: 2018/02/01 23:03:01 by mrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,21 +58,19 @@ UTILS_FLOAT = ft_choose_power.c \
 			  ft_take_power.c \
 			  ft_multiply.c 
 
-TYPES = ft_s_type.c \
-		ft_c_type.c \
-		ft_ws_type.c \
-		ft_wc_type.c \
+TYPES = ft_sls_type.c \
+		ft_clc_type.c \
 		ft_id_type.c \
 		ft_li_type.c \
 		ft_lolu_type.c \
-		ft_lx_type.c \
-		ft_x_type.c \
+		ft_xlx_type.c \
 		ft_p_type.c \
 		ft_ou_type.c \
 		ft_n_type.c \
 		ft_e_type.c \
 		ft_b_type.c \
-		ft_r_type.c
+		ft_r_type.c \
+		ft_percent_type.c
 
 LIBFT_FUNCTIONS = ft_strncpy.c \
 				  ft_strcpy.c \

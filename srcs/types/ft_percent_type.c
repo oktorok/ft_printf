@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ws_type.c                                       :+:      :+:    :+:   */
+/*   ft_percent_type.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/01 22:10:07 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/01 22:51:54 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,29 @@ static char		*writer(int *siz_cuant, char *comm, char *variab)
 {
 	char	*tmp;
 
-	tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0]);
-	if (ft_strchr(comm, '-'))
-		tmp = ft_strncpy(tmp, variab, siz_cuant[1]);
+	if (ft_zero_format(comm))
+		tmp = ft_memset(ft_strnew(siz_cuant[0]), '0', siz_cuant[0]);
 	else
-		ft_strncpy(tmp + siz_cuant[0] - siz_cuant[1], variab, siz_cuant[1]);
+		tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0]);
+	if (ft_strchr(comm, '-'))
+		tmp = ft_strncpy(tmp, variab, 1);
+	else
+		ft_strncpy(tmp + siz_cuant[0] - 1, variab, 1);
 	ft_strdel(&variab);
 	return (tmp);
 }
 
-char			*ft_ws_type(char *comm, va_list ap, va_list ap2)
+char			*ft_percent_type(char *comm, va_list ap, va_list ap2)
 {
 	int		siz_cuant[2];
 	char	*variable;
 	char	*res;
 
+	variable = ft_strnew(1);
 	ft_field_format(siz_cuant, comm, ap, ap2);
-	if (!(variable = (char *)ft_wchar(ap, ap2, siz_cuant, comm)))
-		return (NULL);
-	if (siz_cuant[1] > ft_strlen(variable) || siz_cuant[1] < 0)
-		siz_cuant[1] = ft_strlen(variable);
-	if ((!siz_cuant[0] || siz_cuant[0] < ft_strlen(variable)) && siz_cuant[1])
-		siz_cuant[0] = siz_cuant[1];
+	*variable = '%';
+	if (siz_cuant[0] < 1)	
+		siz_cuant[0] = 1;
 	res = writer(siz_cuant, comm, variable);
 	return (res);
 }

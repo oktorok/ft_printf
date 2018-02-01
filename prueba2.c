@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/01 22:57:45 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/01 23:03:38 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@ unsigned long Mul = 18446744073709551615U;
 unsigned int Mui = 4294967295;
 int Mi = 2147483647;
 int mi = -2147483648;
+unsigned int tyu = 0xa0;
 wchar_t a[4];
 a[0] = 0x53;
-a[1] = 0x3abc;
+a[1] = 0xd800;
 a[2] = 0x81000;
 a[3] = '\0';
 void *caca = &Mul;
