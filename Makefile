@@ -6,7 +6,11 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2018/02/01 15:13:32 by jagarcia         ###   ########.fr        #
+=======
+#    Updated: 2018/01/31 23:49:18 by mrodrigu         ###   ########.fr        #
+>>>>>>> 98b16ed71319227764dcbaee2b71f4b3dda9aab7
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +52,8 @@ UTILS = ft_wchar.c \
 		ft_grisu.c \
 		ft_dectobin.c \
 		ft_dectooct.c \
-		ft_dectohex.c
+		ft_dectohex.c \
+		ft_printmemory.c
 
 UTILS_FLOAT = ft_choose_power.c \
 			  ft_dtomyd.c \

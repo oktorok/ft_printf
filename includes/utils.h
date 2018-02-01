@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 03:51:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/26 23:27:56 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/31 23:48:32 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ void	*ft_locate_date(char *comm, int mem, va_list ap, va_list ap2);
 char	*ft_dectobin(void *num, size_t len);
 char	*ft_dectooct(void *num, size_t len);
 char	*ft_dectohex(void *num, size_t len);
+char	*ft_printmemory(void *mem, size_t len);
 
 #endif
