@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/01 18:59:30 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/01 22:57:45 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,16 @@ long gh = -1;
 double d = 9.99999999;
 char g = 1;
 int T;
-//ft_printf("grisu es: %s\n", ft_grisu(&d));
+//ft_printf("grisu es: %o\n", ft_grisu(&d));
 
 ft_putstr("MIO: \n");
-T=ft_printf("<%s>","\0");
+T=ft_printf("<%o>",0);
 ft_putchar('\n');
 ft_putnbr(T);
 //ft_putnbr(*bobo);
 
 printf("\nREAL: \n");
-T=printf("<%s>","\0");
+T=printf("<%o>",0);
 ft_putnbr(T);
 ft_putchar('\n');
 //ft_putnbr(*bobo);
