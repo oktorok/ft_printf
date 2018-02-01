@@ -6,18 +6,18 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/28 21:23:57 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/01 22:08:22 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static char	*writer(int *siz_cuant, int minus, char *variab)
+static char	*writer(int *siz_cuant, char *comm, char *variab)
 {
 	char	*tmp;
 
 	tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0]);
-	if (minus)
+	if (ft_strchr(comm, '-'))
 		ft_strncpy(tmp, variab, ft_strlen(variab));
 	else
 		ft_strcpy(tmp + siz_cuant[0] - ft_strlen(variab), variab);
@@ -66,6 +66,6 @@ char		*ft_p_type(char *comm, va_list ap, va_list ap2)
 		variable = write_zeros(variable, siz_cuant[0] - len);
 	else
 		variable = write_zeros(variable, siz_cuant[1]);
-	res = writer(siz_cuant, ft_minus_format(comm), variable);
+	res = writer(siz_cuant, comm, variable);
 	return (res);
 }

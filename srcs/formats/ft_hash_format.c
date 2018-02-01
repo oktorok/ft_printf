@@ -6,11 +6,22 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 13:07:11 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/30 01:45:48 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/01 20:24:58 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+static int	check_zeros(char *variable, int *siz_cuant)
+{
+	if (!(siz_cuant[0] < ft_strlen(variable)) && !siz_cuant[1])
+	{
+		if ((*variable == '0') && (*(variable + 1) == '0')
+			&& *(variable + 2) && siz_cuant[0] == ft_strlen(variable))
+			return (2);
+	}
+	return (0);
+}
 
 static char	*ox_hash(char *variable, int *siz_cuant, int type)
 {
@@ -30,9 +41,10 @@ static char	*ox_hash(char *variable, int *siz_cuant, int type)
 		aux = ft_strnew(ft_strlen(variable) + 2);
 		*aux++ = '0';
 		*aux++ = 'x';
-		siz_cuant[0] += 2;
-		ft_strcpy(aux, variable);
+		ft_strcpy(aux, variable + check_zeros(variable, siz_cuant));
 		ft_strdel(&variable);
+		if (siz_cuant[0] < ft_strlen(aux - 2))
+			siz_cuant[0] += 2;
 		return (aux - 2);
 	}
 	return (variable);
