@@ -6,21 +6,23 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/31 18:28:39 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/01 00:33:59 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static char		*writer(int *siz_cuant, int minus, char *variab)
+static char		*writer(int *siz_cuant, int minus, char *variab, char *comm)
 {
 	char	*tmp;
-
+	
 	tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0]);
 	if (minus)
 		tmp = ft_strncpy(tmp, variab, siz_cuant[1]);
 	else
 		ft_strncpy(tmp + siz_cuant[0] - siz_cuant[1], variab, siz_cuant[1]);
+	if (ft_mods(comm) == 2)
+		ft_strdel(&variab);
 	return (tmp);
 }
 
@@ -43,9 +45,8 @@ char			*ft_s_type(char *comm, va_list ap, va_list ap2)
 	}
 	if (siz_cuant[1] > ft_strlen(variable) || siz_cuant[1] < 0)
 		siz_cuant[1] = ft_strlen(variable);
-	if (!siz_cuant[0] || siz_cuant[0] < ft_strlen(variable))
+	if ((!siz_cuant[0] || siz_cuant[0] < ft_strlen(variable)) && siz_cuant[1])
 		siz_cuant[0] = siz_cuant[1];
-	
-	res = writer(siz_cuant, ft_minus_format(comm), variable);
+	res = writer(siz_cuant, ft_minus_format(comm), variable, comm);
 	return (res);
 }

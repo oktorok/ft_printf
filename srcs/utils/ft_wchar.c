@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 04:34:49 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/31 19:35:00 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/01 18:21:08 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,26 @@ char		*ft_wchar(va_list ap, va_list ap2, int *siz_cuant, char *comm)
 	int			cuant;
 
 	i = -1;
+	cuant = 0;
 	if (!(wvariable = (wchar_t *)selector(comm, ap, ap2)))
 		return (NULL);
 	res = ft_strnew(0);
 	while (wvariable[++i])
-		res = ft_strjoinfree(res, ft_utf8(wvariable[i]));
-	i = 0;
-	while (*comm != '.' && *comm)
-		comm++;
-	while (wvariable[i] && siz_cuant >= 0 && *comm)
 	{
-		cuant += ft_strlen_free((ft_utf8(wvariable[i])));
+		if (wvariable[i] >= 0xd800 && wvariable[i] < 0x81000)
+			return (NULL);
+		res = ft_strjoinfree(res, ft_utf8(wvariable[i]));
+	}
+	i = 0;
+	while (wvariable[i] && siz_cuant[1] >= 0 && *comm)
+	{
+		cuant += ft_strlen_free((ft_utf8(wvariable[i++])));
 		if (cuant > siz_cuant[1])
 		{
-			cuant -= ft_strlen_free((ft_utf8(wvariable[i])));
+			cuant -= ft_strlen_free((ft_utf8(wvariable[i - 1])));
 			siz_cuant[1] = cuant;
 			break ;
 		}
-		i++;
 	}
 	return (res);
 }

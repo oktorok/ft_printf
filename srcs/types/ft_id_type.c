@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/31 20:14:18 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/31 22:28:03 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ static void ajust_cuant_size(int *siz_cuant, char *variable)
 	neg = 0;
 	if (*variable == '-')
 		neg = 1;
-	len = ft_strlen(variable);
 	if (!siz_cuant[1] && *variable == '0')
 		*variable = '\0';
+	len = ft_strlen(variable);
 	if (siz_cuant[1] <= len - neg || siz_cuant[1] < 0)
 		siz_cuant[1] = 0;
 	else

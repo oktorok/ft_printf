@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/31 17:31:18 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/01/31 22:56:16 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,36 +28,27 @@ static char	*writer(int *siz_cuant, int minus, char *variab)
 static void	*write_zeros(char *variable, int zero_cuant)
 {
 	char	*new_variab;
-	int		neg;
 
 	if (!zero_cuant)
 		return (variable);
-	neg = 0;
 	new_variab = ft_strnew(ft_strlen(variable) + zero_cuant);
-	if (*variable == '-')
-	{
-		*new_variab = '-';
-		neg = 1;
-	}
-	ft_memset(new_variab + neg, '0', zero_cuant + neg);
-	ft_strcat(new_variab, variable + neg);
+	ft_memset(new_variab, '0', zero_cuant);
+	ft_strcat(new_variab, variable);
 	ft_strdel(&variable);
 	return (new_variab);
 }
 
 static void ajust_cuant_size(int *siz_cuant, char *variable)
 {
-    int neg;
     int len;
 
-    neg = 0;
-    if (*variable == '-')
-        neg = 1;
+	if (!siz_cuant[1] && *variable == '0')
+		*variable = '\0';
     len = ft_strlen(variable);
-    if (siz_cuant[1] <= len - neg || siz_cuant[1] < 0)
+    if (siz_cuant[1] <= len || siz_cuant[1] < 0)
         siz_cuant[1] = 0;
     else
-        siz_cuant[1] -= (len - neg);
+        siz_cuant[1] -= (len);
     if (siz_cuant[0] < len + siz_cuant[1])
         siz_cuant[0] = len + siz_cuant[1];
 }
@@ -67,12 +58,10 @@ char		*ft_ou_type(char *comm, va_list ap, va_list ap2)
 	int		siz_cuant[2];
 	char	*variable;
 	char	*res;
-	size_t	len;
 
 	ft_field_format(siz_cuant, comm, ap, ap2);
 	variable = (*mod_selector[ft_mods(comm)])(ap, ap2, comm);
 	variable = ft_apostrophe_format(comm, variable);
-	len = ft_strlen(variable);
 	ajust_cuant_size(siz_cuant, variable);
 	if (ft_zero_format(comm))
 		variable = write_zeros(variable, siz_cuant[0] - ft_strlen(variable));
