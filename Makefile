@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/02/01 23:03:01 by mrodrigu         ###   ########.fr        #
+#    Updated: 2018/02/02 01:53:10 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ NAME = libftprintf.a
 FLAGS =
 
 MAIN_FUNCS = ft_printf.c \
+			 ft_sprintf.c \
 	 		 ft_realloc_printf.c 
 
 FORMATS = ft_field_format.c \
