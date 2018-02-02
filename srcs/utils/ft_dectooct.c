@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 23:11:18 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/02 01:56:29 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/02 01:57:33 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static char		*ft_octsize(char *n, size_t len, size_t *s_len)
 	}
 	*s_len = (len * 8) - *s_len;
 	if (!(*s_len))
-		*s_len = 1;g
+		*s_len = 1;
 	if (!((*s_len) % 3))
 		*s_len = *s_len / 3;
 	else
