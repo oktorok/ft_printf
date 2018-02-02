@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/01 22:08:08 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/02 00:31:28 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,11 @@ char		*ft_ou_type(char *comm, va_list ap, va_list ap2)
 	variable = (*mod_selector[ft_mods(comm)])(ap, ap2, comm);
 	variable = ft_apostrophe_format(comm, variable);
 	ajust_cuant_size(siz_cuant, variable);
+
 	if (ft_zero_format(comm))
 		variable = write_zeros(variable, siz_cuant[0] - ft_strlen(variable));
 	else
-		variable = write_zeros(variable, siz_cuant[1]);
+	variable = write_zeros(variable, siz_cuant[1]);
 	variable = ft_hash_format(comm, variable, siz_cuant);
 	res = writer(siz_cuant, comm, variable);
 	return (res);

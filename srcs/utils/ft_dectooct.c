@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 23:11:18 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/01 22:58:25 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/02 01:47:16 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,30 @@ static size_t	ft_rd1(char *n, size_t i, size_t *j)
 
 static char		*ft_octsize(char *n, size_t len, size_t *s_len)
 {
+	size_t	i;
 	size_t	j;
-	size_t	zero;
-
+	
+	i = len - 1;
 	j = 0;
-	zero = 0;
 	*s_len = 0;
-	while (j < len)
+	while ((i + 1) > 0)
 	{
-		if (ft_rd1(n, (*s_len)++, &j) == '0')
-			zero++;
-		else
-			zero = 0;
+		if (j == 8)
+		{
+			i--;
+			j = 0;
+		}
+		if (n[i] & (0x80 >> j))
+			break ;
+		j++;
+		(*s_len)++;
 	}
-	(*s_len) -= zero;
-	if (!(*s_len))
-		*s_len = 1;
+	*s_len = (len * 8) - *s_len;
+	ft_putnbr(*s_len);
+	if (!((*s_len) % 3))
+		*s_len = *s_len / 3;
+	else
+		*s_len = (*s_len / 3) + 1;
 	return (ft_strnew(sizeof(char) * (*s_len)));
 }
 
@@ -68,6 +76,5 @@ char			*ft_dectooct(void *num, size_t len)
 	s_len--;
 	while ((s_len + 1) > 0)
 		str[s_len--] = ft_rd1(n, i++, &j);
-	ft_putchar(*(str - 1));
 	return (str);
 }
