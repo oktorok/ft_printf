@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/01 21:59:02 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/02 03:01:16 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,10 @@ char		*ft_xlx_type(char *comm, va_list ap, va_list ap2)
 	size_t	len;
 
 	ft_field_format(siz_cuant, comm, ap, ap2);
-	variable = (*mod_selector[2])(ap, ap2, comm);
-	len = ft_strlen(variable);
+	if (ft_strchr(comm, 'X'))
+		variable = (*mod_selector[2])(ap, ap2, comm);
+	else
+		variable = (*mod_selector[ft_mods(comm)])(ap, ap2, comm);
 	ajust_cuant_size(siz_cuant, variable);
 	if (ft_zero_format(comm))
 		variable = write_zeros(variable, siz_cuant[0] - ft_strlen(variable));

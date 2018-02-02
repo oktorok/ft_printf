@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/02 01:11:24 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/02 02:43:49 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ unsigned long Mul = 18446744073709551615U;
 unsigned int Mui = 4294967295;
 int Mi = 2147483647;
 int mi = -2147483648;
-unsigned short tyu = 46110;
+unsigned short tyu = 0;
 //unsigned short tyu = 1345238046;
 wchar_t a[4];
 a[0] = 0x53;
@@ -55,13 +55,13 @@ int T;
 //ft_printf("grisu es: %o\n", ft_grisu(&d));
 
 ft_putstr("MIO: \n");
-T=ft_printf("<%ho>",tyu);
+T=ft_printf("%-#-#--24O", 12);
 ft_putchar('\n');
 ft_putnbr(T);
 //ft_putnbr(*bobo);
 
 printf("\nREAL: \n");
-T=printf("<%ho>",tyu);
+T=printf("%-#-#--24O", 12);
 ft_putnbr(T);
 ft_putchar('\n');
 //ft_putnbr(*bobo);

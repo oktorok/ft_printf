@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:11:20 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/02 01:52:54 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/02 03:16:43 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 
 static const char	g_types[27] = {"%sScCidDoOuUxXpebrEfFgGaAnk"};
 static char		*(*type_function [18])(char *, va_list, va_list) =
-{ft_percent_type, ft_sls_type, ft_sls_type, ft_clc_type, ft_clc_type, ft_id_type, ft_id_type,
-	ft_li_type, ft_ou_type, ft_lolu_type, ft_ou_type, ft_lolu_type,
+{ft_percent_type, ft_sls_type, ft_sls_type, ft_clc_type, ft_clc_type, ft_ilidld_type, ft_ilidld_type,
+	ft_ilidld_type, ft_oloulu_type, ft_oloulu_type, ft_oloulu_type, ft_oloulu_type,
  ft_xlx_type, ft_xlx_type, ft_p_type, ft_e_type, ft_b_type, ft_r_type};
 static const char   mods[8][3] = {"ll", "l","hh", "h", "j", "z"};
 static char			*(*mod_selector[7])(va_list, va_list, char *) =

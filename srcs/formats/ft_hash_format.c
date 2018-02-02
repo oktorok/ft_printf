@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 13:07:11 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/01 20:24:58 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/02 02:45:22 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ static char	*ox_hash(char *variable, int *siz_cuant, int type)
 	{
 		aux = ft_strnew(ft_strlen(variable) + 1);
 		*aux++ = '0';
-		siz_cuant[0]++;
-		ft_strcpy(aux, variable);
+		ft_strcpy(aux, variable + check_zeros(variable, siz_cuant));
 		ft_strdel(&variable);
+		if (siz_cuant[0] < ft_strlen(aux - 1))
+			siz_cuant[0] += 1;
 		return (--aux);
 	}
 	else if (type == 'x')
