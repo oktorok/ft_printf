@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 13:07:11 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/02 02:45:22 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/02 18:18:24 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static int	check_zeros(char *variable, int *siz_cuant)
 {
 	if (!(siz_cuant[0] < ft_strlen(variable)) && !siz_cuant[1])
 	{
+		if (siz_cuant[0] == 2 && *variable == '0')
+			return (1);
 		if ((*variable == '0') && (*(variable + 1) == '0')
 			&& *(variable + 2) && siz_cuant[0] == ft_strlen(variable))
 			return (2);
@@ -39,14 +41,15 @@ static char	*ox_hash(char *variable, int *siz_cuant, int type)
 	}
 	else if (type == 'x')
 	{
-		aux = ft_strnew(ft_strlen(variable) + 2);
+/*		aux = ft_strnew(ft_strlen(variable) + check_zeros(variable, siz_cuant));
 		*aux++ = '0';
 		*aux++ = 'x';
 		ft_strcpy(aux, variable + check_zeros(variable, siz_cuant));
+*/		aux = ft_strjoin("0x", variable + check_zeros(variable, siz_cuant));
+		if (siz_cuant[0] < ft_strlen(aux))
+			siz_cuant[0] = ft_strlen(aux);
 		ft_strdel(&variable);
-		if (siz_cuant[0] < ft_strlen(aux - 2))
-			siz_cuant[0] += 2;
-		return (aux - 2);
+		return (aux);
 	}
 	return (variable);
 }

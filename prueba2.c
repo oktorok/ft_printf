@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/02 02:43:49 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/02 22:53:21 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,10 @@ unsigned long Mul = 18446744073709551615U;
 unsigned int Mui = 4294967295;
 int Mi = 2147483647;
 int mi = -2147483648;
-unsigned short tyu = 0;
-//unsigned short tyu = 1345238046;
+unsigned int tyu = -88930388;
 wchar_t a[4];
 a[0] = 0x53;
-a[1] = 0xd800;
+a[1] = 0xd80;
 a[2] = 0x81000;
 a[3] = '\0';
 void *caca = &Mul;
@@ -52,16 +51,16 @@ long gh = -1;
 double d = 9.99999999;
 char g = 1;
 int T;
-//ft_printf("grisu es: %o\n", ft_grisu(&d));
+//ft_printf("grisu es: 1852827356%o\n", ft_grisu(&d));
 
 ft_putstr("MIO: \n");
-T=ft_printf("%-#-#--24O", 12);
+T=ft_printf("%ls|",0x11ffff);
 ft_putchar('\n');
 ft_putnbr(T);
 //ft_putnbr(*bobo);
 
 printf("\nREAL: \n");
-T=printf("%-#-#--24O", 12);
+T = printf("%ls|",a );
 ft_putnbr(T);
 ft_putchar('\n');
 //ft_putnbr(*bobo);

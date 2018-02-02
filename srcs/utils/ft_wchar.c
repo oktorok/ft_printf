@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 04:34:49 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/01 18:21:08 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/02 22:53:24 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,12 @@ char		*ft_wchar(va_list ap, va_list ap2, int *siz_cuant, char *comm)
 	res = ft_strnew(0);
 	while (wvariable[++i])
 	{
-		if (wvariable[i] >= 0xd800 && wvariable[i] < 0x81000)
-			return (NULL);
+		if (wvariable[i] >= 0xd800 && wvariable[i] < 0x40501)
+		return (NULL);
 		res = ft_strjoinfree(res, ft_utf8(wvariable[i]));
 	}
+	if (ft_strchr(comm, 'C') || ft_strchr(comm, 'c'))
+		return (res);
 	i = 0;
 	while (wvariable[i] && siz_cuant[1] >= 0 && *comm)
 	{

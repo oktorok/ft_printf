@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/02 00:30:56 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/02 22:53:27 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ static char				*exec_command(char **str, va_list ap,
 
 	n = 0;
 	command = ft_strsub(*str, 1, find_end(str));
-	while (((*(*str - 1)) != g_types[n]) && (n < 26))
+	while (((*(*str - 1)) != g_types[n]) && (n < 27))
 		n++;
-	if (n == 26)
+	if (n == 27)
 		return (NULL);
 	if (command[ft_strlen(command) - 1] == 'n')
 		return (ft_n_type(command, ap, ap2, str2));
@@ -65,6 +65,7 @@ static size_t			finish_printf(char *res, va_list ap, va_list ap2)
 
 	len = ft_strlen(res);
 	ft_putstr(res);
+	ft_putnbr(g_length);
 	va_end(ap);
 	va_end(ap2);
 	ft_strdel(&res);
@@ -86,7 +87,7 @@ int						ft_printf(const char *str, ...)
 		return (-1);
 	while (1)
 	{
-		aux_str = search_command((char *)head_str);
+		aux_str = search_command(head_str);
 		if (!(res = ft_realloc_printf(res, head_str, aux_str)))
 			return (-1);
 		if (*aux_str)

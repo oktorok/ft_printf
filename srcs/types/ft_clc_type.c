@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 04:50:22 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/01 22:17:02 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/02 21:54:12 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ char			*ft_clc_type(char *comm, va_list ap, va_list ap2)
 
 	ft_field_format(siz_cuant, comm, ap, ap2);
 	if (ft_mods(comm) == 2 || ft_strchr(comm, 'C'))
-		variable = ft_wchar(ap, ap2, siz_cuant, comm);
+	{
+		if (!(variable = ft_wchar(ap, ap2, siz_cuant, comm)))
+			return (NULL);
+	}
 	else
 		variable = (char *)ft_locate_date(comm, 1, ap, ap2);
 	if (siz_cuant[1] > ft_strlen(variable) || siz_cuant[1] < 0)
