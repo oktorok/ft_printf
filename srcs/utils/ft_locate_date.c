@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 18:32:01 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/31 15:09:50 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/03 01:24:48 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int		size(int mem)
 	else if ((mem == 5) || (mem == 6))
 		return (sizeof(int));
 	else if (mem == 7)
-		return (sizeof(wchar_t));
+		return (sizeof(wchar_t) * 2);
 	else if ((mem == 8) || (mem == 9))
 		return (sizeof(long));
 	else if ((mem == 10) || (mem == 11))

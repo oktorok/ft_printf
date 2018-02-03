@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/02 22:53:27 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/03 03:13:45 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ static size_t			finish_printf(char *res, va_list ap, va_list ap2)
 
 	len = ft_strlen(res);
 	ft_putstr(res);
-	ft_putnbr(g_length);
 	va_end(ap);
 	va_end(ap2);
 	ft_strdel(&res);
