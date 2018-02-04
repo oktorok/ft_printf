@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/03 03:14:57 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/04 02:14:31 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,14 @@ int T;
 
 ft_putstr("MIO: \n");
 //T=ft_printf("%8C et coco %    C titi %lc", 3250, 0x11ffff, 'a');
-//T = ft_printf("caca caca %s caca caca","caca");
+
+
+
+T = ft_printf("primero segundo %s cuarto quinto %s septimo",NULL, "sexto");
+
+
+
+
 ft_putnbr(T);
 //ft_putnbr(*bobo);
 
@@ -67,7 +74,7 @@ int jacobo = 0;
 	if (T == -1)
 		jacobo++;
 }*/
-T = printf("%8C et coco %C titi %lc", 3250, 'a', 0x11ffff);
+//T = printf("%8C et coco %C titi %lc", 3250, 'a', 0x11ffff);
 ft_putnbr(T);
 ft_putchar('\n');
 //ft_putnbr(*bobo);

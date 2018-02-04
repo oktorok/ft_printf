@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/02/02 03:15:00 by jagarcia         ###   ########.fr        #
+#    Updated: 2018/02/04 01:42:07 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,7 +103,8 @@ LIBFT_FUNCTIONS = ft_strncpy.c \
 			      ft_strnjoinfree.c \
 				  ft_ltoa_base.c \
 				  ft_strnjoinfree.c \
-				  ft_toupper.c
+				  ft_toupper.c \
+				  ft_strcmp.c
 
 TYPES_DIR = srcs/types/
 
