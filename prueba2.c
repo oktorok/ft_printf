@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/04 02:14:31 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/04 09:28:25 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ ft_putstr("MIO: \n");
 
 
 
-T = ft_printf("primero segundo %s cuarto quinto %s septimo",NULL, "sexto");
+T = ft_printf("primero segundo %o cuarto quinto %i septimo",3452, -2235);
 
-
+//T= ft_printf("este char es nulo (%c)",'0');
 
 
 ft_putnbr(T);

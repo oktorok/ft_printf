@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/02/04 01:42:07 by jagarcia         ###   ########.fr        #
+#    Updated: 2018/02/04 06:38:19 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,7 @@ NAME = libftprintf.a
 
 FLAGS =
 
-MAIN_FUNCS = ft_printf.c \
-			 ft_sprintf.c \
-	 		 ft_realloc_printf.c 
+MAIN_FUNCS = ft_printf.c 
 
 FORMATS = ft_field_format.c \
 		  ft_minus_format.c \
@@ -81,9 +79,11 @@ LIBFT_FUNCTIONS = ft_strncpy.c \
 	 			  ft_strsub.c \
 	 			  ft_strdup.c \
 	 			  ft_strjoin.c \
+	 			  ft_strnjoinfree.c \
 	 			  ft_strjoinfree.c \
 	 			  ft_strcat.c \
 	 			  ft_memcpy.c \
+	 			  ft_memmove.c \
 	 			  ft_atoi.c \
 	 			  ft_isdigit.c \
 	 			  ft_memset.c \
@@ -93,16 +93,13 @@ LIBFT_FUNCTIONS = ft_strncpy.c \
 	 			  ft_wstrlen.c \
 	 			  ft_strdel.c \
 	 			  ft_strchr.c \
-	 			  ft_strnjoin.c \
 	 			  ft_strlen_free.c \
 	 			  ft_memalloc.c \
 	 			  ft_memdel.c \
 				  ft_strstr.c \
 				  ft_itoa.c \
 				  ft_ultoa_base.c \
-			      ft_strnjoinfree.c \
 				  ft_ltoa_base.c \
-				  ft_strnjoinfree.c \
 				  ft_toupper.c \
 				  ft_strcmp.c
 

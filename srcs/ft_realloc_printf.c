@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:48:09 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/04 02:14:28 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/04 02:25:01 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 
 
-int 	ft_realloc_printf(char **final, char *str, char *com_res)
+int 	ft_realloc_printf(char *str, int com_len, char **final)
 {
 	char	*newres;
 	int		len;

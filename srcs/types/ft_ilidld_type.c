@@ -6,15 +6,16 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/02 03:12:35 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/04 09:19:16 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static char	*writer(int *siz_cuant, char *comm, char *variab)
+static int	writer(int *siz_cuant, char *comm, char *variab, char **res)
 {
 	char	*tmp;
+	int		len_com;
 
 	tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0]);
 	if (ft_strchr(comm, '-'))
@@ -22,7 +23,9 @@ static char	*writer(int *siz_cuant, char *comm, char *variab)
 	else
 		ft_strcpy(tmp + siz_cuant[0] - ft_strlen(variab), variab);
 	ft_strdel(&variab);
-	return (tmp);
+	len_com = ft_strlen(tmp);
+	*res = ft_strjoinfree(*res, tmp);
+	return (len_com);
 }
 
 static void	*write_zeros(char *variable, int zero_cuant)
@@ -45,7 +48,7 @@ static void	*write_zeros(char *variable, int zero_cuant)
 	return (new_variab);
 }
 
-static void ajust_cuant_size(int *siz_cuant, char *variable)
+static void	ajust_cuant_size(int *siz_cuant, char *variable)
 {
 	int neg;
 	int len;
@@ -64,11 +67,10 @@ static void ajust_cuant_size(int *siz_cuant, char *variable)
 		siz_cuant[0] = len + siz_cuant[1];
 }
 
-char		*ft_ilidld_type(char *comm, va_list ap, va_list ap2)
+int			ft_ilidld_type(char *comm, va_list ap, va_list ap2, char **res)
 {
 	int		siz_cuant[2];
 	char	*variable;
-	char	*res;
 
 	ft_field_format(siz_cuant, comm, ap, ap2);
 	if (ft_strchr(comm, 'D'))
@@ -83,6 +85,5 @@ char		*ft_ilidld_type(char *comm, va_list ap, va_list ap2)
 		variable = write_zeros(variable, siz_cuant[1]);
 	variable = ft_space_format(comm, variable, siz_cuant);
 	variable = ft_plus_format(comm, variable, siz_cuant);
-	res = writer(siz_cuant, comm, variable);
-	return (res);
+	return (writer(siz_cuant, comm, variable, res));
 }
