@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 03:51:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/31 23:48:32 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/05 04:57:19 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #define UTILS_H
 
 #include "my_float.h"
+
+static const char	g_colors[8][10] = {"black", "red", "green", "yellow", "blue", "magenta", "cyan", "white"};
+static const char	g_formats[10][10] = {"normal", "bold", "fait", "italic", "underline", "sblink", "rblink", "reverse", "conceal", "crossed"};
 
 char	*ft_wchar(va_list ap, va_list ap2, int *siz_cuant, char *command);
 char	*ft_utf8(wchar_t num);

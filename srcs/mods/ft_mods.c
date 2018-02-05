@@ -6,11 +6,11 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 19:06:10 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/25 21:35:35 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/05 05:02:01 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../../includes/libftprintf.h"
 
 int		ft_mods(char *comm)
 {

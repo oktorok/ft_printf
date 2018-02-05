@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:11:20 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/04 01:13:05 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/04 03:01:22 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFTPRINTF_H
 # include <stdlib.h>
 # include <stdarg.h>
+# include <stdint.h>
 # include "../libft/libft.h"
 # include "types.h"
 # include "mods.h"

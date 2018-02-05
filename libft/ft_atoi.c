@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/12 19:02:00 by mrodrigu          #+#    #+#             */
-/*   Updated: 2017/11/15 00:50:07 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/04 03:02:29 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ static int		convert(const char *str)
 int				ft_atoi(const char *str)
 {
 	int		i;
-	int		ten;
 
-	ten = 0;
 	i = 0;
 	while (str[i])
 	{
