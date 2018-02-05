@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_field_func.c                                    :+:      :+:    :+:   */
+/*   ft_field_format.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 21:13:24 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/31 20:10:01 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/05 17:37:00 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static int		size(char **command, va_list ap, va_list ap2)
 {
 	char	*aux;
 	int		*tmp;
+	int		aux2;
 
 	while ((!ft_isdigit(**command) || **command == '0') && **command != '*'
 			&& **command != '.' && **command)
@@ -29,8 +30,11 @@ static int		size(char **command, va_list ap, va_list ap2)
 	{
 		if (ft_isdigit(*(*command + 1)))
 		{
-			tmp = (int *)ft_locate_date(*command + 1, 5, ap, ap2);
-			return (*tmp);
+			if (!(tmp = (int *)ft_locate_date(*command + 1, 5, ap, ap2)))
+				return (-2);
+			aux2 = *tmp;
+			ft_strdel(&tmp);
+			return (aux2);
 		}
 		return (va_arg(ap2, int));
 	}
@@ -48,8 +52,10 @@ static int		cuant(char *command, va_list ap, va_list ap2)
 		{
 			if (ft_isdigit(*(aux + 2)))
 			{
-				tmp = (int *)ft_locate_date(aux + 2, 5, ap, ap2);
-				return (*tmp);
+				if (!(tmp = (int *)ft_locate_date(aux + 2, 5, ap, ap2)))
+					return (-2);
+				aux2 = *tmp;
+				return (aux2);
 			}
 			return (va_arg(ap2, int));
 		}
@@ -62,7 +68,7 @@ void			ft_field_format(int *size_cuant,
 		char *command, va_list ap, va_list ap2)
 {
 	size_cuant[0] = -1;
-	while (size_cuant[0] < 0)
+	while (size_cuant[0] == -1)
 		size_cuant[0] = size(&command, ap, ap2);
 	size_cuant[1] = cuant(command, ap, ap2);
 }
