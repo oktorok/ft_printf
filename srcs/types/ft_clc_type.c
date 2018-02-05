@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 04:50:22 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/04 08:40:39 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/05 06:01:42 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,25 @@ static int		writer(int *siz_cuant, char *comm, char *variab, char **res)
 {
 	char	*tmp;
 	int		len_com;
+	int		nul;
 	char	*res_aux;
 
 	if (!*variab)
-		len_com = 1;
+		nul = 1;
 	else
-		len_com = 0;
+		nul = 0;
 	tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0]);
 	if (ft_strchr(comm, '-'))
 		tmp = ft_strncpy(tmp, variab, siz_cuant[1]);
 	else
 		ft_strncpy(tmp + siz_cuant[0] - siz_cuant[1], variab, siz_cuant[1]);
 	ft_strdel(&variab);
-	len_com += ft_strlen(tmp);
+	len_com = ft_strlen(tmp) + nul;
 	res_aux = ft_strcpy(ft_strnew(ft_strlen(*res) + len_com), *res);
 	ft_strcat(res_aux, tmp);
 	ft_strdel(res);
 	*res = res_aux;
+	len_com = ft_strlen(*res) + nul;
 	return (len_com);
 }
 

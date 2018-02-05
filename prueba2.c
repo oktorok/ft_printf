@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/05 05:24:44 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/05 06:22:50 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char str[20] = {42, 255, 1, 2, 3};
  
 #define none   "\033[0m"        /* to flush the previous property */
 
-printf("PUTA %s TU MADRE", green);
+//printf("PUTA %s TU MADRE", green);
 
 
 //ft_printf("grisu es: 1852827356%o\n", ft_grisu(&d));
@@ -78,10 +78,9 @@ printf("PUTA %s TU MADRE", green);
 //T = ft_printf("primero segundo %s cuarto quinto %s septimo",NULL, "sexto");
 
 
-//T= ft_printf("este char es nulo (%c)",'0');
+T= ft_printf("este char es nulo (%c)",'\0');
 
-
-//ft_putnbr(T);
+ft_putnbr(T);
 //ft_putnbr(*bobo);
 
 //printf("\nREAL: \n");

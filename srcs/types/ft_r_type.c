@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/04 09:24:02 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/05 06:27:36 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 static char		*non_printable(char *variable)
 {
-	char	symbols[33][6] = {"[NUL]", "[SOH]", "[STX]", "[ETX]", "[EOT]",
-		"[ENQ]", "[ACK]", "[BEL]", "[BS]", "[HT]", "[NL]", "[VT]", "[NP]",
-		"[CR]", "[SO]", "[SI]", "[DLE]", "[DC1]", "[DC2]", "[DC3]",
-		"[DC4]", "[NAK]", "[SYN]", "[ETB]", "[CAN]", "[EM]", "[SUB]",
-		"[ESC]", "[FS]", "[GS]", "[RS]", "[US]", "[SP]"};
 	int		i;
 	char	*new_variable;
 	int		size;
@@ -26,12 +21,12 @@ static char		*non_printable(char *variable)
 	i = 0;
 	size = 0;
 	while (i < ft_strlen(variable) + 1)
-		size += ft_strlen(symbols[variable[i++]]);
+		size += ft_strlen(g_symbols[variable[i++]]);
 	ft_putnbr(size);
 	new_variable = ft_strnew(size);
 	i = 0;
 	while (i < ft_strlen(variable) + 1)
-		ft_strcat(new_variable, symbols[variable[i++]]);
+		ft_strcat(new_variable, g_symbols[variable[i++]]);
 	return (new_variable);
 }
 

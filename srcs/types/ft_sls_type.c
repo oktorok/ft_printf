@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/04 08:44:03 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/05 06:03:05 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ static int		writer(int *siz_cuant, char *comm, char *variab, char **res)
 		ft_strncpy(tmp + siz_cuant[0] - siz_cuant[1], variab, siz_cuant[1]);
 	if (ft_mods(comm) == 2 || !(ft_strcmp(variab, "(null)")))
 		ft_strdel(&variab);
-	len_com = ft_strlen(tmp);
+//	len_com = ft_strlen(tmp);
 	*res = ft_strjoinfree(*res, tmp);
+	len_com = ft_strlen(*res);
 	return (len_com);
 }
 
