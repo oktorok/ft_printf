@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnjoinfree.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/22 18:53:33 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/22 19:00:00 by mrodrigu         ###   ########.fr       */
+/*   Created: 2017/12/06 02:40:10 by mrodrigu          #+#    #+#             */
+/*   Updated: 2018/02/04 05:36:09 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strnjoinfree(char *s1, char *s2, unsigned int n)
 {
-		char	*str;
+	char	*str;
 	size_t	i;
 	size_t	j;
 
@@ -23,15 +23,13 @@ char	*ft_strnjoinfree(char *s1, char *s2, unsigned int n)
 	str = NULL;
 	i = 0;
 	j = 0;
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!str)
+	if (!(str = ft_strnew(ft_strlen(s1) + n)))
 		return (NULL);
 	while (s1[j])
 		str[i++] = s1[j++];
 	j = 0;
 	while (s2[j] && j < n)
 		str[i++] = s2[j++];
-	str[i] = '\0';
 	ft_strdel(&s1);
 	ft_strdel(&s2);
 	return (str);

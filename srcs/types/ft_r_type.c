@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/01 22:09:15 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/04 09:24:02 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static char		*non_printable(char *variable)
 {
-	char	symbols[33][6] = {"[NUL]" ,"[SOH]" ,"[STX]" ,"[ETX]" ,"[EOT]" ,
-		"[ENQ]" ,"[ACK]" ,"[BEL]" ,"[BS]" ,"[HT]" ,"[NL]" ,"[VT]" ,"[NP]" ,
-		"[CR]" ,"[SO]" ,"[SI]" ,"[DLE]" ,"[DC1]" ,"[DC2]" ,"[DC3]" ,
-		"[DC4]" ,"[NAK]" ,"[SYN]" ,"[ETB]" ,"[CAN]" ,"[EM]" ,"[SUB]" ,
-		"[ESC]" ,"[FS]" ,"[GS]" ,"[RS]" ,"[US]" ,"[SP]"};
+	char	symbols[33][6] = {"[NUL]", "[SOH]", "[STX]", "[ETX]", "[EOT]",
+		"[ENQ]", "[ACK]", "[BEL]", "[BS]", "[HT]", "[NL]", "[VT]", "[NP]",
+		"[CR]", "[SO]", "[SI]", "[DLE]", "[DC1]", "[DC2]", "[DC3]",
+		"[DC4]", "[NAK]", "[SYN]", "[ETB]", "[CAN]", "[EM]", "[SUB]",
+		"[ESC]", "[FS]", "[GS]", "[RS]", "[US]", "[SP]"};
 	int		i;
 	char	*new_variable;
 	int		size;
@@ -31,17 +31,19 @@ static char		*non_printable(char *variable)
 	new_variable = ft_strnew(size);
 	i = 0;
 	while (i < ft_strlen(variable) + 1)
-	 	ft_strcat(new_variable, symbols[variable[i++]]);
-	return(new_variable);
+		ft_strcat(new_variable, symbols[variable[i++]]);
+	return (new_variable);
 }
 
-char			*ft_r_type(char *comm, va_list ap, va_list ap2)
+int			ft_r_type(char *comm, va_list ap, va_list ap2, char **res)
 {
 	int		siz_cuant[2];
 	char	*variable;
-	char	*res;
+	int		len_com;
 
 	variable = (char *)ft_locate_pointer(comm, ap, ap2);
 	variable = non_printable(variable);
-	return (variable);
+	len_com = ft_strlen(variable);
+	*res = ft_strjoinfree(*res, variable);
+	return (len_com);
 }

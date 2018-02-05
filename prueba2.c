@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/04 07:20:56 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/05 05:24:44 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ printf("PUTA %s TU MADRE", green);
 //T = ft_printf("primero segundo %s cuarto quinto %s septimo",NULL, "sexto");
 
 
+//T= ft_printf("este char es nulo (%c)",'0');
 
 
 //ft_putnbr(T);
