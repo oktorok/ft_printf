@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/05 06:27:36 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/05 08:28:56 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static char		*non_printable(char *variable)
 	size = 0;
 	while (i < ft_strlen(variable) + 1)
 		size += ft_strlen(g_symbols[variable[i++]]);
-	ft_putnbr(size);
-	new_variable = ft_strnew(size);
+	if (!(new_variable = ft_strnew(size)))
+		return (-1);
 	i = 0;
 	while (i < ft_strlen(variable) + 1)
 		ft_strcat(new_variable, g_symbols[variable[i++]]);
@@ -36,9 +36,12 @@ int			ft_r_type(char *comm, va_list ap, va_list ap2, char **res)
 	char	*variable;
 	int		len_com;
 
-	variable = (char *)ft_locate_pointer(comm, ap, ap2);
-	variable = non_printable(variable);
-	len_com = ft_strlen(variable);
-	*res = ft_strjoinfree(*res, variable);
+	if (!(variable = (char *)ft_locate_pointer(comm, ap, ap2)))
+		return (-1);
+	if (!(variable = non_printable(variable)))
+		return (-1);
+	if (!(*res = ft_strjoinfree(*res, variable)))
+		return (-1);
+	len_com = ft_strlen(*res);
 	return (len_com);
 }

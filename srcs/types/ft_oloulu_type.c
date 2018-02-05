@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ou_type.c                                       :+:      :+:    :+:   */
+/*   ft_oloulu_type.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/04 09:23:04 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/05 08:15:43 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static int	writer(int *siz_cuant, char *comm, char *variab, char **res)
 	else
 		ft_strcpy(tmp + siz_cuant[0] - ft_strlen(variab), variab);
 	ft_strdel(&variab);
-	len_com = ft_strlen(tmp);
 	*res = ft_strjoinfree(*res, tmp);
+	len_com = ft_strlen(*res);
 	return (len_com);
 }
 
@@ -34,7 +34,8 @@ static void	*write_zeros(char *variable, int zero_cuant)
 
 	if (!zero_cuant)
 		return (variable);
-	new_variab = ft_strnew(ft_strlen(variable) + zero_cuant);
+	if (!(new_variab = ft_strnew(ft_strlen(variable) + zero_cuant)))
+		return (-1);
 	ft_memset(new_variab, '0', zero_cuant);
 	ft_strcat(new_variab, variable);
 	ft_strdel(&variable);
@@ -64,19 +65,24 @@ int			ft_oloulu_type(char *comm, va_list ap, va_list ap2, char **res)
 
 	ft_field_format(siz_cuant, comm, ap, ap2);
 	if (ft_strchr(comm, 'O') || ft_strchr(comm, 'U'))
-		variable = (*mod_selector[2])(ap, ap2, comm);
+	{
+		if (!(variable = (*mod_selector[2])(ap, ap2, comm)))
+			return (-1);
+	}
 	else
-		variable = (*mod_selector[ft_mods(comm)])(ap, ap2, comm);
-	variable = ft_apostrophe_format(comm, variable);
+		if (!(variable = (*mod_selector[ft_mods(comm)])(ap, ap2, comm)))
+			return (-1);
+	if (!(variable = ft_apostrophe_format(comm, variable)))
+		return (-1);
 	ajust_cuant_size(siz_cuant, variable);
-	if (ft_zero_format(comm))
-		variable = write_zeros(variable, siz_cuant[0] - ft_strlen(variable));
-	else
-		variable = write_zeros(variable, siz_cuant[1]);
+	if (!(variable = write_zeros(variable, ft_zero_format(comm) ? siz_cuant[0]
+					- ft_strlen(variable) : siz_cuant[1])))
+		return (-1);
 	len = 0;
 	while (variable[len++] != '0')
 	{
-		variable = ft_hash_format(comm, variable, siz_cuant);
+		if (!(variable = ft_hash_format(comm, variable, siz_cuant)))
+			return (-1);
 		break ;
 	}
 	return (writer(siz_cuant, comm, variable, res));

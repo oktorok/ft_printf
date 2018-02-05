@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 04:50:22 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/05 06:01:42 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/05 07:53:19 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,16 @@ static int		writer(int *siz_cuant, char *comm, char *variab, char **res)
 		nul = 1;
 	else
 		nul = 0;
-	tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0]);
+	if (!(tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0])))
+		return (-1);
 	if (ft_strchr(comm, '-'))
 		tmp = ft_strncpy(tmp, variab, siz_cuant[1]);
 	else
 		ft_strncpy(tmp + siz_cuant[0] - siz_cuant[1], variab, siz_cuant[1]);
 	ft_strdel(&variab);
 	len_com = ft_strlen(tmp) + nul;
-	res_aux = ft_strcpy(ft_strnew(ft_strlen(*res) + len_com), *res);
+	if (!(res_aux = ft_strcpy(ft_strnew(ft_strlen(*res) + len_com), *res)))
+		return (-1);
 	ft_strcat(res_aux, tmp);
 	ft_strdel(res);
 	*res = res_aux;
@@ -58,7 +60,8 @@ int				ft_clc_type(char *comm, va_list ap, va_list ap2, char **res)
 			return (-1);
 	}
 	else
-		variable = (char *)ft_locate_date(comm, 1, ap, ap2);
+		if (!(variable = (char *)ft_locate_date(comm, 1, ap, ap2)))
+			return (-1);
 	ajust_cuant_size(siz_cuant, variable);
 	return (writer(siz_cuant, comm, variable, res));
 }

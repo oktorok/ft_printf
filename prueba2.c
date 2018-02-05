@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prueba.c                                           :+:      :+:    :+:   */
+/*   prueba2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/05 06:22:50 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/05 07:39:45 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,9 @@ char str[20] = {42, 255, 1, 2, 3};
 //T = ft_printf("primero segundo %s cuarto quinto %s septimo",NULL, "sexto");
 
 
-T= ft_printf("este char es nulo (%c)",'\0');
+T= ft_printf("este char es nulo (%i)\n",NULL);
+ft_putnbr(T);
+T= printf("este char es nulo (%i)\n",NULL);
 
 ft_putnbr(T);
 //ft_putnbr(*bobo);
