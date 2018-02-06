@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/05 06:24:27 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/06 04:44:42 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,10 @@ static unsigned int	find_end(char *str)
 			end++;
 		}
 	}
-//	*str += (end + 1);
 	return (end);
 }
 
-static int			exec_command(char *str, va_list ap,
-		va_list ap2, char **res)
+static int			exec_command(char *str, va_list *ap, size_t len, char **res)
 {
 	char			*command;
 	int				aux;
@@ -48,21 +46,25 @@ static int			exec_command(char *str, va_list ap,
 
 	n = 0;
 	if (!*str)
-		return (ft_strlen(*res));
+		return (len);
 	aux = find_end(str);
 	if (!(command = ft_strsub(str, 1, aux)))
 		return (-1);
 	while ((str[aux] != g_types[n]) && (n < 27))
 		n++;
+	if (n == 18)
+	{
+		ft_n_type(command, ap[0], ap[1], len);
+		return (len);
+	}
 	if (n == 27)
 		return (0);
-	aux = (*type_function[n])(command, ap, ap2, res);
+	aux = (*type_function[n])(command, ap[0], ap[1], res);
 	ft_strdel(&command);
 	return (aux);
 }
 
-int					ft_printf_body(va_list ap, va_list ap2,
-		const char *str, char **res)
+int					ft_printf_body(va_list *ap, const char *str, char **res)
 {
 	char	*aux_str;
 	char	*head;
@@ -75,15 +77,15 @@ int					ft_printf_body(va_list ap, va_list ap2,
 	while (1)
 	{
 		aux_str = search_command(head);
-		if (!(aux_res = ft_strsub(head, 0, (int)((aux_str - head) < 0 ?
-							ft_strlen(head) : aux_str - head))))
+		aux_len = (int)((aux_str - head) < 0 ? ft_strlen(head) : aux_str -
+				head);
+		aux_res = ft_memmove(ft_strnew(len + aux_len), *res, len);
+		ft_memmove(aux_res + len, ft_strsub(head, 0, aux_len), aux_len);
+		if ((len = exec_command(aux_str, ap, len + aux_len, &aux_res)) == -1)
 			return (-1);
-		if ((aux_len = exec_command(aux_str, ap, ap2, &aux_res)) == -1)
-			return (aux_len);
-		if(!(*res = ft_memmove(ft_strnew(len + aux_len), *res, len)))
-			return (-1);
-		ft_memmove((*res) + len, aux_res, aux_len);
-		len += aux_len;
+		else if (len == ft_strlen(*res))
+			len += aux_len;
+		*res = aux_res;
 		head = aux_str + find_end(aux_str) + 1;
 		if (!*aux_str)
 			break ;
@@ -94,18 +96,17 @@ int					ft_printf_body(va_list ap, va_list ap2,
 int				ft_printf(const char *str, ...)
 {
 	char		*res;
-	va_list		ap;
-	va_list		ap2;
+	va_list		ap[2];
 	int			len;
 
 	len = 0;
-	va_start(ap, str);
-	va_copy(ap2, ap);
+	va_start(ap[0], str);
+	va_copy(ap[1], ap[0]);
 	res = NULL;
-	len = ft_printf_body(ap, ap2, str, &res);
+	len = ft_printf_body(ap, str, &res);
 	write(1, res, len);
-	va_end(ap);
-	va_end(ap2);
+	va_end(ap[0]);
+	va_end(ap[1]);
 	ft_strdel(&res);
 	return (len);
 }

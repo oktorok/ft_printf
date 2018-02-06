@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/05 07:39:45 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/06 04:41:46 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ char str[20] = {42, 255, 1, 2, 3};
 
 //T = ft_printf("primero segundo %s cuarto quinto %s septimo",NULL, "sexto");
 
-
-T= ft_printf("este char es nulo (%i)\n",NULL);
+int *papa = (int *)malloc(8);
+T= ft_printf("<este char es nulo (%c)>a\n",'\0');
 ft_putnbr(T);
-T= printf("este char es nulo (%i)\n",NULL);
+T= printf("<este char es nulo (%c)>a\n",'\0');
 
 ft_putnbr(T);
 //ft_putnbr(*bobo);

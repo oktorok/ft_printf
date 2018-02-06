@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/05 17:38:56 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/06 03:43:09 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	*write_zeros(char *variable, int zero_cuant)
 		return (variable);
 	neg = 0;
 	if (!(new_variab = ft_strnew(ft_strlen(variable) + zero_cuant)))
-		return (-1);
+		return (NULL);
 	if (*variable == '-')
 	{
 		*new_variab = '-';
@@ -77,7 +77,8 @@ int			ft_b_type(char *comm, va_list ap, va_list ap2, char **res)
 	if (!(variable = (*mod_selector[ft_mods(comm)])(ap, ap2, comm)))
 		return (-1);
 	ajust_cuant_size(siz_cuant, variable);
-	if (!(variable = write_zeros(variable, ft_zero_format ? siz_cuant[0] - ft_strlen(variable) : siz_cuant[1])))
+	if (!(variable = write_zeros(variable, ft_zero_format ? siz_cuant[0] -
+					ft_strlen(variable) : siz_cuant[1])))
 		return (-1);
 	if (!(variable = ft_hash_format(comm, variable, siz_cuant)))
 		return (-1);

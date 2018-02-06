@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/05 08:28:56 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/06 03:43:43 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char		*non_printable(char *variable)
 	while (i < ft_strlen(variable) + 1)
 		size += ft_strlen(g_symbols[variable[i++]]);
 	if (!(new_variable = ft_strnew(size)))
-		return (-1);
+		return (NULL);
 	i = 0;
 	while (i < ft_strlen(variable) + 1)
 		ft_strcat(new_variable, g_symbols[variable[i++]]);

@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/06 02:24:08 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/06 03:40:39 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	*write_zeros(char *variable, int zero_cuant)
 	if (!zero_cuant)
 		return (variable);
 	if (!(new_variab = ft_strnew(ft_strlen(variable) + zero_cuant)))
-		return (-1);
+		return (NULL);
 	ft_memset(new_variab, '0', zero_cuant);
 	ft_strcat(new_variab, variable);
 	ft_strdel(&variable);
