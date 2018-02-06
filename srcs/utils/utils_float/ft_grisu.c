@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/21 20:52:23 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/29 05:42:52 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/06 03:11:43 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ static char	*ft_concatenate(unsigned int *ps, char *str, int n)
 		return (NULL);
 	if ((len = ft_strlen(tmp)) < 7)
 	{
-		tmp2 = ft_strnew(7 - len);
+		if (!(tmp2 = ft_strnew(7 - len)))
+			return (NULL);
 		ft_memset(tmp2, '0', 7 - len);
 		return (ft_strjoinfree(str, ft_strjoinfree(tmp2, tmp)));
 	}
@@ -52,10 +53,14 @@ char	*ft_grisu(double *d)
 	k = ft_choose_power(w.exponent + 64, 0);
 	m_prod = ft_multiply(w, ft_take_power(k));
 	ft_cut(m_prod, ps);
-	str = ft_strnew(0);
-	str = ft_strjoinfree(str, ft_itoa(ps[0]));
-	str = ft_concatenate(ps, str, 1);
-	str = ft_concatenate(ps, str, 2);
-	str = ft_strjoinfree(str, ft_strjoinfree(ft_memset(ft_strnew(1), 'e', 1), ft_itoa(-k)));
+	str = NULL
+	if (!(str = ft_strjoinfree(str, ft_itoa(ps[0]))))
+		return (NULL);
+	if (!(str = ft_concatenate(ps, str, 1)))
+		return (NULL);
+	if (!(str = ft_concatenate(ps, str, 2)))
+		return (NULL);
+	if (!(str = ft_strjoinfree(str, ft_strjoinfree(ft_memset(ft_strnew(1), 'e', 1), ft_itoa(-k)))))
+		return (NULL);
 	return (str);
 }
