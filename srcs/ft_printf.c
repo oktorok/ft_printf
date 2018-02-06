@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/06 04:44:42 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/06 12:46:54 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int			exec_command(char *str, va_list *ap, size_t len, char **res)
 	}
 	if (n == 27)
 		return (0);
-	aux = (*type_function[n])(command, ap[0], ap[1], res);
+	aux = (*type_function[n])(command, ap, res, len);
 	ft_strdel(&command);
 	return (aux);
 }

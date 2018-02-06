@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 03:49:08 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/06 04:33:11 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/06 12:24:02 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static const char	g_symbols[33][6] = {"[NUL]", "[SOH]", "[STX]", "[ETX]", "[EOT]
 
 int			ft_percent_type(char *str, va_list ap, va_list ap2, char **res);
 int			ft_sls_type(char *str, va_list ap, va_list ap2, char **res);
-int			ft_clc_type(char *str, va_list ap, va_list ap2, char **res);
+int			ft_clc_type(char *str, va_list *ap, char **res, size_t len);
 int			ft_ilidld_type(char *str, va_list ap, va_list ap2, char **res);
 int			ft_oloulu_type(char *str, va_list ap, va_list ap2, char **res);
 int			ft_xlx_type(char *str, va_list ap, va_list ap2, char **res);

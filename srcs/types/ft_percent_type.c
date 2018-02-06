@@ -6,43 +6,47 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/05 08:18:19 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/06 13:03:02 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static int	writer(int *siz_cuant, char *comm, char *variab, char **res)
+static char	*writer(int *siz_cuant, char *comm, char *variab)
 {
 	char	*tmp;
 	int		len_com;
 
 	if (ft_zero_format(comm))
+	{
 		if (!(tmp = ft_memset(ft_strnew(siz_cuant[0]), '0', siz_cuant[0])))
-			return (-1);
+			return (NULL);
+	}
 	else
 		if (!(tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0])))
-			return (-1);
+			return (NULL);
 	if (ft_strchr(comm, '-'))
 		tmp = ft_strncpy(tmp, variab, 1);
 	else
 		ft_strncpy(tmp + siz_cuant[0] - 1, variab, 1);
 	ft_strdel(&variab);
-	if (!(*res = ft_strjoinfree(*res, tmp)));
-	len_com = ft_strlen(*res);
-	return (len_com);
+	return (tmp);
 }
 
-int			ft_percent_type(char *comm, va_list ap, va_list ap2, char **res)
+int			ft_percent_type(char *comm, va_list *ap, char **res, size_t len)
 {
 	int		siz_cuant[2];
 	char	*variable;
 
 	if (!(variable = ft_strnew(1)))
 		return (-1);
-	ft_field_format(siz_cuant, comm, ap, ap2);
+	ft_field_format(siz_cuant, comm, ap[0], ap[1]);
 	*variable = '%';
 	if (siz_cuant[0] < 1)
 		siz_cuant[0] = 1;
-	return (writer(siz_cuant, comm, variable, res));
+	if (!(variable = writer(siz_cuant, comm, variable, res)))
+		return (-1);
+	if (!(*res = ft_strnjoinfree(*res, variable, siz_cuant[0])))
+		return (-1);
+	return (len + siz_cuant[0]);
 }

@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 02:40:10 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/04 05:36:09 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/06 12:40:52 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strnjoinfree(char *s1, char *s2, unsigned int n)
 	while (s1[j])
 		str[i++] = s1[j++];
 	j = 0;
-	while (s2[j] && j < n)
+	while (j < n)
 		str[i++] = s2[j++];
 	ft_strdel(&s1);
 	ft_strdel(&s2);
