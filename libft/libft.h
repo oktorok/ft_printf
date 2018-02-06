@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 00:15:11 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/06 02:58:28 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/06 15:03:07 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,5 @@ char const *s2, unsigned int n);
 size_t				ft_strlen_free(char *str);
 char				*ft_strnjoinfree(char *s1, char *s2, unsigned int n);
 char				ft_issdigit(char *str);
+char				*ft_memjoinfree(void *str1, void *str2, size_t l1, size_t l2);
 #endif

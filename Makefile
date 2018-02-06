@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/02/06 04:48:20 by mrodrigu         ###   ########.fr        #
+#    Updated: 2018/02/06 15:03:48 by mrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,7 +103,8 @@ LIBFT_FUNCTIONS = ft_strncpy.c \
 				  ft_toupper.c \
 				  ft_strcmp.c \
 				  ft_strncmp.c \
-				  ft_issdigit.c
+				  ft_issdigit.c \
+				  ft_memjoinfree.c
 
 TYPES_DIR = srcs/types/
 
