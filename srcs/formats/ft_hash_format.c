@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 13:07:11 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/05 15:50:33 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/06 02:35:26 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static char	*ox_hash(char *variable, int *siz_cuant, int type, int len)
 		ft_strdel(&variable);
 		if (siz_cuant[0] < len + 1)
 			siz_cuant[0] += 1;
-		return (--aux)
+		return (--aux);
 	}
 	else if (type == 'x')
 	{
@@ -87,12 +87,12 @@ char	*ft_hash_format(char *command, char *variable, int *siz_cuant)
 	int		len;
 
 	len = ft_strlen(variable);
-	if (!(ft_strchr(comm, '#')))
+	if (!(ft_strchr(command, '#')))
 		return (variable);
 	if (ft_toupper((command[ft_strlen(command) - 1])) == 'O')
-		return (ox_hash(variable, siz_cuant, 'o'));
+		return (ox_hash(variable, siz_cuant, 'o', len));
 	if (ft_toupper((command[ft_strlen(command) - 1])) == 'X')
-		return (ox_hash(variable, siz_cuant, 'x'));
+		return (ox_hash(variable, siz_cuant, 'x', len));
 	if (command[ft_strlen(command) - 1] == 'b')
 	{
 		siz_cuant[0] += len /4 + len/ 8 * 2;

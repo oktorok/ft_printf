@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/05 08:15:43 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/06 02:22:32 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int			ft_oloulu_type(char *comm, va_list ap, va_list ap2, char **res)
 	size_t	len;
 
 	ft_field_format(siz_cuant, comm, ap, ap2);
+	if (!(siz_cuant[0] == -2 || siz_cuant[1] == -2))
+		return (-1);
 	if (ft_strchr(comm, 'O') || ft_strchr(comm, 'U'))
 	{
 		if (!(variable = (*mod_selector[2])(ap, ap2, comm)))

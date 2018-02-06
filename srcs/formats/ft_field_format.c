@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 21:13:24 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/05 17:37:00 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/06 02:31:43 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int		size(char **command, va_list ap, va_list ap2)
 {
 	char	*aux;
-	int		*tmp;
+	void	*tmp;
 	int		aux2;
 
 	while ((!ft_isdigit(**command) || **command == '0') && **command != '*'
@@ -30,10 +30,10 @@ static int		size(char **command, va_list ap, va_list ap2)
 	{
 		if (ft_isdigit(*(*command + 1)))
 		{
-			if (!(tmp = (int *)ft_locate_date(*command + 1, 5, ap, ap2)))
+			if (!(tmp = ft_locate_date(*command + 1, 5, ap, ap2)))
 				return (-2);
-			aux2 = *tmp;
-			ft_strdel(&tmp);
+			aux2 = *((int *)tmp);
+			ft_memdel(&tmp);
 			return (aux2);
 		}
 		return (va_arg(ap2, int));
@@ -44,7 +44,8 @@ static int		size(char **command, va_list ap, va_list ap2)
 static int		cuant(char *command, va_list ap, va_list ap2)
 {
 	char	*aux;
-	int		*tmp;
+	void	*tmp;
+	int		aux2;
 
 	if ((aux = ft_strchr(command, '.')))
 	{
@@ -52,9 +53,10 @@ static int		cuant(char *command, va_list ap, va_list ap2)
 		{
 			if (ft_isdigit(*(aux + 2)))
 			{
-				if (!(tmp = (int *)ft_locate_date(aux + 2, 5, ap, ap2)))
+				if (!(tmp = ft_locate_date(aux + 2, 5, ap, ap2)))
 					return (-2);
-				aux2 = *tmp;
+				aux2 = *((int *)tmp);
+				ft_memdel(&tmp);
 				return (aux2);
 			}
 			return (va_arg(ap2, int));
