@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 13:07:11 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/06 02:35:26 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/06 10:41:03 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,16 @@ static int	check_zeros(char *variable, int *siz_cuant)
 
 static char	*ox_hash(char *variable, int *siz_cuant, int type, int len)
 {
-	char *aux;
+	char	*aux;
+	int		zeros;
 
+	zeros = check_zeros(variable, siz_cuant);
 	if (type == 'o')
 	{
 		if (!(aux = ft_strnew(len + 1)))
 			return (NULL);
 		*aux++ = '0';
-		ft_strcpy(aux, variable + check_zeros(variable, siz_cuant));
+		ft_strcpy(aux, variable + zeros);
 		ft_strdel(&variable);
 		if (siz_cuant[0] < len + 1)
 			siz_cuant[0] += 1;
@@ -42,11 +44,10 @@ static char	*ox_hash(char *variable, int *siz_cuant, int type, int len)
 	}
 	else if (type == 'x')
 	{
-		if (!(aux = ft_strjoin("0x", variable + check_zeros(variable,
-							siz_cuant))))
+		if (!(aux = ft_strjoin("0x", variable + zeros)))
 			return (NULL);
-		if (siz_cuant[0] < len + 2)
-			siz_cuant[0] = len + 2;
+		if (siz_cuant[0] < len + 2 - zeros)
+			siz_cuant[0] = len + 2 - zeros;
 		ft_strdel(&variable);
 		return (aux);
 	}

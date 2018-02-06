@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/06 03:40:39 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/06 10:27:39 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int			ft_xlx_type(char *comm, va_list ap, va_list ap2, char **res)
 	size_t	i;
 
 	ft_field_format(siz_cuant, comm, ap, ap2);
-	if (!(siz_cuant[0] == -2 || siz_cuant[1] == -2))
+	if (siz_cuant[0] == -2 || siz_cuant[1] == -2)
 		return (-1);
 	if (ft_strchr(comm, 'X'))
 	{
