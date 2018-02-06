@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/04 09:20:47 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/06 03:40:39 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,16 @@ static int	writer(int *siz_cuant, char *comm, char *variab, char **res)
 			variab++;
 		}
 	variab = tmp;
-	tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0]);
+	if (!(tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0])))
+		return (-1);
 	if (ft_strchr(comm, '-'))
 		ft_strncpy(tmp, variab, ft_strlen(variab));
 	else
 		ft_strcpy(tmp + siz_cuant[0] - ft_strlen(variab), variab);
 	ft_strdel(&variab);
-	len_com = ft_strlen(tmp);
-	*res = ft_strjoinfree(*res, tmp);
+	if (!(*res = ft_strjoinfree(*res, tmp)))
+		return (-1);
+	len_com = ft_strlen(*res);
 	return (len_com);
 }
 
@@ -42,7 +44,8 @@ static void	*write_zeros(char *variable, int zero_cuant)
 
 	if (!zero_cuant)
 		return (variable);
-	new_variab = ft_strnew(ft_strlen(variable) + zero_cuant);
+	if (!(new_variab = ft_strnew(ft_strlen(variable) + zero_cuant)))
+		return (NULL);
 	ft_memset(new_variab, '0', zero_cuant);
 	ft_strcat(new_variab, variable);
 	ft_strdel(&variable);
@@ -71,20 +74,25 @@ int			ft_xlx_type(char *comm, va_list ap, va_list ap2, char **res)
 	size_t	i;
 
 	ft_field_format(siz_cuant, comm, ap, ap2);
+	if (!(siz_cuant[0] == -2 || siz_cuant[1] == -2))
+		return (-1);
 	if (ft_strchr(comm, 'X'))
-		variable = (*mod_selector[2])(ap, ap2, comm);
+	{
+		if (!(variable = (*mod_selector[2])(ap, ap2, comm)))
+			return (-1);
+	}
 	else
-		variable = (*mod_selector[ft_mods(comm)])(ap, ap2, comm);
+		if (!(variable = (*mod_selector[ft_mods(comm)])(ap, ap2, comm)))
+			return (-1);
 	ajust_cuant_size(siz_cuant, variable);
-	if (ft_zero_format(comm))
-		variable = write_zeros(variable, siz_cuant[0] - ft_strlen(variable));
-	else
-		variable = write_zeros(variable, siz_cuant[1]);
+	if (!(variable = write_zeros(variable, ft_zero_format(comm) ? siz_cuant[0] - ft_strlen(variable) : siz_cuant[1])))
+		return (-1);
 	i = 0;
 	while (variable[i])
 		if (variable[i++] != '0')
 		{
-			variable = ft_hash_format(comm, variable, siz_cuant);
+			if (!(variable = ft_hash_format(comm, variable, siz_cuant)))
+				return (-1);
 			break ;
 		}
 	return (writer(siz_cuant, comm, variable, res));

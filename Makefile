@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/02/06 02:59:19 by mrodrigu         ###   ########.fr        #
+#    Updated: 2018/02/06 04:48:20 by mrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ FLAGS =
 MAIN_FUNCS = ft_printf.c 
 
 FORMATS = ft_field_format.c \
-		  ft_minus_format.c \
 		  ft_space_format.c \
 		  ft_plus_format.c \
 		  ft_hash_format.c \

@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 06:28:21 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/31 13:23:43 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/05 15:56:48 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ char	*ft_space_format(char *command, char *str, int *siz_cuant)
 			}
 			if (!(siz_cuant[0] >= ft_strlen(str) + 1))
 				siz_cuant[0]++;
-			new_str = ft_strjoin(" ",str);
+			if (!(new_str = ft_strjoin(" ",str)))
+				return (NULL);
 			ft_strdel(&str);
 			return (new_str);
 		}

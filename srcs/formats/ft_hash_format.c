@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 13:07:11 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/02 18:18:24 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/06 02:35:26 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,48 +25,47 @@ static int	check_zeros(char *variable, int *siz_cuant)
 	return (0);
 }
 
-static char	*ox_hash(char *variable, int *siz_cuant, int type)
+static char	*ox_hash(char *variable, int *siz_cuant, int type, int len)
 {
 	char *aux;
 
 	if (type == 'o')
 	{
-		aux = ft_strnew(ft_strlen(variable) + 1);
+		if (!(aux = ft_strnew(len + 1)))
+			return (NULL);
 		*aux++ = '0';
 		ft_strcpy(aux, variable + check_zeros(variable, siz_cuant));
 		ft_strdel(&variable);
-		if (siz_cuant[0] < ft_strlen(aux - 1))
+		if (siz_cuant[0] < len + 1)
 			siz_cuant[0] += 1;
 		return (--aux);
 	}
 	else if (type == 'x')
 	{
-/*		aux = ft_strnew(ft_strlen(variable) + check_zeros(variable, siz_cuant));
-		*aux++ = '0';
-		*aux++ = 'x';
-		ft_strcpy(aux, variable + check_zeros(variable, siz_cuant));
-*/		aux = ft_strjoin("0x", variable + check_zeros(variable, siz_cuant));
-		if (siz_cuant[0] < ft_strlen(aux))
-			siz_cuant[0] = ft_strlen(aux);
+		if (!(aux = ft_strjoin("0x", variable + check_zeros(variable,
+							siz_cuant))))
+			return (NULL);
+		if (siz_cuant[0] < len + 2)
+			siz_cuant[0] = len + 2;
 		ft_strdel(&variable);
 		return (aux);
 	}
 	return (variable);
 }
 
-static char	*b_hash(char *var, int *siz_cuant)
+static char	*b_hash(char *var, int len)
 {
 	char	*aux;
 	int		i;
 	int		j;
 
 	j = 0;
-	i = ft_strlen(var) + (ft_strlen(var) / 4) + (ft_strlen(var) / 8 * 2);
-	if (!(ft_strlen(var) % 4))
+	i = len + (len / 4) + (len / 8 * 2);
+	if (!(len % 4))
 		i -= 3;
-	siz_cuant[0] += i - ft_strlen(var);
-	aux = ft_strnew(i--);
-	var += ft_strlen(var) - 1;
+	if (!(aux = ft_strnew(i--)))
+		return (NULL);
+	var += len - 1;
 	while (i >= 0)
 	{
 		aux[i--] = *var--;
@@ -85,17 +84,19 @@ static char	*b_hash(char *var, int *siz_cuant)
 
 char	*ft_hash_format(char *command, char *variable, int *siz_cuant)
 {
-	int		i;
+	int		len;
 
-	i = 0;
-	while (command[i] != '#')
-		if (!(command[i++]))
-			return (variable);
+	len = ft_strlen(variable);
+	if (!(ft_strchr(command, '#')))
+		return (variable);
 	if (ft_toupper((command[ft_strlen(command) - 1])) == 'O')
-		return (ox_hash(variable, siz_cuant, 'o'));
+		return (ox_hash(variable, siz_cuant, 'o', len));
 	if (ft_toupper((command[ft_strlen(command) - 1])) == 'X')
-		return (ox_hash(variable, siz_cuant, 'x'));
+		return (ox_hash(variable, siz_cuant, 'x', len));
 	if (command[ft_strlen(command) - 1] == 'b')
-		return (b_hash(variable, siz_cuant));
+	{
+		siz_cuant[0] += len /4 + len/ 8 * 2;
+		return (b_hash(variable, len));
+	}
 	return (variable);
 }

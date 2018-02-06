@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_n_types.c                                       :+:      :+:    :+:   */
+/*   ft_n_type.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 20:19:59 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/04 02:58:33 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/06 04:34:31 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*ft_n_type(char *comm, va_list ap, va_list ap2, char *str_mom)
+void		ft_n_type(char *comm, va_list ap, va_list ap2, size_t len)
 {
 	void *container;
 
 	container = ft_locate_pointer(comm, ap, ap2);
 	if (!container)
-		return (ft_strnew(1));
+		return ;
 	if (ft_strstr(comm, "ll"))
-		*((long long *)(container)) = ft_strlen(str_mom);
+		*((long long *)(container)) = len;
 	else if (ft_strstr(comm, "l"))
-		*((long *)(container)) = ft_strlen(str_mom);
+		*((long *)(container)) = len;
 	else if (ft_strstr(comm, "hh"))
-		*((signed char *)(container)) = ft_strlen(str_mom);
+		*((signed char *)(container)) = len;
 	else if (ft_strstr(comm, "h"))
-		*((short *)(container)) = ft_strlen(str_mom);
+		*((short *)(container)) = len;
 	else if (ft_strstr(comm, "z"))
-		*((size_t *)(container)) = ft_strlen(str_mom);
+		*((size_t *)(container)) = len;
 	else if (ft_strstr(comm, "j"))
-		*((intmax_t *)(container)) = ft_strlen(str_mom);
+		*((intmax_t *)(container)) = len;
 	else
-		*((int *)(container)) = ft_strlen(str_mom);
-	return (ft_strnew(1));
+		*((int *)(container)) = len;
 }
