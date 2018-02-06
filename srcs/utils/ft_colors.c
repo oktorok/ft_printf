@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 04:29:17 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/05 05:05:48 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/06 03:35:45 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,18 @@ static char		check_arr(char type, char *str, size_t pos, size_t i)
 	char	*aux;
 
 	j = 0;
-	aux = ft_strsub(str, pos, i);
+	if (!(aux = ft_strsub(str, pos, i - pos)))
+		return (0);
 	while (j < 10)
 	{
-		if (ft_strcmp(type ? g_colors[j] : g_formats[j], aux))
+		if (!(ft_strcmp(type ? g_colors[j] : g_formats[j], aux)))
 		{
 			ft_strdel(&aux);
 			return (1);
 		}
 		j++;
 	}
-	if (atoi(aux) <= (type ? 255 : 9))
+	if ((atoi(aux) <= (type ? 255 : 9)) && ft_issdigit(aux))
 	{
 		ft_strdel(&aux);
 		return (2);
@@ -58,6 +59,7 @@ static size_t	check_com(char *str, size_t pos, size_t len)
 			    ((check_arr(1, str, pos, i) ||
 			      check_arr(0, str, pos, i)) && !bool))
 				return (i);
+			//REVISAR ESTA CONDICION
 			return (0);
 		}
 		i++;
@@ -70,11 +72,12 @@ static char		*select_num(char type, char *str, size_t start, size_t end)
 	char	*aux;
 	char	i;
 
-	aux = ft_strsub(str, start, end);
+	if (!(aux = ft_strsub(str, start, end - start)))
+		return (NULL);
 	i = 0;
 	while (i < (type ? 8 : 10))
 	{
-		if (ft_strcmp(type ? g_colors[i] : g_formats[i], aux))
+		if (!(ft_strcmp(type ? g_colors[i] : g_formats[i], aux)))
 		{
 			aux[0] = type ? 'm' : ';';
 			aux[1] = '\0';
@@ -94,17 +97,25 @@ static char		*apply_com(char *str, size_t start, size_t end, size_t *len)
 	char	*aux;
 	char	*res;
 
-	new = ft_strcpy(ft_strnew(5), "\033[");
-	aux = ft_strchr(str + start + 1, ','); 
-	if (aux)
-		new = ft_strjoinfree(new, select_num(0, str, start + 1, (size_t)((aux + 1) - str)));
-	new = ft_strjoinfree(new, ft_strcpy(ft_strnew(5), "38;5;"));
-	new = ft_strjoinfree(new, select_num(1, str, (size_t)((aux + 1) - str), end));
-	*len = *len - (end - start) + ft_strlen(new);
-	res = ft_strnew(*len);
-	res = ft_strncpy(res, str, start);
-	res = ft_strcat(res, new);
-	res = ft_strcat(res, str + end);
+	if (!(ft_strncmp("eoc}", str + start, 4)))
+		new = ft_strcpy(ft_strnew(7), "\033[0m");
+	else
+	{
+		new = ft_strcpy(ft_strnew(5), "\033[");
+		aux = ft_strchr(str + start, ',');
+		if (aux)
+			new = ft_strjoinfree(new, select_num(0, str, start,
+					(size_t)((aux++) - str)));
+		else
+			aux = str + start;
+		new = ft_strjoinfree(new, ft_strcpy(ft_strnew(5), "38;5;"));
+		new = ft_strjoinfree(new, select_num(1, str, (size_t)(aux - str), end));
+	}
+	if (!new)
+		return (NULL);
+	*len = *len - (end - start - 1) + ft_strlen(new);
+	res = ft_strcat(ft_strncpy(ft_strnew(*len), str, start - 1), new);
+	res = ft_strcat(res, str + end + 1);
 	ft_strdel(&new);
 	return (res);
 }
@@ -121,11 +132,10 @@ char			*ft_colors(char *str, size_t len)
 		{
 			if ((end = check_com(str, i + 1, len)))
 			{
-				str = apply_com(str, i, end, &len);
-				i = end;
+				if (!(str = apply_com(str, i + 1, end, &len)))
+					return (NULL);
 			}
-			else
-				i++;
+			i++;
 		}
 		else
 			i++;

@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/05 06:22:50 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/06 03:05:39 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ long gh = -1;
 double d = 9.99999999;
 char g = 1;
 int T;
-char str[20] = {42, 255, 1, 2, 3};
+char str[] = "PU{red}TA";
 
 #define red   "\033[0;31m"        /* 0 -> normal ;  31 -> red */
 #define cyan  "\033[1;36m"        /* 1 -> bold ;  36 -> cyan */
@@ -73,14 +73,14 @@ char str[20] = {42, 255, 1, 2, 3};
 //ft_putstr("MIO: \n");
 //T=ft_printf("%8C et coco %    C titi %lc", 3250, 0x11ffff, 'a');
 
-
+printf("<%s>", ft_colors(str, ft_strlen(str)));
 
 //T = ft_printf("primero segundo %s cuarto quinto %s septimo",NULL, "sexto");
 
 
-T= ft_printf("este char es nulo (%c)",'\0');
+//T= ft_printf("este char es nulo (%c)",'\0');
 
-ft_putnbr(T);
+//ft_putnbr(T);
 //ft_putnbr(*bobo);
 
 //printf("\nREAL: \n");

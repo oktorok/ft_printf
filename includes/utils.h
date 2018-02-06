@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 03:51:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/05 04:57:19 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/05 18:03:06 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ char	*ft_dectobin(void *num, size_t len);
 char	*ft_dectooct(void *num, size_t len);
 char	*ft_dectohex(void *num, size_t len);
 char	*ft_printmemory(void *mem, size_t len);
+char	*ft_colors(char *str, size_t len);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/02/04 06:38:19 by jagarcia         ###   ########.fr        #
+#    Updated: 2018/02/06 02:59:19 by mrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,8 @@ UTILS = ft_wchar.c \
 		ft_dectobin.c \
 		ft_dectooct.c \
 		ft_dectohex.c \
-		ft_printmemory.c
+		ft_printmemory.c \
+		ft_colors.c
 
 UTILS_FLOAT = ft_choose_power.c \
 			  ft_dtomyd.c \
@@ -101,7 +102,9 @@ LIBFT_FUNCTIONS = ft_strncpy.c \
 				  ft_ultoa_base.c \
 				  ft_ltoa_base.c \
 				  ft_toupper.c \
-				  ft_strcmp.c
+				  ft_strcmp.c \
+				  ft_strncmp.c \
+				  ft_issdigit.c
 
 TYPES_DIR = srcs/types/
 
