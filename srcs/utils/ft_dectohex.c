@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 01:08:05 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/31 10:07:50 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/07 18:39:44 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_dectohex(void *num, size_t len)
 	size_t	i;
 	size_t	s_len;
 	size_t	aux;
-	
+
 	if (!(str = ft_hexsize((char *)num, len, &s_len)))
 		return (NULL);
 	i = 0;

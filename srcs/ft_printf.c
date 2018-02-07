@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/07 04:30:06 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/07 17:34:08 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,9 @@ int					ft_printf_body(va_list *ap, const char *str, char **res)
 				head);
 		aux_res = ft_memmove(ft_strnew(len + aux_len), *res, len);
 		ft_memmove(aux_res + len, ft_strsub(head, 0, aux_len), aux_len);
-		if ((len = exec_command(aux_str, ap, len + aux_len, &aux_res)) == -1)
-			return (-1);
-		else if (len == ft_strlen(*res))
-			len += aux_len;
+		if ((aux_len = exec_command(aux_str, ap, len + aux_len, &aux_res)) < 0)
+			return (-len);
+		len = aux_len;
 		*res = aux_res;
 		head = aux_str + find_end(aux_str) + 1;
 		if (!*aux_str)
@@ -104,7 +103,15 @@ int				ft_printf(const char *str, ...)
 	va_copy(ap[1], ap[0]);
 	res = NULL;
 	len = ft_printf_body(ap, str, &res);
-	write(1, res, len);
+	if (len < 0)
+	{
+		write(1, res, -len);
+		len = -1;
+	}
+	else if (len == 0 && !res)
+		return (-1);
+	else
+		write(1, res, len);
 	va_end(ap[0]);
 	va_end(ap[1]);
 	ft_strdel(&res);

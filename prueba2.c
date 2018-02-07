@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/07 08:08:19 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/07 18:54:41 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,17 @@ char str[] = "PU{red}TA";
 //T = ft_printf("primero segundo %s cuarto quinto %s septimo",NULL, "sexto");
 
 //int *papa = (int *)malloc(8);
-T= ft_printf("%o\n", 42);
-//ft_putnbr(T); 
-T= printf("%o\n", 42);
+int ret;
 
+T= ft_printf("%017%|\n");
+//ft_putchar('<');
 //ft_putnbr(T);
+//ft_putchar('>');
+T= printf("%017%|");
+
+//ft_putchar('[');
+//ft_putnbr(T);
+//ft_putchar(']');
 //ft_putnbr(*bobo);
 
 //printf("\nREAL: \n");

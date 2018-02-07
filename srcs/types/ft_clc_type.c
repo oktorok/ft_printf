@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 04:50:22 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/07 01:46:09 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/07 17:03:34 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,9 @@
 static char		*writer(int *siz_cuant, char *comm, char *variab)
 {
 	char	*tmp;
-	int		len_com;
-	int		nul;
 	char	*res_aux;
+	int		nul;
 
-	if (!*variab)
-		nul = 1;
-	else
-		nul = 0;
 	if (!(tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0])))
 		return (NULL);
 	if (ft_strchr(comm, '-'))
@@ -35,10 +30,21 @@ static char		*writer(int *siz_cuant, char *comm, char *variab)
 
 static void		ajust_cuant_size(int *siz_cuant, char *variable)
 {
-	if (siz_cuant[1] > 1 || siz_cuant[1] <= 0)
-		siz_cuant[1] = 1;
+	ft_ajust_params(siz_cuant, variable);
 	if (!siz_cuant[0])
-		siz_cuant[0] = siz_cuant[1];
+	{
+		if (!*variable)
+			siz_cuant[0] = 1;
+		else
+			siz_cuant[0] = ft_strlen(variable);
+	}
+	if (siz_cuant[1] < 0)
+	{
+		if (!*variable)
+			siz_cuant[1] = 1;
+		else	
+			siz_cuant[1] = ft_strlen(variable);
+	}
 }
 
 int				ft_clc_type(char *comm, va_list *ap, char **res, size_t len)
@@ -61,6 +67,6 @@ int				ft_clc_type(char *comm, va_list *ap, char **res, size_t len)
 	if (!(variable = writer(siz_cuant, comm, variable)))
 		return (-1);
 	if (!(*res = ft_memjoinfree(*res, variable, len, siz_cuant[0])))
-		return (-1);	
+		return (-1);
 	return (len + siz_cuant[0]);
 }
