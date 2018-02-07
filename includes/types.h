@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 03:49:08 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/06 12:24:02 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/07 02:29:44 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,15 @@ static const char	g_symbols[33][6] = {"[NUL]", "[SOH]", "[STX]", "[ETX]", "[EOT]
 		"[DC4]", "[NAK]", "[SYN]", "[ETB]", "[CAN]", "[EM]", "[SUB]",
 		"[ESC]", "[FS]", "[GS]", "[RS]", "[US]", "[SP]"};
 
-int			ft_percent_type(char *str, va_list ap, va_list ap2, char **res);
-int			ft_sls_type(char *str, va_list ap, va_list ap2, char **res);
+int			ft_percent_type(char *str, va_list *ap, char **res, size_t len);
+int			ft_sls_type(char *str, va_list *ap, char **res, size_t len);
 int			ft_clc_type(char *str, va_list *ap, char **res, size_t len);
-int			ft_ilidld_type(char *str, va_list ap, va_list ap2, char **res);
-int			ft_oloulu_type(char *str, va_list ap, va_list ap2, char **res);
-int			ft_xlx_type(char *str, va_list ap, va_list ap2, char **res);
-int			ft_p_type(char *str, va_list ap, va_list ap2, char **res);
-void		ft_n_type(char *str, va_list ap, va_list ap2, size_t len);
-//int			*ft_e_type(char *comm, va_list ap, va_list ap2, char **res);
-int			ft_b_type(char *comm, va_list ap, va_list ap2, char **res);
-int			ft_r_type(char *comm, va_list ap, va_list ap2, char **res);
+int			ft_ilidld_type(char *str, va_list *ap, char **res, size_t len);
+int			ft_oloulu_type(char *str, va_list *ap, char **res, size_t len);
+int			ft_xlx_type(char *str, va_list *ap, char **res, size_t len);
+int			ft_p_type(char *str, va_list *ap, char **res, size_t len);
+void		ft_n_type(char *str, va_list *ap, size_t len);
+int			ft_b_type(char *comm, va_list *ap, char **res, size_t len);
+int			ft_r_type(char *comm, va_list *ap, char **res, size_t len);
 
 #endif

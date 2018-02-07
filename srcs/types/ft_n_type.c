@@ -6,17 +6,17 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 20:19:59 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/06 04:34:31 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/07 02:39:14 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void		ft_n_type(char *comm, va_list ap, va_list ap2, size_t len)
+void		ft_n_type(char *comm, va_list *ap, size_t len)
 {
 	void *container;
 
-	container = ft_locate_pointer(comm, ap, ap2);
+	container = ft_locate_pointer(comm, ap[0], ap[1]);
 	if (!container)
 		return ;
 	if (ft_strstr(comm, "ll"))

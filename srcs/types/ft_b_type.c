@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/06 12:57:35 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/07 01:48:20 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,6 @@ static char	*writer(int *siz_cuant, char *comm, char *variab)
 		ft_strcpy(tmp + siz_cuant[0] - ft_strlen(variab), variab);
 	ft_strdel(&variab);
 	return (tmp);
-}
-
-static void	*write_zeros(char *variable, int zero_cuant)
-{
-	char	*new_variab;
-	int		neg;
-
-	if (!zero_cuant)
-		return (variable);
-	neg = 0;
-	if (!(new_variab = ft_strnew(ft_strlen(variable) + zero_cuant)))
-		return (NULL);
-	if (*variable == '-')
-	{
-		*new_variab = '-';
-		neg = 1;
-	}
-	ft_memset(new_variab + neg, '0', zero_cuant + neg);
-	ft_strcat(new_variab, variable + neg);
-	ft_strdel(&variable);
-	return (new_variab);
 }
 
 static void	ajust_cuant_size(int *siz_cuant, char *variable)
@@ -74,13 +53,13 @@ int			ft_b_type(char *comm, va_list *ap, char **res, size_t len)
 	if (!(variable = (*mod_selector[ft_mods(comm)])(ap[0], ap[1], comm)))
 		return (-1);
 	ajust_cuant_size(siz_cuant, variable);
-	if (!(variable = write_zeros(variable, ft_zero_format(comm) ? siz_cuant[0] -
-					ft_strlen(variable) : siz_cuant[1])))
+	if (!(variable = ft_zero_format(comm, variable, siz_cuant)))
 		return (-1);
 	if (!(variable = ft_hash_format(comm, variable, siz_cuant)))
 		return (-1);
 	if (!(variable = writer(siz_cuant, comm, variable)))
-		return (NULL);
-	*res = ft_strnjoinfree(*res, tmp, siz_cuant[0]);
+		return (-1);
+	if (!(*res = ft_memjoinfree(*res, variable, len, siz_cuant[0])))
+		return (-1);
 	return (len + siz_cuant[0]);
 }

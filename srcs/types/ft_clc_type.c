@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 04:50:22 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/06 12:45:54 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/07 01:46:09 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,6 @@ static char		*writer(int *siz_cuant, char *comm, char *variab)
 		ft_strncpy(tmp + siz_cuant[0] - siz_cuant[1], variab, siz_cuant[1]);
 	ft_strdel(&variab);
 	return (tmp);
-//	len_com = siz_cuant[0];
-//	if (!(res_aux = ft_strcpy(ft_strnew(ft_strlen(*res) + len_com), *res)))
-//		return (-1);
-//	ft_strcat(res_aux, tmp);
-//	ft_strdel(res);
-//	*res = res_aux;
-//	len_com = ft_strlen(*res);
-//	return (len_com);
 }
 
 static void		ajust_cuant_size(int *siz_cuant, char *variable)
@@ -68,6 +60,7 @@ int				ft_clc_type(char *comm, va_list *ap, char **res, size_t len)
 	ajust_cuant_size(siz_cuant, variable);
 	if (!(variable = writer(siz_cuant, comm, variable)))
 		return (-1);
-	*res = ft_strnjoinfree(*res, variable, siz_cuant[0]);	
+	if (!(*res = ft_memjoinfree(*res, variable, len, siz_cuant[0])))
+		return (-1);	
 	return (len + siz_cuant[0]);
 }

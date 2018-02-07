@@ -6,16 +6,15 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/06 10:27:39 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/07 02:35:28 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static int	writer(int *siz_cuant, char *comm, char *variab, char **res)
+static char		*writer(int *siz_cuant, char *comm, char *variab)
 {
 	char	*tmp;
-	int		len_com;
 
 	tmp = variab;
 	if (ft_strchr(comm, 'X'))
@@ -32,10 +31,7 @@ static int	writer(int *siz_cuant, char *comm, char *variab, char **res)
 	else
 		ft_strcpy(tmp + siz_cuant[0] - ft_strlen(variab), variab);
 	ft_strdel(&variab);
-	if (!(*res = ft_strjoinfree(*res, tmp)))
-		return (-1);
-	len_com = ft_strlen(*res);
-	return (len_com);
+	return (tmp);
 }
 
 static void	*write_zeros(char *variable, int zero_cuant)
@@ -67,25 +63,25 @@ static void	ajust_cuant_size(int *siz_cuant, char *variable)
 		siz_cuant[0] = len + siz_cuant[1];
 }
 
-int			ft_xlx_type(char *comm, va_list ap, va_list ap2, char **res)
+int			ft_xlx_type(char *comm, va_list *ap, char **res, size_t len)
 {
 	int		siz_cuant[2];
 	char	*variable;
 	size_t	i;
 
-	ft_field_format(siz_cuant, comm, ap, ap2);
+	ft_field_format(siz_cuant, comm, ap[0], ap[1]);
 	if (siz_cuant[0] == -2 || siz_cuant[1] == -2)
 		return (-1);
 	if (ft_strchr(comm, 'X'))
 	{
-		if (!(variable = (*mod_selector[2])(ap, ap2, comm)))
+		if (!(variable = (*mod_selector[2])(ap[0], ap[1], comm)))
 			return (-1);
 	}
 	else
-		if (!(variable = (*mod_selector[ft_mods(comm)])(ap, ap2, comm)))
+		if (!(variable = (*mod_selector[ft_mods(comm)])(ap[0], ap[1], comm)))
 			return (-1);
 	ajust_cuant_size(siz_cuant, variable);
-	if (!(variable = write_zeros(variable, ft_zero_format(comm) ? siz_cuant[0] - ft_strlen(variable) : siz_cuant[1])))
+	if (!(variable = ft_zero_format(comm, variable, siz_cuant)))
 		return (-1);
 	i = 0;
 	while (variable[i])
@@ -95,5 +91,9 @@ int			ft_xlx_type(char *comm, va_list ap, va_list ap2, char **res)
 				return (-1);
 			break ;
 		}
-	return (writer(siz_cuant, comm, variable, res));
+	if (!(variable = writer(siz_cuant, comm, variable)))
+		return (-1);
+	if (!(*res = ft_memjoinfree(*res, variable, len, siz_cuant[0])))
+		return (-1);
+	return (len + siz_cuant[0]);
 }

@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/06 13:03:02 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/07 03:07:51 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ static char	*writer(int *siz_cuant, char *comm, char *variab)
 {
 	char	*tmp;
 	int		len_com;
-
-	if (ft_zero_format(comm))
+	if (ft_search_zero_format(comm))
 	{
 		if (!(tmp = ft_memset(ft_strnew(siz_cuant[0]), '0', siz_cuant[0])))
 			return (NULL);
@@ -44,9 +43,11 @@ int			ft_percent_type(char *comm, va_list *ap, char **res, size_t len)
 	*variable = '%';
 	if (siz_cuant[0] < 1)
 		siz_cuant[0] = 1;
-	if (!(variable = writer(siz_cuant, comm, variable, res)))
+	if (!(variable = ft_zero_format(comm, variable, siz_cuant)))
 		return (-1);
-	if (!(*res = ft_strnjoinfree(*res, variable, siz_cuant[0])))
+	if (!(variable = writer(siz_cuant, comm, variable)))
+		return (-1);
+	if (!(*res = ft_memjoinfree(*res, variable, len, siz_cuant[0])))
 		return (-1);
 	return (len + siz_cuant[0]);
 }

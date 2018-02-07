@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/06 03:43:43 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/07 01:58:42 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,16 @@ static char		*non_printable(char *variable)
 	return (new_variable);
 }
 
-int			ft_r_type(char *comm, va_list ap, va_list ap2, char **res)
+int			ft_r_type(char *comm, va_list *ap, char **res, size_t len)
 {
 	int		siz_cuant[2];
 	char	*variable;
-	int		len_com;
 
-	if (!(variable = (char *)ft_locate_pointer(comm, ap, ap2)))
+	if (!(variable = (char *)ft_locate_pointer(comm, ap[0], ap[1])))
 		return (-1);
 	if (!(variable = non_printable(variable)))
 		return (-1);
-	if (!(*res = ft_strjoinfree(*res, variable)))
+	if (!(*res = ft_memjoinfree(*res, variable, len, siz_cuant[0])))
 		return (-1);
-	len_com = ft_strlen(*res);
-	return (len_com);
+	return (len + siz_cuant[0]);
 }
