@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/07 02:31:24 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/07 04:24:55 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char		*writer(int *siz_cuant, char *comm, char *variab)
 	char	*tmp;
 
 	if (!(tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0])))
-		return (-1);
+		return (NULL);
 	if (ft_strchr(comm, '-'))
 		tmp = ft_strncpy(tmp, variab, siz_cuant[1]);
 	else
@@ -44,14 +44,15 @@ int				ft_sls_type(char *comm, va_list *ap, char **res, size_t len)
 	char	*variable;
 
 	ft_field_format(siz_cuant, comm, ap[0], ap[1]);
+	if (siz_cuant[0] == -2 || siz_cuant[1] == -2)
+		return (-1);
 	if (ft_mods(comm) == 2 || ft_strchr(comm, 'S'))
 	{
 		if (!(variable = ft_wchar(ap[0], ap[1], siz_cuant, comm)))
 			return (-1);
 	}
 	else
-		if (!(variable = (char *)ft_locate_pointer(comm, ap[0], ap[1])))
-			return (-1);
+		variable = (char *)ft_locate_pointer(comm, ap[0], ap[1]);
 	if (!variable && !ft_strchr(comm, 'S'))
 	{
 		ft_strdel(&variable);
