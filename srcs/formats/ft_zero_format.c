@@ -6,13 +6,13 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 09:12:39 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/07 06:55:11 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/07 07:33:27 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char		*ft_zero_format(char *variable, int zero_cuant)
+char		*write_zeros(char *variable, int zero_cuant)
 {
 	char    *new_variab;
     int     neg;
@@ -31,4 +31,12 @@ char		*ft_zero_format(char *variable, int zero_cuant)
     ft_strcat(new_variab, variable + neg);
     ft_strdel(&variable);
     return (new_variab);
+
+}
+
+char		*ft_zero_format(char *comm, char *variable, int *siz_cuant)
+{
+	if (siz_cuant[1] == -1 && ft_search_zero_format(comm))
+		return (write_zeros(variable, siz_cuant[0] - len));
+	return (write_zeros(variable, siz_cuant[1]));
 }

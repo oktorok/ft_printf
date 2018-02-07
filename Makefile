@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/02/07 04:01:27 by jagarcia         ###   ########.fr        #
+#    Updated: 2018/02/07 07:11:02 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,8 @@ UTILS = ft_wchar.c \
 		ft_dectooct.c \
 		ft_dectohex.c \
 		ft_printmemory.c \
-		ft_colors.c
+		ft_colors.c \
+		ft_ajust_params.c
 
 UTILS_FLOAT = ft_choose_power.c \
 			  ft_dtomyd.c \

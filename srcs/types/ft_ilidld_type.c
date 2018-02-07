@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/07 06:59:09 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/07 07:03:30 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,36 +27,6 @@ static char	*writer(int *siz_cuant, char *comm, char *variab)
 	return (tmp);
 }
 
-static void	ajust_cuant_size(int *siz_cuant, char *variable)
-{
-	int neg;
-	int len;
-
-	neg = 0;
-	if (*variable == '-')
-		neg = 1;
-	if (!siz_cuant[1] && *variable == '0')
-		*variable = '\0';
-	len = ft_strlen(variable);
-	if (siz_cuant[1] >= 0)
-	{
-		if (siz_cuant[1] <= len - neg)
-			siz_cuant[1] = 0;
-		else
-			siz_cuant[1] -= (len - neg);
-		if (siz_cuant[0] < len + siz_cuant[1])
-			siz_cuant[0] = len + siz_cuant[1];
-	}
-	else
-	{
-        siz_cuant[1] = 0;
-        if (siz_cuant[0] < len)
-            siz_cuant[0] = len;
-        if (ft_search_zero_format(comm))
-            siz_cuant[1] = siz_cuant[0] - len;
-    }
-}
-
 int			ft_ilidld_type(char *comm, va_list *ap, char **res, size_t len)
 {
 	int		siz_cuant[2];
@@ -75,8 +45,8 @@ int			ft_ilidld_type(char *comm, va_list *ap, char **res, size_t len)
 			return (-1);
 	if (!(variable = ft_apostrophe_format(comm, variable)))
 		return (-1);
-	ajust_cuant_size(siz_cuant, variable);
-	if (!(variable = ft_zero_format(variable, siz_cuant[0])))
+	ft_ajust_params(comm, siz_cuant, variable);
+	if (!(variable = ft_zero_format(variable, siz_cuant[1])))
 		return (-1);
 	if (!(variable = ft_space_format(comm, variable, siz_cuant)))
 		return (-1);
