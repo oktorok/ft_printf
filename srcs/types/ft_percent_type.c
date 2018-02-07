@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/07 07:12:47 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/07 07:39:01 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int			ft_percent_type(char *comm, va_list *ap, char **res, size_t len)
 		return (-1);
 	ft_field_format(siz_cuant, comm, ap[0], ap[1]);
 	*variable = '%';
-	ft_ajust_params(comm, siz_cuant, variable);
-	if (!(variable = ft_zero_format(variable, siz_cuant[0])))
+	ft_ajust_params(siz_cuant, variable);
+	if (!(variable = ft_zero_format(comm, variable, siz_cuant)))
 		return (-1);
 	if (!(variable = writer(siz_cuant, comm, variable)))
 		return (-1);

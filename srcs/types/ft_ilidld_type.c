@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/07 07:03:30 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/07 07:52:34 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int			ft_ilidld_type(char *comm, va_list *ap, char **res, size_t len)
 			return (-1);
 	if (!(variable = ft_apostrophe_format(comm, variable)))
 		return (-1);
-	ft_ajust_params(comm, siz_cuant, variable);
-	if (!(variable = ft_zero_format(variable, siz_cuant[1])))
+	ft_ajust_params(siz_cuant, variable);
+	if (!(variable = ft_zero_format(comm, variable, siz_cuant)))
 		return (-1);
 	if (!(variable = ft_space_format(comm, variable, siz_cuant)))
 		return (-1);

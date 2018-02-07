@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/07 07:12:29 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/07 07:39:17 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int		ft_p_type(char *comm, va_list *ap, char **res, size_t len)
 		return (-1);
 	if (!(variable = ft_hash_format("#x", variable, siz_cuant)))
 		return (-1);
-	ft_ajust_params(comm, siz_cuant, variable);
-	if (!(variable = ft_zero_format(variable, siz_cuant[0])))
+	ft_ajust_params(siz_cuant, variable);
+	if (!(variable = ft_zero_format(comm, variable, siz_cuant)))
 		return (-1);
 	if (!(variable = writer(siz_cuant, comm, variable)))
 		return (-1);

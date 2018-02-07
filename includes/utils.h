@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 03:51:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/07 07:10:44 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/07 07:40:58 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ char	*ft_dectooct(void *num, size_t len);
 char	*ft_dectohex(void *num, size_t len);
 char	*ft_printmemory(void *mem, size_t len);
 char	*ft_colors(char *str, size_t len);
-void	ft_ajust_params(char *comm, int *siz_cuant, char *variable);
+void	ft_ajust_params(int *siz_cuant, char *variable);
 
 #endif
