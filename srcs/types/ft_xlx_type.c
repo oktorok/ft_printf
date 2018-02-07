@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/07 06:52:09 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/07 07:33:02 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,32 +34,6 @@ static char		*writer(int *siz_cuant, char *comm, char *variab)
 	return (tmp);
 }
 
-static void	ajust_cuant_size(char *comm, int *siz_cuant, char *variable)
-{
-	int len;
-
-	if (!siz_cuant[1] && *variable == '0')
-		*variable = '\0';
-	len = ft_strlen(variable);
-	if (siz_cuant[1] >= 0)
-	{
-		if (siz_cuant[1] <= len)
-			siz_cuant[1] = 0;
-		else
-			siz_cuant[1] -= len;
-		if (siz_cuant[0] < len + siz_cuant[1])
-			siz_cuant[0] = len + siz_cuant[1];
-	}
-	else
-	{
-		siz_cuant[1] = 0;
-		if (siz_cuant[0] < len)
-			siz_cuant[0] = len;
-		if (ft_search_zero_format(comm))
-			siz_cuant[1] = siz_cuant[0] - len;
-	}	
-}
-
 int			ft_xlx_type(char *comm, va_list *ap, char **res, size_t len)
 {
 	int		siz_cuant[2];
@@ -78,7 +52,7 @@ int			ft_xlx_type(char *comm, va_list *ap, char **res, size_t len)
 		if (!(variable = (*mod_selector[ft_mods(comm)])(ap[0], ap[1], comm)))
 			return (-1);
 	ajust_cuant_size(comm, siz_cuant, variable);
-	if (!(variable = ft_zero_format(variable, siz_cuant)))
+	if (!(variable = ft_zero_format(comm, variable, siz_cuant)))
 		return (-1);
 	i = 0;
 	while (variable[i])
