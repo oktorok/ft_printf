@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 04:29:17 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/06 03:35:45 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/07 04:32:49 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,9 @@ static size_t	check_com(char *str, size_t pos, size_t len)
 		if (str[i] == '}')
 		{
 			if ((check_arr(1, str, pos, i) && bool) ||
-			    ((check_arr(1, str, pos, i) ||
-			      check_arr(0, str, pos, i)) && !bool))
+				((check_arr(1, str, pos, i) ||
+				check_arr(0, str, pos, i)) && !bool))
 				return (i);
-			//REVISAR ESTA CONDICION
 			return (0);
 		}
 		i++;
