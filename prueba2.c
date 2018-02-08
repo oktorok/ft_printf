@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/08 09:00:04 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/08 14:55:16 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int Mi = 2147483647;
 int mi = -2147483648;
 wchar_t tyu = 0xbffe;
 wchar_t a[4];
-a[0] = 0x53;
-a[1] = 0xd800;
-a[2] = 0x81000;
+a[0] = 'a';
+a[1] = 254;
+a[2] = 'b';
 a[3] = '\0';
 void *caca = &Mul;
 int *bobo;
@@ -81,7 +81,8 @@ char str[] = "PU{red}TA";
 char	*cosa;
 char	str2[200] = {0};
 //ft_printf("Tu %b Madre", 255);
-T= printf("%s\n", ft_printmemory(cosa, 300));
+T= ft_printf("%S>\n", a); 
+T= printf("%S>\n", a); 
 //ft_putchar('<');
 //ft_putnbr(T);
 //ft_putchar('>');

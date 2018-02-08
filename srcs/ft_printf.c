@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/08 06:33:14 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/08 14:59:42 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int			exec_command(char *str, va_list *ap, size_t len, char **res)
 	return (aux);
 }
 
-int					ft_printf_body(va_list *ap, const char *str, char **res)
+static int		ft_printf_body(va_list *ap, const char *str, char **res)
 {
 	char	*aux_str;
 	char	*head;

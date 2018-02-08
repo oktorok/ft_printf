@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 04:48:06 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/08 06:07:05 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/08 15:00:01 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int			exec_command(char *str, va_list *ap, size_t len, char **res)
 	return (aux);
 }
 
-int					ft_printf_body(va_list *ap, const char *str, char **res)
+static int		ft_printf_body(va_list *ap, const char *str, char **res)
 {
 	char	*aux_str;
 	char	*head;
