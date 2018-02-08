@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 01:08:05 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/07 18:39:44 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/08 05:52:42 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*ft_dectohex(void *num, size_t len)
 	i = 0;
 	aux = s_len - 1;
 	k = 0;
-	while (i < s_len)
+	while ((aux + 1) > 0)
 	{
 		str[aux] = (((char *)num)[i] & (0xF << (4 * k))) >> (4 * k);
 		if (str[aux] >= 10)
