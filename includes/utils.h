@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 03:51:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/07 07:40:58 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/08 16:25:21 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "my_float.h"
 
-static const char	g_colors[8][10] = {"black", "red", "green", "yellow", "blue", "magenta", "cyan", "white"};
+static const char	g_colors[9][10] = {"black", "red", "green", "yellow", "blue", "magenta", "cyan", "white", "eoc"};
 static const char	g_formats[10][10] = {"normal", "bold", "fait", "italic", "underline", "sblink", "rblink", "reverse", "conceal", "crossed"};
 
 char	*ft_wchar(va_list ap, va_list ap2, int *siz_cuant, char *command);
