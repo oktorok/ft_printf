@@ -6,11 +6,11 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 05:48:56 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/07 06:59:50 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/09 07:16:36 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/libftprintf.h"
+#include "libftprintf.h"
 
 static char	*resize_str(char *str, char ac)
 {
@@ -28,7 +28,7 @@ static char	*resize_str(char *str, char ac)
 	return (str);
 }
 
-char		*ft_round(char *str, size_t pos)
+char		*ft_round(char *str, int pos)
 {
 	char	ac;
 

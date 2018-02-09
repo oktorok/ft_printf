@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/08 14:55:16 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/09 07:26:30 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,12 @@ char str[] = "PU{red}TA";
 char	*cosa;
 char	str2[200] = {0};
 //ft_printf("Tu %b Madre", 255);
-T= ft_printf("%S>\n", a); 
-T= printf("%S>\n", a); 
-//ft_putchar('<');
+unsigned int gete = -42;
+T= ft_printf("%f\n", 10000.99999); 
 //ft_putnbr(T);
+T= printf("%+8.1f\n", 10000.99999); 
+//ft_putchar('<');
+ft_putnbr(T);
 //ft_putchar('>');
 
 //ft_putchar('[');

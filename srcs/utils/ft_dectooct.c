@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 23:11:18 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/05 16:04:02 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/08 19:38:22 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ char			*ft_dectooct(void *num, size_t len)
 	s_len--;
 	while ((s_len + 1) > 0)
 		str[s_len--] = ft_rd1(n, i++, &j);
+	ft_memdel(&num);
 	return (str);
 }

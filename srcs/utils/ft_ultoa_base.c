@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ltoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_ultoa_base.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 22:18:25 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/01/30 11:32:50 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/09 00:00:58 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
-static int		calcdigits(long val, int bas)
+static int		calcdigits(unsigned long val, long bas)
 {
-	int dig;
+	long dig;
 
 	dig = 1;
 	while (val / bas)
@@ -25,52 +25,31 @@ static int		calcdigits(long val, int bas)
 	return (dig);
 }
 
-static void		calcnum(char *res, long *value, int base)
+static void		calcnum(char *res, unsigned long *value, int base)
 {
-	if (*value < (long)base)
+	if (*value <(unsigned long)base)
 		*res = *value;
 	else
 		*res = *value % base;
 	if (*res >= 10)
-		*res += -10 + 'A';
+		*res += -10 + 'a';
 	else
 		*res += '0';
 	*value = *value / base;
 }
 
-static	char	*exception()
-{
-	char *str;
-
-	str = ft_strnew(20);
-	ft_strcpy(str,"-9223372036854775808");
-	return (str);
-}
-
-char			*ft_ltoa_base(long value, int base)
+char			*ft_ultoa_base(unsigned long value, int base)
 {
 	int		digits;
-	int		neg;
 	char	*res;
 	int		i;
 
 	if (base < 2 || base > 16)
 		return (NULL);
-	neg = 0;
-	if (value < 0)
-	{
-		if (value == -9223372036854775807 - 1)
-			return (exception());
-		value = -value;
-		if (base == 10)
-			neg = 1;
-	}
 	digits = calcdigits(value, base);
-	if (!(res = ft_strnew(neg + digits + 1)))
+	if (!(res = ft_strnew(digits)))
 		return (NULL);
-	i = digits + neg - 1;
-	if (neg)
-		res[0] = '-';
+	i = digits - 1;
 	while (digits--)
 		calcnum(&(res[i--]), &value, base);
 	return (res);

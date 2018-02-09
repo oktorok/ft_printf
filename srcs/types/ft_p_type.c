@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/08 05:55:09 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/09 04:07:05 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		ft_p_type(char *comm, va_list *ap, char **res, size_t len)
 
 	ft_field_format(siz_cuant, comm, ap[0], ap[1]);
 	variable = (char *)ft_locate_pointer(comm, ap[0], ap[1]);
-	if (!(variable = ft_dectohex(&variable, sizeof(void *))))
+	if (!(variable = ft_dectohex(&variable, sizeof(void *), comm)))
 		return (-1);
 	if (!(variable = ft_hash_format("#x", variable, siz_cuant)))
 		return (-1);

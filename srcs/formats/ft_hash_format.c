@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 13:07:11 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/06 10:41:03 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/09 00:33:15 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static int	check_zeros(char *variable, int *siz_cuant)
 {
-	if (!(siz_cuant[0] < ft_strlen(variable)) && !siz_cuant[1])
+	if (!(siz_cuant[0] < ft_strlen(variable)) && siz_cuant[1] == -1)
 	{
-		if (siz_cuant[0] == 2 && *variable == '0')
+		if (*variable == '0' && *(variable + 1) && *(variable + 1) != '0')
 			return (1);
 		if ((*variable == '0') && (*(variable + 1) == '0')
 			&& *(variable + 2) && siz_cuant[0] == ft_strlen(variable))

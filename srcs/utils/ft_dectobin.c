@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 19:11:22 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/01/30 05:40:34 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/08 19:38:38 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ char	*ft_dectobin(void *num, size_t len)
 		j = 0;
 		i--;
 	}
+	ft_memdel(&num);
 	return (str);
 }

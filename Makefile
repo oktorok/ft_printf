@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/02/08 06:09:32 by mrodrigu         ###   ########.fr        #
+#    Updated: 2018/02/09 07:19:42 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME = libftprintf.a
 
-FLAGS =
+FLAGS = 
 
 MAIN_FUNCS = ft_printf.c \
 			 ft_sprintf.c
@@ -40,25 +40,22 @@ UTILS = ft_wchar.c \
 		ft_utf8.c \
 		ft_locate_pointer.c \
 		ft_locate_date.c \
-		ft_choose_power.c \
-		ft_dtomyd.c \
-		ft_sige.c \
-		ft_take_power.c \
-		ft_multiply.c \
-		ft_grisu.c \
 		ft_dectobin.c \
 		ft_dectooct.c \
 		ft_dectohex.c \
 		ft_printmemory.c \
 		ft_colors.c \
-		ft_ajust_params.c
+		ft_ajust_params.c \
+		ft_ultoa_base.c \
+		ft_ltoa_base.c 
 
 UTILS_FLOAT = ft_choose_power.c \
 			  ft_dtomyd.c \
 			  ft_grisu.c \
 			  ft_sige.c \
 			  ft_take_power.c \
-			  ft_multiply.c 
+			  ft_multiply.c \
+			  ft_round.c
 
 TYPES = ft_sls_type.c \
 		ft_clc_type.c \
@@ -70,7 +67,8 @@ TYPES = ft_sls_type.c \
 		ft_e_type.c \
 		ft_b_type.c \
 		ft_r_type.c \
-		ft_percent_type.c
+		ft_percent_type.c \
+		ft_f_type.c
 
 LIBFT_FUNCTIONS = ft_strncpy.c \
 				  ft_strcpy.c \
@@ -101,8 +99,6 @@ LIBFT_FUNCTIONS = ft_strncpy.c \
 	 			  ft_memdel.c \
 				  ft_strstr.c \
 				  ft_itoa.c \
-				  ft_ultoa_base.c \
-				  ft_ltoa_base.c \
 				  ft_toupper.c \
 				  ft_strcmp.c \
 				  ft_strncmp.c \
@@ -145,7 +141,7 @@ INCLUDES_DIR = includes/
 
 all : $(NAME)
 
-$(NAME) : $(MAINS_OBJ) $(TYPES_OBJ) $(FORMATS_OBJ) $(MODS_OBJ) $(UTILS_OBJ) $(LIBFT_OBJ)
+$(NAME) : $(MAINS_OBJ) $(TYPES_OBJ) $(FORMATS_OBJ) $(MODS_OBJ) $(UTILS_OBJ) $(LIBFT_OBJ) $(UTILS_FLOAT_OBJ)
 	ranlib $(NAME)
 
 $(LIBFT_DIR)%.o : $(LIBFT_DIR)%.c

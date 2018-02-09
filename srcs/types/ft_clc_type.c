@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 04:50:22 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/07 17:03:34 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/09 06:16:57 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,15 @@ static char		*writer(int *siz_cuant, char *comm, char *variab)
 
 static void		ajust_cuant_size(int *siz_cuant, char *variable)
 {
-	ft_ajust_params(siz_cuant, variable);
-	if (!siz_cuant[0])
-	{
-		if (!*variable)
-			siz_cuant[0] = 1;
-		else
-			siz_cuant[0] = ft_strlen(variable);
-	}
+//	ft_ajust_params(siz_cuant, variable);
+	if (!siz_cuant[0] && !*variable)
+		siz_cuant[0] = 1;
 	if (siz_cuant[1] < 0)
-	{
-		if (!*variable)
-			siz_cuant[1] = 1;
-		else	
-			siz_cuant[1] = ft_strlen(variable);
-	}
+		siz_cuant[1] = ft_strlen(variable);
+	if (siz_cuant[0] < ft_strlen(variable))
+		siz_cuant[0] = ft_strlen(variable);
+	if (!*variable)
+		siz_cuant[1] = 1;
 }
 
 int				ft_clc_type(char *comm, va_list *ap, char **res, size_t len)

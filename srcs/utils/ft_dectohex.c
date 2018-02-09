@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 01:08:05 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/08 05:52:42 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/09 03:43:18 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*ft_hexsize(char *n, size_t len, size_t *s_len)
 	return (ft_strnew(sizeof(char) * (*s_len)));
 }
 
-char	*ft_dectohex(void *num, size_t len)
+char	*ft_dectohex(void *num, size_t len, char *comm)
 {
 	size_t	k;
 	char	*str;
@@ -64,5 +64,7 @@ char	*ft_dectohex(void *num, size_t len)
 		else
 			k = 1;
 	}
+	if (!ft_strchr(comm, 'p'))
+		ft_memdel(&num);
 	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 03:49:08 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/07 02:29:44 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/09 06:33:15 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int			ft_p_type(char *str, va_list *ap, char **res, size_t len);
 void		ft_n_type(char *str, va_list *ap, size_t len);
 int			ft_b_type(char *comm, va_list *ap, char **res, size_t len);
 int			ft_r_type(char *comm, va_list *ap, char **res, size_t len);
+int			ft_f_type(char *comm, va_list *ap, char **res, size_t len);
 
 #endif

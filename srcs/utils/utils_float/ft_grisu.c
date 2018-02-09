@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/21 20:52:23 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/06 03:45:04 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/09 06:51:54 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*ft_grisu(double *d)
 	ft_cut(m_prod, ps);
 	str = NULL;
 	if (!(str = ft_strjoinfree(str, ft_itoa(ps[0]))))
-		return (NULL);
+	ft_putchar('A');
 	if (!(str = ft_concatenate(ps, str, 1)))
 		return (NULL);
 	if (!(str = ft_concatenate(ps, str, 2)))

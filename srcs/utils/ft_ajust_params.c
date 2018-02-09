@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 06:58:25 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/07 15:34:42 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/09 06:17:00 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,18 @@ void	ft_ajust_params(int *siz_cuant, char *variable)
 	if (!siz_cuant[1] && *variable == '0')
 		*variable = '\0';
 	len = ft_strlen(variable);
+	siz_cuant[0] = siz_cuant[0] > siz_cuant[1] ? siz_cuant[0] : siz_cuant[1] + neg;
+	if (siz_cuant[0] < len)
+		siz_cuant[0] = len;
 	if (siz_cuant[1] >= 0)
 	{
 		if (siz_cuant[1] <= len - neg)
-			siz_cuant[1] = 0;
-		else
-			siz_cuant[1] -= len - neg;
-		if (siz_cuant[0] < len + siz_cuant[1])
-			siz_cuant[0] = len + siz_cuant[1];
+			siz_cuant[1] = len - neg;
+//		else
+//			siz_cuant[1] -= len - neg;
+//		if (siz_cuant[0] < len + siz_cuant[1])
+//			siz_cuant[0] += siz_cuant[1];
 	}
-	else if (siz_cuant[0] < len)
-			siz_cuant[0] = len;
+//	else if (siz_cuant[0] < len)
+//			siz_cuant[0] = len;
 }
