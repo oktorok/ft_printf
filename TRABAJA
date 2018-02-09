@@ -1,0 +1,20 @@
+Tu round funciona mal, fijate como redondea printf con la flag f y arreglalo
+
+Una funcion que ponga un punto a partir del string SOLO EL STRING ten en cuenta que el string tiene al final el -e16 o el numero que sea, usa el cerebro que es facil
+
+norminette
+
+leaks
+
+una funcion que lo que haga sea recorrer el string comando y ejecute funciones tal y como se las vaya encontrando por ejemplo:
+
+comando = #+4.4 x
+
+comando[0] = # -> ejecuto ft_hash_format(bla bla)
+comando[1] = + -> ejecuto ft_plus_format(bla bla)
+.
+.
+.
+
+
+y por ultimo una funcion capaz de comprobar que todo lo que hay en un comando es algo conocido (basicamente hacer un array con toda la mierda de printf o lo que se te ocurra
