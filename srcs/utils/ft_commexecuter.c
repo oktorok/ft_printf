@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mods.c                                          :+:      :+:    :+:   */
+/*   ft_commexecuter.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/19 19:06:10 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/09 19:29:54 by mrodrigu         ###   ########.fr       */
+/*   Created: 2018/02/09 16:22:15 by mrodrigu          #+#    #+#             */
+/*   Updated: 2018/02/09 16:35:22 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libftprintf.h"
 
-int		ft_mods(char *comm)
+void	ft_commexecuter(char *comm, va_list *ap, char **res, size_t len)
 {
-	int		i;
+	char	i;
 
-	i = 0;
-	while (*g_mods[i])
+	while (*comm)
 	{
-		if (ft_strstr(comm, g_mods[i]) && *g_mods[i])
-			return (i + 1);
-		i++;
+		i = 0;
+		while (g_types[i] != *comm && i < 27)
+			i++;
+		if (i < 27)
+			(type_function[i])(comm, ap, res, len);
 	}
-	return (0);
 }

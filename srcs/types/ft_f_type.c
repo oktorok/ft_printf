@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/09 07:27:09 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/09 10:18:38 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ int			ft_f_type(char *comm, va_list *ap, char **res, size_t len)
 	ajust_cuant_size(variable, siz_cuant);
 	if (!(variable = ft_round(variable, siz_cuant[1])))
 		return (-1);
-	if (!(variable = ft_point(variable)))
+	if (!(variable = ft_putthepoint(variable)))
 		return (-1);
+	ft_putstr(variable);
+	ft_putchar('\n');
 	if (!(variable = ft_apostrophe_format(comm, variable)))
 		return (-1);
 	if (!(variable = ft_zero_format(comm, variable, siz_cuant)))

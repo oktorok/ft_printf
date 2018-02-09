@@ -1,27 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putthepoint.c                                   :+:      :+:    :+:   */
+/*   ft_checkcomm.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/07 05:20:16 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/09 10:48:17 by mrodrigu         ###   ########.fr       */
+/*   Created: 2018/02/09 16:35:44 by mrodrigu          #+#    #+#             */
+/*   Updated: 2018/02/09 18:13:33 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/libftprintf.h"
+#include "../../includes/libftprintf.h"
 
-char	*ft_putthepoint(char *str)
+char	ft_checkcomm(char *comm)
 {
-	char	*new;
-	size_t	pos;
+	char	i;
+	char	bool;
 
-	pos = (ft_strchr(str, 'e') - str - 1) + ft_atoi(ft_strchr(str, 'e') + 1);
-	if (!(new = ft_strnew(ft_strlen(str) + 1)))
-		return (NULL);
-	ft_strncpy(new, str, pos + 1);
-	new[pos + 1] = '.';
-	ft_strcpy(new + pos + 2, str + pos + 1);
-	return (new);
+	bool = 0;
+	while (*comm)
+	{
+		i = 0;
+		while (((bool ? *g_mods[i] : *g_format[i]) != *comm) && i < (bool ? 6 : 8))
+			i++;
+		if (i == (bool ? 6 : 8))
+		{
+			if (bool)
+				break ;
+			else if (ft_isdigit(*comm))
+				comm++;
+			else
+				bool = 1;
+		}
+		else
+			comm++;
+	}
+	if (comm + 1)
+		return (0);
+	return (1);
 }

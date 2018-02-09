@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/02/09 07:19:42 by jagarcia         ###   ########.fr        #
+#    Updated: 2018/02/09 10:17:48 by mrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,8 @@ UTILS_FLOAT = ft_choose_power.c \
 			  ft_sige.c \
 			  ft_take_power.c \
 			  ft_multiply.c \
-			  ft_round.c
+			  ft_round.c \
+			  ft_putthepoint.c
 
 TYPES = ft_sls_type.c \
 		ft_clc_type.c \
