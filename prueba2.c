@@ -6,7 +6,11 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/02/09 07:26:30 by jagarcia         ###   ########.fr       */
+=======
+/*   Updated: 2018/02/08 16:26:25 by mrodrigu         ###   ########.fr       */
+>>>>>>> d18f41b7e5289dbc81678c2f438c3deeac64e33d
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +43,9 @@ int Mi = 2147483647;
 int mi = -2147483648;
 wchar_t tyu = 0xbffe;
 wchar_t a[4];
-a[0] = 'a';
-a[1] = 254;
-a[2] = 'b';
+a[0] = 0x53;
+a[1] = 0xd800;
+a[2] = 0x81000;
 a[3] = '\0';
 void *caca = &Mul;
 int *bobo;
@@ -51,7 +55,7 @@ long gh = -1;
 double d = 9.99999999;
 char g = 1;
 int T;
-char str[] = "PU{red}TA";
+char str[] = "PU{red}TAfghdd;lkf{eoc}g{3,magenta}j;dlkfjh";
 
 #define red   "\033[0;31m"        /* 0 -> normal ;  31 -> red */
 #define cyan  "\033[1;36m"        /* 1 -> bold ;  36 -> cyan */
@@ -78,11 +82,16 @@ char str[] = "PU{red}TA";
 //T = ft_printf("primero segundo %s cuarto quinto %s septimo",NULL, "sexto");
 
 //int *papa = (int *)malloc(8);
-char	*cosa;
+char	cosa[100] = {12, 255, 42, 12, 89, 45, 34, 96};
 char	str2[200] = {0};
 //ft_printf("Tu %b Madre", 255);
+<<<<<<< HEAD
 unsigned int gete = -42;
 T= ft_printf("%f\n", 10000.99999); 
+=======
+T= printf("%s\n", ft_colors(str, ft_strlen(str)));
+//ft_putchar('<');
+>>>>>>> d18f41b7e5289dbc81678c2f438c3deeac64e33d
 //ft_putnbr(T);
 T= printf("%+8.1f\n", 10000.99999); 
 //ft_putchar('<');

@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 04:29:17 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/07 04:32:49 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/08 16:22:24 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ static char		*apply_com(char *str, size_t start, size_t end, size_t *len)
 	{
 		new = ft_strcpy(ft_strnew(5), "\033[");
 		aux = ft_strchr(str + start, ',');
-		if (aux)
+		if (aux && ft_strchr(str + start, '}') > aux)
 			new = ft_strjoinfree(new, select_num(0, str, start,
 					(size_t)((aux++) - str)));
 		else
