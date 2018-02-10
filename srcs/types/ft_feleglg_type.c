@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_oloulu_type.c                                   :+:      :+:    :+:   */
+/*   ft_feleglg_type.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/10 06:27:03 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/10 06:32:11 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static char	*writer(int *siz_cuant, char *comm, char *variab)
 {
 	char	*tmp;
-	int		len_com;
 
 	if (!(tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0])))
 		return (NULL);
@@ -23,39 +22,47 @@ static char	*writer(int *siz_cuant, char *comm, char *variab)
 		ft_strncpy(tmp, variab, ft_strlen(variab));
 	else
 		ft_strcpy(tmp + siz_cuant[0] - ft_strlen(variab), variab);
+    if (comm[ft_strlen(comm) - 1] == 'E')
+        *(ft_strchr(tmp, 'e')) = 'E';
 	ft_strdel(&variab);
 	return (tmp);
 }
 
-int			ft_oloulu_type(char *comm, va_list *ap, char **res, size_t len)
+void		ajust_cuant_size(char *variab, int *siz_cuant)
+{
+	if (siz_cuant[1] > 0)
+		siz_cuant[1]++;
+	if (siz_cuant[1] < 0)
+		siz_cuant[1] = 7;
+	if (siz_cuant[0] < 17 - ft_atoi(ft_strchr(variab, 'e') + 2) + siz_cuant[1])
+		siz_cuant[0] = 17 - ft_atoi(ft_strchr(variab, 'e') + 2) + siz_cuant[1];
+}
+
+int			ft_feleglg_type(char *comm, va_list *ap, char **res, size_t len)
 {
 	int		siz_cuant[2];
 	char	*variable;
-	size_t	i;
 
 	ft_field_format(siz_cuant, comm, ap[0], ap[1]);
 	if (siz_cuant[0] == -2 || siz_cuant[1] == -2)
+  		return (-1);
+	if (!(variable = mod_selector[ft_mods(comm)](ap[0], ap[1], comm)))
 		return (-1);
-	if (ft_strchr(comm, 'O') || ft_strchr(comm, 'U'))
-	{
-		if (!(variable = (*mod_selector[2])(ap[0], ap[1], comm)))
-			return (-1);
-	}
-	else
-		if (!(variable = (*mod_selector[ft_mods(comm)])(ap[0], ap[1], comm)))
-			return (-1);
+	ajust_cuant_size(variable, siz_cuant);
+	if (!(variable = ft_round(variable, siz_cuant[1])))
+		return (-1);
+	ft_putchar('A');
+	if (!(variable = ft_putthepoint(variable, siz_cuant)))
+		return (-1);
+	ft_putchar('A');
 	if (!(variable = ft_apostrophe_format(comm, variable, siz_cuant)))
 		return (-1);
-	ft_ajust_params(siz_cuant, variable);
 	if (!(variable = ft_zero_format(comm, variable, siz_cuant)))
 		return (-1);
-	i = 0;
-	while (variable[i++] != '0')
-	{
-		if (!(variable = ft_hash_format(comm, variable, siz_cuant)))
-			return (-1);
-		break ;
-	}
+	if (!(variable = ft_space_format(comm, variable, siz_cuant)))
+		return (-1);
+	if (!(variable = ft_plus_format(comm, variable, siz_cuant)))
+		return (-1);
 	if (!(variable = writer(siz_cuant, comm, variable)))
 		return (-1);
 	if (!(*res = ft_memjoinfree(*res, variable, len, siz_cuant[0])))

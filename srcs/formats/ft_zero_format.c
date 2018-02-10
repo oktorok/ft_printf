@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 09:12:39 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/09 01:52:18 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/10 03:27:26 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char		*write_zeros(char *variable, int zero_cuant)
 	char    *new_variab;
     int     neg;
 
+	if (zero_cuant < 0)
+		return (variable);
     neg = 0;
     if (!zero_cuant)
         return (variable);
@@ -41,6 +43,13 @@ char		*ft_zero_format(char *comm, char *variable, int *siz_cuant)
 	neg = 0;
 	if (*variable == '-')
 		neg = 1;
+	if (comm[ft_strlen(comm) - 1] == 'f')
+	{
+		if (ft_search_zero_format(comm))
+			return (write_zeros(variable, siz_cuant[0] +
+						neg - ft_strlen(variable)));
+		return (variable);
+	}
 	if (siz_cuant[1] == -1)
 	{
 		if (ft_search_zero_format(comm) && !ft_strchr(comm, '-'))

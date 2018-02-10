@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/09 19:18:34 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/10 07:32:11 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ char	cosa[100] = {12, 255, 42, 12, 89, 45, 34, 96};
 char	str2[200] = {0};
 //ft_printf("Tu %b Madre", 255);
 unsigned int gete = -42;
-//T= printf("%S\n", a); 
-T= ft_printf("%S\n",a); 
+T= printf("%a\n%1$e\n%x\n",4.3,43); 
+//T= ft_printf("%c\n",L'\x23CD'); 
 //ft_putchar('<');
 //ft_putnbr(T);
 //ft_putchar('<');

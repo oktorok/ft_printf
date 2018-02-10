@@ -1,20 +1,54 @@
-Tu round funciona mal, fijate como redondea printf con la flag f y arreglalo
+En la funcion de putthepoint tienes que comprobar que si el string mide 16 no 17 coloque un 0 delante del todo ah y porcierto libera str en esa funcion
 
-Una funcion que ponga un punto a partir del string SOLO EL STRING ten en cuenta que el string tiene al final el -e16 o el numero que sea, usa el cerebro que es facil
+Hay un problema con tu putthepoint provoca segmentation fault con ft-printf("%f\n", 0.000002)
 
-norminette
+He cambiado de opinion, en putpoint que me devuelva el string ya con lo que sobre quitado y 
 
-leaks
+por ejemplo
+siz_cuant[1] = 6;
+variab = 19990000000000000e-16
+variab = ft_putthepoint(blabla, &variab_dec)
+ft_putstr(variab) -> 1.999000
+!!!TEN EN CUENTA EL CASI SIZ_CUANT[1]=0!!!
 
-una funcion que lo que haga sea recorrer el string comando y ejecute funciones tal y como se las vaya encontrando por ejemplo:
+La funcion punto debe devolver el string ya bien hecho por lo que para f y F no hay problema pero si hay una e o una E deben hacer mas modifiaciones
 
-comando = #+4.4 x
+eE -> #la parte entera ya no es la que aparenta, es el primer numero no 0 que encuentres y solo debe haber UN SOLO DIGITO si hay mas los metes en la parte decimal
+	  #la parte decimal la calculas tal cual despues de saber la parte entera
+	  #al final de la parte decimal debes anyadir "e+-a" donde a es la cantidad de posiciones que te has tenido que mover para encontrar la parte entera.
 
-comando[0] = # -> ejecuto ft_hash_format(bla bla)
-comando[1] = + -> ejecuto ft_plus_format(bla bla)
-.
-.
-.
+EJEMPLOS
 
+printf("%.5e", .0999)
 
-y por ultimo una funcion capaz de comprobar que todo lo que hay en un comando es algo conocido (basicamente hacer un array con toda la mierda de printf o lo que se te ocurra
+parte entera logica = 0
+parte decimal logica = .09990
+
+parte entera real = 9
+parte decimal real = .99000
+
+Cuanto hemos tenido que movernos para colocar el punto??
+ 0.0999 -> 00.999 -> 009.99 => 2 posiciones a la derecha (de aqui viene el signo -, a la izquierda seria +)
+
+ por lo que anyadimos al final "e-02"
+
+printf ("%.7",99.45)
+
+parte entera = 9
+parte decimal = .9450000
+
+movimientos??
+99.45 -> 9.945 => 1 posicion a la izquierda
+
+anyadimos "e+01"
+
+(La E mayuscula simplemente en lugar de e+-a pone E+-a no ahgas nada ya lo hare yo)
+
+En algunas funciones uso una funcion que se llama "ajust_cuant_size" porque la funcion "ajust_params" no es generica en esos casos, modifica ajust params anyadiendo un if o lo que sea para que efectue los cambios pertinentes en funcion del tipo 
+
+coje la funcion de ft_printf la que comprueba el tipo y sacala fuera con el nombre ft_types y adapta ft_printf, luego ves a todas las funciones donde veas "if (comm[ft_strlen(comm) - 1] == ='f') y cambia la linea por la funcion esa de forma adaptada.
+
+Lo que has hecho en ft_putthepoint para e ps haz lo mismo para g, g lo que hace es si en la representacion e mas o menos de  e+05 o e-05 entonces se representa con e, en caso contrario se representa como f y sobretdo y mas importante los zeros del final desaparecen, es un poco raro te recomiendo jugar un poco con printf para asegurarte,
+
+Y para acabar decide si hacemos a, mirate este video de un par de minutos y luego te lo piensas
+https://www.youtube.com/watch?v=IeS9gb20PaU 

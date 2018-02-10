@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 04:34:49 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/09 19:14:15 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/10 06:55:42 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,31 @@ static	void	*selector(char *com, va_list ap, va_list ap2)
 	return (ft_locate_pointer(com, ap, ap2));
 }
 
+static void		modify_len(wchar_t *wvariable, int *siz_cuant)
+{
+	int	i;
+	int cuant;
+
+	i = 0;
+	cuant = 0;
+	while (wvariable[i] && siz_cuant[1] >= 0)
+	{
+		cuant += ft_strlen_free((ft_utf8(wvariable[i++])));
+		if (cuant > siz_cuant[1])
+		{
+			cuant -= ft_strlen_free((ft_utf8(wvariable[i - 1])));
+			siz_cuant[1] = cuant;
+			break ;
+		}
+	}
+}
 char		*ft_wchar(va_list ap, va_list ap2, int *siz_cuant, char *comm)
 {
 	wchar_t		*wvariable;
 	char		*res;
 	int			i;
-	int			cuant;
 
 	i = 0;
-	cuant = 0;
 	if (!(wvariable = (wchar_t *)selector(comm, ap, ap2)))
 		return (NULL);
 	res = ft_strnew(0);
@@ -40,17 +56,11 @@ char		*ft_wchar(va_list ap, va_list ap2, int *siz_cuant, char *comm)
 				return (NULL);
 	}
 	if (ft_strchr(comm, 'C') || ft_strchr(comm, 'c'))
-		return (res);
-	i = 0;
-	while (wvariable[i] && siz_cuant[1] >= 0 && *comm)
 	{
-		cuant += ft_strlen_free((ft_utf8(wvariable[i++])));
-		if (cuant > siz_cuant[1])
-		{
-			cuant -= ft_strlen_free((ft_utf8(wvariable[i - 1])));
-			siz_cuant[1] = cuant;
-			break ;
-		}
+		free(wvariable);
+		return (res);
 	}
+	modify_len(wvariable, siz_cuant);
+	free(wvariable);
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 00:15:11 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/08 19:10:53 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/10 01:40:52 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void				ft_debug_num(const char a, const int str);
 void				ft_putbytes(void *src, int size);
 size_t				ft_wstrlen(const wchar_t *str);
 char				*ft_strnjoin(char const *s1,
-char const *s2, unsigned int n);
+char const *s2, unsigned int n, unsigned int n2);
 size_t				ft_strlen_free(char *str);
 char				*ft_strnjoinfree(char *s1, char *s2, unsigned int n);
 char				ft_issdigit(char *str);

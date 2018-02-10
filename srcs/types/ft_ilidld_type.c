@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/08 18:46:01 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/10 05:21:01 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int			ft_ilidld_type(char *comm, va_list *ap, char **res, size_t len)
 	else	
 		if (!(variable = mod_selector[ft_mods(comm)](ap[0], ap[1], comm)))
 			return (-1);
-	if (!(variable = ft_apostrophe_format(comm, variable)))
+	if (!(variable = ft_apostrophe_format(comm, variable, siz_cuant)))
 		return (-1);
 	ft_ajust_params(siz_cuant, variable);
 	if (!(variable = ft_zero_format(comm, variable, siz_cuant)))

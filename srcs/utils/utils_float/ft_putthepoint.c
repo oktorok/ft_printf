@@ -6,13 +6,13 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 05:20:16 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/09 10:48:17 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/10 06:30:43 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/libftprintf.h"
+#include "libftprintf.h"
 
-char	*ft_putthepoint(char *str)
+char	*ft_putthepoint(char *str, int *siz_cuant)
 {
 	char	*new;
 	size_t	pos;
@@ -23,5 +23,10 @@ char	*ft_putthepoint(char *str)
 	ft_strncpy(new, str, pos + 1);
 	new[pos + 1] = '.';
 	ft_strcpy(new + pos + 2, str + pos + 1);
+
+
+	///
+	new = ft_strsub(new, 0, ft_strchr(new, '.') - new + siz_cuant[1]);
+	///
 	return (new);
 }
