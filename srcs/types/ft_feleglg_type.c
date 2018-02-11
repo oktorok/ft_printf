@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/10 06:32:11 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/11 08:00:08 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,8 @@ int			ft_feleglg_type(char *comm, va_list *ap, char **res, size_t len)
 	ajust_cuant_size(variable, siz_cuant);
 	if (!(variable = ft_round(variable, siz_cuant[1])))
 		return (-1);
-	ft_putchar('A');
-	if (!(variable = ft_putthepoint(variable, siz_cuant)))
+	if (!(variable = ft_putthepoint(variable, siz_cuant, comm)))
 		return (-1);
-	ft_putchar('A');
 	if (!(variable = ft_apostrophe_format(comm, variable, siz_cuant)))
 		return (-1);
 	if (!(variable = ft_zero_format(comm, variable, siz_cuant)))
@@ -63,6 +61,8 @@ int			ft_feleglg_type(char *comm, va_list *ap, char **res, size_t len)
 		return (-1);
 	if (!(variable = ft_plus_format(comm, variable, siz_cuant)))
 		return (-1);
+	ft_putstr(variable);
+	ft_putstr("\n");
 	if (!(variable = writer(siz_cuant, comm, variable)))
 		return (-1);
 	if (!(*res = ft_memjoinfree(*res, variable, len, siz_cuant[0])))

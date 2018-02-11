@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:41:29 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/09 22:41:36 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/11 07:59:12 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ t_myfloat	ft_dtomyd(unsigned long int l);
 int			ft_choose_power(int e, int alpha);
 double		ft_sige(double x);
 char		*ft_round(char *str, int pos);
-char		*ft_putthepoint(char *str, int *siz_cuant);
+char		*ft_putthepoint(char *str, int *siz_cuant, char *comm);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/10 06:23:03 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/11 07:31:16 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int			ft_fele_type(char *comm, va_list *ap, char **res, size_t len)
 	int		siz_cuant[2];
 	char	*variable;
 
+	ft_putchar('B');
 	ft_field_format(siz_cuant, comm, ap[0], ap[1]);
 	if (siz_cuant[0] == -2 || siz_cuant[1] == -2)
   		return (-1);
