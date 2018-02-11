@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 05:20:16 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/11 12:54:36 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/11 14:16:39 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,40 @@ static char	*for_e(char *str, int *siz_cuant)
 
 static char	*for_g(char *str, int *siz_cuant)
 {
-	q
+	int 	len;
+	char	*new;
+	char	*aux;
+
+	len = (ft_strchr(str, 'e') - str - 1) + ft_atoi(ft_strchr(str, 'e') + 1);
+	if (len < -4 || len >= (siz_cuant[1] - 1))
+	{
+		new = for_e(str, siz_cuant);
+		len = ft_strchr(new, 'e') - new - 1;
+		while (len >= 0 && (new[len] == '0' || new[len] == '.'))
+			len--;
+		aux = ft_strncpy(ft_strnew(len + 5), new, len + 1);
+		ft_strcpy(aux + (len + 1), ft_strchr(new, 'e'));
+		ft_strdel(&new);
+		return (aux);
+	}
+	else
+	{
+		new = for_f(str, siz_cuant);
+		len = ft_strlen(new) - 1;
+		while (len >= 0 && (new[len] == '0' && new[len] != '.'))
+			new[len--] = 0;
+		new[len] = (new[len] == '.') ? 0 : new[len];
+		return (new);
+	}
 }
 
 char		*ft_putthepoint(char *str, int *siz_cuant, char	*comm)
 {
-	char	type;
-	type = ft_toupper(comm[ft_strlen(comm) - 1]);
-	if (type == 'F')
-		return (for_f(str, siz_cuant));
-	if (type == 'E')
-	return (for_e(str, siz_cuant));
-	return (NULL);
+//	char	type;
+//	type = ft_toupper(comm[ft_strlen(comm) - 1]);
+//	if (type == 'F')
+//		return (for_f(str, siz_cuant));
+//	if (type == 'E')
+//	return (for_e(str, siz_cuant));
+	return (for_g(str, siz_cuant));
 }

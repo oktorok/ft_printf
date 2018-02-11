@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 21:52:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/11 12:52:27 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/11 14:16:53 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ char	str2[200] = {0};
 //ft_printf("Tu %b Madre", 255);
 unsigned int gete = -42;
 //T= printf("%f\n", 0.002);
-T= printf("%f\n",.000005); 
-T= ft_printf("%f\n",.000005); 
+T= printf("%g\n",50000.0000005); 
+T= ft_printf("%f\n",50000.0000005); 
 //T= ft_printf("%c\n",L'\x23CD'); 
 //ft_putchar('<');
 //ft_putnbr(T);
