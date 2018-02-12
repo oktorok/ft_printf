@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/12 16:57:34 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 18:06:17 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char		*search_command(char *str)
 {
-	while (*str != '%' && *str != '{' && *str)
+	while (*str != '%' && *str)
 		str++;
 	return (str);
 }
@@ -118,7 +118,7 @@ int				ft_printf(const char *str, ...)
 		return (-1);
 	else
 	{
-		res = ft_colors(res, len);
+		res = ft_colors(res, (size_t *)(&len));
 		write(1, res, len);
 	}
 	va_end(ap[0]);

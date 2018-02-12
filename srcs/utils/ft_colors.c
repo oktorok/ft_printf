@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 04:29:17 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/12 17:50:34 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 18:25:14 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,11 @@ static char		*apply_com(char *str, size_t start, size_t end, size_t *len)
 	char	*new;
 	char	*aux;
 	char	*res;
-
 	if (!(ft_strncmp("eoc}", str + start, 4)))
 		new = ft_strcpy(ft_strnew(7), "\033[0m");
 	else
 	{
-		new = ft_strcpy(ft_strnew(5), "\033[");
+		new = ft_strcpy(ft_strnew(5), "p033[");
 		aux = ft_strchr(str + start, ',');
 		if (aux && ft_strchr(str + start, '}') > aux)
 			new = ft_strjoinfree(new, select_num(0, str, start,
@@ -119,21 +118,21 @@ static char		*apply_com(char *str, size_t start, size_t end, size_t *len)
 	return (res);
 }
 
-char			*ft_colors(char *str, size_t len)
+char			*ft_colors(char *str, size_t *len)
 {
 	size_t	i;
 	size_t	end;
 
-	if (ft_strlen(str) != len)
-		return (str);
+	//if (ft_strlen(str) != (*len))
+//		return (str);
 	i = 0;
-	while (i < len)
+	while (i < *len)
 	{
 		if (str[i] == '{')
 		{
-			if ((end = check_com(str, i + 1, len)))
+			if ((end = check_com(str, i + 1, *len)))
 			{
-				if (!(str = apply_com(str, i + 1, end, &len)))
+				if (!(str = apply_com(str, i + 1, end, len)))
 					return (NULL);
 			}
 			i++;
