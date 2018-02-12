@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 21:23:52 by jagarcia          #+#    #+#              #
-#    Updated: 2018/02/11 08:23:04 by mrodrigu         ###   ########.fr        #
+#    Updated: 2018/02/12 18:18:52 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,6 @@ SRC = ft_isascii.c \
 	  ft_strsub.c \
 	  ft_bzero.c \
 	  ft_itoa.c \
-	  ft_ltoa.c \
 	  ft_lstnew.c \
 	  ft_memdel.c \
 	  ft_putendl_fd.c \

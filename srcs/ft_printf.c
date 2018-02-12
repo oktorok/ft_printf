@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/12 16:57:34 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 18:24:38 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char		*search_command(char *str)
 {
-	while (*str != '%' && *str != '{' && *str)
+	while (*str != '%' && *str)
 		str++;
 	return (str);
 }
