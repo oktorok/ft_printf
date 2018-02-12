@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/12 13:21:10 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 15:27:14 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,26 @@ static char	*writer(int *siz_cuant, char *comm, char *variab)
 	return (tmp);
 }
 
+static char	*check_formats(char *comm, char *variable, int *siz_cuant)
+{
+	int i;
+
+	if (!(variable = ft_zero_format(comm, variable, siz_cuant)))
+		return (NULL);
+	i = 0;
+	while (variable[i++] != '0')
+	{
+		if (!(variable = ft_hash_format(comm, variable, siz_cuant)))
+			return (NULL);
+		break ;
+	}
+	return (variable);
+}
+
 int			ft_oloulu_type(char *comm, va_list *ap, char **res, size_t len)
 {
 	int		siz_cuant[2];
 	char	*variable;
-	size_t	i;
 
 	ft_field_format(siz_cuant, comm, ap[0], ap[1]);
 	if (siz_cuant[0] == -2 || siz_cuant[1] == -2)
@@ -40,21 +55,13 @@ int			ft_oloulu_type(char *comm, va_list *ap, char **res, size_t len)
 		if (!(variable = (*mod_selector[2])(ap[0], ap[1], comm)))
 			return (-1);
 	}
-	else
-		if (!(variable = (*mod_selector[ft_mods(comm)])(ap[0], ap[1], comm)))
-			return (-1);
+	else if (!(variable = (*mod_selector[ft_mods(comm)])(ap[0], ap[1], comm)))
+		return (-1);
 	if (!(variable = ft_apostrophe_format(comm, variable, siz_cuant)))
 		return (-1);
 	ft_ajust_params(siz_cuant, variable, comm);
-	if (!(variable = ft_zero_format(comm, variable, siz_cuant)))
+	if (!(variable = check_formats(comm, variable, siz_cuant)))
 		return (-1);
-	i = 0;
-	while (variable[i++] != '0')
-	{
-		if (!(variable = ft_hash_format(comm, variable, siz_cuant)))
-			return (-1);
-		break ;
-	}
 	if (!(variable = writer(siz_cuant, comm, variable)))
 		return (-1);
 	if (!(*res = ft_memjoinfree(*res, variable, len, siz_cuant[0])))

@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/12 13:22:40 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 15:27:37 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char		*non_printable(char *variable)
 	return (new_variable);
 }
 
-int			ft_r_type(char *comm, va_list *ap, char **res, size_t len)
+int				ft_r_type(char *comm, va_list *ap, char **res, size_t len)
 {
 	int		siz_cuant[2];
 	char	*variable;
