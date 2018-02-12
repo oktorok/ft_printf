@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/12 13:20:48 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 15:11:42 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,17 @@ static char	*writer(int *siz_cuant, char *comm, char *variab)
 	return (tmp);
 }
 
+static char	*check_formats(char *comm, char *variable, int *siz_cuant)
+{
+	if (!(variable = ft_zero_format(comm, variable, siz_cuant)))
+		return (NULL);
+	if (!(variable = ft_space_format(comm, variable, siz_cuant)))
+		return (NULL);
+	if (!(variable = ft_plus_format(comm, variable, siz_cuant)))
+		return (NULL);
+	return (variable);
+}
+
 int			ft_ilidld_type(char *comm, va_list *ap, char **res, size_t len)
 {
 	int		siz_cuant[2];
@@ -39,17 +50,12 @@ int			ft_ilidld_type(char *comm, va_list *ap, char **res, size_t len)
 		if (!(variable = mod_selector[2](ap[0], ap[1], comm)))
 			return (-1);
 	}
-	else	
-		if (!(variable = mod_selector[ft_mods(comm)](ap[0], ap[1], comm)))
-			return (-1);
+	else if (!(variable = mod_selector[ft_mods(comm)](ap[0], ap[1], comm)))
+		return (-1);
 	if (!(variable = ft_apostrophe_format(comm, variable, siz_cuant)))
 		return (-1);
 	ft_ajust_params(siz_cuant, variable, comm);
-	if (!(variable = ft_zero_format(comm, variable, siz_cuant)))
-		return (-1);
-	if (!(variable = ft_space_format(comm, variable, siz_cuant)))
-		return (-1);
-	if (!(variable = ft_plus_format(comm, variable, siz_cuant)))
+	if (!(variable = check_formats(comm, variable, siz_cuant)))
 		return (-1);
 	if (!(variable = writer(siz_cuant, comm, variable)))
 		return (-1);

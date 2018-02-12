@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/12 12:24:12 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 15:36:21 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,21 @@ static char		*writer(int *siz_cuant, char *comm, char *variab)
 	return (tmp);
 }
 
-static void		ajust_cuant_size(int *siz_cuant, char *variable)
+static char		*null_case(char *variable, char *comm)
 {
-	int len;
+	int t;
 
-	len = ft_strlen(variable);
-	if (siz_cuant[1] > len || siz_cuant[1] < 0)
-		siz_cuant[1] = len;
-	if ((!siz_cuant[0] || siz_cuant[0] < siz_cuant[1]) && siz_cuant[1])
-		siz_cuant[0] = siz_cuant[1];
+	t = comm[ft_strlen(comm) - 1];
+	if (!variable && t != 'S')
+	{
+		ft_strdel(&variable);
+		if (!(variable = ft_strnew(6)))
+			return (NULL);
+		ft_strcpy(variable, "(null)");
+	}
+	else if (!variable && t == 'S')
+		return (NULL);
+	return (variable);
 }
 
 int				ft_sls_type(char *comm, va_list *ap, char **res, size_t len)
@@ -54,16 +60,9 @@ int				ft_sls_type(char *comm, va_list *ap, char **res, size_t len)
 	}
 	else
 		variable = (char *)ft_locate_pointer(comm, ap[0], ap[1]);
-	if (!variable && !ft_strchr(comm, 'S'))
-	{
-		ft_strdel(&variable);
-		if (!(variable = ft_strnew(6)))
-			return (-1);
-		ft_strcpy(variable, "(null)");
-	}
-	else if (!variable && ft_strchr(comm, 'S'))
+	if (!(variable = null_case(variable, comm)))
 		return (-1);
-	ajust_cuant_size(siz_cuant, variable);
+	ajust_params(siz_cuant, variable, comm);
 	if (!(variable = writer(siz_cuant, comm, variable)))
 		return (-1);
 	if (!(*res = ft_memjoinfree(*res, variable, len, siz_cuant[0])))

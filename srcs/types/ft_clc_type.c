@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 04:50:22 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/12 13:20:31 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 15:01:06 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,8 @@ int				ft_clc_type(char *comm, va_list *ap, char **res, size_t len)
 		if (!(variable = ft_wchar(ap[0], ap[1], siz_cuant, comm)))
 			return (-1);
 	}
-	else
-		if (!(variable = (char *)ft_locate_date(comm, 1, ap[0], ap[1])))
-			return (-1);
+	else if (!(variable = (char *)ft_locate_date(comm, 1, ap[0], ap[1])))
+		return (-1);
 	ft_ajust_params(siz_cuant, variable, comm);
 	if (!(variable = writer(siz_cuant, comm, variable)))
 		return (-1);

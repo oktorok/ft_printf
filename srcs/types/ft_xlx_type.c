@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/12 12:43:06 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 15:28:03 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char		*writer(int *siz_cuant, char *comm, char *variab)
 	return (tmp);
 }
 
-int			ft_xlx_type(char *comm, va_list *ap, char **res, size_t len)
+int				ft_xlx_type(char *comm, va_list *ap, char **res, size_t len)
 {
 	int		siz_cuant[2];
 	char	*variable;
