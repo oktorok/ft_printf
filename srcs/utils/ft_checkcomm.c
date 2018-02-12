@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/09 16:35:44 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/09 18:13:33 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/12 15:16:46 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ char	ft_checkcomm(char *comm)
 	while (*comm)
 	{
 		i = 0;
-		while (((bool ? *g_mods[i] : *g_format[i]) != *comm) && i < (bool ? 6 : 8))
+		while (((bool ? *g_mods[i] : *g_format[i]) != *comm)
+				&& i < (bool ? 6 : 8))
 			i++;
 		if (i == (bool ? 6 : 8))
 		{

@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 05:20:16 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/12 14:50:16 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 15:46:22 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static char	*for_f(char *str, int *siz_cuant)
 {
 	char	*new;
 	int		pos;
+
 	pos = (ft_strchr(str, 'e') - str - 1) + ft_atoi(ft_strchr(str, 'e') + 1);
 	if (!(new = ft_strnew(ft_strlen(str) + 1 + ((pos < 0) ? (-pos) : 0))))
 		return (NULL);
@@ -25,13 +26,13 @@ static char	*for_f(char *str, int *siz_cuant)
 		ft_strncpy(new, str, pos + 1);
 	new[(pos < 0) ? 1 : (pos + 1)] = '.';
 	ft_strcpy(new + ((pos < 0) ? (-pos + 1) : (pos + 2)), str +
-	          ((pos < 0) ? 0 : (pos + 1)));
+				((pos < 0) ? 0 : (pos + 1)));
 	new = ft_strsub(new, 0, ft_strchr(new, '.') - new + siz_cuant[1]);
 	ft_strdel(&str);
-	return (new);	
+	return (new);
 }
 
-static char	*for_e(char *str, int *siz_cuant) 
+static char	*for_e(char *str, int *siz_cuant)
 {
 	char	*new;
 	char	*aux;
@@ -44,7 +45,7 @@ static char	*for_e(char *str, int *siz_cuant)
 	new[1] = '.';
 	ft_strncpy(new + 2, str + 1, siz_cuant[1] - 1);
 	new[siz_cuant[1] + 1] = 'e';
-	new[siz_cuant[1] + 2] = (len < 0) ? '-' : '+' ;
+	new[siz_cuant[1] + 2] = (len < 0) ? '-' : '+';
 	aux = ft_itoa(ft_abs(len));
 	ft_strcpy(new + ((ft_abs(len) > 9) ? 3 : 4) + siz_cuant[1], aux);
 	ft_strdel(&aux);
@@ -54,7 +55,7 @@ static char	*for_e(char *str, int *siz_cuant)
 
 static char	*for_g(char *str, int *siz_cuant)
 {
-	int 	len;
+	int		len;
 	char	*new;
 	char	*aux;
 
@@ -81,9 +82,10 @@ static char	*for_g(char *str, int *siz_cuant)
 	}
 }
 
-char		*ft_putthepoint(char *str, int *siz_cuant, char	*comm)
+char		*ft_putthepoint(char *str, int *siz_cuant, char *comm)
 {
 	char	type;
+
 	type = ft_toupper(comm[ft_strlen(comm) - 1]);
 	if (type == 'F')
 		return (for_f(str, siz_cuant));

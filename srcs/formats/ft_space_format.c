@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 06:28:21 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/12 13:24:43 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 15:04:38 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@ static char	*space_float(char *command, char *str, int *siz_cuant)
 	}
 	if ((unsigned long)siz_cuant[0] < ft_strlen(str) + 1)
 		siz_cuant[0]++;
-	if (!(new_str = ft_strjoin(" ",str)))
+	if (!(new_str = ft_strjoin(" ", str)))
 		return (NULL);
 	ft_strdel(&str);
 	return (new_str);
-
 }
 
 static char	*space_normal(char *command, char *str, int *siz_cuant)
@@ -43,13 +42,13 @@ static char	*space_normal(char *command, char *str, int *siz_cuant)
 	}
 	if ((unsigned long)siz_cuant[0] < ft_strlen(str) + 1)
 		siz_cuant[0]++;
-	if (!(new_str = ft_strjoin(" ",str)))
+	if (!(new_str = ft_strjoin(" ", str)))
 		return (NULL);
 	ft_strdel(&str);
 	return (new_str);
 }
 
-char	*ft_space_format(char *command, char *str, int *siz_cuant)
+char		*ft_space_format(char *command, char *str, int *siz_cuant)
 {
 	if (*str != '-')
 		if (ft_strchr(command, ' '))

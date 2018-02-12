@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 04:34:49 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/11 13:17:34 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 15:40:55 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ static void		modify_len(wchar_t *wvariable, int *siz_cuant)
 		}
 	}
 }
-char		*ft_wchar(va_list ap, va_list ap2, int *siz_cuant, char *comm)
+
+char			*ft_wchar(va_list ap, va_list ap2, int *siz_cuant, char *comm)
 {
 	wchar_t		*wvariable;
 	char		*res;
@@ -53,7 +54,7 @@ char		*ft_wchar(va_list ap, va_list ap2, int *siz_cuant, char *comm)
 				|| wvariable[i] >= 0x11ffff || wvariable[i] < 0)
 			return (NULL);
 		if (!(res = ft_strjoinfree(res, ft_utf8(wvariable[i++]))))
-				return (NULL);
+			return (NULL);
 	}
 	if (ft_strchr(comm, 'C') || ft_strchr(comm, 'c'))
 	{

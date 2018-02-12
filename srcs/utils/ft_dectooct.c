@@ -6,11 +6,11 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 23:11:18 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/08 19:38:22 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 15:30:45 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../../includes/libftprintf.h"
 
 static size_t	ft_rd1(char *n, size_t i, size_t *j)
 {
@@ -31,11 +31,20 @@ static size_t	ft_rd1(char *n, size_t i, size_t *j)
 	return (((n[(*j)++] & 0xE0) >> 5) + 48);
 }
 
+static void		octsize_else(size_t *s_len, size_t len)
+{
+	*s_len = (len * 8) - *s_len;
+	if (!((*s_len) % 3))
+		*s_len = *s_len / 3;
+	else
+		*s_len = (*s_len / 3) + 1;
+}
+
 static char		*ft_octsize(char *n, size_t len, size_t *s_len)
 {
 	size_t	i;
 	size_t	j;
-	
+
 	i = len - 1;
 	j = 0;
 	*s_len = 0;
@@ -54,13 +63,7 @@ static char		*ft_octsize(char *n, size_t len, size_t *s_len)
 	if (*s_len >= (len * 8))
 		*s_len = 1;
 	else
-	{
-		*s_len = (len * 8) - *s_len;
-		if (!((*s_len) % 3))
-			*s_len = *s_len / 3;
-		else
-			*s_len = (*s_len / 3) + 1;
-	}
+		octsize_else(s_len, len);
 	return (ft_strnew(sizeof(char) * (*s_len)));
 }
 

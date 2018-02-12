@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/21 20:52:23 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/09 06:51:54 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 15:43:11 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static char	*ft_concatenate(unsigned int *ps, char *str, int n)
 	return (ft_strjoinfree(str, tmp));
 }
 
-char	*ft_grisu(double *d)
+char		*ft_grisu(double *d)
 {
 	t_myfloat		w;
 	unsigned int	ps[3];
@@ -55,12 +55,13 @@ char	*ft_grisu(double *d)
 	ft_cut(m_prod, ps);
 	str = NULL;
 	if (!(str = ft_strjoinfree(str, ft_itoa(ps[0]))))
-	ft_putchar('A');
+		return (NULL);
 	if (!(str = ft_concatenate(ps, str, 1)))
 		return (NULL);
 	if (!(str = ft_concatenate(ps, str, 2)))
 		return (NULL);
-	if (!(str = ft_strjoinfree(str, ft_strjoinfree(ft_memset(ft_strnew(1), 'e', 1), ft_itoa(-k)))))
+	if (!(str = ft_strjoinfree(str,
+		ft_strjoinfree(ft_memset(ft_strnew(1), 'e', 1), ft_itoa(-k)))))
 		return (NULL);
 	return (str);
 }

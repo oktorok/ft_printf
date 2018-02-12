@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 13:07:11 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/12 14:47:18 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 15:01:25 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 static int	check_zeros(char *variable, int *siz_cuant)
 {
-	if (!((unsigned long)siz_cuant[0] < ft_strlen(variable)) && siz_cuant[1] == -1)
+	if (!((unsigned long)siz_cuant[0] <
+			ft_strlen(variable)) && siz_cuant[1] == -1)
 	{
 		if (*variable == '0' && *(variable + 1) && *(variable + 1) != '0')
 			return (1);
 		if ((*variable == '0') && (*(variable + 1) == '0')
-			&& *(variable + 2) && (unsigned long)siz_cuant[0] == ft_strlen(variable))
+			&& *(variable + 2) &&
+			(unsigned long)siz_cuant[0] == ft_strlen(variable))
 			return (2);
 	}
 	return (0);
@@ -83,7 +85,7 @@ static char	*b_hash(char *var, int len)
 	return (aux);
 }
 
-char	*ft_hash_format(char *command, char *variable, int *siz_cuant)
+char		*ft_hash_format(char *command, char *variable, int *siz_cuant)
 {
 	int		len;
 
@@ -96,7 +98,7 @@ char	*ft_hash_format(char *command, char *variable, int *siz_cuant)
 		return (ox_hash(variable, siz_cuant, 'x', len));
 	if (command[ft_strlen(command) - 1] == 'b')
 	{
-		siz_cuant[0] += len /4 + len/ 8 * 2;
+		siz_cuant[0] += len / 4 + len / 8 * 2;
 		return (b_hash(variable, len));
 	}
 	return (variable);

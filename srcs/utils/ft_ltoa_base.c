@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 22:18:25 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/09 00:00:52 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 15:31:59 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ static void		calcnum(char *res, long *value, int base)
 	*value = *value / base;
 }
 
-static	char	*exception()
+static	char	*exception(void)
 {
 	char *str;
 
 	str = ft_strnew(20);
-	ft_strcpy(str,"-9223372036854775808");
+	ft_strcpy(str, "-9223372036854775808");
 	return (str);
 }
 

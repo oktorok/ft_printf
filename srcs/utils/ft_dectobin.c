@@ -6,13 +6,13 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 19:11:22 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/08 19:38:38 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 15:26:28 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*ft_binsize(char *n, size_t len, size_t *i, char *j)
+static char	*ft_binsize(char *n, size_t len, size_t *i, char *j)
 {
 	*i = len - 1;
 	*j = 0;

@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 22:18:25 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/09 00:00:58 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 15:39:39 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int		calcdigits(unsigned long val, long bas)
 
 static void		calcnum(char *res, unsigned long *value, int base)
 {
-	if (*value <(unsigned long)base)
+	if (*value < (unsigned long)base)
 		*res = *value;
 	else
 		*res = *value % base;

@@ -6,13 +6,13 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 01:08:05 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/09 03:43:18 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 15:26:05 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libftprintf.h"
 
-char	*ft_hexsize(char *n, size_t len, size_t *s_len)
+static char	*ft_hexsize(char *n, size_t len, size_t *s_len)
 {
 	long	i;
 	size_t	j;
@@ -38,7 +38,14 @@ char	*ft_hexsize(char *n, size_t len, size_t *s_len)
 	return (ft_strnew(sizeof(char) * (*s_len)));
 }
 
-char	*ft_dectohex(void *num, size_t len, char *comm)
+static char	*for_p(char *str, char *comm, void *num)
+{
+	if (!ft_strchr(comm, 'p'))
+		ft_memdel(&num);
+	return (str);
+}
+
+char		*ft_dectohex(void *num, size_t len, char *comm)
 {
 	size_t	k;
 	char	*str;
@@ -64,7 +71,5 @@ char	*ft_dectohex(void *num, size_t len, char *comm)
 		else
 			k = 1;
 	}
-	if (!ft_strchr(comm, 'p'))
-		ft_memdel(&num);
-	return (str);
+	return (for_p(str, comm, num));
 }

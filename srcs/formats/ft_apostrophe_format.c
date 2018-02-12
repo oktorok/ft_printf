@@ -6,13 +6,13 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/21 01:35:25 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/12 14:48:08 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 14:58:49 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static int cuantity(char *variable)
+static int	cuantity(char *variable)
 {
 	size_t len;
 
@@ -23,12 +23,12 @@ static int cuantity(char *variable)
 		return (len + len / 3 - 2);
 }
 
-static char *add_comas(char *variable)
+static char	*add_comas(char *variable)
 {
-	int j;
-	int i;
-	char *var_head;
-	char *new_variab;
+	int		j;
+	int		i;
+	char	*var_head;
+	char	*new_variab;
 
 	i = cuantity(variable);
 	if (!(new_variab = ft_strnew(i)))
@@ -48,7 +48,7 @@ static char *add_comas(char *variable)
 	return (new_variab);
 }
 
-static char *point(char *variable, int *siz_cuant)
+static char	*point(char *variable, int *siz_cuant)
 {
 	char	*new_variab;
 	char	*varia_part;
@@ -65,7 +65,7 @@ static char *point(char *variable, int *siz_cuant)
 	return (new_variab);
 }
 
-char	*ft_apostrophe_format(char *comm, char *variable, int *siz_cuant)
+char		*ft_apostrophe_format(char *comm, char *variable, int *siz_cuant)
 {
 	int t;
 

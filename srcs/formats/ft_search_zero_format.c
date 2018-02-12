@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 02:47:28 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/07 12:27:22 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 15:05:16 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,17 @@
 
 int		ft_search_zero_format(char *command)
 {
-    while (*command)
-    {   
-        if (ft_isdigit(*command) && *command != '0')
-            return (0);
+	while (*command)
+	{
+		if (ft_isdigit(*command) && *command != '0')
+			return (0);
 		if (*command == '.')
 			return (0);
-        if (*command == '0')
+		if (*command == '0')
 		{
-            return (1);
+			return (1);
 		}
-        command++;
-    }   
-    return (0);
-
+		command++;
+	}
+	return (0);
 }

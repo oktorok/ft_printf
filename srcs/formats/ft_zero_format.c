@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 09:12:39 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/12 13:09:30 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 15:12:14 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,25 @@
 
 char		*write_zeros(char *variable, int zero_cuant)
 {
-	char    *new_variab;
-    int     neg;
+	char	*new_variab;
+	int		neg;
 
 	if (zero_cuant < 0)
 		return (variable);
-    neg = 0;
-    if (!zero_cuant)
-        return (variable);
-    if (!(new_variab = ft_strnew(ft_strlen(variable) + zero_cuant)))
-        return (NULL);
-    if (*variable == '-')
-    {   
-        neg = 1;
-        *new_variab = '-';
-    }   
-    ft_memset(new_variab + neg, '0', zero_cuant);
-    ft_strcat(new_variab, variable + neg);
-    ft_strdel(&variable);
-    return (new_variab);
-
+	neg = 0;
+	if (!zero_cuant)
+		return (variable);
+	if (!(new_variab = ft_strnew(ft_strlen(variable) + zero_cuant)))
+		return (NULL);
+	if (*variable == '-')
+	{
+		neg = 1;
+		*new_variab = '-';
+	}
+	ft_memset(new_variab + neg, '0', zero_cuant);
+	ft_strcat(new_variab, variable + neg);
+	ft_strdel(&variable);
+	return (new_variab);
 }
 
 char		*ft_zero_format(char *comm, char *variable, int *siz_cuant)
@@ -48,9 +47,9 @@ char		*ft_zero_format(char *comm, char *variable, int *siz_cuant)
 	if (t == 'F' || t == 'G' || t == 'E')
 	{
 		if (ft_search_zero_format(comm))
-			return (write_zeros(variable, siz_cuant[0] +
-						neg - ft_strlen(variable)));
-		return (variable);
+			return (write_zeros(variable,
+						siz_cuant[0] + neg - ft_strlen(variable)));
+			return (variable);
 	}
 	if (siz_cuant[1] == -1)
 	{
