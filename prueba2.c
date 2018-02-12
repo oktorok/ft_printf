@@ -6,12 +6,12 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 17:56:49 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/12 18:50:37 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/12 18:53:10 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libftprintf.h"
 int main(void)
 {
-  ft_printf("{red}P{eoc}U{green}TA\n");
+  ft_printf("PUTA\n");
   return (0);
 }
