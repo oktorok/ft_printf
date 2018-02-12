@@ -6,12 +6,12 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 17:56:49 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/12 18:53:10 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/12 19:29:46 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libftprintf.h"
 int main(void)
 {
-  ft_printf("PUTA\n");
+  ft_printf("{C:2,C:160}PUTA\n");
   return (0);
 }

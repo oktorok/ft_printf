@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 04:29:17 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/12 18:50:11 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/12 19:28:20 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char		check_arr(char type, char *str, int pos, int i)
 		}
 		j++;
 	}
-	if ((ft_atoi(aux) <= (type ? 255 : 9)) && ft_issdigit(aux))
+	if ((ft_atoi(aux + 2) <= (type ? 255 : 9)) && !ft_strncmp("C:", aux, 2) && ft_issdigit(aux + 2))
 	{
 		ft_strdel(&aux);
 		return (2);
@@ -84,7 +84,7 @@ static char		*select_num(char type, char *str, int start, int end)
 		}
 		i++;
 	}
-	i = ft_atoi(aux);
+	i = ft_atoi(aux + 2);
 	aux[0] = type ? 'm' : ';';
 	aux[1] = '\0';
 	return (ft_strjoinfree(ft_itoa(i), aux));
