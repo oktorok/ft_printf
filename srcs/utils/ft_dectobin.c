@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 19:11:22 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/12 15:26:28 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/12 15:56:46 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char	*ft_binsize(char *n, size_t len, size_t *i, char *j)
 			((((len - 1) - *i) * 8) + (*j)))));
 }
 
-char	*ft_dectobin(void *num, size_t len)
+char		*ft_dectobin(void *num, size_t len)
 {
 	char	*n;
 	char	*str;
