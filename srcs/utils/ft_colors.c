@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 04:29:17 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/12 14:49:30 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 16:22:05 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,8 @@ char			*ft_colors(char *str, size_t len)
 	size_t	i;
 	size_t	end;
 
+	if (ft_strlen(str) != len)
+		return(str);
 	i = 0;
 	while (i < len)
 	{

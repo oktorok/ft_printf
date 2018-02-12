@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 04:48:06 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/12 16:03:02 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/12 16:24:40 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,10 @@ int				ft_sprintf(char *buff, const char *str, ...)
 	else if (len == 0 && !res)
 		return (-1);
 	else
+	{
+		res = ft_colors(res, len);
 		ft_memcpy(buff, res, len);
+	}
 	va_end(ap[0]);
 	va_end(ap[1]);
 	ft_strdel(&res);
