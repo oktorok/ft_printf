@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/12 15:36:21 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 16:24:02 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int				ft_sls_type(char *comm, va_list *ap, char **res, size_t len)
 		variable = (char *)ft_locate_pointer(comm, ap[0], ap[1]);
 	if (!(variable = null_case(variable, comm)))
 		return (-1);
-	ajust_params(siz_cuant, variable, comm);
+	ft_ajust_params(siz_cuant, variable, comm);
 	if (!(variable = writer(siz_cuant, comm, variable)))
 		return (-1);
 	if (!(*res = ft_memjoinfree(*res, variable, len, siz_cuant[0])))

@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 04:48:06 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/12 16:24:40 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/12 16:58:00 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int		exec_command(char *str, va_list *ap, size_t len, char **res)
 	}
 	if (n == 27)
 		return (0);
-	aux = (*type_function[n])(command, ap, res, len);
+	aux = (*g_type_func[n])(command, ap, res, len);
 	ft_strdel(&command);
 	return (aux);
 }

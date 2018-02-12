@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/02/12 13:12:26 by jagarcia         ###   ########.fr        #
+#    Updated: 2018/02/12 16:48:17 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -149,38 +149,41 @@ $(LIBFT_DIR)%.o : $(LIBFT_DIR)%.c
 	$(MAKE) -C $(LIBFT_DIR) --no-print-directory $(@F)
 	ar -rs $(NAME) $@ 
 
-$(OBJ_DIR)%.o : $(MAINS_DIR)%.c | dir_objects
+$(OBJ_DIR)%.o : $(MAINS_DIR)%.c
 	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
-	mv -f $(@F) $(OBJ_DIR)
-	ar -rs $(NAME) $@ 
-
-$(OBJ_DIR)%.o : $(FORMATS_DIR)%.c | dir_objects
-	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
-	mv -f $(@F) $(OBJ_DIR)
-	ar -rs $(NAME) $@ 
-
-$(OBJ_DIR)%.o : $(TYPES_DIR)%.c | dir_objects
-	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
-	mv -f $(@F) $(OBJ_DIR)
-	ar -rs $(NAME) $@ 
-
-$(OBJ_DIR)%.o : $(UTILS_DIR)%.c | dir_objects
-	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
-	mv -f $(@F) $(OBJ_DIR)
-	ar -rs $(NAME) $@ 
-
-$(OBJ_DIR)%.o : $(UTILS_FLOAT_DIR)%.c | dir_objects
-	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
-	mv -f $(@F) $(OBJ_DIR)
-	ar -rs $(NAME) $@ 
-
-$(OBJ_DIR)%.o : $(MODS_DIR)%.c | dir_objects
-	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
-	mv -f $(@F) $(OBJ_DIR)
-	ar -rs $(NAME) $@ 
-
-dir_objects:
 	mkdir -p $(OBJ_DIR)
+	mv -f $(@F) $(OBJ_DIR)
+	ar -rs $(NAME) $@ 
+
+$(OBJ_DIR)%.o : $(FORMATS_DIR)%.c
+	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
+	mkdir -p $(OBJ_DIR)
+	mv -f $(@F) $(OBJ_DIR)
+	ar -rs $(NAME) $@ 
+
+$(OBJ_DIR)%.o : $(TYPES_DIR)%.c
+	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
+	mkdir -p $(OBJ_DIR)
+	mv -f $(@F) $(OBJ_DIR)
+	ar -rs $(NAME) $@ 
+
+$(OBJ_DIR)%.o : $(UTILS_DIR)%.c
+	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
+	mkdir -p $(OBJ_DIR)
+	mv -f $(@F) $(OBJ_DIR)
+	ar -rs $(NAME) $@ 
+
+$(OBJ_DIR)%.o : $(UTILS_FLOAT_DIR)%.c
+	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
+	mkdir -p $(OBJ_DIR)
+	mv -f $(@F) $(OBJ_DIR)
+	ar -rs $(NAME) $@ 
+
+$(OBJ_DIR)%.o : $(MODS_DIR)%.c
+	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
+	mkdir -p $(OBJ_DIR)
+	mv -f $(@F) $(OBJ_DIR)
+	ar -rs $(NAME) $@ 
 
 clean:
 	rm -f $(OBJ_SRC) $(LIBFT_OBJ)

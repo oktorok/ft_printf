@@ -1,6 +1,0 @@
-find . -type f -name ".*.sw*" -exec rm {} \;
-read -p $'What do you  want to add?:\n' cosa
-git add $cosa;
-read -p $'El puto mensaje del commit:\n' mensaje
-git commit -m "$mensaje";
-git push origin master;

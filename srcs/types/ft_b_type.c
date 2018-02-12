@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/12 13:21:26 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 17:35:12 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int			ft_b_type(char *comm, va_list *ap, char **res, size_t len)
 	ft_field_format(siz_cuant, comm, ap[0], ap[1]);
 	if (siz_cuant[0] == -2 || siz_cuant[1] == -2)
 		return (-1);
-	if (!(variable = (*mod_selector[ft_mods(comm)])(ap[0], ap[1], comm)))
+	if (!(variable = (*g_mod_selector[ft_mods(comm)])(ap[0], ap[1], comm)))
 		return (-1);
 	ft_ajust_params(siz_cuant, variable, comm);
 	if (!(variable = ft_zero_format(comm, variable, siz_cuant)))

@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 06:58:25 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/12 15:16:07 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/12 16:37:03 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ static void	ajust_num_hex_oct_bin(int *siz_cuant, char *variable)
 static void	ajust_float(int *siz_cuant, char *variab)
 {
 	int exp;
+	int len;
 
+	len = ft_strlen(variab) - 4;
 	exp = ft_atoi(ft_strchr(variab, 'e') + 2);
 	if (siz_cuant[1] > 0)
 		siz_cuant[1]++;
@@ -46,8 +48,8 @@ static void	ajust_float(int *siz_cuant, char *variab)
 		siz_cuant[1] = 7;
 	if (exp > 16)
 		siz_cuant[0] = siz_cuant[1] + 1;
-	else if (siz_cuant[0] < 17 - exp + siz_cuant[1])
-		siz_cuant[0] = 17 - exp + siz_cuant[1];
+	else if (siz_cuant[0] < len - exp + siz_cuant[1])
+		siz_cuant[0] = len - exp + siz_cuant[1];
 	return ;
 }
 
