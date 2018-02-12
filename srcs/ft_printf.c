@@ -6,20 +6,20 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/12 13:19:37 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 15:58:21 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static char			*search_command(char *str)
+static char		*search_command(char *str)
 {
 	while (*str != '%' && *str != '{' && *str)
 		str++;
 	return (str);
 }
 
-static int	find_end(char *str)
+static int		find_end(char *str)
 {
 	unsigned int	pos;
 	unsigned int	end;
@@ -34,14 +34,13 @@ static int	find_end(char *str)
 			pos = 0;
 			end++;
 		}
-
 	}
 	if (!str[end])
 		return (0);
 	return (end);
 }
 
-static int			exec_command(char *str, va_list *ap, size_t len, char **res)
+static int		exec_command(char *str, va_list *ap, size_t len, char **res)
 {
 	char			*command;
 	int				aux;
