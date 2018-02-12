@@ -6,17 +6,19 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 03:51:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/12 12:27:15 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 17:33:29 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
-#define UTILS_H
+# define UTILS_H
 
-#include "my_float.h"
+# include "my_float.h"
 
-static const char	g_colors[9][10] = {"black", "red", "green", "yellow", "blue", "magenta", "cyan", "white", "eoc"};
-static const char	g_formats[10][10] = {"normal", "bold", "fait", "italic", "underline", "sblink", "rblink", "reverse", "conceal", "crossed"};
+static const char	g_colors[9][10] = {"black", "red", "green", "yellow",
+	"blue", "magenta", "cyan", "white", "eoc"};
+static const char	g_formats[10][10] = {"normal", "bold", "fait", "italic",
+	"underline", "sblink", "rblink", "reverse", "conceal", "crossed"};
 
 char	*ft_wchar(va_list ap, va_list ap2, int *siz_cuant, char *command);
 char	*ft_utf8(wchar_t num);
