@@ -6,13 +6,13 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 04:29:17 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/12 18:25:14 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/12 18:50:11 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libftprintf.h"
 
-static char		check_arr(char type, char *str, size_t pos, size_t i)
+static char		check_arr(char type, char *str, int pos, int i)
 {
 	int		j;
 	char	*aux;
@@ -38,9 +38,9 @@ static char		check_arr(char type, char *str, size_t pos, size_t i)
 	return (0);
 }
 
-static size_t	check_com(char *str, size_t pos, size_t len)
+static int	check_com(char *str, int pos, int len)
 {
-	size_t	i;
+	int	i;
 	char	bool;
 
 	bool = 0;
@@ -66,7 +66,7 @@ static size_t	check_com(char *str, size_t pos, size_t len)
 	return (0);
 }
 
-static char		*select_num(char type, char *str, size_t start, size_t end)
+static char		*select_num(char type, char *str, int start, int end)
 {
 	char	*aux;
 	int		i;
@@ -90,7 +90,7 @@ static char		*select_num(char type, char *str, size_t start, size_t end)
 	return (ft_strjoinfree(ft_itoa(i), aux));
 }
 
-static char		*apply_com(char *str, size_t start, size_t end, size_t *len)
+static char		*apply_com(char *str, int start, int end, int *len)
 {
 	char	*new;
 	char	*aux;
@@ -99,15 +99,15 @@ static char		*apply_com(char *str, size_t start, size_t end, size_t *len)
 		new = ft_strcpy(ft_strnew(7), "\033[0m");
 	else
 	{
-		new = ft_strcpy(ft_strnew(5), "p033[");
+		new = ft_strcpy(ft_strnew(5), "\033[");
 		aux = ft_strchr(str + start, ',');
 		if (aux && ft_strchr(str + start, '}') > aux)
 			new = ft_strjoinfree(new, select_num(0, str, start,
-					(size_t)((aux++) - str)));
+					(int)((aux++) - str)));
 		else
 			aux = str + start;
 		new = ft_strjoinfree(new, ft_strcpy(ft_strnew(5), "38;5;"));
-		new = ft_strjoinfree(new, select_num(1, str, (size_t)(aux - str), end));
+		new = ft_strjoinfree(new, select_num(1, str, (int)(aux - str), end));
 	}
 	if (!new)
 		return (NULL);
@@ -118,13 +118,13 @@ static char		*apply_com(char *str, size_t start, size_t end, size_t *len)
 	return (res);
 }
 
-char			*ft_colors(char *str, size_t *len)
+char			*ft_colors(char *str, int *len)
 {
-	size_t	i;
-	size_t	end;
+	int	i;
+	int	end;
 
-	//if (ft_strlen(str) != (*len))
-//		return (str);
+	if ((int)ft_strlen(str) != (*len))
+		return (str);
 	i = 0;
 	while (i < *len)
 	{
