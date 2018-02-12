@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/12 16:24:02 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 19:00:33 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ static char		*null_case(char *variable, char *comm)
 	int t;
 
 	t = comm[ft_strlen(comm) - 1];
-	if (!variable && t != 'S')
+	if (!variable)
 	{
 		ft_strdel(&variable);
 		if (!(variable = ft_strnew(6)))
 			return (NULL);
 		ft_strcpy(variable, "(null)");
 	}
-	else if (!variable && t == 'S')
-		return (NULL);
+//	else if (!variable && t == 'S')
+//		return (NULL);
 	return (variable);
 }
 
@@ -54,10 +54,7 @@ int				ft_sls_type(char *comm, va_list *ap, char **res, size_t len)
 	if (siz_cuant[0] == -2 || siz_cuant[1] == -2)
 		return (-1);
 	if (ft_mods(comm) == 2 || ft_strchr(comm, 'S'))
-	{
-		if (!(variable = ft_wchar(ap[0], ap[1], siz_cuant, comm)))
-			return (-1);
-	}
+		variable = ft_wchar(ap[0], ap[1], siz_cuant, comm);
 	else
 		variable = (char *)ft_locate_pointer(comm, ap[0], ap[1]);
 	if (!(variable = null_case(variable, comm)))
