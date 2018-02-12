@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 04:29:17 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/12 16:22:05 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/12 17:50:34 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char		check_arr(char type, char *str, size_t pos, size_t i)
 		}
 		j++;
 	}
-	if ((atoi(aux) <= (type ? 255 : 9)) && ft_issdigit(aux))
+	if ((ft_atoi(aux) <= (type ? 255 : 9)) && ft_issdigit(aux))
 	{
 		ft_strdel(&aux);
 		return (2);
@@ -125,7 +125,7 @@ char			*ft_colors(char *str, size_t len)
 	size_t	end;
 
 	if (ft_strlen(str) != len)
-		return(str);
+		return (str);
 	i = 0;
 	while (i < len)
 	{
