@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sprintf.c                                       :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/31 04:48:06 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/12 18:49:38 by mrodrigu         ###   ########.fr       */
+/*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
+/*   Updated: 2018/02/12 18:50:46 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char		*search_command(char *str)
 {
-	while (*str != '%' && *str != '{' && *str)
+	while (*str != '%' && *str)
 		str++;
 	return (str);
 }
@@ -98,7 +98,7 @@ static int		ft_printf_body(va_list *ap, const char *str, char **res)
 	return (len);
 }
 
-int				ft_sprintf(char *buff, const char *str, ...)
+int				ft_printf(const char *str, ...)
 {
 	char		*res;
 	va_list		ap[2];
@@ -118,8 +118,8 @@ int				ft_sprintf(char *buff, const char *str, ...)
 		return (-1);
 	else
 	{
-		res = ft_colors(res, &len);
-		ft_memcpy(buff, res, len);
+	//	res = ft_colors(res, &len);
+		write(1, res, len);
 	}
 	va_end(ap[0]);
 	va_end(ap[1]);
