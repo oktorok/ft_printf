@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 04:34:49 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/10 06:55:42 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/11 13:17:34 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ char		*ft_wchar(va_list ap, va_list ap2, int *siz_cuant, char *comm)
 		return (res);
 	}
 	modify_len(wvariable, siz_cuant);
-	free(wvariable);
+	if (ft_toupper(comm[ft_strlen(comm) - 1]) == 'C')
+		free(wvariable);
 	return (res);
 }

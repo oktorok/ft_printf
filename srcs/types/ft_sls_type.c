@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/10 06:35:46 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/11 13:18:37 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ static char		*writer(int *siz_cuant, char *comm, char *variab)
 		tmp = ft_strncpy(tmp, variab, siz_cuant[1]);
 	else
 		ft_strncpy(tmp + siz_cuant[0] - siz_cuant[1], variab, siz_cuant[1]);
-	if (ft_mods(comm) == 2 || ft_strchr(comm, 'S') || !(ft_strcmp(variab, "(null)")))
-		ft_strdel(&variab);//hay que ver tambien si tiene la 'S' a parte de la 'l'?
+	if (ft_mods(comm) == 2 || ft_strchr(comm, 'S') ||
+			!(ft_strcmp(variab, "(null)")))
+		ft_strdel(&variab);
 	return (tmp);
 }
 

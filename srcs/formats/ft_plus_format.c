@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 06:41:32 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/10 05:20:05 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/11 13:15:40 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static char	*plus_normal(char *comm, char *str, int *siz_cuant)
 
 	if (*str == ' ')
 		return (an_space(str));
-	if (*str == '0' && ft_isdigit(*(str + 1)) && !siz_cuant[1])
+	if (*str == '0' && ft_isdigit(*(str + 1)) && siz_cuant[1] < 0)
 	{
 	   	*str = '+';
    		return (str);
