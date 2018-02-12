@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 09:12:39 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/10 03:27:26 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 13:09:30 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,13 @@ char		*write_zeros(char *variable, int zero_cuant)
 char		*ft_zero_format(char *comm, char *variable, int *siz_cuant)
 {
 	int neg;
+	int t;
 
+	t = ft_toupper(comm[ft_strlen(comm) - 1]);
 	neg = 0;
 	if (*variable == '-')
 		neg = 1;
-	if (comm[ft_strlen(comm) - 1] == 'f')
+	if (t == 'F' || t == 'G' || t == 'E')
 	{
 		if (ft_search_zero_format(comm))
 			return (write_zeros(variable, siz_cuant[0] +

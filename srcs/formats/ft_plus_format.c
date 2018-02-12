@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 06:41:32 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/11 13:15:40 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 14:46:34 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*an_space(char *str)
 	return (new_str);
 }
 
-static char	*plus_float(char *comm, char *str, int *siz_cuant)
+static char	*plus_float(char *str, int *siz_cuant)
 {
 	char	*new_str;
 
@@ -39,7 +39,7 @@ static char	*plus_float(char *comm, char *str, int *siz_cuant)
 	   	*str = '+';
    		return (str);
 	}
-	if (siz_cuant[0] < ft_strlen(str) + 1)
+	if ((unsigned long)siz_cuant[0] < ft_strlen(str) + 1)
 		siz_cuant[0]++;
 	if (!(new_str = ft_strjoin("+", str)))
 		return (NULL);
@@ -47,7 +47,7 @@ static char	*plus_float(char *comm, char *str, int *siz_cuant)
 	return (new_str);
 }
 
-static char	*plus_normal(char *comm, char *str, int *siz_cuant)
+static char	*plus_normal(char *str, int *siz_cuant)
 {
 	char	*new_str;
 
@@ -58,7 +58,7 @@ static char	*plus_normal(char *comm, char *str, int *siz_cuant)
 	   	*str = '+';
    		return (str);
 	}
-	if (siz_cuant[0] < ft_strlen(str) + 1)
+	if ((unsigned long)siz_cuant[0] < ft_strlen(str) + 1)
 		siz_cuant[0]++;
 	if (!(new_str = ft_strjoin("+", str)))
 		return (NULL);
@@ -72,8 +72,8 @@ char	*ft_plus_format(char *command, char *str, int *siz_cuant)
 		if (ft_strchr(command, '+'))
 		{
 			if (command[ft_strlen(command) - 1] == 'f')
-				return (plus_float(command, str, siz_cuant));
-			return (plus_normal(command, str, siz_cuant));
+				return (plus_float(str, siz_cuant));
+			return (plus_normal(str, siz_cuant));
 		}
 	return (str);
 }

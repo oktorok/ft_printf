@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 04:48:06 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/08 15:00:01 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/12 13:20:07 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int			exec_command(char *str, va_list *ap, size_t len, char **res)
 {
 	char			*command;
 	int				aux;
-	char			n;
+	int				n;
 
 	n = 0;
 	if (!*str)

@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/07 18:56:23 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 13:22:52 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static char	*writer(int *siz_cuant, char *comm, char *variab)
 {
 	char	*tmp;
-	int		len_com;
+
 	if (ft_search_zero_format(comm))
 	{
 		if (!(tmp = ft_memset(ft_strnew(siz_cuant[0]), '0', siz_cuant[0])))

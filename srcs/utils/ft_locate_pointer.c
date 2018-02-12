@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 18:32:01 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/09 03:42:16 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 14:48:34 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void		*ft_locate_pointer(char *comm, va_list ap, va_list ap2)
 {
 	int		loc;
-	int		i;
 	va_list	ap3;
 	void	*variable;
 

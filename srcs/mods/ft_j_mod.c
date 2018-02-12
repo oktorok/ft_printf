@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 01:33:10 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/09 03:56:20 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 14:48:25 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static char *ultoa(char *comm, va_list ap, va_list ap2)
 char	*ft_j_mod(va_list ap, va_list ap2, char *comm)
 {
 	char	comand;
-	void	*aux;
 
 	comand = comm[ft_strlen(comm) - 1];
 	if ((comand == 'd') || (comand == 'i'))

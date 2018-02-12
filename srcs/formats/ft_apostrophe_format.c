@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/21 01:35:25 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/10 04:53:12 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 14:48:08 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,27 +52,27 @@ static char *point(char *variable, int *siz_cuant)
 {
 	char	*new_variab;
 	char	*varia_part;
+	size_t	len;
 
-
+	len = ft_strlen(new_variab);
 	varia_part = ft_strsub(variable, 0, ft_strchr(variable, '.') - variable);
 	varia_part = add_comas(varia_part);
 	new_variab = ft_strjoin(varia_part, ft_strchr(variable, '.'));
 	ft_strdel(&variable);
 	ft_strdel(&varia_part);
-	if (siz_cuant[0] < ft_strlen(new_variab))
-		siz_cuant[0] = ft_strlen(new_variab);
+	if ((unsigned long)siz_cuant[0] < len)
+		siz_cuant[0] = len;
 	return (new_variab);
 }
 
 char	*ft_apostrophe_format(char *comm, char *variable, int *siz_cuant)
 {
-	char	*var_head;
-	char	*new_variab;
-	int		i;
+	int t;
 
+	t = ft_toupper(comm[ft_strlen(comm) - 1]);
 	if (!(ft_strchr(comm, '\'')))
 		return (variable);
-	if (comm[ft_strlen(comm) - 1] == 'f')
+	if (t == 'F' || t == 'G' || t == 'E')
 		return (point(variable, siz_cuant));
 	return (add_comas(variable));
 }

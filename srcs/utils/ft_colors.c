@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 04:29:17 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/08 16:22:24 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/12 14:49:30 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char		check_arr(char type, char *str, size_t pos, size_t i)
 {
-	char	j;
+	int		j;
 	char	*aux;
 
 	j = 0;
@@ -69,7 +69,7 @@ static size_t	check_com(char *str, size_t pos, size_t len)
 static char		*select_num(char type, char *str, size_t start, size_t end)
 {
 	char	*aux;
-	char	i;
+	int		i;
 
 	if (!(aux = ft_strsub(str, start, end - start)))
 		return (NULL);

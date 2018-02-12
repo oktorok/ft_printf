@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/11 08:00:08 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/12 12:27:50 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,6 @@ static char	*writer(int *siz_cuant, char *comm, char *variab)
 	return (tmp);
 }
 
-void		ajust_cuant_size(char *variab, int *siz_cuant)
-{
-	if (siz_cuant[1] > 0)
-		siz_cuant[1]++;
-	if (siz_cuant[1] < 0)
-		siz_cuant[1] = 7;
-	if (siz_cuant[0] < 17 - ft_atoi(ft_strchr(variab, 'e') + 2) + siz_cuant[1])
-		siz_cuant[0] = 17 - ft_atoi(ft_strchr(variab, 'e') + 2) + siz_cuant[1];
-}
-
 int			ft_feleglg_type(char *comm, va_list *ap, char **res, size_t len)
 {
 	int		siz_cuant[2];
@@ -48,7 +38,7 @@ int			ft_feleglg_type(char *comm, va_list *ap, char **res, size_t len)
   		return (-1);
 	if (!(variable = mod_selector[ft_mods(comm)](ap[0], ap[1], comm)))
 		return (-1);
-	ajust_cuant_size(variable, siz_cuant);
+	ft_ajust_params(siz_cuant, variable, comm);
 	if (!(variable = ft_round(variable, siz_cuant[1])))
 		return (-1);
 	if (!(variable = ft_putthepoint(variable, siz_cuant, comm)))
@@ -61,8 +51,6 @@ int			ft_feleglg_type(char *comm, va_list *ap, char **res, size_t len)
 		return (-1);
 	if (!(variable = ft_plus_format(comm, variable, siz_cuant)))
 		return (-1);
-	ft_putstr(variable);
-	ft_putstr("\n");
 	if (!(variable = writer(siz_cuant, comm, variable)))
 		return (-1);
 	if (!(*res = ft_memjoinfree(*res, variable, len, siz_cuant[0])))

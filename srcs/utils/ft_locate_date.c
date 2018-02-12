@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 18:32:01 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/03 01:24:48 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 14:48:53 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ static void		*selector(int mem, va_list ap)
 void			*ft_locate_date(char *comm, int mem, va_list ap, va_list ap2)
 {
 	int		loc;
-	int		i;
 	va_list	ap3;
 	void	*variable;
 

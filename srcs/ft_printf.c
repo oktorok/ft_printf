@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/10 06:57:15 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 13:19:37 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int			exec_command(char *str, va_list *ap, size_t len, char **res)
 {
 	char			*command;
 	int				aux;
-	char			n;
+	int				n;
 
 	n = 0;
 	if (!*str)

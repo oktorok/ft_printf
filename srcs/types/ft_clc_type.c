@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 04:50:22 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/10 06:55:52 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 13:20:31 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 static char		*writer(int *siz_cuant, char *comm, char *variab)
 {
 	char	*tmp;
-	char	*res_aux;
-	int		nul;
 
 	if (!(tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0])))
 		return (NULL);
@@ -26,19 +24,6 @@ static char		*writer(int *siz_cuant, char *comm, char *variab)
 		ft_strncpy(tmp + siz_cuant[0] - siz_cuant[1], variab, siz_cuant[1]);
 	ft_strdel(&variab);
 	return (tmp);
-}
-
-static void		ajust_cuant_size(int *siz_cuant, char *variable)
-{
-//	ft_ajust_params(siz_cuant, variable);
-	if (!siz_cuant[0] && !*variable)
-		siz_cuant[0] = 1;
-	if (siz_cuant[1] < 0)
-		siz_cuant[1] = ft_strlen(variable);
-	if (siz_cuant[0] < ft_strlen(variable))
-		siz_cuant[0] = ft_strlen(variable);
-	if (!*variable)
-		siz_cuant[1] = 1;
 }
 
 int				ft_clc_type(char *comm, va_list *ap, char **res, size_t len)
@@ -57,7 +42,7 @@ int				ft_clc_type(char *comm, va_list *ap, char **res, size_t len)
 	else
 		if (!(variable = (char *)ft_locate_date(comm, 1, ap[0], ap[1])))
 			return (-1);
-	ajust_cuant_size(siz_cuant, variable);
+	ft_ajust_params(siz_cuant, variable, comm);
 	if (!(variable = writer(siz_cuant, comm, variable)))
 		return (-1);
 	if (!(*res = ft_memjoinfree(*res, variable, len, siz_cuant[0])))

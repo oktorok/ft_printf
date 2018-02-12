@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/02/11 08:23:29 by mrodrigu         ###   ########.fr        #
+#    Updated: 2018/02/12 13:12:26 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME = libftprintf.a
 
-FLAGS = 
+FLAGS = -Wall -Wextra -Werror
 
 MAIN_FUNCS = ft_printf.c \
 			 ft_sprintf.c
