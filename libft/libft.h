@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 00:15:11 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/12 16:40:44 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/13 21:11:49 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,7 @@ char				*ft_strnjoinfree(char *s1, char *s2, unsigned int n);
 char				ft_issdigit(char *str);
 char				*ft_memjoinfree(void *s1, void *s2, size_t l1, size_t l2);
 int					ft_abs(int n);
+char				*ft_insertstr(char *dst, char *str, int pos);
+char				*ft_cutstr(char *str, int start, int end);
+char				*ft_cutstrfree(char *str, int start, int end);
 #endif

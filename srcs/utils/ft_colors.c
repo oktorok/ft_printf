@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 04:29:17 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/12 19:28:20 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/13 17:44:27 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ char			*ft_colors(char *str, int *len)
 	{
 		if (str[i] == '{')
 		{
-			if ((end = check_com(str, i + 1, *len)))
+			if ((end = check_com(str, i + 1, *len)) && str[i + 1] != '}')
 			{
 				if (!(str = apply_com(str, i + 1, end, len)))
 					return (NULL);

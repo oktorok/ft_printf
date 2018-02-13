@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/02/12 16:48:17 by jagarcia         ###   ########.fr        #
+#    Updated: 2018/02/13 21:12:42 by mrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME = libftprintf.a
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra
 
 MAIN_FUNCS = ft_printf.c \
 			 ft_sprintf.c
@@ -104,7 +104,10 @@ LIBFT_FUNCTIONS = ft_strncpy.c \
 				  ft_strncmp.c \
 				  ft_issdigit.c \
 				  ft_memjoinfree.c \
-				  ft_abs.c
+				  ft_abs.c \
+				  ft_insertstr.c \
+				  ft_cutstr.c \
+				  ft_cutstrfree.c
 
 TYPES_DIR = srcs/types/
 
