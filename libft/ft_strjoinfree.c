@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 18:40:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/09 06:51:42 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/14 06:34:03 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ char	*ft_strjoinfree(char *s1, char *s2)
 {
 	char *new;
 
+	if (!s2)
+		return (s1);
 	new = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (new == NULL)
 		return (NULL);

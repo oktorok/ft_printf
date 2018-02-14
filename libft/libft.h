@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 00:15:11 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/12 16:40:44 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/14 04:54:55 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,14 @@ void				ft_debug(const char a, const char *str);
 void				ft_debug_num(const char a, const int str);
 void				ft_putbytes(void *src, int size);
 size_t				ft_wstrlen(const wchar_t *str);
-char				*ft_strnjoin(char const *s1,
-char const *s2, unsigned int n, unsigned int n2);
+char				*ft_strnjoin(const char *s1, const char *s2, unsigned int n);
 size_t				ft_strlen_free(char *str);
 char				*ft_strnjoinfree(char *s1, char *s2, unsigned int n);
 char				ft_issdigit(char *str);
 char				*ft_memjoinfree(void *s1, void *s2, size_t l1, size_t l2);
 int					ft_abs(int n);
+char				*ft_strinsert(char *dst, char *str, int pos);
+char				*ft_strinsertfree(char *dst, char *str, int pos);
+char				*ft_strcut(char *str, int start, int end);
+char				*ft_strcutfree(char *str, int start, int end);
 #endif

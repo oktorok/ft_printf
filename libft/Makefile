@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 21:23:52 by jagarcia          #+#    #+#              #
-#    Updated: 2018/02/11 08:23:04 by mrodrigu         ###   ########.fr        #
+#    Updated: 2018/02/14 04:55:18 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,6 @@ SRC = ft_isascii.c \
 	  ft_strsub.c \
 	  ft_bzero.c \
 	  ft_itoa.c \
-	  ft_ltoa.c \
 	  ft_lstnew.c \
 	  ft_memdel.c \
 	  ft_putendl_fd.c \
@@ -90,7 +89,11 @@ SRC = ft_isascii.c \
 	  ft_strlen_free.c \
 	  ft_issdigit.c \
 	  ft_memjoinfree.c \
-	  ft_abs.c
+	  ft_abs.c \
+	  ft_strinsert.c \
+	  ft_strinsertfree.c \
+	  ft_strcut.c \
+	  ft_strcutfree.c
 
 OBJ = $(SRC:.c=.o)
 

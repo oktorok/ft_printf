@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prueba2.c                                          :+:      :+:    :+:   */
+/*   ft_insertstr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/12 17:56:49 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/14 06:31:57 by jagarcia         ###   ########.fr       */
+/*   Created: 2018/02/13 17:56:16 by mrodrigu          #+#    #+#             */
+/*   Updated: 2018/02/14 03:19:25 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libftprintf.h"
-#include <stdio.h>
-#include <locale.h>
-#include <string.h>
-int	main(void)
-{
-	setlocale(LC_ALL,"");
-//	ft_printf("{%03c}", 0);
-//	printf("%*1$--*1$#*1$ld", 7, 6);
-	char *comm = ft_transcomm("%****d");
-	ft_putstr(comm);
 
-  return (0);
+#include "libft.h"
+
+char	*ft_strinsert(char *dst, char *str, int pos)
+{
+	char	*new;
+
+	if (!(new = ft_strnew(ft_strlen(dst) + ft_strlen(str))) || !dst || !str)
+		return (NULL);
+	ft_strncpy(new, dst, pos);
+	ft_strcpy(new + pos, str);
+	ft_strcat(new, dst + pos);
+	return(new);
 }

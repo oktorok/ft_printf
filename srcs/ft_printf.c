@@ -6,7 +6,11 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/02/13 20:19:35 by jagarcia         ###   ########.fr       */
+=======
+/*   Updated: 2018/02/12 18:50:46 by jagarcia         ###   ########.fr       */
+>>>>>>> 831622858cedbbbceb545b0840d90877525f9abf
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +114,7 @@ int				ft_printf(const char *str, ...)
 		return (-1);
 	else
 	{
-		res = ft_colors(res, &len);
+	//	res = ft_colors(res, &len);
 		write(1, res, len);
 	}
 	va_end(ap[0]);

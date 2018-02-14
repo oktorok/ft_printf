@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/02/12 16:48:17 by jagarcia         ###   ########.fr        #
+#    Updated: 2018/02/14 04:55:28 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME = libftprintf.a
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra
 
 MAIN_FUNCS = ft_printf.c \
 			 ft_sprintf.c
@@ -47,7 +47,8 @@ UTILS = ft_wchar.c \
 		ft_colors.c \
 		ft_ajust_params.c \
 		ft_ultoa_base.c \
-		ft_ltoa_base.c 
+		ft_ltoa_base.c \
+		ft_transcomm.c
 
 UTILS_FLOAT = ft_choose_power.c \
 			  ft_dtomyd.c \
@@ -104,7 +105,11 @@ LIBFT_FUNCTIONS = ft_strncpy.c \
 				  ft_strncmp.c \
 				  ft_issdigit.c \
 				  ft_memjoinfree.c \
-				  ft_abs.c
+				  ft_abs.c \
+				  ft_strinsert.c \
+				  ft_strinsertfree.c \
+				  ft_strcut.c \
+				  ft_strcutfree.c
 
 TYPES_DIR = srcs/types/
 

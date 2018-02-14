@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prueba2.c                                          :+:      :+:    :+:   */
+/*   ft_cutstrfree.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/12 17:56:49 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/14 06:31:57 by jagarcia         ###   ########.fr       */
+/*   Created: 2018/02/13 21:09:27 by mrodrigu          #+#    #+#             */
+/*   Updated: 2018/02/14 04:57:35 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libftprintf.h"
-#include <stdio.h>
-#include <locale.h>
-#include <string.h>
-int	main(void)
-{
-	setlocale(LC_ALL,"");
-//	ft_printf("{%03c}", 0);
-//	printf("%*1$--*1$#*1$ld", 7, 6);
-	char *comm = ft_transcomm("%****d");
-	ft_putstr(comm);
 
-  return (0);
+#include "libft.h"
+
+char	*ft_strcutfree(char *str, int start, int end)
+{
+	char	*new;
+
+	if (end <= start)
+		return (str);
+	if (!(new = ft_strnew(ft_strlen(str) - (end - start))) || !str)
+		return (NULL);
+	ft_strncpy(new, str, start);
+	ft_strcat(new, str + end);
+	ft_strdel(&str);
+	return (new);
 }
