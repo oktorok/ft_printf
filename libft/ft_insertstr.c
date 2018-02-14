@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prueba2.c                                          :+:      :+:    :+:   */
+/*   ft_insertstr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/12 17:56:49 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/14 01:26:01 by jagarcia         ###   ########.fr       */
+/*   Created: 2018/02/13 17:56:16 by mrodrigu          #+#    #+#             */
+/*   Updated: 2018/02/13 18:16:33 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libftprintf.h"
-#include <stdio.h>
-#include <locale.h>
-#include <string.h>
-int	main(void)
-{
-	setlocale(LC_ALL,"");
-//	ft_printf("{%03c}", 0);
-//	printf("%.20 ' 30ld", 111111123567)
-	ft_transcomm("%000d", NULL);
 
-  return (0);
+#include "libft.h"
+
+char	*ft_insertstr(char *dst, char *str, int pos)
+{
+	char	*new;
+
+	if (!(new = ft_strnew(ft_strlen(dst) + ft_strlen(str))) || !dst || !str)
+		return (NULL);
+	ft_strncpy(new, dst, pos);
+	ft_strcpy(new + pos, str);
+	ft_strcat(new, dst + pos);
+	return(new);
 }
