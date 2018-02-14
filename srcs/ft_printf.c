@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/12 18:48:34 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/13 20:19:35 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,18 @@ static char		*search_command(char *str)
 	return (str);
 }
 
-static int		find_end(char *str)
+static int		find_end(char *str, int *pos)
 {
-	unsigned int	pos;
 	unsigned int	end;
 
-	pos = 0;
+	*pos = 0;
 	end = 1;
-	while (str[end] != g_types[pos] && str[end])
+	while (str[end] != g_types[*pos] && str[end])
 	{
 		pos++;
-		if (!g_types[pos])
+		if (!g_types[*pos])
 		{
-			pos = 0;
+			*pos = 0;
 			end++;
 		}
 	}
@@ -49,19 +48,12 @@ static int		exec_command(char *str, va_list *ap, size_t len, char **res)
 	n = 0;
 	if (!*str)
 		return (len);
-	if ((aux = find_end(str)) < 0)
+	if (!(aux = find_end(str, n)))
 		return (len);
 	if (!(command = ft_strsub(str, 1, aux)))
 		return (-1);
-	if (!*command)
-		return (len);
-	while ((str[aux] != g_types[n]) && (n < 27))
-		n++;
-	if (n == 18)
-	{
-		ft_n_type(command, ap, len);
-		return (len);
-	}
+	if (!(command = ft_transcomm(str, ap, command)))
+		return (-1);
 	if (n == 27)
 		return (0);
 	aux = (*g_type_func[n])(command, ap, res, len);
@@ -82,7 +74,7 @@ static int		ft_printf_body(va_list *ap, const char *str, char **res)
 	while (1)
 	{
 		aux_str = search_command(head);
-		aux_len = (int)((aux_str - head) < 0 ? ft_strlen(head) : aux_str -
+		aux_len = (int)((aux_str - head) < 0 ? (int)ft_strlen(head) : aux_str -
 				head);
 		aux_res = ft_memmove(ft_strnew(len + aux_len), *res, len);
 		ft_memmove(aux_res + len, head, aux_len);
@@ -91,7 +83,7 @@ static int		ft_printf_body(va_list *ap, const char *str, char **res)
 		len = aux_len;
 		ft_strdel(res);
 		*res = aux_res;
-		head = aux_str + find_end(aux_str) + 1;
+		head = aux_str + find_end(aux_str1) + 1;
 		if (!*aux_str)
 			break ;
 	}
