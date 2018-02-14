@@ -6,13 +6,13 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 02:40:10 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/10 01:40:28 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/12 18:19:02 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnjoin(char *s1, char *s2, unsigned int n)
+char	*ft_strnjoin(const char *s1, const char *s2, unsigned int n)
 {
 	char	*str;
 	size_t	i;

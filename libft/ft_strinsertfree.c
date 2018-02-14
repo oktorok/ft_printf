@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_commexecuter.c                                  :+:      :+:    :+:   */
+/*   ft_insertstrfree.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/09 16:22:15 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/09 16:35:22 by mrodrigu         ###   ########.fr       */
+/*   Created: 2018/02/13 17:56:16 by mrodrigu          #+#    #+#             */
+/*   Updated: 2018/02/14 04:55:06 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libftprintf.h"
+#include "libft.h"
 
-void	ft_commexecuter(char *comm, va_list *ap, char **res, size_t len)
+char	*ft_strinsertfree(char *dst, char *str, int pos)
 {
-	char	i;
+	char	*new;
 
-	while (*comm)
-	{
-		i = 0;
-		while (g_types[i] != *comm && i < 27)
-			i++;
-		if (i < 27)
-			(type_function[i])(comm, ap, res, len);
-	}
+	if (!(new = ft_strnew(ft_strlen(dst) + ft_strlen(str))) || !dst || !str)
+		return (NULL);
+	ft_strncpy(new, dst, pos);
+	ft_strcpy(new + pos, str);
+	ft_strcat(new, dst + pos);
+	ft_strdel(&dst);
+	ft_strdel(&str);
+	return(new);
 }

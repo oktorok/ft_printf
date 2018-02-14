@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoinfree.c                                   :+:      :+:    :+:   */
+/*   ft_insertstr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/14 18:40:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/14 06:34:03 by jagarcia         ###   ########.fr       */
+/*   Created: 2018/02/13 17:56:16 by mrodrigu          #+#    #+#             */
+/*   Updated: 2018/02/14 03:19:25 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoinfree(char *s1, char *s2)
+char	*ft_strinsert(char *dst, char *str, int pos)
 {
-	char *new;
+	char	*new;
 
-	if (!s2)
-		return (s1);
-	new = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (new == NULL)
+	if (!(new = ft_strnew(ft_strlen(dst) + ft_strlen(str))) || !dst || !str)
 		return (NULL);
-	ft_memcpy(new, s1, ft_strlen(s1));
-	ft_strcat(new, s2);
-	ft_strdel(&s1);
-	ft_strdel(&s2);
-	return (new);
+	ft_strncpy(new, dst, pos);
+	ft_strcpy(new + pos, str);
+	ft_strcat(new, dst + pos);
+	return(new);
 }

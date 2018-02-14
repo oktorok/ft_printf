@@ -1,42 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checkcomm.c                                     :+:      :+:    :+:   */
+/*   ft_cutstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/09 16:35:44 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/12 15:16:46 by mrodrigu         ###   ########.fr       */
+/*   Created: 2018/02/13 18:23:20 by mrodrigu          #+#    #+#             */
+/*   Updated: 2018/02/14 03:19:09 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libftprintf.h"
+#include "libft.h"
 
-char	ft_checkcomm(char *comm)
+char	*ft_strcut(char *str, int start, int end)
 {
-	char	i;
-	char	bool;
+	char	*new;
 
-	bool = 0;
-	while (*comm)
-	{
-		i = 0;
-		while (((bool ? *g_mods[i] : *g_format[i]) != *comm)
-				&& i < (bool ? 6 : 8))
-			i++;
-		if (i == (bool ? 6 : 8))
-		{
-			if (bool)
-				break ;
-			else if (ft_isdigit(*comm))
-				comm++;
-			else
-				bool = 1;
-		}
-		else
-			comm++;
-	}
-	if (comm + 1)
-		return (0);
-	return (1);
+	if (end <= start)
+		return (str);
+	if (!(new = ft_strnew(ft_strlen(str) - (end - start))) || !str)
+		return (NULL);
+	ft_strncpy(new, str, start);
+	ft_strcat(new, str + end);
+	return (new);
 }

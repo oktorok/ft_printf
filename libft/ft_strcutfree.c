@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoinfree.c                                   :+:      :+:    :+:   */
+/*   ft_cutstrfree.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/14 18:40:57 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/14 06:34:03 by jagarcia         ###   ########.fr       */
+/*   Created: 2018/02/13 21:09:27 by mrodrigu          #+#    #+#             */
+/*   Updated: 2018/02/14 04:57:35 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoinfree(char *s1, char *s2)
+char	*ft_strcutfree(char *str, int start, int end)
 {
-	char *new;
+	char	*new;
 
-	if (!s2)
-		return (s1);
-	new = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (new == NULL)
+	if (end <= start)
+		return (str);
+	if (!(new = ft_strnew(ft_strlen(str) - (end - start))) || !str)
 		return (NULL);
-	ft_memcpy(new, s1, ft_strlen(s1));
-	ft_strcat(new, s2);
-	ft_strdel(&s1);
-	ft_strdel(&s2);
+	ft_strncpy(new, str, start);
+	ft_strcat(new, str + end);
+	ft_strdel(&str);
 	return (new);
 }
