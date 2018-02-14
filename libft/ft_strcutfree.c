@@ -6,13 +6,13 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 21:09:27 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/13 21:10:17 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/14 04:57:35 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_cutstrfree(char *str, int start, int end)
+char	*ft_strcutfree(char *str, int start, int end)
 {
 	char	*new;
 

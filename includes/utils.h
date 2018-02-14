@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 03:51:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/14 01:24:39 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/14 06:07:19 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ char	*ft_colors(char *str, int *len);
 void	ft_ajust_params(int *siz_cuant, char *variable, char *comm);
 char	*ft_ltoa_base(long num, int base);
 char	*ft_ultoa_base(unsigned long num, int base);
-char	*ft_transcomm(char *str, va_list *ap);
+char	*ft_transcomm(char *str);
 
 #endif

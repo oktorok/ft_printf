@@ -6,13 +6,13 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 18:23:20 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/13 18:32:33 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/14 03:19:09 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_cutstr(char *str, int start, int end)
+char	*ft_strcut(char *str, int start, int end)
 {
 	char	*new;
 
