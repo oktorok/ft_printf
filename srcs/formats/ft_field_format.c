@@ -6,69 +6,73 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 21:13:24 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/06 10:15:04 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/14 23:32:40 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "../../includes/libftprintf.h"
 
-static int		size(char **command, va_list ap, va_list ap2)
+static int		size(char **command, unsigned int len)
 {
-	char	*aux;
-	void	*tmp;
-	int		aux2;
+	unsigned int	start;
+	unsigned int	end;
 
-	while ((!ft_isdigit(**command) || **command == '0') && **command != '*'
-			&& **command != '.' && **command)
-		(*command)++;
-	aux = *command;
-	while (ft_isdigit(**command) && **command)
-		(*command)++;
-	if (**command == '$' || **command == '0')
-		return (-1);
-	if (**command == '*')
+	while ((len + 1) > 0)
 	{
-		if (ft_isdigit(*(*command + 1)))
+		if ((*command)[len] == '*')
 		{
-			if (!(tmp = ft_locate_date(*command + 1, 5, ap, ap2)))
-				return (-2);
-			aux2 = *((int *)tmp);
-			ft_memdel(&tmp);
-			return (aux2);
+			
+			start = len;
+			end = len + 1;
+			break ;
 		}
-		return (va_arg(ap2, int));
+		if (ft_isdigit((*command)[len]))
+		{
+			end  = len + 1;
+			while (ft_isdigit((*command)[--len]));
+			start = len + 1;
+			if ((*command)[len] == '*' && (*command)[end] == '$')
+			{
+				start--;
+				end++;
+			}
+			break ;
+		}
+		len--;
 	}
-	return (ft_atoi(aux));
 }
 
-static int		cuant(char *command, va_list ap, va_list ap2)
+static int		cuant(char *command, unsigned int len)
 {
-	char	*aux;
-	void	*tmp;
-	int		aux2;
+	unsigned int	start;
+	unsigned int	end;
 
-	if ((aux = ft_strchr(command, '.')))
+	while ((len + 1) > 0)
 	{
-		if (*(aux + 1) == '*')
+		if (command[len] == '.')
 		{
-			if (ft_isdigit(*(aux + 2)))
+			start = len++;
+			if (command[len] == '*')
+				end = ++len;
+			while (ft_isdigit(command[len++]));
+			if (command[start + 1] == '*')
 			{
-				if (!(tmp = ft_locate_date(aux + 2, 5, ap, ap2)))
-					return (-2);
-				aux2 = *((int *)tmp);
-				ft_memdel(&tmp);
-				return (aux2);
+				if (command[len] == '$')
+					end = len + 1;
 			}
-			return (va_arg(ap2, int));
+			else
+				end = len;
+			break ;
 		}
-		return (ft_atoi(aux + 1));
 	}
-	return (-1);
 }
 
 void			ft_field_format(int *size_cuant,
-		char *command, va_list ap, va_list ap2)
+			                char *command, va_list ap, va_list ap2)
 {
+	unsigned int	len;
+	
+	len = ft_strlen(*command) - 2;
 	size_cuant[0] = -1;
 	while (size_cuant[0] == -1)
 		size_cuant[0] = size(&command, ap, ap2);
