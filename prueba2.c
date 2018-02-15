@@ -6,13 +6,22 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 17:56:49 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/15 01:40:53 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/15 17:50:19 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libftprintf.h"
+#include <stdio.h>
 int main(void)
 {
-	int s[2];
-	ft_field_format(s, "87987.*61$*42 '#32s", NULL, NULL);
+	wchar_t s[4];
+	char	*a;
+	s[0] = 0x53;
+	s[1] = 0xd800;
+	s[2] = 0x81000;
+	s[3] = '\0';
+	a = (char *)(s + 1);
+	ft_putnbr(ft_printf("<%1$*2$3$*4$i>\n",1,2,3,4));
+	ft_putnbr(printf("<%1$*2$3$*4$i>\n",1,2,3,4));
+//	printf("%1$2$3$5$d",1,2,3,4,5);
   return (0);
 }

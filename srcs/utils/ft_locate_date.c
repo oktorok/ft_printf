@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 18:32:01 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/12 14:48:53 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/15 17:50:32 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,22 +79,13 @@ static void		*selector(int mem, va_list ap)
 	return (variable);
 }
 
-void			*ft_locate_date(char *comm, int mem, va_list ap, va_list ap2)
+static void		*exec_dolar(char *comm, va_list ap, int mem)
 {
-	int		loc;
-	va_list	ap3;
-	void	*variable;
+	va_list		ap3;
+	int			loc;
+	void		*variable;
 
-	while (*comm != '*' && *comm != '$' && *comm)
-		comm++;
-	if (*comm-- != '$')
-	{
-		variable = selector(mem, ap2);
-		return (variable);
-	}
 	va_copy(ap3, ap);
-	while (ft_isdigit(*comm))
-		comm--;
 	loc = ft_atoi(++comm);
 	while (loc > 1)
 	{
@@ -103,5 +94,25 @@ void			*ft_locate_date(char *comm, int mem, va_list ap, va_list ap2)
 	}
 	variable = selector(mem, ap3);
 	va_end(ap3);
+	return (variable);
+}
+
+void			*ft_locate_date(char *comm, int mem, va_list ap, va_list ap2)
+{
+	void	*variable;
+	int		len;
+
+	len = ft_strlen(comm) - 1;
+	while (len >= 0)
+	{
+		if (comm[len] == '$')
+		{
+			while (ft_isdigit(comm[--len]) && len >= 0);
+			if (len < 0 || comm[len] != '*')
+				return (exec_dolar(comm + len, ap, mem));
+		}
+		len--;
+	}
+	variable = selector(mem, ap2);
 	return (variable);
 }

@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 00:15:11 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/14 04:54:55 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/15 03:04:16 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,4 +103,5 @@ char				*ft_strinsert(char *dst, char *str, int pos);
 char				*ft_strinsertfree(char *dst, char *str, int pos);
 char				*ft_strcut(char *str, int start, int end);
 char				*ft_strcutfree(char *str, int start, int end);
+char				*ft_strinvert(const char *str);
 #endif

@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/02/15 01:45:41 by mrodrigu         ###   ########.fr        #
+#    Updated: 2018/02/15 03:14:44 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,7 +109,8 @@ LIBFT_FUNCTIONS = ft_strncpy.c \
 				  ft_strinsert.c \
 				  ft_strinsertfree.c \
 				  ft_strcut.c \
-				  ft_strcutfree.c
+				  ft_strcutfree.c \
+				  ft_strinvert.c
 
 TYPES_DIR = srcs/types/
 

@@ -6,19 +6,12 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/15 02:38:12 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/15 17:56:58 by jagarcia         ###   ########.fr       */
 /*   Updated: 2018/02/15 01:04:51 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
-static char		*find_command(char *str)
-{
-	while (*str != '%' && *str)
-		str++;
-	return (str);
-}
 
 static int		find_end(char *str)
 {
@@ -48,7 +41,7 @@ static int		exec_command(char *str, va_list *ap, size_t len, char **res)
 	int				n;
 
 	n = 0;
-	if (!*str)
+	if (!str)
 		return (len);
 	if (!(aux = find_end(str)))
 		return (len);
@@ -74,7 +67,7 @@ static int		ft_printf_body(va_list *ap, const char *str, char **res)
 	len = 0;
 	while (1)
 	{
-		aux_str = find_command(head);
+		aux_str = ft_strchr(head, '%');
 		aux_len = (int)((aux_str - head) < 0 ? (int)ft_strlen(head) : aux_str -
 				head);
 		aux_res = ft_memmove(ft_strnew(len + aux_len), *res, len);
@@ -84,8 +77,8 @@ static int		ft_printf_body(va_list *ap, const char *str, char **res)
 		len = aux_len;
 		ft_strdel(res);
 		*res = aux_res;
-		head = aux_str + find_end(aux_str) + 1;
-		if (!*aux_str)
+		head = aux_str ? aux_str + find_end(aux_str) + 1 : head + ft_strlen(head);
+		if (!aux_str)
 			break ;
 	}
 	return (len);
