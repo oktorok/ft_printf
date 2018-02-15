@@ -6,45 +6,12 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/15 21:23:33 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/15 22:14:02 by mrodrigu         ###   ########.fr       */
 /*   Updated: 2018/02/15 01:04:51 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
-static int		is_zero(xhar	*str)
-{
-	while (ft_isdigit(*str))
-		str--;
-	return (ft_atoi(str + 1));
-}
-
-static int		find_end(char *str)
-{
-	unsigned int	pos;
-	
-	while (*str)
-	{
-		if (((ft_strchr(g_format,
-			*str) || ft_isdigit(*str))) || (*str == '$' &&
-			ft_isdigit(*(str - 1)) && is_zero(*(str - 1)) != 0))
-			str++;
-		else
-		{
-			pos = 0;
-			while (ft_strncmp(g_mods[pos], str, ft_strlen(g_mods[pos]))
-			       && pos < 6)
-				pos++;
-			if (pos == 6 || ft_strchr(g_types, *str))
-				break ;
-			str++;
-		}
-	}
-	if (!*str)
-		return (0);
-	return (str);
-}
 
 static int		exec_command(char *str, va_list *ap, size_t len, char **res)
 {
