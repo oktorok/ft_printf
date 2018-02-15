@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/02/15 03:14:44 by jagarcia         ###   ########.fr        #
+#    Updated: 2018/02/15 22:15:17 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,8 @@ UTILS = ft_wchar.c \
 		ft_ajust_params.c \
 		ft_ultoa_base.c \
 		ft_ltoa_base.c \
-		ft_transcomm.c
+		ft_transcomm.c \
+		ft_findend.c
 
 UTILS_FLOAT = ft_choose_power.c \
 			  ft_dtomyd.c \
