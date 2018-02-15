@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 21:13:24 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/15 01:40:07 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/15 01:49:16 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,6 @@ static int		cuant(char **command, unsigned int len, va_list ap, va_list ap2)
 		}
 		len--;
 	}
-	ft_putstr("start:");
-	ft_putnbr(start);
-	ft_putstr("\nend:");
-	ft_putnbr(end);
-	ft_putstr("\n");
 return (ft_select(cut(command, start, end), end - 1, ap, ap2));
 }
 
