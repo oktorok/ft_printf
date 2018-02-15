@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/15 19:11:33 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/15 20:54:57 by mrodrigu         ###   ########.fr       */
 /*   Updated: 2018/02/15 01:04:51 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -27,7 +27,7 @@ static int		find_end(char *str)
 	end = 1;
 	while (str[end])
 	{
-		if (((ft_strchr(g_types, str[end]) || ft_strchr(g_format,
+		if (((ft_strchr(g_format,
 			str[end]) || ft_isdigit(str[end]))) || (str[end] == '$' &&
 			ft_isdigit(str[end - 1]) && is_zero(str, end - 1) != 0))
 			end++;
@@ -37,7 +37,7 @@ static int		find_end(char *str)
 			while (ft_strncmp(g_mods[pos], str + end, ft_strlen(g_mods[pos]))
 			       && pos < 6)
 				pos++;
-			if (pos == 6)
+			if (pos == 6 || ft_strchr(g_types, str[end]))
 				break ;
 			end++;
 		}
