@@ -6,20 +6,13 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 17:56:49 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/14 06:31:57 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/15 01:40:53 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libftprintf.h"
-#include <stdio.h>
-#include <locale.h>
-#include <string.h>
-int	main(void)
+int main(void)
 {
-	setlocale(LC_ALL,"");
-//	ft_printf("{%03c}", 0);
-//	printf("%*1$--*1$#*1$ld", 7, 6);
-	char *comm = ft_transcomm("%****d");
-	ft_putstr(comm);
-
+	int s[2];
+	ft_field_format(s, "87987.*61$*42 '#32s", NULL, NULL);
   return (0);
 }
