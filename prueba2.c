@@ -6,12 +6,13 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 17:56:49 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/12 19:36:34 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/15 01:40:53 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libftprintf.h"
 int main(void)
 {
-  ft_printf("{blue}PUTA\n");
+	int s[2];
+	ft_field_format(s, "87987.*61$*42 '#32s", NULL, NULL);
   return (0);
 }

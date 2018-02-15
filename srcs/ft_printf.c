@@ -6,11 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2018/02/13 20:19:35 by jagarcia         ###   ########.fr       */
-=======
-/*   Updated: 2018/02/12 18:50:46 by jagarcia         ###   ########.fr       */
->>>>>>> 831622858cedbbbceb545b0840d90877525f9abf
+/*   Updated: 2018/02/15 01:04:51 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +48,12 @@ static int		exec_command(char *str, va_list *ap, size_t len, char **res)
 	n = 0;
 	if (!*str)
 		return (len);
-	if (!(aux = find_end(str, n)))
+	if (!(aux = find_end(str, &n)))
 		return (len);
 	if (!(command = ft_strsub(str, 1, aux)))
 		return (-1);
-	if (!(command = ft_transcomm(str, ap, command)))
-		return (-1);
+//	if (!(command = ft_transcomm(str, ap, command)))
+//		return (-1);
 	if (n == 27)
 		return (0);
 	aux = (*g_type_func[n])(command, ap, res, len);
@@ -87,7 +83,7 @@ static int		ft_printf_body(va_list *ap, const char *str, char **res)
 		len = aux_len;
 		ft_strdel(res);
 		*res = aux_res;
-		head = aux_str + find_end(aux_str1) + 1;
+		head = aux_str + find_end(aux_str) + 1;
 		if (!*aux_str)
 			break ;
 	}
