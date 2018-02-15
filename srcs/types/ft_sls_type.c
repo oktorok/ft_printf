@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/15 17:27:29 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/15 23:40:11 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,6 @@ int				ft_sls_type(char *comm, va_list *ap, char **res, size_t len)
 	char	*variable;
 
 	ft_field_format(siz_cuant, comm, ap[0], ap[1]);
-	ft_putchar('<');
-	ft_putnbr(siz_cuant[0]);
-	ft_putchar('>');
-	ft_putchar('<');
-	ft_putnbr(siz_cuant[1]);
-	ft_putchar('>');
 	if (siz_cuant[0] == -2 || siz_cuant[1] == -2)
 		return (-1);
 	if (ft_mods(comm) == 2 || ft_strchr(comm, 'S'))
@@ -49,10 +43,7 @@ int				ft_sls_type(char *comm, va_list *ap, char **res, size_t len)
 	else
 		variable = (char *)ft_locate_pointer(comm, ap[0], ap[1]);
 	if (comm[ft_strlen(comm) - 1] == 's' && !variable)
-	{
-		ft_strdel(&variable);
 		variable = ft_strdup("(null)");
-	}
 	ft_ajust_params(siz_cuant, variable, comm);
 	if (!(variable = writer(siz_cuant, comm, variable)))
 		return (-1);
