@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 21:33:41 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/15 22:14:53 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/15 22:18:55 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static char		ft_check(char *str, unsigned int end)
 	return (0);
 }
 
-int				ft_find_end(char *str)
+int				ft_findend(char *str)
 {
 	unsigned int	end;
 	

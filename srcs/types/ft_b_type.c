@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/12 17:35:12 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/16 00:19:34 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static char	*writer(int *siz_cuant, char *comm, char *variab)
 	else
 		ft_strcpy(tmp + siz_cuant[0] - ft_strlen(variab), variab);
 	ft_strdel(&variab);
+	ft_strdel(&comm);
 	return (tmp);
 }
 
@@ -31,7 +32,7 @@ int			ft_b_type(char *comm, va_list *ap, char **res, size_t len)
 	int		siz_cuant[2];
 	char	*variable;
 
-	ft_field_format(siz_cuant, comm, ap[0], ap[1]);
+	ft_field_format(siz_cuant, &comm, ap[0], ap[1]);
 	if (siz_cuant[0] == -2 || siz_cuant[1] == -2)
 		return (-1);
 	if (!(variable = (*g_mod_selector[ft_mods(comm)])(ap[0], ap[1], comm)))

@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/15 22:17:10 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/16 00:19:06 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,10 @@ static int		exec_command(char *str, va_list *ap, size_t len, char **res)
 		return (len);
 	if (!(command = ft_strsub(str, 1, aux)))
 		return (-1);
-	n = ft_strchr(g_types, str[aux]) - g_types;
-	if (n == 27)
-		return (0);
+	n = ft_strchr(g_types, command[aux - 1]) - g_types;
+	if (n < 0)
+		return (len);
 	aux = (*g_type_func[n])(command, ap, res, len);
-	ft_strdel(&command);
 	return (aux);
 }
 

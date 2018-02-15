@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:11:20 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/15 21:10:07 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/15 22:46:09 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "formats.h"
 # include "utils.h"
 
-static const char	g_types[27] = {"%sScCidDoOuUxXpbrfFeEgGaAkn"};
+static const char	g_types[27] = {"%sScCidDoOuUxXpbrfFeEgGnm"};
 static int			(*g_type_func[24])(char *, va_list *, char **, size_t len) =
 {ft_percent_type, ft_sls_type, ft_sls_type, ft_clc_type, ft_clc_type,
 	ft_ilidld_type, ft_ilidld_type,
