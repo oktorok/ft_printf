@@ -6,26 +6,39 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/15 17:56:58 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/15 19:11:33 by mrodrigu         ###   ########.fr       */
 /*   Updated: 2018/02/15 01:04:51 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
+static int		is_zero(xhar	*str, unsigned int pos)
+{
+	while (ft_isdigit(str[pos]))
+		pos--;
+	return (ft_atoi(str + pos + 1));
+}
+
 static int		find_end(char *str)
 {
 	unsigned int	end;
 	unsigned int	pos;
-
-	pos = 0;
 	end = 1;
-	while (str[end] != g_types[pos] && str[end])
+	while (str[end])
 	{
-		pos++;
-		if (!g_types[pos])
+		if (((ft_strchr(g_types, str[end]) || ft_strchr(g_format,
+			str[end]) || ft_isdigit(str[end]))) || (str[end] == '$' &&
+			ft_isdigit(str[end - 1]) && is_zero(str, end - 1) != 0))
+			end++;
+		else
 		{
 			pos = 0;
+			while (ft_strncmp(g_mods[pos], str + end, ft_strlen(g_mods[pos]))
+			       && pos < 6)
+				pos++;
+			if (pos == 6)
+				break ;
 			end++;
 		}
 	}
@@ -69,7 +82,7 @@ static int		ft_printf_body(va_list *ap, const char *str, char **res)
 	{
 		aux_str = ft_strchr(head, '%');
 		aux_len = (int)((aux_str - head) < 0 ? (int)ft_strlen(head) : aux_str -
-				head);
+		                head);
 		aux_res = ft_memmove(ft_strnew(len + aux_len), *res, len);
 		ft_memmove(aux_res + len, head, aux_len);
 		if ((aux_len = exec_command(aux_str, ap, len + aux_len, &aux_res)) < 0)
