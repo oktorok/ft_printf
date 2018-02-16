@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 23:14:04 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/16 00:37:45 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/16 23:49:19 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int				ft_sls_type(char *comm, va_list *ap, char **res, size_t len)
 	int		siz_cuant[2];
 	char	*variable;
 
-	ft_field_format(siz_cuant, &comm, ap[0], ap[1]);
+	ft_field_format(siz_cuant, &comm, ap);
 	if (siz_cuant[0] == -2 || siz_cuant[1] == -2)
 		return (-1);
 	if (ft_mods(comm) == 2 || ft_strchr(comm, 'S'))
