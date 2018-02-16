@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 19:11:22 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/12 16:07:52 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/16 23:59:01 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static char	*ft_binsize(char *n, size_t len, size_t *i, char *j)
 {
 	*i = len - 1;
 	*j = 0;
-	while (!(n[*i] & (0x80 >> (*j))))
+	while (!(n[*i] & (0x80 >> (*j))) && (*i + 1) > 0)
 	{
 		(*j)++;
 		if (*j == 8)
