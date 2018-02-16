@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 23:27:59 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/16 00:39:34 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/16 23:46:36 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ft_m_type(char *comm, va_list *ap, char **res, size_t len)
 	char	*variable;
 	int		len_var;
 	
-	ft_field_format(siz_cuant, &comm, ap[0], ap[1]);
+	ft_field_format(siz_cuant, &comm, ap);
 	if (siz_cuant[0] == -2 || siz_cuant[1] == -2)
 		return (-1);
 	if (!(variable = ft_printmemory(ft_locate_pointer(comm, ap[0], ap[1]),

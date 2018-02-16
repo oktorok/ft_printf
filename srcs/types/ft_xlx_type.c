@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/16 00:23:30 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/16 23:49:38 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int				ft_xlx_type(char *comm, va_list *ap, char **res, size_t len)
 	char	*variable;
 	size_t	i;
 
-	ft_field_format(siz_cuant, &comm, ap[0], ap[1]);
+	ft_field_format(siz_cuant, &comm, ap);
 	if (siz_cuant[0] == -2 || siz_cuant[1] == -2)
 		return (-1);
 	if (!(variable = (*g_mod_selector[ft_mods(comm)])(ap[0], ap[1], comm)))

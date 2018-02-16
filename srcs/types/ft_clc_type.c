@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 04:50:22 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/16 00:19:53 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/16 23:45:37 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int				ft_clc_type(char *comm, va_list *ap, char **res, size_t len)
 	int		siz_cuant[2];
 	char	*variable;
 
-	ft_field_format(siz_cuant, &comm, ap[0], ap[1]);
+	ft_field_format(siz_cuant, &comm, ap);
 	if (siz_cuant[0] == -2 || siz_cuant[1] == -2)
 		return (-1);
 	if (ft_mods(comm) == 2 || ft_strchr(comm, 'C'))
