@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 05:20:16 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/17 10:34:22 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/17 21:19:55 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,10 @@ static char	*for_g_f(char *str, int *siz_cuant, int len, char *comm)
 	{
 		if (len < siz_cuant[0])
 			siz_cuant[0]--;
-		new[len--] = 0;
+		if (new[len] == '.')
+			return (ft_memset(new + len, 0, 1) - len);
+		else
+			new[len--] = 0;
 	}
 //	new[len] = (new[len] == '.') ? 0 : new[len];
 	return (new);
@@ -113,6 +116,8 @@ char		*ft_putthepoint(char *str, int *siz_cuant, char *comm)
 	char	*aux;
 	int		len;
 
+	if (!str)
+		return (NULL);
 	neg = 0;
 	if (*str == '-')
 		neg = 1;
@@ -128,9 +133,7 @@ char		*ft_putthepoint(char *str, int *siz_cuant, char *comm)
 		aux = for_g_f(str + neg, siz_cuant, len, comm);
 	ft_strdel(&str);
 	if (neg)
-	{
 		aux = ft_strjoinfree(ft_strdup("-"), aux);
-		siz_cuant[0]++;
-	}
+	siz_cuant[0] += neg;
 	return (aux);
 }
