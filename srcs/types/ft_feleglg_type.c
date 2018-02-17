@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/17 01:56:30 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/17 04:11:22 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,15 @@ int			ft_feleglg_type(char *comm, va_list *ap, char **res, size_t len)
 	ft_field_format(siz_cuant, &comm, ap);
 	if (siz_cuant[0] == -2 || siz_cuant[1] == -2)
 		return (-1);
-	if (!(variable = g_mod_selector[ft_mods(comm)](ap[0], ap[1], comm)))
+	if (!(variable = g_mod_selector[0](ap[0], ap[1], comm)))
 		return (-1);
 	ft_ajust_params(siz_cuant, variable, comm);
 	if (!(variable = ft_round(variable, siz_cuant[1])))
 		return (-1);
 	if (!(variable = ft_putthepoint(variable, siz_cuant, comm)))
 		return (-1);
+	ft_putstr(variable);
+	ft_putstr("\n");
 	if (!(variable = check_formats(comm, variable, siz_cuant)))
 		return (-1);
 	if (!(variable = writer(siz_cuant, comm, variable)))

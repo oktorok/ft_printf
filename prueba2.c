@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 17:56:49 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/17 01:49:02 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/17 04:37:10 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libftprintf.h"
@@ -21,8 +21,8 @@ int main(void)
 	s[2] = 0x81000;
 	s[3] = '\0';
 	setlocale(LC_ALL,"");
-	ft_putnbr(ft_printf("{%f}\n", 1444565444646.6465424242242));
-	ft_putnbr(printf("{%f}\n", 1444565444646.6465424242242));
+	ft_putnbr(ft_printf("{%#g}\n", -0.000003));
+	ft_putnbr(printf("{%#g}\n", -0.000003));
 //	printf("%1$2$3$5$d",1,2,3,4,5);
   return (0);
 }

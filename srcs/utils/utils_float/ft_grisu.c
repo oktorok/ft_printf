@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/21 20:52:23 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/12 15:43:11 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/17 03:57:28 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ char		*ft_grisu(double *d)
 	k = ft_choose_power(w.exponent + 64, 0);
 	m_prod = ft_multiply(w, ft_take_power(k));
 	ft_cut(m_prod, ps);
-	str = NULL;
+	
+	str = (*((unsigned long *)(d)) & 0x8000000000000000) ? ft_strdup("-") : ft_strnew(0);
 	if (!(str = ft_strjoinfree(str, ft_itoa(ps[0]))))
 		return (NULL);
 	if (!(str = ft_concatenate(ps, str, 1)))
