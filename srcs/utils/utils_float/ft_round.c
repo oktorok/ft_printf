@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 05:48:56 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/12 15:50:36 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/17 07:24:24 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char		*ft_round(char *str, int pos)
 
 	pos = (ft_strchr(str, 'e') - str - 1) +
 		ft_atoi(ft_strchr(str, 'e') + 1) + pos;
-	pos = ft_isdigit(str[pos + 1]) ? pos + 1 : pos;
+	pos = ft_isdigit(str[pos + 1]) ? pos : pos + 1;
 	ac = 0;
 	while ((pos + 1) > 0)
 	{

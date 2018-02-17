@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 17:56:49 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/17 04:51:58 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/17 10:34:20 by jagarcia         ###   ########.fr       */
 /*   Updated: 2018/02/17 04:37:10 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -22,8 +22,8 @@ int main(void)
 	s[2] = 0x81000;
 	s[3] = '\0';
 	setlocale(LC_ALL,"");
-	ft_putnbr(ft_printf("{%#.e}\n",1.2));
-	ft_putnbr(printf("{%#.e}\n", 1.2));
+	ft_putnbr(ft_printf("{%.3g}\n",112.9));
+	ft_putnbr(printf("{%.3g}\n", 112.9));
 //	printf("%1$2$3$5$d",1,2,3,4,5);
   return (0);
 }

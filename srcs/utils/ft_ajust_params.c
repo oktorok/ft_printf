@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 06:58:25 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/15 23:29:21 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/17 10:34:18 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,34 @@ static void	ajust_num_hex_oct_bin(int *siz_cuant, char *variable)
 	return ;
 }
 
-static void	ajust_float(int *siz_cuant, char *variab)
+static void	ajust_float(int *siz_cuant, char *variab, char type)
 {
 	int exp;
 	int len;
 
 	len = ft_strlen(variab) - 4;
 	exp = ft_atoi(ft_strchr(variab, 'e') + 2);
-	if (siz_cuant[1] > 0)
-		siz_cuant[1]++;
 	if (siz_cuant[1] < 0)
-		siz_cuant[1] = 7;
+		siz_cuant[1] = 6;
+	if (siz_cuant[1])
+		siz_cuant[1]++;
+	if (type == 'E')
+	{
+		if (siz_cuant[0] < siz_cuant[1] + 5)
+			siz_cuant[0] = siz_cuant[1] + 5;
+		return ;
+	}
+	if (type == 'G')
+	{
+		siz_cuant[1] -= siz_cuant[1] ? 1 : 0;
+		if (siz_cuant[0] < siz_cuant[1])
+			siz_cuant[0] = siz_cuant[1];
+		if (!siz_cuant[1])
+			siz_cuant[1] = 1;
+		if (len - exp < -4 || (len - exp) > siz_cuant[1])
+			siz_cuant[0] += 5;
+		return ;
+	}
 	if (exp > 16)
 		siz_cuant[0] = siz_cuant[1] + 1;
 	else if (siz_cuant[0] < len - exp + siz_cuant[1])
@@ -78,7 +95,7 @@ void		ft_ajust_params(int *siz_cuant, char *variable, char *comm)
 	if (t == 'D' || t == 'X' || t == 'B' || t == 'O' || t == 'U' || t == 'I')
 		return (ajust_num_hex_oct_bin(siz_cuant, variable));
 	else if (t == 'F' || t == 'G' || t == 'E')
-		return (ajust_float(siz_cuant, variable));
+		return (ajust_float(siz_cuant, variable, t));
 	else if (t == 'C' || t == 'S')
 		return (ajust_char_string(siz_cuant, variable, t));
 	return ;
