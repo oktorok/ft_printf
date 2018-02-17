@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 05:20:16 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/12 15:46:22 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/17 01:55:42 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ static char	*for_f(char *str, int *siz_cuant)
 {
 	char	*new;
 	int		pos;
+	char	*aux;
 
-	pos = (ft_strchr(str, 'e') - str - 1) + ft_atoi(ft_strchr(str, 'e') + 1);
+	aux = ft_strchr(str, 'e');
+	pos = aux - str - 1 + ft_atoi(aux + 1);
 	if (!(new = ft_strnew(ft_strlen(str) + 1 + ((pos < 0) ? (-pos) : 0))))
 		return (NULL);
 	if (pos < 0)
@@ -38,7 +40,8 @@ static char	*for_e(char *str, int *siz_cuant)
 	char	*aux;
 	int		len;
 
-	len = (ft_strchr(str, 'e') - str - 1) + ft_atoi(ft_strchr(str, 'e') + 1);
+	aux = ft_strchr(str, 'e');
+	len = (aux - str - 1) + ft_atoi(aux + 1);
 	if (!(new = ft_memset(ft_strnew(siz_cuant[1] + 5), '0', siz_cuant[1] + 5)))
 		return (NULL);
 	new[0] = str[0];

@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 21:13:24 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/16 23:51:42 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/17 01:06:45 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,18 @@ static int		take_num(char **comm, int i, va_list *ap, int cas)
 	}
 	else
 		aux = va_arg(ap[1], int);
-	*comm = ft_strinsertfree(ft_strcutfree(*comm, i, i + 1), ft_itoa(aux), i);
+	*comm = ft_strcutfree(*comm, i, i + 1);
 	if (cas)
+	{
+		*comm = ft_strinsertfree(*comm, ft_itoa(aux), i);
 		return (take_cuant(comm, ap));
-	return (take_size(comm, ap));
+	}
+	if (aux < 0)
+	{
+		aux = -aux;
+		*comm = ft_strinsertfree(*comm, ft_strdup("-"), i);
+	}
+	return (aux);
 }
 
 void			ft_field_format(int *size_cuant,
