@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/17 01:56:30 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/17 04:46:15 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static char	*writer(int *siz_cuant, char *comm, char *variab)
 
 static char	*check_formats(char *comm, char *variable, int *siz_cuant)
 {
+	if (!(variable = ft_hash_format(comm, variable, siz_cuant)))
+		return (NULL);
 	if (!(variable = ft_apostrophe_format(comm, variable, siz_cuant)))
 		return (NULL);
 	if (!(variable = ft_zero_format(comm, variable, siz_cuant)))

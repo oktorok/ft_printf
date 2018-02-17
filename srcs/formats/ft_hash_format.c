@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 13:07:11 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/12 15:01:25 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/17 04:50:37 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,18 +85,38 @@ static char	*b_hash(char *var, int len)
 	return (aux);
 }
 
+static char *fge_hash(char *var, int *siz_cuant)
+{
+	int	pos;
+
+	if (!siz_cuant[1])
+	{
+		pos = 0;
+		while (ft_isdigit(var[pos]) || var[pos] == '-')
+			pos++;
+		if (!(var = ft_strinsertfree(var, ft_strdup("."), pos)))
+			return (NULL);
+		siz_cuant[0]++;
+	}
+	return (var);
+}
+
 char		*ft_hash_format(char *command, char *variable, int *siz_cuant)
 {
 	int		len;
+	char	comm;
 
+	comm = ft_toupper((command[ft_strlen(command) - 1]));
 	len = ft_strlen(variable);
 	if (!(ft_strchr(command, '#')))
 		return (variable);
-	if (ft_toupper((command[ft_strlen(command) - 1])) == 'O')
+	if (comm == 'O')
 		return (ox_hash(variable, siz_cuant, 'o', len));
-	if (ft_toupper((command[ft_strlen(command) - 1])) == 'X')
+	if (comm == 'X')
 		return (ox_hash(variable, siz_cuant, 'x', len));
-	if (command[ft_strlen(command) - 1] == 'b')
+	if (comm == 'F' || comm == 'E' || comm == 'G')
+		return (fge_hash(variable, siz_cuant));
+	if (comm == 'b')
 	{
 		siz_cuant[0] += len / 4 + len / 8 * 2;
 		return (b_hash(variable, len));
