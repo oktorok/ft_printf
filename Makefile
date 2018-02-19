@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/02/19 14:07:52 by jagarcia         ###   ########.fr        #
+#    Updated: 2018/02/19 14:50:47 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME = libftprintf.a
 
-FLAGS = -Wall -Wextra 
+FLAGS = -Wall -Wextra -Werror 
 
 MAIN_FUNCS = ft_printf.c \
 			 ft_sprintf.c
@@ -193,11 +193,13 @@ $(OBJ_DIR)%.o : $(MODS_DIR)%.c
 	ar -rs $(NAME) $@ 
 
 clean:
-	rm -f $(OBJ_SRC) $(LIBFT_OBJ)
+	rm -f $(OBJ_SRC)
 	rm -rf $(OBJ_DIR)
+	$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean
 	make

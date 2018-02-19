@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/19 11:41:21 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/19 20:16:33 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ int			ft_feleglg_type(char *comm, va_list *ap, char **res, size_t len)
 		return (-1);
 	if (!(variable = ft_putthepoint(variable, siz_cuant, comm)))
 		return (-1);
-	ft_putstr(variable);
-	ft_putstr("\n");
 	if (!(variable = check_formats(comm, variable, siz_cuant)))
 		return (-1);
 	if (!(variable = writer(siz_cuant, comm, variable)))
