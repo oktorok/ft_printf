@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/16 23:57:56 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/19 10:42:12 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int		exec_command(char *str, va_list *ap, size_t len, char **res)
 
 static int		ft_printf_body(va_list *ap, const char *str, char **res)
 {
-	char	*aux_str;
+	char	*aux;
 	char	*head;
 	int		len;
 	int		aux_len;
@@ -44,18 +44,17 @@ static int		ft_printf_body(va_list *ap, const char *str, char **res)
 	len = 0;
 	while (1)
 	{
-		aux_str = ft_strchr(head, '%');
-		aux_len = (int)((aux_str - head) < 0 ? (int)ft_strlen(head) : aux_str -
-		                head);
+		aux = ft_strchr(head, '%');
+		aux_len = (int)((aux - head) < 0 ? (int)ft_strlen(head) : aux - head);
 		aux_res = ft_memmove(ft_strnew(len + aux_len), *res, len);
 		ft_memmove(aux_res + len, head, aux_len);
-		if ((aux_len = exec_command(aux_str, ap, len + aux_len, &aux_res)) < 0)
+		if ((aux_len = exec_command(aux, ap, len + aux_len, &aux_res)) < 0)
 			return (-len);
 		len = aux_len;
 		ft_strdel(res);
 		*res = aux_res;
-		head = aux_str ? aux_str + ft_findend(aux_str) + 1 : head + ft_strlen(head);
-		if (!aux_str)
+		head = aux ? aux + ft_findend(aux) + 1 : head + ft_strlen(head);
+		if (!aux)
 			break ;
 	}
 	return (len);

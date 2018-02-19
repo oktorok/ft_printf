@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/02/16 00:39:03 by jagarcia         ###   ########.fr        #
+#    Updated: 2018/02/19 14:07:52 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME = libftprintf.a
 
-FLAGS = -Wall -Wextra
+FLAGS = -Wall -Wextra 
 
 MAIN_FUNCS = ft_printf.c \
 			 ft_sprintf.c
@@ -48,7 +48,6 @@ UTILS = ft_wchar.c \
 		ft_ajust_params.c \
 		ft_ultoa_base.c \
 		ft_ltoa_base.c \
-		ft_transcomm.c \
 		ft_findend.c
 
 UTILS_FLOAT = ft_choose_power.c \

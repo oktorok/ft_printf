@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/16 23:49:38 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/19 12:58:17 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char		*writer(int *siz_cuant, char *comm, char *variab)
 	char	*tmp;
 
 	tmp = variab;
-	if (ft_strchr(comm, 'X'))
+	if (comm[ft_strlen(comm) - 1] == 'X')
 		while (*variab)
 		{
 			*variab = ft_toupper(*variab);

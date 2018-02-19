@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 13:07:11 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/17 04:50:37 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/19 12:49:19 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static char	*b_hash(char *var, int len)
 	return (aux);
 }
 
-static char *fge_hash(char *var, int *siz_cuant)
+static char	*fge_hash(char *var, int *siz_cuant)
 {
 	int	pos;
 

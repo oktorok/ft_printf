@@ -6,11 +6,11 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/04 04:29:17 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/13 17:44:27 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/19 11:22:51 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libftprintf.h"
+#include "libftprintf.h"
 
 static char		check_arr(char type, char *str, int pos, int i)
 {
@@ -29,7 +29,8 @@ static char		check_arr(char type, char *str, int pos, int i)
 		}
 		j++;
 	}
-	if ((ft_atoi(aux + 2) <= (type ? 255 : 9)) && !ft_strncmp("C:", aux, 2) && ft_issdigit(aux + 2))
+	if ((ft_atoi(aux + 2) <= (type ? 255 : 9)) && !ft_strncmp("C:", aux, 2)
+			&& ft_issdigit(aux + 2))
 	{
 		ft_strdel(&aux);
 		return (2);
@@ -38,9 +39,9 @@ static char		check_arr(char type, char *str, int pos, int i)
 	return (0);
 }
 
-static int	check_com(char *str, int pos, int len)
+static int		check_com(char *str, int pos, int len)
 {
-	int	i;
+	int		i;
 	char	bool;
 
 	bool = 0;
@@ -95,6 +96,7 @@ static char		*apply_com(char *str, int start, int end, int *len)
 	char	*new;
 	char	*aux;
 	char	*res;
+
 	if (!(ft_strncmp("eoc}", str + start, 4)))
 		new = ft_strcpy(ft_strnew(7), "\033[0m");
 	else

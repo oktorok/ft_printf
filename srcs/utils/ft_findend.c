@@ -6,23 +6,24 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 21:33:41 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/15 22:18:55 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/19 11:11:54 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libftprintf.h"
+#include "libftprintf.h"
 
 static char		ft_check(char *str, unsigned int end)
 {
 	int pos;
-	
+
 	if (ft_strchr(g_format, str[end]))
 		return (1);
 	else if (ft_isdigit(str[end]))
 		return (1);
 	else if (str[end] == '$')
 	{
-		while (ft_isdigit(str[--end]));
+		while (ft_isdigit(str[end]))
+			end--;
 		if (str[end] == '.' || str[end + 1] == '$')
 			return (0);
 		return (1);
@@ -42,7 +43,7 @@ static char		ft_check(char *str, unsigned int end)
 int				ft_findend(char *str)
 {
 	unsigned int	end;
-	
+
 	end = 1;
 	while (str[end])
 	{

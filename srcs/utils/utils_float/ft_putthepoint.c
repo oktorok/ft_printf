@@ -6,11 +6,11 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 05:20:16 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/17 21:19:55 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/19 12:18:15 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/libftprintf.h"
+#include "libftprintf.h"
 
 static char	*for_f(char *str, int *siz_cuant)
 {
@@ -21,8 +21,6 @@ static char	*for_f(char *str, int *siz_cuant)
 	aux = ft_strchr(str, 'e');
 	pos = aux - str - 1 + ft_atoi(aux + 1);
 	ft_memset(aux, '0', ft_strlen(aux));
-//	if ((pos + siz_cuant[1] + 1) > siz_cuant[0])
-//		siz_cuant[0] += (pos + siz_cuant[1] + 1) - siz_cuant[0];
 	if (!(new = ft_strnew(ft_strlen(str) + 1 + ((pos < 0) ? (-pos) : 0))))
 		return (NULL);
 	if (pos < 0)
@@ -31,7 +29,7 @@ static char	*for_f(char *str, int *siz_cuant)
 		ft_strncpy(new, str, pos + 1);
 	new[(pos < 0) ? 1 : (pos + 1)] = '.';
 	ft_strcpy(new + ((pos < 0) ? (-pos + 1) : (pos + 2)), str +
-	          ((pos < 0) ? 0 : (pos + 1)));
+			((pos < 0) ? 0 : (pos + 1)));
 	new = ft_strsub(new, 0, ft_strchr(new, '.') - new + siz_cuant[1]);
 	return (new);
 }
@@ -64,11 +62,12 @@ static char	*for_g_f(char *str, int *siz_cuant, int len, char *comm)
 {
 	char *new;
 
-	new = for_f(str, siz_cuant);
+	if (!(new = for_f(str, siz_cuant)))
+		return (NULL);
 	if (ft_strchr(comm, '#'))
 		return (new);
 	if (ft_strchr(new, '.') - new >= siz_cuant[1])
-	   new = ft_strcutfree(new, siz_cuant[1], ft_strlen(new));
+		new = ft_strcutfree(new, siz_cuant[1], ft_strlen(new));
 	else
 	{
 		siz_cuant[1]++;
@@ -85,7 +84,6 @@ static char	*for_g_f(char *str, int *siz_cuant, int len, char *comm)
 		else
 			new[len--] = 0;
 	}
-//	new[len] = (new[len] == '.') ? 0 : new[len];
 	return (new);
 }
 
@@ -94,7 +92,8 @@ static char	*for_g_e(char *str, int *siz_cuant, int len, char *comm)
 	char	*new;
 	char	*aux;
 
-	new = for_e(str, siz_cuant);
+	if (!(new = for_e(str, siz_cuant)))
+		return (NULL);
 	if (siz_cuant[1] == 1)
 		siz_cuant[0]--;
 	if (ft_strchr(comm, '#'))
@@ -102,9 +101,9 @@ static char	*for_g_e(char *str, int *siz_cuant, int len, char *comm)
 	len = ft_strchr(new, 'e') - new - 1;
 	while (len >= 0 && (new[len] == '0' || new[len] == '.'))
 		len--;
-	aux = ft_strncpy(ft_strnew(len + 5), new, len + 1);
+	if (!(aux = ft_strncpy(ft_strnew(len + 5), new, len + 1)))
+		return (NULL);
 	ft_strcpy(aux + (len + 1), ft_strchr(new, 'e'));
-//	siz_cuant[0] -= ft_strlen(new) - ft_strlen(aux);
 	ft_strdel(&new);
 	return (aux);
 }
@@ -116,8 +115,6 @@ char		*ft_putthepoint(char *str, int *siz_cuant, char *comm)
 	char	*aux;
 	int		len;
 
-	if (!str)
-		return (NULL);
 	neg = 0;
 	if (*str == '-')
 		neg = 1;
@@ -129,10 +126,10 @@ char		*ft_putthepoint(char *str, int *siz_cuant, char *comm)
 	else if ((len = (ft_strchr(str, 'e') - str) +
 			ft_atoi(ft_strchr(str, 'e') + 1)) < -4 || len > siz_cuant[1])
 		aux = for_g_e(str + neg, siz_cuant, len, comm);
-	else		
+	else
 		aux = for_g_f(str + neg, siz_cuant, len, comm);
 	ft_strdel(&str);
-	if (neg)
+	if (neg && aux)
 		aux = ft_strjoinfree(ft_strdup("-"), aux);
 	siz_cuant[0] += neg;
 	return (aux);

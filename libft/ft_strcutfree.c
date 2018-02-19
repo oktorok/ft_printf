@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 21:09:27 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/14 04:57:35 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/19 12:29:07 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ char	*ft_strcutfree(char *str, int start, int end)
 {
 	char	*new;
 
-	if (end <= start)
+	if (!str)
+		return (NULL);
+	if (end <= start || end < 0 || start < 0)
 		return (str);
 	if (!(new = ft_strnew(ft_strlen(str) - (end - start))) || !str)
 		return (NULL);
