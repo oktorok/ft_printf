@@ -6,79 +6,44 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 21:13:24 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/19 12:40:57 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/21 20:34:54 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <stdio.h>
 
-static int		take_num(char **comm, int i, va_list *ap, int cas)
-{
-	void	*tmp;
-	int		aux;
-
-	if (ft_isdigit((*comm)[i + 1]))
-	{
-		if (!(tmp = ft_locate_date(*comm + i + 1, 5, ap[0], ap[1])))
-			return (-2);
-		aux = *((int *)tmp);
-		ft_memdel(&tmp);
-	}
-	else
-		aux = va_arg(ap[1], int);
-	if (!(*comm = ft_strcutfree(*comm, i, i + 1)))
-		return (-2);
-	if (cas)
-		if (!(*comm = ft_strinsertfree(*comm, ft_itoa(aux), i)))
-			return (-2);
-	if (aux < 0)
-	{
-		aux = -aux;
-		if (!(*comm = ft_strinsertfree(*comm, ft_strdup("-"), i)))
-			return (-2);
-	}
-	return (aux);
-}
-
-static int		take_size(char **comm, va_list *ap, int len)
+static int		take_size(char *comm, int len)
 {
 	while (len >= 0)
 	{
-		if ((*comm)[len] == '$')
+		if (comm[len] == '$')
 		{
-			while (ft_isdigit((*comm)[--len]) && len >= 0)
+			while (ft_isdigit(comm[--len]) && len >= 0)
 				len--;
 		}
-		if ((*comm)[len] == '*' && ((*comm)[len - 1] != '.' || len - 1 < 0))
-			break ;
-		else if (ft_isdigit((*comm)[len]))
+		else if (ft_isdigit(comm[len]))
 		{
-			while (ft_isdigit((*comm)[len]) && len >= 0)
+			while ((ft_isdigit(comm[len]) || comm[len] == '-') && len >= 0)
 				len--;
-			if ((*comm)[len] != '.')
+			if (comm[len] != '.')
 			{
 				len++;
 				break ;
 			}
 		}
-		if ((*comm)[len] != '$' && len >= 0)
+		if (comm[len] != '$' && len >= 0)
 			len--;
 	}
-	if ((*comm)[len] == '*')
-		return (take_num(comm, len, ap, 0));
-	return (ft_atoi(*comm + len));
+	return (ft_atoi(comm + (len < 0 ? 0 : len)));
 }
 
-static int		take_cuant(char **command, va_list *ap, int len)
+static int		take_cuant(char *command, int len)
 {
-	while ((*command)[len] != '.' && len >= 0)
+	while (command[len] != '.' && len >= 0)
 		len--;
 	if (len >= 0)
-	{
-		if ((*command)[len + 1] == '*')
-			return (take_num(command, len + 1, ap, 1));
-		return (ft_atoi(*command + len + 1));
-	}
+		return (ft_atoi(command + len + 1));
 	return (-1);
 }
 
@@ -87,7 +52,9 @@ void			ft_field_format(int *size_cuant,
 {
 	int		len;
 
+	if (ft_strchr(*command, '*'))
+		ft_asterisc_format(command, ap);
 	len = ft_strlen(*command) - 1;
-	size_cuant[0] = take_size(command, ap, len);
-	size_cuant[1] = take_cuant(command, ap, len);
+	size_cuant[0] = take_size(*command, len);
+	size_cuant[1] = take_cuant(*command, len);
 }

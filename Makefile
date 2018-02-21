@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/02/19 14:50:47 by jagarcia         ###   ########.fr        #
+#    Updated: 2018/02/21 20:34:34 by jagarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME = libftprintf.a
 
-FLAGS = -Wall -Wextra -Werror 
+FLAGS = -Wall -Wextra 
 
 MAIN_FUNCS = ft_printf.c \
 			 ft_sprintf.c
@@ -25,7 +25,9 @@ FORMATS = ft_field_format.c \
 		  ft_hash_format.c \
 		  ft_apostrophe_format.c \
 		  ft_zero_format.c \
-		  ft_search_zero_format.c
+		  ft_search_zero_format.c \
+		  ft_asterisc_format.c \
+		  ft_minus_format.c
 
 MODS = ft_l_mod.c \
 	   ft_mods.c \

@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 18:32:01 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/19 11:09:42 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/21 19:47:10 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,18 +101,19 @@ void			*ft_locate_date(char *comm, int mem, va_list ap, va_list ap2)
 {
 	void	*variable;
 	int		len;
+	int		i;
 
-	len = ft_strlen(comm) - 1;
-	while (len >= 0)
+	i = 0;
+	len = ft_strlen(comm);
+	while (i < len)
 	{
-		if (comm[len] == '$')
+		if (comm[i] == '$')
 		{
-			while (ft_isdigit(comm[len]) && len >= 0)
-				len--;
-			if (len < 0 || comm[len] != '*')
-				return (exec_dolar(comm + len, ap, mem));
+			while (ft_isdigit(comm[i]) && i > 0)
+				i--;
+				return (exec_dolar(comm + i, ap, mem));
 		}
-		len--;
+		i++;
 	}
 	variable = selector(mem, ap2);
 	return (variable);

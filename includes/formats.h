@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 03:45:26 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/19 10:59:11 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/21 20:34:13 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ char			*ft_apostrophe_format(char *comm,
 										char *variable, int *siz_cuant);
 char			*ft_zero_format(char *comm, char *variable, int *siz_cuant);
 int				ft_search_zero_format(char *command);
+void			ft_asterisc_format(char **command, va_list *ap);
 #endif

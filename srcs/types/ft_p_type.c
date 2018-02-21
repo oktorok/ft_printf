@@ -20,7 +20,7 @@ static char	*writer(int *siz_cuant, char *comm, char *variab)
 	len = ft_strlen(variab);
 	if (!(tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0])))
 		return (NULL);
-	if (ft_strchr(comm, '-'))
+	if (ft_minus_format(comm))
 		ft_strncpy(tmp, variab, len);
 	else
 		ft_strcpy(tmp + siz_cuant[0] - len, variab);

@@ -6,19 +6,19 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/16 23:48:29 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/21 15:24:57 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
+#include <stdio.h>
 static char	*writer(int *siz_cuant, char *comm, char *variab)
 {
 	char	*tmp;
 
 	if (!(tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0])))
 		return (NULL);
-	if (ft_strchr(comm, '-'))
+	if (ft_minus_format(comm))
 		ft_strncpy(tmp, variab, ft_strlen(variab));
 	else
 		ft_strcpy(tmp + siz_cuant[0] - ft_strlen(variab), variab);
