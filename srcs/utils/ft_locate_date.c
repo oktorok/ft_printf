@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 18:32:01 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/21 19:47:10 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/22 19:19:38 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,17 @@ static void		*selector(int mem, va_list ap)
 	return (variable);
 }
 
-static void		*exec_dolar(char *comm, va_list ap, int mem)
+static void		*exec_dolar(char *comm, int i, va_list ap, int mem)
 {
 	va_list		ap3;
 	int			loc;
 	void		*variable;
 
 	va_copy(ap3, ap);
-	loc = ft_atoi(++comm);
+	if (ft_isdigit(comm[i]))
+		loc = ft_atoi(comm);
+	else
+		loc = ft_atoi(comm + i + 1);
 	while (loc > 1)
 	{
 		va_arg(ap3, void *);
@@ -109,9 +112,10 @@ void			*ft_locate_date(char *comm, int mem, va_list ap, va_list ap2)
 	{
 		if (comm[i] == '$')
 		{
+			i--;
 			while (ft_isdigit(comm[i]) && i > 0)
 				i--;
-				return (exec_dolar(comm + i, ap, mem));
+			return (exec_dolar(comm, i, ap, mem));
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 04:50:22 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/16 23:45:37 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/21 23:11:48 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,16 @@ static char		*writer(int *siz_cuant, char *comm, char *variab)
 {
 	char	*tmp;
 
-	if (!(tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0])))
-		return (NULL);
+	if (ft_search_zero_format(comm))
+	{
+		if (!(tmp = ft_memset(ft_strnew(siz_cuant[0]), '0', siz_cuant[0])))
+			return (NULL);
+	}
+	else
+	{
+		if (!(tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0])))
+			return (NULL);
+	}
 	if (ft_minus_format(comm))
 		tmp = ft_strncpy(tmp, variab, siz_cuant[1]);
 	else
