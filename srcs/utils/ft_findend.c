@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/15 21:33:41 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/19 11:11:54 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/23 00:35:37 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ int				ft_findend(char *str)
 		else if (ft_check(str, end))
 			end++;
 		else
-			return (end - 1);
+			return (end);
 	}
 	if (!str[end])
-		return (0);
+		return (-1);
 	return (end);
 }

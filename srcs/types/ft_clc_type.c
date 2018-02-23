@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 04:50:22 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/21 23:11:48 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/23 01:44:56 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static char		*writer(int *siz_cuant, char *comm, char *variab)
 {
 	char	*tmp;
 
-	if (ft_search_zero_format(comm))
+	if (ft_search_zero_format(comm) && !ft_minus_format(comm))
 	{
 		if (!(tmp = ft_memset(ft_strnew(siz_cuant[0]), '0', siz_cuant[0])))
 			return (NULL);
@@ -43,7 +43,7 @@ int				ft_clc_type(char *comm, va_list *ap, char **res, size_t len)
 	ft_field_format(siz_cuant, &comm, ap);
 	if (siz_cuant[0] == -2 || siz_cuant[1] == -2)
 		return (-1);
-	if (ft_mods(comm) == 2 || ft_strchr(comm, 'C'))
+	if (ft_mods(comm) == 4 || ft_strchr(comm, 'C'))
 	{
 		if (!(variable = ft_wchar(ap[0], ap[1], siz_cuant, comm)))
 			return (-1);

@@ -6,12 +6,12 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/21 15:24:57 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/23 01:42:55 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
+
 static char	*writer(int *siz_cuant, char *comm, char *variab)
 {
 	char	*tmp;
@@ -53,7 +53,7 @@ int			ft_oloulu_type(char *comm, va_list *ap, char **res, size_t len)
 		return (-1);
 	if (ft_strchr(comm, 'O') || ft_strchr(comm, 'U'))
 	{
-		if (!(variable = (*g_mod_selector[2])(ap[0], ap[1], comm)))
+		if (!(variable = (*g_mod_selector[4])(ap[0], ap[1], comm)))
 			return (-1);
 	}
 	else if (!(variable = (*g_mod_selector[ft_mods(comm)])(ap[0], ap[1], comm)))

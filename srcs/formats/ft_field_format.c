@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 21:13:24 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/22 19:44:25 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/23 01:08:56 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static int		take_num(char *comm, int *len)
 		if (comm[*len] == '-' && comm[*len - 1] == '.')
 			(*len)--;
 	}
-	if (comm[(*len)] != '.')
+	if ((comm[(*len)] != '.' && ft_atoi(comm + *len + 1) != 0) ||
+				comm[(*len)] == ',')
 	{
 		(*len)++;
 		return (0);
