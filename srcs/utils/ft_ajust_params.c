@@ -1,3 +1,4 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -6,7 +7,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 06:58:25 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/19 14:17:39 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/22 01:32:30 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +73,7 @@ static void	ajust_float(int *siz_cuant, char *variab, char type, int len)
 	if (exp > 16)
 		siz_cuant[0] = siz_cuant[1] + 1;
 	else if (siz_cuant[0] < len - exp + siz_cuant[1])
-		siz_cuant[0] = len - exp + siz_cuant[1];
+		siz_cuant[0] = len - exp + siz_cuant[1] - 1;
 	return ;
 }
 
