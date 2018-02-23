@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/17 03:49:08 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/17 00:00:02 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/22 22:17:59 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ int			ft_b_type(char *comm, va_list *ap, char **res, size_t len);
 int			ft_r_type(char *comm, va_list *ap, char **res, size_t len);
 int			ft_feleglg_type(char *comm, va_list *ap, char **res, size_t len);
 int			ft_m_type(char *comm, va_list *ap, char **res, size_t len);
+int			ft_error_type(char *comm, va_list *ap, char **res, size_t len);
 
 #endif

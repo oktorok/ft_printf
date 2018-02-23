@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 09:12:39 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/15 23:30:16 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/22 18:57:46 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char		*ft_zero_format(char *comm, char *variable, int *siz_cuant)
 	}
 	if (siz_cuant[1] == -1)
 	{
-		if (ft_search_zero_format(comm) && !ft_strchr(comm, '-'))
+		if (ft_search_zero_format(comm) && !ft_minus_format(comm))
 			return (write_zeros(variable, siz_cuant[0] - ft_strlen(variable)));
 		else
 			return (variable);
