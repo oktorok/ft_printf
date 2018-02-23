@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 05:20:16 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/22 23:50:13 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/02/23 17:59:55 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,23 @@ static char	*for_f(char *str, int *siz_cuant)
 	char	*new;
 	int		pos;
 	char	*aux;
-	int		cosa;
+	int		tmp;
 
 	aux = ft_strchr(str, 'e');
 	pos = aux - str - 1 + ft_atoi(aux + 1);
 	ft_memset(aux, '0', ft_strlen(aux));
-	cosa = 0;
+	tmp = 0;
 	if (ft_abs((pos + 1) % ft_strlen(str)) < siz_cuant[0])
-		cosa = siz_cuant[1] - ft_abs((pos + 1) % ft_strlen(str));
-	if (!(new = ft_strnew(ft_strlen(str) + 1 + ((pos < 0) ? (-pos) : 0) + cosa)))
+		tmp = siz_cuant[1] - ft_abs((pos + 1) % ft_strlen(str));
+	if (!(new = ft_strnew(ft_strlen(str) + 1 + ((pos < 0) ? (-pos) : 0) + tmp)))
 		return (NULL);
-		ft_memset(new, '0', ft_strlen(str) + 1 + ((pos < 0) ? (-pos) : 0) + cosa);
+	ft_memset(new, '0', ft_strlen(str) + 1 + ((pos < 0) ? (-pos) : 0) + tmp);
 	if (pos >= 0)
 		ft_strncpy(new, str, pos + 1);
 	new[(pos < 0) ? 1 : (pos + 1)] = '.';
 	ft_strncpy(new + ((pos < 0) ? (-pos + 1) : (pos + 2)), str +
-	           ((pos < 0) ? 0 : (pos + 1)), ft_strlen(str +
-	           ((pos < 0) ? 0 : (pos + 1))));
+			((pos < 0) ? 0 : (pos + 1)), ft_strlen(str +
+			((pos < 0) ? 0 : (pos + 1))));
 	new = ft_strsub(new, 0, ft_strchr(new, '.') - new + siz_cuant[1]);
 	return (new);
 }
@@ -135,8 +135,7 @@ char		*ft_putthepoint(char *str, int *siz_cuant, char *comm)
 	ft_strdel(&str);
 	if (neg && aux)
 		aux = ft_strjoinfree(ft_strdup("-"), aux);
-	siz_cuant[0] += neg;
-		ft_putstr(aux);ft_putstr("\n");
-
+	if (siz_cuant[0] < (int)ft_strlen(aux))
+		siz_cuant[0] = ft_strlen(aux);
 	return (aux);
 }

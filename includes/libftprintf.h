@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:11:20 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/23 02:06:39 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/23 16:24:10 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ static const char	*g_format = "-+ 0'#*.";
 static char			*(*g_mod_selector[7])(va_list, va_list, char *) =
 {ft_none_mod, ft_h_mod, ft_hh_mod, ft_ll_mod, ft_l_mod, ft_z_mod, ft_j_mod};
 int					ft_printf(const char *str, ...);
-int					ft_sprintf(char *buffer, const char *str, ...);
+int					ft_asprintf(char **buffer, const char *str, ...);
+int					ft_dprintf(int fd, const char *str, ...);
 #endif

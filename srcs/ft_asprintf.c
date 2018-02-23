@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sprintf.c                                       :+:      :+:    :+:   */
+/*   ft_asprintf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 20:10:07 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/19 10:42:12 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/23 16:24:51 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,17 @@ static int		exec_command(char *str, va_list *ap, size_t len, char **res)
 	n = 0;
 	if (!str)
 		return (len);
-	if (!(aux = ft_findend(str)))
-		return (len);
+	if ((aux = ft_findend(str)) < 0)
+		if (!(aux = ft_strlen(str) - 1))
+			return (len);
 	if (!(command = ft_strsub(str, 1, aux)))
 		return (-1);
-	n = ft_strchr(g_types, command[aux - 1]) - g_types;
+	n = ft_strchr(g_types, command[ft_strlen(command) - 1]) - g_types;
 	if (n < 0)
-		return (len);
+	{
+		aux = ft_error_type(command, ap, res, len);
+		return (aux);
+	}
 	aux = (*g_type_func[n])(command, ap, res, len);
 	return (aux);
 }
@@ -53,14 +57,14 @@ static int		ft_printf_body(va_list *ap, const char *str, char **res)
 		len = aux_len;
 		ft_strdel(res);
 		*res = aux_res;
-		head = aux ? aux + ft_findend(aux) + 1 : head + ft_strlen(head);
-		if (!aux)
+		head = aux > 0 ? aux + ft_findend(aux) + 1 : head + ft_strlen(head);
+		if (!aux || ft_findend(aux) < 0)
 			break ;
 	}
 	return (len);
 }
 
-int				ft_sprintf(char *buffer, const char *str, ...)
+int				ft_asprintf(char **buffer, const char *str, ...)
 {
 	char		*res;
 	va_list		ap[2];
@@ -81,7 +85,7 @@ int				ft_sprintf(char *buffer, const char *str, ...)
 	else
 	{
 		res = ft_colors(res, &len);
-		ft_memcpy(buffer, res, len);
+		*buffer = ft_strdup(res);
 	}
 	va_end(ap[0]);
 	va_end(ap[1]);
