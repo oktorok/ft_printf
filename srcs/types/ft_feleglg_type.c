@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/23 20:40:02 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/23 20:54:26 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	*writer(int *siz_cuant, char *comm, char *variab)
 		ft_strncpy(tmp, variab, ft_strlen(variab));
 	else
 		ft_strcpy(tmp + siz_cuant[0] - ft_strlen(variab), variab);
-	if (comm[ft_strlen(comm) - 1] == 'E')
+	if (comm[ft_strlen(comm) - 1] == 'E' || comm[ft_strlen(comm) -1] == 'G')
 		*(ft_strchr(tmp, 'e')) = 'E';
 	ft_strdel(&variab);
 	ft_strdel(&comm);
