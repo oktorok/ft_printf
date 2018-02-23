@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 05:48:56 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/23 19:34:24 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/23 20:39:11 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,15 @@ static char	*apply_round(char *str, int pos, char is_neg)
 	return (resize_str(str, ac));
 }
 
-char		*ft_round(char *str, int pos)
+char		*ft_round(char *str, int pos, char *comm)
 {
 	char	*e_pos;
 
-	e_pos = ft_strchr(str, 'e'); 
-	pos = pos + (e_pos - str) + ft_atoi(e_pos + 1) - pos ? 1 : 0;
+	if (ft_toupper(comm[ft_strlen(comm) - 1]) =='F')
+	{
+		e_pos = ft_strchr(str, 'e'); 
+		pos = pos + (e_pos - str) + ft_atoi(e_pos + 1) - pos ? 1 : 0;
+	}
 	if (pos > (int)ft_strlen(str) - 3)
 		return (str);
 	return (apply_round(str, pos, (*str == '-') ? 1 : 0));

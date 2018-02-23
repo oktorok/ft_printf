@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/02/23 18:00:12 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/02/23 20:40:02 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int			ft_feleglg_type(char *comm, va_list *ap, char **res, size_t len)
 	if (!(variable = g_mod_selector[0](ap[0], ap[1], comm)))
 		return (-1);
 	ft_ajust_params(siz_cuant, variable, comm);
-	if (!(variable = ft_round(variable, siz_cuant[1])))
+	if (!(variable = ft_round(variable, siz_cuant[1], comm)))
 		return (-1);
 	if (!(variable = ft_putthepoint(variable, siz_cuant, comm)))
 		return (-1);
