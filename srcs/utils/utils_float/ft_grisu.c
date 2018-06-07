@@ -6,7 +6,7 @@
 /*   By: mrodrigu <mrodrigu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/21 20:52:23 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/19 11:03:46 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/05/26 20:27:16 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,17 @@ static char	*ft_concatenate(unsigned int *ps, char *str, int n)
 	return (ft_strjoinfree(str, tmp));
 }
 
+static char	*ft_inf_nan(unsigned long d)
+{
+	char is_neg;
+
+	if (d & 0x8000000000000000)
+		is_neg = 1;
+	if ((d << 1) == 0xFFE0000000000000)
+		return (is_neg ? ft_strdup("-inf") : ft_strdup("inf"));
+	return (ft_strdup("nan"));
+}
+
 char		*ft_grisu(double *d)
 {
 	t_myfloat		w;
@@ -49,6 +60,9 @@ char		*ft_grisu(double *d)
 	char			*str;
 	int				k;
 
+	if (((*((unsigned long *)d) << 1) & 0xFFE0000000000000)
+		== 0xFFE0000000000000)
+		return (ft_inf_nan(*((unsigned long *)d)));
 	w = ft_dtomyd(*((unsigned long *)d));
 	k = ft_choose_power(w.exponent + 64, 0);
 	m_prod = ft_multiply(w, ft_take_power(k));

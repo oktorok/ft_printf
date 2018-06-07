@@ -3,6 +3,8 @@
 
 int main(void)
 {
-	ft_printf("\n%f\n",29.8328);
+	char f[10] = {1, 3, 5, 7, 10, 48};
+	ft_printf("\n%r\n",f);
+//	printf("\n%g\n",f);
 //	2.147484e+09
 }

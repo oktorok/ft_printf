@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 18:52:18 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/03/23 19:11:06 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/05/26 20:28:41 by mrodrigu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,19 @@ static char	*check_formats(char *comm, char *variable, int *siz_cuant)
 	return (variable);
 }
 
+static int	check_nan_inf(int *siz_cuant, char *variable, char *comm)
+{
+	if (!(ft_isdigit(*(variable + 1))))
+	{
+		siz_cuant[1] = ft_strlen(variable);
+		if (siz_cuant[0] < siz_cuant[1])
+			siz_cuant[0] = siz_cuant[1];
+		return (0);
+	}
+	ft_ajust_params(siz_cuant, variable, comm);
+	return (1);
+}
+
 int			ft_feleglg_type(char *comm, va_list *ap, char **res, size_t len)
 {
 	int		siz_cuant[2];
@@ -54,13 +67,15 @@ int			ft_feleglg_type(char *comm, va_list *ap, char **res, size_t len)
 		return (-1);
 	if (!(variable = g_mod_selector[0](ap[0], ap[1], comm)))
 		return (-1);
-	ft_ajust_params(siz_cuant, variable, comm);
-	if (!(variable = ft_round(variable, siz_cuant[1], comm)))
-		return (-1);
-	if (!(variable = ft_putthepoint(variable, siz_cuant, comm)))
-		return (-1);
-	if (!(variable = check_formats(comm, variable, siz_cuant)))
-		return (-1);
+	if (check_nan_inf(siz_cuant, variable, comm))
+	{
+		if (!(variable = ft_round(variable, siz_cuant[1], comm)))
+			return (-1);
+		if (!(variable = ft_putthepoint(variable, siz_cuant, comm)))
+			return (-1);
+		if (!(variable = check_formats(comm, variable, siz_cuant)))
+			return (-1);
+	}
 	if (!(variable = writer(siz_cuant, comm, variable)))
 		return (-1);
 	if (!(*res = ft_memjoinfree(*res, variable, len, siz_cuant[0])))
