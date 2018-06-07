@@ -6,7 +6,7 @@
 /*   By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 18:32:01 by jagarcia          #+#    #+#             */
-/*   Updated: 2018/06/07 21:36:39 by mrodrigu         ###   ########.fr       */
+/*   Updated: 2018/06/07 23:33:00 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,9 @@ void		*ft_locate_pointer(char *comm, va_list ap, va_list ap2)
 	{
 		if (comm[len] == '$')
 		{
-			len--;
-			while (ft_isdigit(comm[len]) && len > 0)
+			while ((len - 1) >= 0 && ft_isdigit(comm[len - 1]))
 				len--;
-			if (comm[len] != '*')
+			if (comm[len - 1] != ',')
 				return (exec_dolar(comm + len, ap));
 		}
 		len--;

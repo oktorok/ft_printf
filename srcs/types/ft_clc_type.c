@@ -6,7 +6,7 @@
 /*   By: mrodrigu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 04:50:22 by mrodrigu          #+#    #+#             */
-/*   Updated: 2018/02/23 01:44:56 by jagarcia         ###   ########.fr       */
+/*   Updated: 2018/06/07 23:24:53 by jagarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int				ft_clc_type(char *comm, va_list *ap, char **res, size_t len)
 {
 	int		siz_cuant[2];
 	char	*variable;
+	char	*tmp;
 
 	ft_field_format(siz_cuant, &comm, ap);
 	if (siz_cuant[0] == -2 || siz_cuant[1] == -2)
@@ -48,8 +49,13 @@ int				ft_clc_type(char *comm, va_list *ap, char **res, size_t len)
 		if (!(variable = ft_wchar(ap[0], ap[1], siz_cuant, comm)))
 			return (-1);
 	}
-	else if (!(variable = (char *)ft_locate_date(comm, 1, ap[0], ap[1])))
-		return (-1);
+	else
+	{
+		if (!(tmp = (char *)ft_locate_date(comm, 1, ap[0], ap[1])))
+			return (-1);
+		variable = ft_memcpy(ft_strnew(1), tmp, 1);
+		free(tmp);
+	}
 	ft_ajust_params(siz_cuant, variable, comm);
 	if (!(variable = writer(siz_cuant, comm, variable)))
 		return (-1);
