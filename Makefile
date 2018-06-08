@@ -6,7 +6,7 @@
 #    By: jagarcia <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 17:20:08 by jagarcia          #+#    #+#              #
-#    Updated: 2018/06/07 21:48:13 by jagarcia         ###   ########.fr        #
+#    Updated: 2018/06/08 19:06:14 by mrodrigu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME = libftprintf.a
 
-FLAGS = -Wall -Wextra
+FLAGS = -Wall -Wextra -Werror
 
 MAIN_FUNCS = ft_printf.c \
 			 ft_asprintf.c \
@@ -117,6 +117,14 @@ LIBFT_FUNCTIONS = ft_strncpy.c \
 				  ft_strcutfree.c \
 				  ft_strinvert.c
 
+HEADERS =	formats.h \
+			mods.h \
+			libftprintf.h \
+			my_float.h \
+			ten_power.h \
+			types.h \
+			utils.h
+
 TYPES_DIR = srcs/types/
 
 FORMATS_DIR = srcs/formats/
@@ -133,6 +141,8 @@ UTILS_FLOAT_DIR = $(UTILS_DIR)utils_float/
 
 MAINS_DIR = srcs/
 
+INCLUDES_DIR = includes/
+
 MAINS_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o,$(MAIN_FUNCS))
 
 FORMATS_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o,$(FORMATS))
@@ -147,50 +157,51 @@ UTILS_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(UTILS))
 
 UTILS_FLOAT_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(UTILS_FLOAT))
 
+HEADER_PATH = $(patsubst %.h, $(INCLUDES_DIR)%.h, $(HEADERS))
+
 OBJ = $(MAINS_OBJ) $(FORMATS_OBJ) $(TYPES_OBJ) $(LIBFT_OBJ) $(MODS_OBJ) $(UTILS_OBJ) $(UTILS_FLOAT_OBJ)
 
-INCLUDES_DIR = includes/
 
 all : $(NAME)
 
 $(NAME) : $(MAINS_OBJ) $(TYPES_OBJ) $(FORMATS_OBJ) $(MODS_OBJ) $(UTILS_OBJ) $(LIBFT_OBJ) $(UTILS_FLOAT_OBJ)
 	ranlib $(NAME)
 
-$(LIBFT_DIR)%.o : $(LIBFT_DIR)%.c
+$(LIBFT_DIR)%.o : $(LIBFT_DIR)%.c 
 	$(MAKE) -C $(LIBFT_DIR) --no-print-directory $(@F)
 	ar -rs $(NAME) $@ 
 
-$(OBJ_DIR)%.o : $(MAINS_DIR)%.c
+$(OBJ_DIR)%.o : $(MAINS_DIR)%.c $(HEADER_PATH)
 	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
 	mkdir -p $(OBJ_DIR)
 	mv -f $(@F) $(OBJ_DIR)
 	ar -rs $(NAME) $@ 
 
-$(OBJ_DIR)%.o : $(FORMATS_DIR)%.c
+$(OBJ_DIR)%.o : $(FORMATS_DIR)%.c $(HEADER_PATH)
 	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
 	mkdir -p $(OBJ_DIR)
 	mv -f $(@F) $(OBJ_DIR)
 	ar -rs $(NAME) $@ 
 
-$(OBJ_DIR)%.o : $(TYPES_DIR)%.c
+$(OBJ_DIR)%.o : $(TYPES_DIR)%.c $(HEADER_PATH)
 	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
 	mkdir -p $(OBJ_DIR)
 	mv -f $(@F) $(OBJ_DIR)
 	ar -rs $(NAME) $@ 
 
-$(OBJ_DIR)%.o : $(UTILS_DIR)%.c
+$(OBJ_DIR)%.o : $(UTILS_DIR)%.c $(HEADER_PATH)
 	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
 	mkdir -p $(OBJ_DIR)
 	mv -f $(@F) $(OBJ_DIR)
 	ar -rs $(NAME) $@ 
 
-$(OBJ_DIR)%.o : $(UTILS_FLOAT_DIR)%.c
+$(OBJ_DIR)%.o : $(UTILS_FLOAT_DIR)%.c $(HEADER_PATH)
 	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
 	mkdir -p $(OBJ_DIR)
 	mv -f $(@F) $(OBJ_DIR)
 	ar -rs $(NAME) $@ 
 
-$(OBJ_DIR)%.o : $(MODS_DIR)%.c
+$(OBJ_DIR)%.o : $(MODS_DIR)%.c $(HEADER_PATH)
 	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
 	mkdir -p $(OBJ_DIR)
 	mv -f $(@F) $(OBJ_DIR)
