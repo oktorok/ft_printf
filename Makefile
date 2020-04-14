@@ -155,11 +155,13 @@ MODS_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(MODS))
 
 UTILS_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(UTILS))
 
+LIBFT_OBJ = $(parsubsts %.c, $(OBJ_DIR)%.o, $(LIBFT))
+
 UTILS_FLOAT_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(UTILS_FLOAT))
 
 HEADER_PATH = $(patsubst %.h, $(INCLUDES_DIR)%.h, $(HEADERS))
 
-OBJ = $(MAINS_OBJ) $(FORMATS_OBJ) $(TYPES_OBJ) $(LIBFT_OBJ) $(MODS_OBJ) $(UTILS_OBJ) $(UTILS_FLOAT_OBJ)
+OBJ = $(MAINS_OBJ) $(FORMATS_OBJ) $(TYPES_OBJ) $(LIBFT_OBJ) $(MODS_OBJ) $(UTILS_OBJ) $(UTILS_FLOAT_OBJ) $(LIBFT_OBJ)
 
 
 all : $(NAME)
