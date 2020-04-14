@@ -49,6 +49,7 @@ char		*ft_zero_format(char *comm, char *variable, int *siz_cuant)
 		if (ft_search_zero_format(comm))
 			return (write_zeros(variable,
 						siz_cuant[0] + neg - ft_strlen(variable)));
+		else
 			return (variable);
 	}
 	if (siz_cuant[1] == -1)

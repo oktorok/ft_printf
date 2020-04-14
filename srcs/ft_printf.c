@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include "extern.h"
 
 static int		exec_command(char *str, va_list *ap, size_t len, char **res)
 {
@@ -57,7 +58,7 @@ static int		ft_printf_body(va_list *ap, const char *str, char **res)
 		len = aux_len;
 		ft_strdel(res);
 		*res = aux_res;
-		head = aux > 0 ? aux + ft_findend(aux) + 1 : head + ft_strlen(head);
+		head = aux ? aux + ft_findend(aux) + 1 : head + ft_strlen(head);
 		if (!aux || ft_findend(aux) < 0)
 			break ;
 	}

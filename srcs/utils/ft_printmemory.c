@@ -102,9 +102,7 @@ char		*ft_printmemory(void *mem, size_t len)
 {
 	char	*n;
 	char	*str;
-	size_t	i;
 
-	i = 0;
 	n = (char *)mem;
 	if (!(str = ft_strnew(98 + (len * 36) + (len / 4) +
 					((len % 4) ? 1 : 0) + 100)))

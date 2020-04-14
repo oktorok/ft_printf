@@ -54,12 +54,12 @@ static char	*point(char *variable, int *siz_cuant)
 	char	*varia_part;
 	size_t	len;
 
-	len = ft_strlen(new_variab);
 	varia_part = ft_strsub(variable, 0, ft_strchr(variable, '.') - variable);
 	varia_part = add_comas(varia_part);
 	new_variab = ft_strjoin(varia_part, ft_strchr(variable, '.'));
 	ft_strdel(&variable);
 	ft_strdel(&varia_part);
+	len = ft_strlen(new_variab);
 	if ((unsigned long)siz_cuant[0] < len)
 		siz_cuant[0] = len;
 	return (new_variab);

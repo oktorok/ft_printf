@@ -193,7 +193,13 @@ $(OBJ_DIR)%.o : $(UTILS_DIR)%.c $(HEADER_PATH)
 	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
 	mkdir -p $(OBJ_DIR)
 	mv -f $(@F) $(OBJ_DIR)
-	ar -rs $(NAME) $@ 
+	ar -rs $(NAME) $@
+
+$(OBJ_DIR)%.o : $(LIBFT_DIR)%.c $(HEADER_PATH)
+	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
+	mkdir -p $(OBJ_DIR)
+	mv -f $(@F) $(OBJ_DIR)
+	ar -rs $(NAME) $@
 
 $(OBJ_DIR)%.o : $(UTILS_FLOAT_DIR)%.c $(HEADER_PATH)
 	gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
@@ -210,11 +216,9 @@ $(OBJ_DIR)%.o : $(MODS_DIR)%.c $(HEADER_PATH)
 clean:
 	rm -f $(OBJ_SRC)
 	rm -rf $(OBJ_DIR)
-	$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)
-	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean
 	make
