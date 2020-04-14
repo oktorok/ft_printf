@@ -133,7 +133,7 @@ MODS_DIR = srcs/mods/
 
 UTILS_DIR = srcs/utils/
 
-LIBFT_DIR = libft/
+LIBFT_DIR = srcs/libft/
 
 OBJ_DIR = objects/
 

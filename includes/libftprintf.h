@@ -15,7 +15,7 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <stdint.h>
-# include "../libft/libft.h"
+# include "libft.h"
 # include "types.h"
 # include "mods.h"
 # include "formats.h"
