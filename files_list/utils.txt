@@ -1,0 +1,13 @@
+ft_wchar.c
+ft_utf8.c
+ft_locate_pointer.c
+ft_locate_date.c
+ft_dectobin.c
+ft_dectooct.c
+ft_dectohex.c
+ft_printmemory.c
+ft_colors.c
+ft_ajust_params.c
+ft_ultoa_base.c
+ft_ltoa_base.c
+ft_findend.c

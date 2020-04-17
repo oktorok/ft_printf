@@ -1,0 +1,13 @@
+ft_sls_type.c
+ft_clc_type.c
+ft_ilidld_type.c
+ft_xlx_type.c
+ft_p_type.c
+ft_oloulu_type.c
+ft_n_type.c
+ft_b_type.c
+ft_r_type.c
+ft_percent_type.c
+ft_feleglg_type.c
+ft_m_type.c
+ft_error_type.c

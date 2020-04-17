@@ -1,0 +1,8 @@
+ft_l_mod.c
+ft_mods.c
+ft_h_mod.c
+ft_ll_mod.c
+ft_hh_mod.c
+ft_j_mod.c
+ft_z_mod.c
+ft_none_mod.c

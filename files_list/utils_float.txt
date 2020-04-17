@@ -1,0 +1,8 @@
+ft_choose_power.c
+ft_dtomyd.c
+ft_grisu.c
+ft_sige.c
+ft_take_power.c
+ft_multiply.c
+ft_round.c
+ft_putthepoint.c
