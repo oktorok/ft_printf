@@ -154,10 +154,12 @@ $(NAME):
 
 endif
 clean:
+	@printf "\033[92m<< Cleaning Objects >>\n\033[0m"
 	rm -f $(OBJ_SRC)
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
+	@printf "\r\033[92m<< Cleaning $(NAME) >>\n\033[0m"
 	rm -f $(NAME)
 
 re: fclean
