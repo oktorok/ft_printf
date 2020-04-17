@@ -16,114 +16,21 @@ NAME = libftprintf.a
 
 FLAGS = -Wall -Wextra -Werror
 
-MAIN_FUNCS = ft_printf.c \
-			 ft_asprintf.c \
-			 ft_dprintf.c
+MAIN_FUNCS = $(shell cat files_list/main.txt)
 
-FORMATS = ft_field_format.c \
-		  ft_space_format.c \
-		  ft_plus_format.c \
-		  ft_hash_format.c \
-		  ft_apostrophe_format.c \
-		  ft_zero_format.c \
-		  ft_search_zero_format.c \
-		  ft_asterisc_format.c \
-		  ft_minus_format.c
+FORMATS = $(shell cat files_list/formats.txt)
 
-MODS = ft_l_mod.c \
-	   ft_mods.c \
-	   ft_h_mod.c \
-	   ft_ll_mod.c \
-	   ft_hh_mod.c \
-	   ft_j_mod.c \
-	   ft_z_mod.c \
-	   ft_none_mod.c
+MODS = $(shell cat files_list/mods.txt)
 
-UTILS = ft_wchar.c \
-		ft_utf8.c \
-		ft_locate_pointer.c \
-		ft_locate_date.c \
-		ft_dectobin.c \
-		ft_dectooct.c \
-		ft_dectohex.c \
-		ft_printmemory.c \
-		ft_colors.c \
-		ft_ajust_params.c \
-		ft_ultoa_base.c \
-		ft_ltoa_base.c \
-		ft_findend.c
+UTILS = $(shell cat files_list/utils.txt)
 
-UTILS_FLOAT = ft_choose_power.c \
-			  ft_dtomyd.c \
-			  ft_grisu.c \
-			  ft_sige.c \
-			  ft_take_power.c \
-			  ft_multiply.c \
-			  ft_round.c \
-			  ft_putthepoint.c
+UTILS_FLOAT = $(shell cat files_list/utils_float.txt)
 
-TYPES = ft_sls_type.c \
-		ft_clc_type.c \
-		ft_ilidld_type.c \
-		ft_xlx_type.c \
-		ft_p_type.c \
-		ft_oloulu_type.c \
-		ft_n_type.c \
-		ft_b_type.c \
-		ft_r_type.c \
-		ft_percent_type.c \
-		ft_feleglg_type.c \
-		ft_m_type.c \
-		ft_error_type.c
+TYPES = $(shell cat files_list/types.txt)
 
-LIBFT_FUNCTIONS = ft_strncpy.c \
-				  ft_strcpy.c \
-				  ft_putstr.c \
-	 			  ft_strnew.c \
-		 		  ft_strlen.c \
-	 			  ft_putnbr.c \
-	 			  ft_putchar.c \
-	 			  ft_strsub.c \
-	 			  ft_strdup.c \
-	 			  ft_strjoin.c \
-	 			  ft_strnjoinfree.c \
-	 			  ft_strjoinfree.c \
-	 			  ft_strcat.c \
-	 			  ft_memcpy.c \
-	 			  ft_memmove.c \
-	 			  ft_atoi.c \
-	 			  ft_isdigit.c \
-	 			  ft_memset.c \
-	 			  ft_lstnew.c \
-	 			  ft_memalloc.c \
-	 			  ft_putbytes.c \
-	 			  ft_wstrlen.c \
-	 			  ft_strdel.c \
-	 			  ft_strchr.c \
-	 			  ft_strlen_free.c \
-	 			  ft_memalloc.c \
-	 			  ft_memdel.c \
-				  ft_strstr.c \
-				  ft_itoa.c \
-				  ft_toupper.c \
-				  ft_strcmp.c \
-				  ft_strncmp.c \
-				  ft_issdigit.c \
-				  ft_memjoinfree.c \
-				  ft_abs.c \
-				  ft_strinsert.c \
-				  ft_strinsertfree.c \
-				  ft_strcut.c \
-				  ft_strcutfree.c \
-				  ft_strinvert.c
+LIBFT_FUNCTIONS = $(shell cat files_list/types.txt)
 
-HEADERS =	formats.h \
-			mods.h \
-			libftprintf.h \
-			my_float.h \
-			ten_power.h \
-			types.h \
-			utils.h
+HEADERS = $(shell cat files_list/headers.txt)
 
 TYPES_DIR = srcs/types/
 
