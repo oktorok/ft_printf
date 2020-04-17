@@ -148,7 +148,7 @@ $(OBJ_DIR)%.o : $(NAME) ;
 
 $(NAME):
 	@printf "\033[92mCompiling libftprintf...\n\033[0m"
-	@make -s MODE=0
+	@(MAKE) MODE=0
 	@printf "\r                                          "
 	@printf "\r\033[92mDone libftprintf[\xE2\x9C\x94]\n\033[0m"
 
