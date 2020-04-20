@@ -16,7 +16,10 @@ MAKEFLAGS += --silent
 
 NAME = libftprintf.a
 
+DEPDIR := .deps
+
 FLAGS = -Wall -Wextra -Werror
+DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
 
 MAIN_FUNCS := $(shell cat files_list/main.txt)
 
@@ -74,12 +77,14 @@ OBJ = $(MAINS_OBJ) $(FORMATS_OBJ) $(TYPES_OBJ) $(LIBFT_OBJ) $(MODS_OBJ) $(UTILS_
 
 MODE = 1
 
+FILE_CHECK := $(wildcard $(NAME))
+
+#====================MODE 0 ============================
 ifeq ($(MODE), 0)
 
 all : $(NAME)
 
 $(NAME): $(OBJ)
-	@ranlib $(NAME)
 
 $(OBJ_DIR)%.o : %.c $(HEADER_PATH)
 	@printf "\r                                          "
@@ -87,19 +92,36 @@ $(OBJ_DIR)%.o : %.c $(HEADER_PATH)
 	@gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
 	@mkdir -p $(OBJ_DIR)
 	@mv -f $(@F) $(OBJ_DIR)
-	@ar -rcs $(NAME) $@
+ifneq ("$(FILE_CHECK)", "")
+		@ar -rc $(NAME) $@
+endif
 
 else
-
-all: $(OBJ)
+#===================MODE 1 ===========================
+$(NAME): $(OBJ) 
+ifeq ("$(FILE_CHECK)", "")
+	@printf "\033[92mGenerating libftprintf...\n\033[0m"
+	@ar -rcs $(NAME) $(OBJ)
+	@printf "\r\033[92mDone Generating[\xE2\x9C\x94]\n\033[0m"
+else
+	@ranlib $(NAME)
+endif
 
 $(OBJ_DIR)%.o : %.c $(HEADER_PATH)
-	@printf "\033[92mCompiling libftprintf...\n\033[0m"
+ifneq ("$(FILE_CHECK)", "")
+	@printf "\033[92mUpdating libftprintf...\n\033[0m"
 	@$(MAKE) MODE=0
 	@printf "\r                                          "
-	@printf "\r\033[92mDone libftprintf[\xE2\x9C\x94]\n\033[0m"
+	@printf "\r\033[92mDone Updating[\xE2\x9C\x94]\n\033[0m"
+else
+	@printf "\033[92mCompiling libftprintf objects...\n\033[0m"
+	@$(MAKE) MODE=0
+	@printf "\r                                          "
+	@printf "\r\033[92mDone Compiling[\xE2\x9C\x94]\n\033[0m"
+endif
 
 endif
+#=================NO MODE ==========================
 clean:
 	@printf "\033[92m<< Cleaning $(NAME) >>\n\033[0m"
 	rm -f $(OBJ_SRC)
