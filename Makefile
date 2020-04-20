@@ -52,6 +52,8 @@ MAINS_DIR = srcs/
 
 INCLUDES_DIR = includes/
 
+VPATH = $(TYPES_DIR):$(FORMATS_DIR):$(MODS_DIR):$(UTILS_DIR):$(LIBFT_DIR):$(UTILS_FLOAT_DIR):$(MAINS_DIR):$(INCLUDES_DIR)
+
 MAINS_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o,$(MAIN_FUNCS))
 
 FORMATS_OBJ = $(patsubst %.c, $(OBJ_DIR)%.o,$(FORMATS))
@@ -76,74 +78,22 @@ ifeq ($(MODE), 0)
 
 all : $(NAME)
 
-$(NAME): $(MAINS_OBJ) $(TYPES_OBJ) $(FORMATS_OBJ) $(MODS_OBJ) $(UTILS_OBJ) $(LIBFT_OBJ) $(UTILS_FLOAT_OBJ)
+$(NAME): $(OBJ)
 	@ranlib $(NAME)
 
-$(OBJ_DIR)%.o : $(MAINS_DIR)%.c $(HEADER_PATH)
+$(OBJ_DIR)%.o : %.c $(HEADER_PATH)
 	@printf "\r                                          "
 	@printf "\r\033[92m--->Compiling $(@F)\033[0m"
 	@gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
 	@mkdir -p $(OBJ_DIR)
 	@mv -f $(@F) $(OBJ_DIR)
 	@ar -rcs $(NAME) $@
-
-$(OBJ_DIR)%.o : $(FORMATS_DIR)%.c $(HEADER_PATH)
-	@printf "\r                                          "
-	@printf "\r\033[92m--->Compiling $(@F)\033[0m"
-	@gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
-	@mkdir -p $(OBJ_DIR)
-	@mv -f $(@F) $(OBJ_DIR)
-	@ar rsc $(NAME) $@
-
-
-$(OBJ_DIR)%.o : $(TYPES_DIR)%.c $(HEADER_PATH)
-	@printf "\r                                          "
-	@printf "\r\033[92m--->Compiling $(@F)\033[0m"
-	@gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
-	@mkdir -p $(OBJ_DIR)
-	@mv -f $(@F) $(OBJ_DIR)
-	@ar -rcs $(NAME) $@ 
-
-$(OBJ_DIR)%.o : $(UTILS_DIR)%.c $(HEADER_PATH)
-	@printf "\r                                          "
-	@printf "\r\033[92m--->Compiling $(@F)\033[0m"
-	@gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
-	@mkdir -p $(OBJ_DIR)
-	@mv -f $(@F) $(OBJ_DIR)
-	@ar -rsc $(NAME) $@
-
-$(OBJ_DIR)%.o : $(LIBFT_DIR)%.c $(HEADER_PATH)
-	@printf "\r                                          "
-	@printf "\r\033[92m--->Compiling $(@F)\033[0m"
-	@gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
-	@mkdir -p $(OBJ_DIR)
-	@mv -f $(@F) $(OBJ_DIR)
-	@ar -rcs $(NAME) $@
-
-$(OBJ_DIR)%.o : $(UTILS_FLOAT_DIR)%.c $(HEADER_PATH)
-	@printf "\r                                          "
-	@printf "\r\033[92m--->Compiling $(@F)\033[0m"
-	@gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
-	@mkdir -p $(OBJ_DIR)
-	@mv -f $(@F) $(OBJ_DIR)
-	@ar -rcs $(NAME) $@ 
-
-$(OBJ_DIR)%.o : $(MODS_DIR)%.c $(HEADER_PATH)
-	@printf "\r                                          "
-	@printf "\r\033[92m--->Compiling $(@F)\033[0m"
-	@gcc $(FLAGS) -I$(INCLUDES_DIR) -c $<
-	@mkdir -p $(OBJ_DIR)
-	@mv -f $(@F) $(OBJ_DIR)
-	@ar -rcs $(NAME) $@ 
 
 else
 
-all : $(OBJ)
+all: $(OBJ)
 
-
-$(OBJ_DIR)%.o : $(NAME) ;
-
-$(NAME):
+$(OBJ_DIR)%.o : %.c $(HEADER_PATH)
 	@printf "\033[92mCompiling libftprintf...\n\033[0m"
 	@$(MAKE) MODE=0
 	@printf "\r                                          "
