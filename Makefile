@@ -21,13 +21,7 @@ DEPDIR := .deps
 FLAGS = -Wall -Wextra -Werror
 DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
 
-LIBFT = 0
-
-ifeq ($(LIBFT), 1)
-	MAIN_FUNCS := 
-else
-	MAIN_FUNCS := $(shell cat files_list/main.txt)
-endif
+MAIN_FUNCS := $(shell cat files_list/main.txt)
 
 FORMATS := $(shell cat files_list/format.txt)
 
