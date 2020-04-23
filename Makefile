@@ -16,10 +16,7 @@ MAKEFLAGS += --silent
 
 NAME = libftprintf.a
 
-DEPDIR := .deps
-
 FLAGS = -Wall -Wextra -Werror
-DEPFLAGS = -MT $@ -MMD -MP -MF $(DEPDIR)/$*.d
 
 MAIN_FUNCS := $(shell cat files_list/main.txt)
 
