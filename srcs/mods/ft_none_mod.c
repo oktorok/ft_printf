@@ -14,8 +14,8 @@
 
 static char	*ltoa(char *comm, va_list ap, va_list ap2)
 {
-	void *aux;
-	char *variable;
+	void	*aux;
+	char	*variable;
 
 	aux = ft_locate_date(comm, 5, ap, ap2);
 	variable = ft_ltoa_base(*((int *)aux), 10);
@@ -25,8 +25,8 @@ static char	*ltoa(char *comm, va_list ap, va_list ap2)
 
 static char	*ultoa(char *comm, va_list ap, va_list ap2)
 {
-	void *aux;
-	char *variable;
+	void	*aux;
+	char	*variable;
 
 	aux = ft_locate_date(comm, 6, ap, ap2);
 	variable = ft_ultoa_base(*((unsigned int *)aux), 10);
@@ -34,9 +34,9 @@ static char	*ultoa(char *comm, va_list ap, va_list ap2)
 	return (variable);
 }
 
-char		*ft_none_mod(va_list ap, va_list ap2, char *comm)
+char	*ft_none_mod(va_list ap, va_list ap2, char *comm)
 {
-	char comand;
+	char	comand;
 
 	comand = ft_toupper(comm[ft_strlen(comm) - 1]);
 	if ((comand == 'D') || (comand == 'I'))
@@ -46,12 +46,12 @@ char		*ft_none_mod(va_list ap, va_list ap2, char *comm)
 	if (comand == 'O')
 	{
 		return (ft_dectooct(ft_locate_date(comm, 6, ap, ap2),
-				sizeof(unsigned int)));
+				    sizeof(unsigned int)));
 	}
 	if (comand == 'X')
 	{
 		return (ft_dectohex(ft_locate_date(comm, 6, ap, ap2),
-				sizeof(unsigned int), comm));
+				    sizeof(unsigned int), comm));
 	}
 	if (comand == 'B')
 		return (ft_dectobin(ft_locate_date(comm, 5, ap, ap2), sizeof(int)));

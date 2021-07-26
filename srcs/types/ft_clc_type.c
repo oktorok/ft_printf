@@ -12,18 +12,20 @@
 
 #include "libftprintf.h"
 
-static char		*writer(int *siz_cuant, char *comm, char *variab)
+static char	*writer(int *siz_cuant, char *comm, char *variab)
 {
 	char	*tmp;
 
 	if (ft_search_zero_format(comm) && !ft_minus_format(comm))
 	{
-		if (!(tmp = ft_memset(ft_strnew(siz_cuant[0]), '0', siz_cuant[0])))
+		tmp = ft_memset(ft_strnew(siz_cuant[0]), '0', siz_cuant[0]);
+		if (!tmp)
 			return (NULL);
 	}
 	else
 	{
-		if (!(tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0])))
+		tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0]);
+		if (!tmp)
 			return (NULL);
 	}
 	if (ft_minus_format(comm))
@@ -35,31 +37,40 @@ static char		*writer(int *siz_cuant, char *comm, char *variab)
 	return (tmp);
 }
 
-int				ft_clc_type(char *comm, va_list *ap, char **res, size_t len)
+static int	locate_date(char *comm, va_list *ap, char **variable)
+{
+	char	*tmp;
+
+	tmp = (char *)ft_locate_date(comm, 1, ap[0], ap[1]);
+	if (!tmp)
+		return (0);
+	*variable = ft_memcpy(ft_strnew(1), tmp, 1);
+	free(tmp);
+	return (1);
+}
+
+int	ft_clc_type(char *comm, va_list *ap, char **res, size_t len)
 {
 	int		siz_cuant[2];
 	char	*variable;
-	char	*tmp;
 
 	ft_field_format(siz_cuant, &comm, ap);
 	if (siz_cuant[0] == -2 || siz_cuant[1] == -2)
 		return (-1);
 	if (ft_mods(comm) == 4 || ft_strchr(comm, 'C'))
 	{
-		if (!(variable = ft_wchar(ap[0], ap[1], siz_cuant, comm)))
+		variable = ft_wchar(ap[0], ap[1], siz_cuant, comm);
+		if (!variable)
 			return (-1);
 	}
-	else
-	{
-		if (!(tmp = (char *)ft_locate_date(comm, 1, ap[0], ap[1])))
-			return (-1);
-		variable = ft_memcpy(ft_strnew(1), tmp, 1);
-		free(tmp);
-	}
+	else if (!locate_date(comm, ap, &variable))
+		 return (-1);
 	ft_ajust_params(siz_cuant, variable, comm);
-	if (!(variable = writer(siz_cuant, comm, variable)))
+	variable = writer(siz_cuant, comm, variable);
+	if (!variable)
 		return (-1);
-	if (!(*res = ft_memjoinfree(*res, variable, len, siz_cuant[0])))
+	*res = ft_memjoinfree(*res, variable, len, siz_cuant[0]);
+	if (!*res)
 		return (-1);
 	return (len + siz_cuant[0]);
 }

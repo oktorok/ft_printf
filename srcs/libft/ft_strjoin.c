@@ -14,7 +14,7 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char *new;
+	char	*new;
 
 	if (s1 && s2)
 	{

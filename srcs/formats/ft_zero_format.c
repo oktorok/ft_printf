@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-char		*write_zeros(char *variable, int zero_cuant)
+char	*write_zeros(char *variable, int zero_cuant)
 {
 	char	*new_variab;
 	int		neg;
@@ -22,7 +22,8 @@ char		*write_zeros(char *variable, int zero_cuant)
 	neg = 0;
 	if (!zero_cuant)
 		return (variable);
-	if (!(new_variab = ft_strnew(ft_strlen(variable) + zero_cuant)))
+	new_variab = ft_strnew(ft_strlen(variable) + zero_cuant);
+	if (!new_variab)
 		return (NULL);
 	if (*variable == '-')
 	{
@@ -35,10 +36,10 @@ char		*write_zeros(char *variable, int zero_cuant)
 	return (new_variab);
 }
 
-char		*ft_zero_format(char *comm, char *variable, int *siz_cuant)
+char	*ft_zero_format(char *comm, char *variable, int *siz_cuant)
 {
-	int neg;
-	int t;
+	int	neg;
+	int	t;
 
 	t = ft_toupper(comm[ft_strlen(comm) - 1]);
 	neg = 0;
@@ -48,7 +49,7 @@ char		*ft_zero_format(char *comm, char *variable, int *siz_cuant)
 	{
 		if (ft_search_zero_format(comm))
 			return (write_zeros(variable,
-						siz_cuant[0] + neg - ft_strlen(variable)));
+					    siz_cuant[0] + neg - ft_strlen(variable)));
 		else
 			return (variable);
 	}

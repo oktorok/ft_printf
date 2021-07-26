@@ -19,7 +19,8 @@ static void	ft_printbyte(size_t j, char **aux)
 	char	*n;
 	size_t	len_n;
 
-	if (!(n = ft_itoa(j + 1)))
+	n = ft_itoa(j + 1);
+	if (!n)
 		return ;
 	len_n = ft_strlen(n);
 	ft_strcpy(*aux, "  Byte ");
@@ -35,13 +36,17 @@ static void	ft_printhex(char *n, char **aux, size_t j)
 {
 	ft_strcpy(*aux, "  ");
 	(*aux) += 2;
-	ft_memset(*aux, ((n[j] & 0xF0) >> 4) > 9 ? ((n[j] & 0xF0) >> 4) - 10 + 'A' :
-			((n[j] & 0xF0) >> 4) + 48, 1);
+	if (((n[j] & 0xF0) >> 4) > 9)
+		ft_memset(*aux, ((n[j] & 0xF0) >> 4) - 10 + 'A', 1);
+	else
+		ft_memset(*aux, ((n[j] & 0xF0) >> 4) + 48, 1);
 	(*aux)++;
 	ft_strcpy(*aux, "    ");
 	(*aux) += 4;
-	ft_memset(*aux, (n[j] & 0xF) > 9 ? (n[j] & 0xF) - 10 + 'A' :
-			(n[j] & 0xF) + 48, 1);
+	if ((n[j] & 0xF) > 9)
+		ft_memset(*aux, n[j] & 0xF - 10 + 'A', 1);
+	else
+		ft_memset(*aux, (n[j] & 0xF) + 48, 1);
 	(*aux)++;
 	ft_strcpy(*aux, "  | ");
 	(*aux) += 4;
@@ -52,7 +57,8 @@ static void	ft_printbin(char *n, char **aux, size_t j)
 	char	*bin;
 	char	*num;
 
-	if (!(num = ft_strnew(1)))
+	num = ft_strnew(1);
+	if (!num)
 		return ;
 	ft_strcpy(*aux, "0000 0000 | ");
 	num[0] = (n[j] & 0xF0) >> 4;
@@ -60,7 +66,8 @@ static void	ft_printbin(char *n, char **aux, size_t j)
 	if (ft_strlen(bin) != 0)
 		ft_strncpy((*aux) + 4 - ft_strlen(bin), bin, ft_strlen(bin));
 	ft_strdel(&bin);
-	if (!(num = ft_strnew(1)))
+	num = ft_strnew(1);
+	if (!num)
 		return ;
 	num[0] = n[j] & 0xF;
 	bin = ft_dectobin(num, 1);
@@ -98,14 +105,16 @@ static void	ft_print_littleendian(char *n, size_t len, char *str)
 	}
 }
 
-char		*ft_printmemory(void *mem, size_t len)
+char	*ft_printmemory(void *mem, size_t len)
 {
 	char	*n;
 	char	*str;
 
 	n = (char *)mem;
-	if (!(str = ft_strnew(98 + (len * 36) + (len / 4) +
-					((len % 4) ? 1 : 0) + 100)))
+	str = ft_strnew(98 + (len * 36) + (len / 4) + 1 + 100);
+	if (len % 4)
+		str = ft_strnew(98 + (len * 36) + (len / 4) + 100);
+	if (!str)
 		return (NULL);
 	ft_print_littleendian(n, len, str);
 	return (str);

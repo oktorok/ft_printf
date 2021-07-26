@@ -22,7 +22,8 @@ char	*ft_memjoinfree(void *str1, void *str2, size_t l1, size_t l2)
 	s2 = (char *)str2;
 	if (s1 && s2)
 	{
-		if (!(new = ft_strnew(l1 + l2)))
+		new = ft_strnew(l1 + l2);
+		if (!new)
 			return (NULL);
 		ft_memcpy(new, s1, l1);
 		ft_memcpy(new + l1, s2, l2);

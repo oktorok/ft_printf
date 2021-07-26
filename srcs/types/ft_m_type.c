@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libftprintf.h"
+#include "libftprintf.h"
 
-int		ft_m_type(char *comm, va_list *ap, char **res, size_t len)
+int	ft_m_type(char *comm, va_list *ap, char **res, size_t len)
 {
 	int		siz_cuant[2];
 	char	*variable;
@@ -21,11 +21,13 @@ int		ft_m_type(char *comm, va_list *ap, char **res, size_t len)
 	ft_field_format(siz_cuant, &comm, ap);
 	if (siz_cuant[0] == -2 || siz_cuant[1] == -2)
 		return (-1);
-	if (!(variable = ft_printmemory(ft_locate_pointer(comm, ap[0], ap[1]),
-					siz_cuant[0])))
+	variable = ft_printmemory(ft_locate_pointer(comm, ap[0], ap[1]),
+			siz_cuant[0]);
+	if (!variable)
 		return (-1);
 	len_var = ft_strlen(variable);
-	if (!(*res = ft_memjoinfree(*res, variable, len, len_var)))
+	*res = ft_memjoinfree(*res, variable, len, len_var);
+	if (!*res)
 		return (-1);
 	return (len + len_var);
 }

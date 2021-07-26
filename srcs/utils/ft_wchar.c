@@ -19,10 +19,10 @@ static	void	*selector(char *com, va_list ap, va_list ap2)
 	return (ft_locate_pointer(com, ap, ap2));
 }
 
-static void		modify_len(wchar_t *wvariable, int *siz_cuant)
+static void	modify_len(wchar_t *wvariable, int *siz_cuant)
 {
 	int	i;
-	int cuant;
+	int	cuant;
 
 	i = 0;
 	cuant = 0;
@@ -38,22 +38,24 @@ static void		modify_len(wchar_t *wvariable, int *siz_cuant)
 	}
 }
 
-char			*ft_wchar(va_list ap, va_list ap2, int *siz_cuant, char *comm)
+char	*ft_wchar(va_list ap, va_list ap2, int *siz_cuant, char *comm)
 {
 	wchar_t		*wvariable;
 	char		*res;
 	int			i;
 
 	i = 0;
-	if (!(wvariable = (wchar_t *)selector(comm, ap, ap2)))
+	wvariable = (wchar_t *)selector(comm, ap, ap2);
+	if (!wvariable)
 		return (ft_strdup("(null)"));
 	res = ft_strnew(0);
 	while (wvariable[i])
 	{
 		if ((wvariable[i] >= 0xd800 && wvariable[i] < 0xd800 + 2048)
-				|| wvariable[i] >= 0x11ffff || wvariable[i] < 0)
+			|| wvariable[i] >= 0x11ffff || wvariable[i] < 0)
 			return (NULL);
-		if (!(res = ft_strjoinfree(res, ft_utf8(wvariable[i++]))))
+		res = ft_strjoinfree(res, ft_utf8(wvariable[i++]));
+		if (!res)
 			return (NULL);
 	}
 	if (ft_toupper(comm[ft_strlen(comm) - 1] == 'C'))

@@ -13,7 +13,7 @@
 #include "libftprintf.h"
 #include "extern.h"
 
-static int		exec_command(char *str, va_list *ap, size_t len, char **res)
+static int	exec_command(char *str, va_list *ap, size_t len, char **res)
 {
 	char			*command;
 	int				aux;
@@ -22,10 +22,15 @@ static int		exec_command(char *str, va_list *ap, size_t len, char **res)
 	n = 0;
 	if (!str)
 		return (len);
-	if ((aux = ft_findend(str)) < 0)
-		if (!(aux = ft_strlen(str) - 1))
+	aux = ft_findend(str);
+	if (aux < 0)
+	{
+		aux = ft_strlen(str) - 1;
+		if (!aux)
 			return (len);
-	if (!(command = ft_strsub(str, 1, aux)))
+	}
+	command = ft_strsub(str, 1, aux);
+	if (!command)
 		return (-1);
 	n = ft_strchr(g_types, command[ft_strlen(command) - 1]) - g_types;
 	if (n < 0)
@@ -37,7 +42,27 @@ static int		exec_command(char *str, va_list *ap, size_t len, char **res)
 	return (aux);
 }
 
-static int		ft_printf_body(va_list *ap, const char *str, char **res)
+static char	*upt_head_aux_len(char **aux, char *head, int mode, int *aux_len)
+{
+	if (mode == 1)
+	{
+		if (*aux)
+			head = *aux + ft_findend(*aux) + 1;
+		else
+			head = head + ft_strlen(head);
+		return (head);
+	}
+	else
+	{
+		*aux = ft_strchr(head, '%');
+		*aux_len = (int)(*aux - head);
+		if (*aux - head < 0)
+			*aux_len = (int)ft_strlen(head);
+		return (NULL);
+	}
+}
+
+static int	ft_printf_body(va_list *ap, const char *str, char **res)
 {
 	char	*aux;
 	char	*head;
@@ -49,23 +74,23 @@ static int		ft_printf_body(va_list *ap, const char *str, char **res)
 	len = 0;
 	while (1)
 	{
-		aux = ft_strchr(head, '%');
-		aux_len = (int)((aux - head) < 0 ? (int)ft_strlen(head) : aux - head);
+		upt_head_aux_len(&aux, head, 0, &aux_len);
 		aux_res = ft_memmove(ft_strnew(len + aux_len), *res, len);
 		ft_memmove(aux_res + len, head, aux_len);
-		if ((aux_len = exec_command(aux, ap, len + aux_len, &aux_res)) < 0)
+		aux_len = exec_command(aux, ap, len + aux_len, &aux_res);
+		if (aux_len < 0)
 			return (-len);
 		len = aux_len;
 		ft_strdel(res);
 		*res = aux_res;
-		head = aux ? aux + ft_findend(aux) + 1 : head + ft_strlen(head);
+		head = upt_head_aux_len(&aux, head, 1, 0);
 		if (!aux || ft_findend(aux) < 0)
 			break ;
 	}
 	return (len);
 }
 
-int				ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	char		*res;
 	va_list		ap[2];

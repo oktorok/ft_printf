@@ -12,9 +12,9 @@
 
 #include "libftprintf.h"
 
-static int		calcdigits(long val, int bas)
+static int	calcdigits(long val, int bas)
 {
-	int dig;
+	int	dig;
 
 	dig = 1;
 	while (val / bas)
@@ -25,7 +25,7 @@ static int		calcdigits(long val, int bas)
 	return (dig);
 }
 
-static void		calcnum(char *res, long *value, int base)
+static void	calcnum(char *res, long *value, int base)
 {
 	if (*value < (long)base)
 		*res = *value;
@@ -40,14 +40,14 @@ static void		calcnum(char *res, long *value, int base)
 
 static	char	*exception(void)
 {
-	char *str;
+	char	*str;
 
 	str = ft_strnew(20);
 	ft_strcpy(str, "-9223372036854775808");
 	return (str);
 }
 
-char			*ft_ltoa_base(long value, int base)
+char	*ft_ltoa_base(long value, int base)
 {
 	int		digits;
 	int		neg;
@@ -63,7 +63,8 @@ char			*ft_ltoa_base(long value, int base)
 			neg = 1;
 	}
 	digits = calcdigits(value, base);
-	if (!(res = ft_strnew(neg + digits + 1)))
+	res = ft_strnew(neg + digits + 1);
+	if (!res)
 		return (NULL);
 	if (neg)
 		res[0] = '-';

@@ -25,11 +25,11 @@ static char	*ft_binsize(char *n, size_t len, size_t *i, char *j)
 			(*j) = 0;
 		}
 	}
-	return (ft_strnew(sizeof(char) * ((len * 8) -
-			((((len - 1) - *i) * 8) + (*j)))));
+	return (ft_strnew(sizeof(char) * ((len * 8)
+				- ((((len - 1) - *i) * 8) + (*j)))));
 }
 
-char		*ft_dectobin(void *num, size_t len)
+char	*ft_dectobin(void *num, size_t len)
 {
 	char	*n;
 	char	*str;
@@ -38,14 +38,17 @@ char		*ft_dectobin(void *num, size_t len)
 	char	j;
 
 	n = (char *)num;
-	if (!(str = ft_binsize(n, len, &i, &j)))
+	str = ft_binsize(n, len, &i, &j);
+	if (!str)
 		return (NULL);
 	k = 0;
 	while (i < len)
 	{
 		while (j < 8)
 		{
-			str[k++] = ((n[i] & (0x80 >> j)) ? '1' : '0');
+			str[k] = '0';
+			if ((n[i] & (0x80 >> j)))
+				str[k++] = '1';
 			j++;
 		}
 		j = 0;

@@ -18,7 +18,8 @@ static int	final_step(int *n, int *len, char **res)
 
 	if (*n < 0)
 	{
-		if (!((*res) = ft_strnew(*len + 1)))
+		(*res) = ft_strnew(*len + 1);
+		if (!(*res))
 			return (0);
 		res[0][0] = '-';
 		*n = -(*n);
@@ -35,24 +36,26 @@ static int	final_step(int *n, int *len, char **res)
 
 static char	*exceptions(int n)
 {
-	char *res;
+	char	*res;
 
 	if (n == -2147483648)
 	{
-		if (!(res = ft_strnew(11)))
+		res = ft_strnew(11);
+		if (!res)
 			return (NULL);
 		res = ft_strcat(ft_strcpy(res, ft_itoa(-214748364)), ft_itoa(8));
 	}
 	if (n == 0)
 	{
-		if (!(res = ft_strnew(1)))
+		res = ft_strnew(1);
+		if (!res)
 			return (NULL);
 		res[0] = 0 + 48;
 	}
 	return (res);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int		digit;
 	char	*res;

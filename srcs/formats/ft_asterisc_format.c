@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-static int			exception(char *command, int pos)
+static int	exception(char *command, int pos)
 {
 	int		i;
 
@@ -39,7 +39,7 @@ static int			exception(char *command, int pos)
 	return (1);
 }
 
-static void			modify_comm(char **command, int pos, int dolar, va_list *ap)
+static void	modify_comm(char **command, int pos, int dolar, va_list *ap)
 {
 	void	*tmp;
 	int		aux;
@@ -65,13 +65,16 @@ static void			modify_comm(char **command, int pos, int dolar, va_list *ap)
 	*command = ft_strinsertfree(*command, inser, pos);
 }
 
-void				ft_asterisc_format(char **command, va_list *ap)
+void	ft_asterisc_format(char **command, va_list *ap)
 {
 	char	*tmp;
 	int		i;
 
-	while ((tmp = ft_strchr(*command, '*')))
+	while (1)
 	{
+		tmp = ft_strchr(*command, '*');
+		if (!tmp)
+			break ;
 		if (ft_isdigit(tmp[1]) && tmp[1] != 0)
 		{
 			i = 1;

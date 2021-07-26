@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-static int		size(int mem)
+static int	size(int mem)
 {
 	if ((mem == 1) || (mem == 2))
 		return (sizeof(signed char));
@@ -33,7 +33,7 @@ static int		size(int mem)
 	return (0);
 }
 
-static void		*selector2(int mem, va_list ap, void *variable)
+static void	*selector2(int mem, va_list ap, void *variable)
 {
 	if (mem == 8)
 		*((long *)variable) = va_arg(ap, long);
@@ -54,11 +54,12 @@ static void		*selector2(int mem, va_list ap, void *variable)
 	return (variable);
 }
 
-static void		*selector(int mem, va_list ap)
+static void	*selector(int mem, va_list ap)
 {
-	void *variable;
+	void	*variable;
 
-	if (!(variable = ft_memalloc(size(mem))))
+	variable = ft_memalloc(size(mem));
+	if (!variable)
 		return (NULL);
 	if (mem > 7)
 		return (selector2(mem, ap, variable));
@@ -79,7 +80,7 @@ static void		*selector(int mem, va_list ap)
 	return (variable);
 }
 
-static void		*exec_dolar(char *comm, int i, va_list ap, int mem)
+static void	*exec_dolar(char *comm, int i, va_list ap, int mem)
 {
 	va_list		ap3;
 	int			loc;
@@ -100,7 +101,7 @@ static void		*exec_dolar(char *comm, int i, va_list ap, int mem)
 	return (variable);
 }
 
-void			*ft_locate_date(char *comm, int mem, va_list ap, va_list ap2)
+void	*ft_locate_date(char *comm, int mem, va_list ap, va_list ap2)
 {
 	void	*variable;
 	int		len;

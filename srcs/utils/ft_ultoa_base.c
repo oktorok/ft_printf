@@ -12,9 +12,9 @@
 
 #include "libftprintf.h"
 
-static int		calcdigits(unsigned long val, long bas)
+static int	calcdigits(unsigned long val, long bas)
 {
-	long dig;
+	long	dig;
 
 	dig = 1;
 	while (val / bas)
@@ -25,7 +25,7 @@ static int		calcdigits(unsigned long val, long bas)
 	return (dig);
 }
 
-static void		calcnum(char *res, unsigned long *value, int base)
+static void	calcnum(char *res, unsigned long *value, int base)
 {
 	if (*value < (unsigned long)base)
 		*res = *value;
@@ -38,7 +38,7 @@ static void		calcnum(char *res, unsigned long *value, int base)
 	*value = *value / base;
 }
 
-char			*ft_ultoa_base(unsigned long value, int base)
+char	*ft_ultoa_base(unsigned long value, int base)
 {
 	int		digits;
 	char	*res;
@@ -47,7 +47,8 @@ char			*ft_ultoa_base(unsigned long value, int base)
 	if (base < 2 || base > 16)
 		return (NULL);
 	digits = calcdigits(value, base);
-	if (!(res = ft_strnew(digits)))
+	res = ft_strnew(digits);
+	if (!res)
 		return (NULL);
 	i = digits - 1;
 	while (digits--)

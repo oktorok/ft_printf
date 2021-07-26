@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-int		ft_minus_format(char *command)
+int	ft_minus_format(char *command)
 {
 	int		i;
 

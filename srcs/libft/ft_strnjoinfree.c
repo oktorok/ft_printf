@@ -23,7 +23,8 @@ char	*ft_strnjoinfree(char *s1, char *s2, unsigned int n)
 	str = NULL;
 	i = 0;
 	j = 0;
-	if (!(str = ft_strnew(ft_strlen(s1) + n)))
+	str = ft_strnew(ft_strlen(s1) + n);
+	if (!str)
 		return (NULL);
 	while (s1[j])
 		str[i++] = s1[j++];

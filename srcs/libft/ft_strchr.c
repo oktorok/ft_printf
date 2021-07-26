@@ -14,8 +14,8 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	char *scpy;
-	char ccpy;
+	char	*scpy;
+	char	ccpy;
 
 	scpy = (char *)s;
 	ccpy = (char)c;

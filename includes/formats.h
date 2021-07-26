@@ -18,6 +18,7 @@ int				ft_minus_format(char *command);
 char			*ft_space_format(char *command, char *variable, int *siz_cuant);
 char			*ft_plus_format(char *command, char *variable, int *siz_cuant);
 char			*ft_hash_format(char *command, char *variable, int *siz_cuant);
+char			*ox_hash(char *variable, int *siz_cuant, int type, int len);
 char			*ft_apostrophe_format(char *comm,
 										char *variable, int *siz_cuant);
 char			*ft_zero_format(char *comm, char *variable, int *siz_cuant);

@@ -6,3 +6,4 @@ ft_take_power.c
 ft_multiply.c
 ft_round.c
 ft_putthepoint.c
+ft_putthepoint_f.c

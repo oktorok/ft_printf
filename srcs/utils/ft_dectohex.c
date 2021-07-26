@@ -34,7 +34,9 @@ static char	*ft_hexsize(char *n, size_t len, size_t *s_len)
 		i--;
 		j++;
 	}
-	*s_len = ((len * 2) - k) ? ((len * 2) - k) : 1;
+	*s_len = 1;
+	if ((len * 2) - k)
+		*s_len = ((len * 2) - k);
 	return (ft_strnew(sizeof(char) * (*s_len)));
 }
 
@@ -45,18 +47,18 @@ static char	*for_p(char *str, char *comm, void *num)
 	return (str);
 }
 
-char		*ft_dectohex(void *num, size_t len, char *comm)
+char	*ft_dectohex(void *num, size_t len, char *comm)
 {
 	size_t	k;
 	char	*str;
 	size_t	i;
-	size_t	s_len;
 	size_t	aux;
 
-	if (!(str = ft_hexsize((char *)num, len, &s_len)))
+	str = ft_hexsize((char *)num, len, &aux);
+	if (!str)
 		return (NULL);
 	i = 0;
-	aux = s_len - 1;
+	aux = aux - 1;
 	k = 0;
 	while ((aux + 1) > 0)
 	{

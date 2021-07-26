@@ -18,7 +18,8 @@ static char	*writer(int *siz_cuant, char *comm, char *variab)
 	int		len;
 
 	len = ft_strlen(variab);
-	if (!(tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0])))
+	tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0]);
+	if (!tmp)
 		return (NULL);
 	if (ft_minus_format(comm))
 		ft_strncpy(tmp, variab, len);
@@ -29,18 +30,28 @@ static char	*writer(int *siz_cuant, char *comm, char *variab)
 	return (tmp);
 }
 
-int			ft_p_type(char *comm, va_list *ap, char **res, size_t len)
+static int	check_formats(char *comm, char **variable, int *siz_cuant)
+{
+	*variable = ft_zero_format(comm, *variable, siz_cuant);
+	if (!*variable)
+		return (0);
+	*variable = ft_hash_format("#x", *variable, siz_cuant);
+	if (!*variable)
+		return (0);
+	return (1);
+}
+
+int	ft_p_type(char *comm, va_list *ap, char **res, size_t len)
 {
 	int		siz_cuant[2];
 	char	*variable;
 
 	ft_field_format(siz_cuant, &comm, ap);
 	variable = (char *)ft_locate_pointer(comm, ap[0], ap[1]);
-	if (!(variable = ft_dectohex(&variable, sizeof(void *), comm)))
+	variable = ft_dectohex(&variable, sizeof(void *), comm);
+	if (!variable)
 		return (-1);
-	if (!(variable = ft_zero_format(comm, variable, siz_cuant)))
-		return (-1);
-	if (!(variable = ft_hash_format("#x", variable, siz_cuant)))
+	if (!check_formats(comm, &variable, siz_cuant))
 		return (-1);
 	if (!ft_strcmp(variable, "0x0") && !siz_cuant[1])
 	{
@@ -49,9 +60,11 @@ int			ft_p_type(char *comm, va_list *ap, char **res, size_t len)
 		siz_cuant[0]--;
 	}
 	ft_ajust_params(siz_cuant, variable, comm);
-	if (!(variable = writer(siz_cuant, comm, variable)))
+	variable = writer(siz_cuant, comm, variable);
+	if (!variable)
 		return (-1);
-	if (!(*res = ft_memjoinfree(*res, variable, len, siz_cuant[0])))
+	*res = ft_memjoinfree(*res, variable, len, siz_cuant[0]);
+	if (!*res)
 		return (-1);
 	return (len + siz_cuant[0]);
 }

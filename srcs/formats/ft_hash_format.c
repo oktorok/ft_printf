@@ -12,50 +12,6 @@
 
 #include "libftprintf.h"
 
-static int	check_zeros(char *variable, int *siz_cuant)
-{
-	if (!((unsigned long)siz_cuant[0] <
-			ft_strlen(variable)) && siz_cuant[1] == -1)
-	{
-		if (*variable == '0' && *(variable + 1) && *(variable + 1) != '0')
-			return (1);
-		if ((*variable == '0') && (*(variable + 1) == '0')
-			&& *(variable + 2) &&
-			(unsigned long)siz_cuant[0] == ft_strlen(variable))
-			return (2);
-	}
-	return (0);
-}
-
-static char	*ox_hash(char *variable, int *siz_cuant, int type, int len)
-{
-	char	*aux;
-	int		zeros;
-
-	zeros = check_zeros(variable, siz_cuant);
-	if (type == 'o')
-	{
-		if (!(aux = ft_strnew(len + 1)))
-			return (NULL);
-		*aux++ = '0';
-		ft_strcpy(aux, variable + zeros);
-		ft_strdel(&variable);
-		if (siz_cuant[0] < len + 1)
-			siz_cuant[0] += 1;
-		return (--aux);
-	}
-	else if (type == 'x')
-	{
-		if (!(aux = ft_strjoin("0x", variable + zeros)))
-			return (NULL);
-		if (siz_cuant[0] < len + 2 - zeros)
-			siz_cuant[0] = len + 2 - zeros;
-		ft_strdel(&variable);
-		return (aux);
-	}
-	return (variable);
-}
-
 static char	*b_hash(char *var, int len)
 {
 	char	*aux;
@@ -66,7 +22,8 @@ static char	*b_hash(char *var, int len)
 	i = len + (len / 4) + (len / 8 * 2);
 	if (!(len % 4))
 		i -= 3;
-	if (!(aux = ft_strnew(i--)))
+	aux = ft_strnew(i--);
+	if (!aux)
 		return (NULL);
 	var += len - 1;
 	while (i >= 0)
@@ -81,7 +38,6 @@ static char	*b_hash(char *var, int len)
 		}
 	}
 	var++;
-	ft_strdel(&var);
 	return (aux);
 }
 
@@ -94,17 +50,19 @@ static char	*fge_hash(char *var, int *siz_cuant)
 		pos = 0;
 		while (ft_isdigit(var[pos]) || var[pos] == '-')
 			pos++;
-		if (!(var = ft_strinsertfree(var, ft_strdup("."), pos)))
+		var = ft_strinsertfree(var, ft_strdup("."), pos);
+		if (!var)
 			return (NULL);
 		siz_cuant[0]++;
 	}
 	return (var);
 }
 
-char		*ft_hash_format(char *command, char *variable, int *siz_cuant)
+char	*ft_hash_format(char *command, char *variable, int *siz_cuant)
 {
 	int		len;
 	char	comm;
+	char	*aux;
 
 	comm = ft_toupper((command[ft_strlen(command) - 1]));
 	len = ft_strlen(variable);
@@ -119,7 +77,9 @@ char		*ft_hash_format(char *command, char *variable, int *siz_cuant)
 	if (comm == 'b')
 	{
 		siz_cuant[0] += len / 4 + len / 8 * 2;
-		return (b_hash(variable, len));
+		aux = b_hash(variable, len);
+		ft_strdel(&variable);
+		return (aux);
 	}
 	return (variable);
 }

@@ -24,8 +24,9 @@ t_myfloat	ft_multiply(t_myfloat x, t_myfloat y)
 	bc = (x.mantissa & 0xFFFFFFFF) * (y.mantissa >> 32);
 	ad = (x.mantissa >> 32) * (y.mantissa & 0xFFFFFFFF);
 	bd = (x.mantissa & 0xFFFFFFFF) * (y.mantissa & 0xFFFFFFFF);
-	r.mantissa = ac + (ad >> 32) + (bc >> 32) + ((((bd >> 32) +
-	(ad & 0xFFFFFFFF) + (bc & 0xFFFFFFFF)) + (1U << 31)) >> 32);
+	r.mantissa = ac + (ad >> 32) + (bc >> 32) + ((((bd >> 32)
+					+ (ad & 0xFFFFFFFF) + (bc & 0xFFFFFFFF))
+				+ (1U << 31)) >> 32);
 	r.exponent = x.exponent + y.exponent + 64;
 	return (r);
 }

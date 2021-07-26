@@ -18,11 +18,16 @@ static char	*writer(int *siz_cuant, char *comm, char *variab)
 
 	if (ft_search_zero_format(comm) && !ft_minus_format(comm))
 	{
-		if (!(tmp = ft_memset(ft_strnew(siz_cuant[0]), '0', siz_cuant[0])))
+		tmp = ft_memset(ft_strnew(siz_cuant[0]), '0', siz_cuant[0]);
+		if (!tmp)
 			return (NULL);
 	}
-	else if (!(tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0])))
-		return (NULL);
+	else
+	{
+		tmp = ft_memset(ft_strnew(siz_cuant[0]), ' ', siz_cuant[0]);
+		if (!tmp)
+			return (NULL);
+	}
 	if (ft_minus_format(comm))
 		tmp = ft_strncpy(tmp, variab, 1);
 	else
@@ -32,21 +37,24 @@ static char	*writer(int *siz_cuant, char *comm, char *variab)
 	return (tmp);
 }
 
-int			ft_percent_type(char *comm, va_list *ap, char **res, size_t len)
+int	ft_percent_type(char *comm, va_list *ap, char **res, size_t len)
 {
 	int		siz_cuant[2];
 	char	*variable;
 
-	if (!(variable = ft_strnew(1)))
+	variable = ft_strnew(1);
+	if (!variable)
 		return (-1);
 	ft_field_format(siz_cuant, &comm, ap);
 	*variable = '%';
 	if (!siz_cuant[0])
 		siz_cuant[0] = 1;
 	siz_cuant[1] = 1;
-	if (!(variable = writer(siz_cuant, comm, variable)))
+	variable = writer(siz_cuant, comm, variable);
+	if (!variable)
 		return (-1);
-	if (!(*res = ft_memjoinfree(*res, variable, len, siz_cuant[0])))
+	*res = ft_memjoinfree(*res, variable, len, siz_cuant[0]);
+	if (!*res)
 		return (-1);
 	return (len + siz_cuant[0]);
 }

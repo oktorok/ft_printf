@@ -14,7 +14,7 @@
 
 static int	cuantity(char *variable)
 {
-	size_t len;
+	size_t	len;
 
 	len = ft_strlen(variable);
 	if (len % 3)
@@ -31,7 +31,8 @@ static char	*add_comas(char *variable)
 	char	*new_variab;
 
 	i = cuantity(variable);
-	if (!(new_variab = ft_strnew(i)))
+	new_variab = ft_strnew(i);
+	if (!new_variab)
 		return (NULL);
 	var_head = variable;
 	variable += ft_strlen(variable) - 1;
@@ -65,9 +66,9 @@ static char	*point(char *variable, int *siz_cuant)
 	return (new_variab);
 }
 
-char		*ft_apostrophe_format(char *comm, char *variable, int *siz_cuant)
+char	*ft_apostrophe_format(char *comm, char *variable, int *siz_cuant)
 {
-	int t;
+	int	t;
 
 	t = ft_toupper(comm[ft_strlen(comm) - 1]);
 	if (!(ft_strchr(comm, '\'')))

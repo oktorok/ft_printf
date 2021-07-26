@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libftprintf.h"
+#include "libftprintf.h"
 
-int		ft_mods(char *comm)
+int	ft_mods(char *comm)
 {
 	int		i;
 

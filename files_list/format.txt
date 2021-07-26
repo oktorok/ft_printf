@@ -1,7 +1,8 @@
 ft_field_format.c
 ft_space_format.c  
 ft_plus_format.c  
-ft_hash_format.c  
+ft_hash_format.c
+ft_hash2_format.c  
 ft_apostrophe_format.c  
 ft_zero_format.c  
 ft_search_zero_format.c  

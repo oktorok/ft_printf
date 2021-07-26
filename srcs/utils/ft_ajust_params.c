@@ -25,8 +25,8 @@ static void	ajust_num_hex_oct_bin(int *siz_cuant, char *variable, int len)
 		variable = ft_strdup("\0");
 		len = ft_strlen(variable);
 	}
-	siz_cuant[0] = siz_cuant[0] > siz_cuant[1] ?
-		siz_cuant[0] : siz_cuant[1] + neg;
+	if (siz_cuant[0] <= siz_cuant[1])
+		siz_cuant[0] = siz_cuant[1] + neg;
 	if (siz_cuant[0] < len)
 		siz_cuant[0] = len;
 	if (siz_cuant[1] >= 0)
@@ -39,7 +39,8 @@ static void	ajust_num_hex_oct_bin(int *siz_cuant, char *variable, int len)
 
 static void	ajust_gfloat(int *siz_cuant, int len, int exp)
 {
-	siz_cuant[1] -= siz_cuant[1] ? 1 : 0;
+	if (siz_cuant[1])
+		siz_cuant[1]--;
 	if (siz_cuant[0] < siz_cuant[1])
 		siz_cuant[0] = siz_cuant[1];
 	if (!siz_cuant[1])
@@ -50,7 +51,7 @@ static void	ajust_gfloat(int *siz_cuant, int len, int exp)
 
 static void	ajust_float(int *siz_cuant, char *variab, char type, int len)
 {
-	int exp;
+	int	exp;
 
 	len -= 4;
 	exp = ft_atoi(ft_strchr(variab, 'e') + 2);
@@ -90,9 +91,9 @@ static void	ajust_char_string(int *siz_cuant, char *variable, int type, int len)
 	}
 }
 
-void		ft_ajust_params(int *siz_cuant, char *variable, char *comm)
+void	ft_ajust_params(int *siz_cuant, char *variable, char *comm)
 {
-	int t;
+	int	t;
 	int	len;
 
 	len = ft_strlen(variable);

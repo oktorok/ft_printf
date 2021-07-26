@@ -30,7 +30,7 @@ static void	*exec_dolar(char *comm, va_list ap)
 	return (variable);
 }
 
-void		*ft_locate_pointer(char *comm, va_list ap, va_list ap2)
+void	*ft_locate_pointer(char *comm, va_list ap, va_list ap2)
 {
 	void	*variable;
 	int		len;

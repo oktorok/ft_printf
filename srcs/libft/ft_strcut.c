@@ -20,7 +20,8 @@ char	*ft_strcut(char *str, int start, int end)
 		return (NULL);
 	if (end <= start || start < 0 || end < 0)
 		return (str);
-	if (!(new = ft_strnew(ft_strlen(str) - (end - start))) || !str)
+	new = ft_strnew(ft_strlen(str) - (end - start));
+	if (!new || !str)
 		return (NULL);
 	ft_strncpy(new, str, start);
 	ft_strcat(new, str + end);

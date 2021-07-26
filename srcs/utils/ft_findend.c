@@ -12,9 +12,9 @@
 
 #include "libftprintf.h"
 
-static char		ft_check(char *str, unsigned int end)
+static char	ft_check(char *str, unsigned int end)
 {
-	int pos;
+	int	pos;
 
 	if (ft_strchr(g_format, str[end]))
 		return (1);
@@ -40,7 +40,7 @@ static char		ft_check(char *str, unsigned int end)
 	return (0);
 }
 
-int				ft_findend(char *str)
+int	ft_findend(char *str)
 {
 	unsigned int	end;
 

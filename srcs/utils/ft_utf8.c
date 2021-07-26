@@ -16,7 +16,8 @@ static char	*ft_7f(wchar_t num)
 {
 	char	*str;
 
-	if (!(str = ft_strnew(1)))
+	str = ft_strnew(1);
+	if (!str)
 		return (NULL);
 	str[0] = num;
 	return (str);
@@ -26,7 +27,8 @@ static char	*ft_7ff(wchar_t num)
 {
 	char	*str;
 
-	if (!(str = ft_strnew(2)))
+	str = ft_strnew(2);
+	if (!str)
 		return (NULL);
 	str[0] = (((num & 0x7C0) >> 6) + 0xC0);
 	str[1] = ((num & 0x3F) + 0x80);
@@ -37,7 +39,8 @@ static char	*ft_ffff(wchar_t num)
 {
 	char	*str;
 
-	if (!(str = ft_strnew(3)))
+	str = ft_strnew(3);
+	if (!str)
 		return (NULL);
 	str[0] = (((num & 0xF000) >> 12) + 0xE0);
 	str[1] = (((num & 0xFC0) >> 6) + 0x80);
@@ -49,7 +52,8 @@ static char	*ft_1fffff(wchar_t num)
 {
 	char	*str;
 
-	if (!(str = ft_strnew(4)))
+	str = ft_strnew(4);
+	if (!str)
 		return (NULL);
 	str[0] = (((num & 0x1C0000) >> 18) + 0xF0);
 	str[1] = (((num & 0x3F000) >> 12) + 0x80);
@@ -58,7 +62,7 @@ static char	*ft_1fffff(wchar_t num)
 	return (str);
 }
 
-char		*ft_utf8(wchar_t num)
+char	*ft_utf8(wchar_t num)
 {
 	if (num < 0x7F)
 		return (ft_7f(num));

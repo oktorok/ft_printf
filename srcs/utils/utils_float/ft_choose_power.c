@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-int		ft_choose_power(int e, int alpha)
+int	ft_choose_power(int e, int alpha)
 {
 	return (ft_sige((alpha - e + 63) * D1LOG210));
 }

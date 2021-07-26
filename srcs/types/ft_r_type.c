@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-static char		*non_printable(char *variable)
+static char	*non_printable(char *variable)
 {
 	int		i;
 	char	*new_variable;
@@ -24,7 +24,8 @@ static char		*non_printable(char *variable)
 	size = 0;
 	while (i < len + 1)
 		size += ft_strlen(g_symbols[(int)(variable[i++])]);
-	if (!(new_variable = ft_strnew(size)))
+	new_variable = ft_strnew(size);
+	if (!new_variable)
 		return (NULL);
 	i = 0;
 	while (i < len + 1)
@@ -32,17 +33,20 @@ static char		*non_printable(char *variable)
 	return (new_variable);
 }
 
-int				ft_r_type(char *comm, va_list *ap, char **res, size_t len)
+int	ft_r_type(char *comm, va_list *ap, char **res, size_t len)
 {
 	int		len_var;
 	char	*variable;
 
-	if (!(variable = (char *)ft_locate_pointer(comm, ap[0], ap[1])))
+	variable = (char *)ft_locate_pointer(comm, ap[0], ap[1]);
+	if (!variable)
 		return (-1);
-	if (!(variable = non_printable(variable)))
+	variable = non_printable(variable);
+	if (!variable)
 		return (-1);
 	len_var = ft_strlen(variable);
-	if (!(*res = ft_memjoinfree(*res, variable, len, len_var)))
+	*res = ft_memjoinfree(*res, variable, len, len_var);
+	if (!*res)
 		return (-1);
 	return (len + len_var);
 }

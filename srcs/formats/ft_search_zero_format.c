@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-int		ft_search_zero_format(char *command)
+int	ft_search_zero_format(char *command)
 {
 	while (*command)
 	{

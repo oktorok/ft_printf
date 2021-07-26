@@ -20,7 +20,8 @@ char	*ft_strinsert(char *dst, char *str, int pos)
 		return (NULL);
 	if (!str || pos < 0 || pos >= (int)ft_strlen(dst))
 		return (dst);
-	if (!(new = ft_strnew(ft_strlen(dst) + ft_strlen(str))) || !dst || !str)
+	new = ft_strnew(ft_strlen(dst) + ft_strlen(str));
+	if (!new || !dst || !str)
 		return (NULL);
 	ft_strncpy(new, dst, pos);
 	ft_strcpy(new + pos, str);

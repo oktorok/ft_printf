@@ -14,7 +14,7 @@
 
 char	*ft_strjoinfree(char *s1, char *s2)
 {
-	char *new;
+	char	*new;
 
 	if (!s1 || !s2)
 		return (NULL);

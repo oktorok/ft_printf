@@ -31,7 +31,7 @@ static size_t	ft_rd1(char *n, size_t i, size_t *j)
 	return (((n[(*j)++] & 0xE0) >> 5) + 48);
 }
 
-static void		octsize_else(size_t *s_len, size_t len)
+static void	octsize_else(size_t *s_len, size_t len)
 {
 	*s_len = (len * 8) - *s_len;
 	if (!((*s_len) % 3))
@@ -40,7 +40,7 @@ static void		octsize_else(size_t *s_len, size_t len)
 		*s_len = (*s_len / 3) + 1;
 }
 
-static char		*ft_octsize(char *n, size_t len, size_t *s_len)
+static char	*ft_octsize(char *n, size_t len, size_t *s_len)
 {
 	size_t	i;
 	size_t	j;
@@ -67,7 +67,7 @@ static char		*ft_octsize(char *n, size_t len, size_t *s_len)
 	return (ft_strnew(sizeof(char) * (*s_len)));
 }
 
-char			*ft_dectooct(void *num, size_t len)
+char	*ft_dectooct(void *num, size_t len)
 {
 	char	*n;
 	char	*str;
@@ -76,7 +76,8 @@ char			*ft_dectooct(void *num, size_t len)
 	size_t	j;
 
 	n = (char *)num;
-	if (!(str = ft_octsize(n, len, &s_len)))
+	str = ft_octsize(n, len, &s_len);
+	if (!str)
 		return (NULL);
 	i = 0;
 	j = 0;

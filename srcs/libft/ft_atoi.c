@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-static int		convert(const char *str)
+static int	convert(const char *str)
 {
-	int n;
-	int i;
+	int	n;
+	int	i;
 
 	i = 0;
 	n = 0;
@@ -24,18 +24,18 @@ static int		convert(const char *str)
 	return (n);
 }
 
-int				ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		if ((str[i] == ' ') || (str[i] == '\f') || (str[i] == '\n') ||
-				(str[i] == '\r') || (str[i] == '\t') || (str[i] == '\v'))
+		if ((str[i] == ' ') || (str[i] == '\f') || (str[i] == '\n')
+			|| (str[i] == '\r') || (str[i] == '\t') || (str[i] == '\v'))
 			i++;
-		else if (str[i] == '+' || str[i] == '-' ||
-				(str[i] >= '0' && str[i] <= '9'))
+		else if (str[i] == '+' || str[i] == '-'
+			 || (str[i] >= '0' && str[i] <= '9'))
 		{
 			if (str[i] == '-')
 				return (-(convert(str + (++i))));

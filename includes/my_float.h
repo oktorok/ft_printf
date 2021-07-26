@@ -29,5 +29,6 @@ int						ft_choose_power(int e, int alpha);
 double					ft_sige(double x);
 char					*ft_round(char *str, int pos, char *comm);
 char					*ft_putthepoint(char *str, int *siz_cuant, char *comm);
+char					*for_f(char *str, int *siz_cuant);
 
 #endif

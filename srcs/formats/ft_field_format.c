@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-static int		take_num(char *comm, int *len)
+static int	take_num(char *comm, int *len)
 {
 	while (*len >= 0 && (ft_isdigit(comm[*len])))
 	{
@@ -20,8 +20,8 @@ static int		take_num(char *comm, int *len)
 		if (comm[*len] == '-' && comm[*len - 1] == '.')
 			(*len)--;
 	}
-	if ((comm[(*len)] != '.' && ft_atoi(comm + *len + 1) != 0) ||
-				comm[(*len)] == ',')
+	if ((comm[(*len)] != '.' && ft_atoi(comm + *len + 1) != 0)
+		|| comm[(*len)] == ',')
 	{
 		(*len)++;
 		return (0);
@@ -29,7 +29,7 @@ static int		take_num(char *comm, int *len)
 	return (1);
 }
 
-static int		take_size(char *comm, int len)
+static int	take_size(char *comm, int len)
 {
 	while (len >= 0)
 	{
@@ -49,11 +49,13 @@ static int		take_size(char *comm, int len)
 		if (len >= 0 && comm[len] != '$')
 			len--;
 	}
-	return (ft_atoi(comm + (len < 0 ? 0 : len)));
+	if (len < 0)
+		return (ft_atoi(comm));
+	else
+		return (ft_atoi(comm + len));
 }
 
-void			ft_field_format(int *size_cuant,
-		char **command, va_list *ap)
+void	ft_field_format(int *size_cuant, char **command, va_list *ap)
 {
 	int		len;
 

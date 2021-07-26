@@ -12,9 +12,9 @@
 
 #include "libftprintf.h"
 
-int		ft_n_type(char *comm, va_list *ap, char **res, size_t len)
+int	ft_n_type(char *comm, va_list *ap, char **res, size_t len)
 {
-	void *container;
+	void	*container;
 
 	(void)res;
 	container = ft_locate_pointer(comm, ap[0], ap[1]);
