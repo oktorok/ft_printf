@@ -15,7 +15,7 @@
 
 # include "ten_power.h"
 
-typedef struct			s_myfloat
+typedef struct s_myfloat
 {
 	unsigned long int	mantissa;
 	int					exponent;

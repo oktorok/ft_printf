@@ -15,7 +15,7 @@
 
 # define D1LOG210 0.30102999566398114
 
-static const unsigned long int g_powers_ten[] = {0xbf29dcaba82fdeae,
+static const unsigned long int	g_powers_ten[] = {0xbf29dcaba82fdeae,
 	0xeef453d6923bd65a,
 	0x9558b4661b6565f8,
 	0xbaaee17fa23ebf76,
@@ -702,7 +702,7 @@ static const unsigned long int g_powers_ten[] = {0xbf29dcaba82fdeae,
 	0xdb68c2ca82ed2a06,
 	0x892179be91d43a44,
 	0xab69d82e364948d4 };
-static const int g_powers_ten_e[] = {-1203,
+static const int				g_powers_ten_e[] = {-1203,
 	-1200,
 	-1196,
 	-1193,

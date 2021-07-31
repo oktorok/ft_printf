@@ -20,7 +20,7 @@ char			*ft_plus_format(char *command, char *variable, int *siz_cuant);
 char			*ft_hash_format(char *command, char *variable, int *siz_cuant);
 char			*ox_hash(char *variable, int *siz_cuant, int type, int len);
 char			*ft_apostrophe_format(char *comm,
-										char *variable, int *siz_cuant);
+					char *variable, int *siz_cuant);
 char			*ft_zero_format(char *comm, char *variable, int *siz_cuant);
 int				ft_search_zero_format(char *command);
 void			ft_asterisc_format(char **command, va_list *ap);

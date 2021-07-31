@@ -17,9 +17,8 @@
 # include <string.h>
 # include <errno.h>
 # include <stdio.h>
-# include "get_next_line.h"
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	size_t			content_size;

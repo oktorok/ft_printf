@@ -1,6 +1,5 @@
 extern.h
 formats.h
-get_next_line.h
 libft.h
 libftprintf.h
 mods.h
