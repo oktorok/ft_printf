@@ -44,7 +44,7 @@ static void	ft_printhex(char *n, char **aux, size_t j)
 	ft_strcpy(*aux, "    ");
 	(*aux) += 4;
 	if ((n[j] & 0xF) > 9)
-		ft_memset(*aux, n[j] & 0xF - 10 + 'A', 1);
+		ft_memset(*aux, (n[j] & 0xF) - 10 + 'A', 1);
 	else
 		ft_memset(*aux, (n[j] & 0xF) + 48, 1);
 	(*aux)++;
