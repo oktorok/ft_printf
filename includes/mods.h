@@ -13,13 +13,13 @@
 #ifndef MODS_H
 # define MODS_H
 
-char		*ft_l_mod(va_list ap, va_list ap2, char *comm);
-char		*ft_hh_mod(va_list ap, va_list ap2, char *comm);
-char		*ft_ll_mod(va_list ap, va_list ap2, char *comm);
-char		*ft_h_mod(va_list ap, va_list ap2, char *comm);
-char		*ft_z_mod(va_list ap, va_list ap2, char *comm);
-char		*ft_j_mod(va_list ap, va_list ap2, char *comm);
-char		*ft_none_mod(va_list ap, va_list ap2, char *comm);
+char		*ft_l_mod(va_list *ap, va_list *ap2, char *comm);
+char		*ft_hh_mod(va_list *ap, va_list *ap2, char *comm);
+char		*ft_ll_mod(va_list *ap, va_list *ap2, char *comm);
+char		*ft_h_mod(va_list *ap, va_list *ap2, char *comm);
+char		*ft_z_mod(va_list *ap, va_list *ap2, char *comm);
+char		*ft_j_mod(va_list *ap, va_list *ap2, char *comm);
+char		*ft_none_mod(va_list *ap, va_list *ap2, char *comm);
 int			ft_mods(char *comm);
 
 #endif

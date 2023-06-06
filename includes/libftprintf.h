@@ -27,7 +27,7 @@ extern	int			((*g_type_func[25])(char *a, va_list *b,
 static const char	g_mods[6][3] = {"h", "hh", "ll", "l", "z", "j"};
 extern const char	*g_format;
 
-extern	char		(*(*g_mod_selector[7])(va_list a, va_list b, char *c));
+extern	char		(*(*g_mod_selector[7])(va_list *a, va_list *b, char *c));
 int					ft_printf(const char *str, ...);
 int					ft_asprintf(char **buffer, const char *str, ...);
 int					ft_dprintf(int fd, const char *str, ...);

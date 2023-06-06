@@ -21,7 +21,7 @@ int	ft_m_type(char *comm, va_list *ap, char **res, size_t len)
 	ft_field_format(siz_cuant, &comm, ap);
 	if (siz_cuant[0] == -2 || siz_cuant[1] == -2)
 		return (-1);
-	variable = ft_printmemory(ft_locate_pointer(comm, ap[0], ap[1]),
+	variable = ft_printmemory(ft_locate_pointer(comm, ap, ap+1),
 			siz_cuant[0]);
 	if (!variable)
 		return (-1);

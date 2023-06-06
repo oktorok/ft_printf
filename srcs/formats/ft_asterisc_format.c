@@ -49,7 +49,7 @@ static void	modify_comm(char **command, int pos, int dolar, va_list *ap)
 		aux = va_arg(ap[1], int);
 	else
 	{
-		tmp = ft_locate_date(*command + pos + 1, 5, ap[0], ap[1]);
+		tmp = ft_locate_date(*command + pos + 1, 5, ap, ap+1);
 		aux = *((int *)tmp);
 		ft_memdel(&tmp);
 	}

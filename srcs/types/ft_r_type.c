@@ -38,7 +38,7 @@ int	ft_r_type(char *comm, va_list *ap, char **res, size_t len)
 	int		len_var;
 	char	*variable;
 
-	variable = (char *)ft_locate_pointer(comm, ap[0], ap[1]);
+	variable = (char *)ft_locate_pointer(comm, ap, ap+1);
 	if (!variable)
 		return (-1);
 	variable = non_printable(variable);

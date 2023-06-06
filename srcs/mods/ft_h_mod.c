@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-static char	*ltoa(char *comm, va_list ap, va_list ap2)
+static char	*ltoa(char *comm, va_list *ap, va_list *ap2)
 {
 	void	*aux;
 	char	*variable;
@@ -23,7 +23,7 @@ static char	*ltoa(char *comm, va_list ap, va_list ap2)
 	return (variable);
 }
 
-static char	*ultoa(char *comm, va_list ap, va_list ap2)
+static char	*ultoa(char *comm, va_list *ap, va_list *ap2)
 {
 	void	*aux;
 	char	*variable;
@@ -34,7 +34,7 @@ static char	*ultoa(char *comm, va_list ap, va_list ap2)
 	return (variable);
 }
 
-char	*ft_h_mod(va_list ap, va_list ap2, char *comm)
+char	*ft_h_mod(va_list *ap, va_list *ap2, char *comm)
 {
 	char	comand;
 

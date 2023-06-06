@@ -30,7 +30,7 @@ static void	*exec_dolar(char *comm, va_list ap)
 	return (variable);
 }
 
-void	*ft_locate_pointer(char *comm, va_list ap, va_list ap2)
+void	*ft_locate_pointer(char *comm, va_list *ap, va_list *ap2)
 {
 	void	*variable;
 	int		len;
@@ -43,10 +43,10 @@ void	*ft_locate_pointer(char *comm, va_list ap, va_list ap2)
 			while ((len - 1) >= 0 && ft_isdigit(comm[len - 1]))
 				len--;
 			if (comm[len - 1] != ',')
-				return (exec_dolar(comm + len, ap));
+				return (exec_dolar(comm + len, *ap));
 		}
 		len--;
 	}
-	variable = va_arg(ap2, void *);
+	variable = va_arg(*ap2, void *);
 	return (variable);
 }

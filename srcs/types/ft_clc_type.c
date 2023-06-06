@@ -41,7 +41,7 @@ static int	locate_date(char *comm, va_list *ap, char **variable)
 {
 	char	*tmp;
 
-	tmp = (char *)ft_locate_date(comm, 1, ap[0], ap[1]);
+	tmp = (char *)ft_locate_date(comm, 1, ap, ap+1);
 	if (!tmp)
 		return (0);
 	*variable = ft_memcpy(ft_strnew(1), tmp, 1);
@@ -59,7 +59,7 @@ int	ft_clc_type(char *comm, va_list *ap, char **res, size_t len)
 		return (-1);
 	if (ft_mods(comm) == 4 || ft_strchr(comm, 'C'))
 	{
-		variable = ft_wchar(ap[0], ap[1], siz_cuant, comm);
+		variable = ft_wchar(ap, ap+1, siz_cuant, comm);
 		if (!variable)
 			return (-1);
 	}

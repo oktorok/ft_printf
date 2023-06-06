@@ -71,13 +71,13 @@ int	ft_oloulu_type(char *comm, va_list *ap, char **res, size_t len)
 		return (-1);
 	if (ft_strchr(comm, 'O') || ft_strchr(comm, 'U'))
 	{
-		variable = (*g_mod_selector[4])(ap[0], ap[1], comm);
+		variable = (*g_mod_selector[4])(ap, ap+1, comm);
 		if (!variable)
 			return (-1);
 	}
 	else
 	{
-		variable = (*g_mod_selector[ft_mods(comm)])(ap[0], ap[1], comm);
+		variable = (*g_mod_selector[ft_mods(comm)])(ap, ap+1, comm);
 		if (!variable)
 			return (-1);
 	}

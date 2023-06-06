@@ -33,28 +33,28 @@ static int	size(int mem)
 	return (0);
 }
 
-static void	*selector2(int mem, va_list ap, void *variable)
+static void	*selector2(int mem, va_list *ap, void *variable)
 {
 	if (mem == 8)
-		*((long *)variable) = va_arg(ap, long);
+		*((long *)variable) = va_arg(*ap, long);
 	else if (mem == 9)
-		*((unsigned long *)variable) = va_arg(ap, unsigned long);
+		*((unsigned long *)variable) = va_arg(*ap, unsigned long);
 	else if (mem == 10)
-		*((long long *)variable) = va_arg(ap, long long);
+		*((long long *)variable) = va_arg(*ap, long long);
 	else if (mem == 11)
-		*((unsigned long long *)variable) = va_arg(ap, unsigned long long);
+		*((unsigned long long *)variable) = va_arg(*ap, unsigned long long);
 	else if (mem == 12)
-		*((intmax_t *)variable) = va_arg(ap, intmax_t);
+		*((intmax_t *)variable) = va_arg(*ap, intmax_t);
 	else if (mem == 13)
-		*((uintmax_t *)variable) = va_arg(ap, uintmax_t);
+		*((uintmax_t *)variable) = va_arg(*ap, uintmax_t);
 	else if (mem == 14)
-		*((size_t *)variable) = va_arg(ap, size_t);
+		*((size_t *)variable) = va_arg(*ap, size_t);
 	else if (mem == 15)
-		*((double *)variable) = va_arg(ap, double);
+		*((double *)variable) = va_arg(*ap, double);
 	return (variable);
 }
 
-static void	*selector(int mem, va_list ap)
+static void	*selector(int mem, va_list *ap)
 {
 	void	*variable;
 
@@ -64,29 +64,29 @@ static void	*selector(int mem, va_list ap)
 	if (mem > 7)
 		return (selector2(mem, ap, variable));
 	if (mem == 1)
-		*((unsigned char *)variable) = va_arg(ap, int);
+		*((unsigned char *)variable) = va_arg(*ap, int);
 	else if (mem == 2)
-		*((signed char *)variable) = va_arg(ap, int);
+		*((signed char *)variable) = va_arg(*ap, int);
 	else if (mem == 3)
-		*((short *)variable) = va_arg(ap, int);
+		*((short *)variable) = va_arg(*ap, int);
 	else if (mem == 4)
-		*((unsigned short *)variable) = va_arg(ap, int);
+		*((unsigned short *)variable) = va_arg(*ap, int);
 	else if (mem == 5)
-		*((int *)variable) = va_arg(ap, int);
+		*((int *)variable) = va_arg(*ap, int);
 	else if (mem == 6)
-		*((unsigned int *)variable) = va_arg(ap, unsigned int);
+		*((unsigned int *)variable) = va_arg(*ap, unsigned int);
 	else if (mem == 7)
-		*((wchar_t *)variable) = va_arg(ap, wchar_t);
+		*((wchar_t *)variable) = va_arg(*ap, wchar_t);
 	return (variable);
 }
 
-static void	*exec_dolar(char *comm, int i, va_list ap, int mem)
+static void	*exec_dolar(char *comm, int i, va_list *ap, int mem)
 {
 	va_list		ap3;
 	int			loc;
 	void		*variable;
 
-	va_copy(ap3, ap);
+	va_copy(ap3, *ap);
 	if (ft_isdigit(comm[i]))
 		loc = ft_atoi(comm);
 	else
@@ -96,12 +96,12 @@ static void	*exec_dolar(char *comm, int i, va_list ap, int mem)
 		va_arg(ap3, void *);
 		loc--;
 	}
-	variable = selector(mem, ap3);
+	variable = selector(mem, &ap3);
 	va_end(ap3);
 	return (variable);
 }
 
-void	*ft_locate_date(char *comm, int mem, va_list ap, va_list ap2)
+void	*ft_locate_date(char *comm, int mem, va_list *ap, va_list *ap2)
 {
 	void	*variable;
 	int		len;

@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-static	void	*selector(char *com, va_list ap, va_list ap2)
+static	void	*selector(char *com, va_list *ap, va_list *ap2)
 {
 	if (com[ft_strlen(com) - 1] == 'c' || com[ft_strlen(com) - 1] == 'C')
 		return (ft_locate_date(com, 7, ap, ap2));
@@ -38,7 +38,7 @@ static void	modify_len(wchar_t *wvariable, int *siz_cuant)
 	}
 }
 
-char	*ft_wchar(va_list ap, va_list ap2, int *siz_cuant, char *comm)
+char	*ft_wchar(va_list *ap, va_list *ap2, int *siz_cuant, char *comm)
 {
 	wchar_t		*wvariable;
 	char		*res;

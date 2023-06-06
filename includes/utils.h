@@ -20,10 +20,10 @@ static const char	g_colors[9][10] = {"black", "red", "green", "yellow",
 static const char	g_formats[10][10] = {"normal", "bold", "fait", "italic",
 	"underline", "sblink", "rblink", "reverse", "conceal", "crossed"};
 
-char	*ft_wchar(va_list ap, va_list ap2, int *siz_cuant, char *command);
+char	*ft_wchar(va_list *ap, va_list *ap2, int *siz_cuant, char *command);
 char	*ft_utf8(wchar_t num);
-void	*ft_locate_pointer(char *comm, va_list ap, va_list ap2);
-void	*ft_locate_date(char *comm, int mem, va_list ap, va_list ap2);
+void	*ft_locate_pointer(char *comm, va_list *ap, va_list *ap2);
+void	*ft_locate_date(char *comm, int mem, va_list *ap, va_list *ap2);
 char	*ft_dectobin(void *num, size_t len);
 char	*ft_dectooct(void *num, size_t len);
 char	*ft_dectohex(void *num, size_t len, char *comm);

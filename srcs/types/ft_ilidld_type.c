@@ -54,10 +54,10 @@ int	ft_ilidld_type(char *comm, va_list *ap, char **res, size_t len)
 	ft_field_format(siz_cuant, &comm, ap);
 	if (siz_cuant[0] == -2 || siz_cuant[1] == -2)
 		return (-1);
-	variable = g_mod_selector[ft_mods(comm)](ap[0], ap[1], comm);
+	variable = g_mod_selector[ft_mods(comm)](ap, ap+1, comm);
 	if (ft_strchr(comm, 'D'))
 	{
-		variable = g_mod_selector[4](ap[0], ap[1], comm);
+		variable = g_mod_selector[4](ap, ap+1, comm);
 		if (!variable)
 			return (-1);
 	}

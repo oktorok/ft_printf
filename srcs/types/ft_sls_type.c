@@ -48,12 +48,12 @@ int	ft_sls_type(char *comm, va_list *ap, char **res, size_t len)
 		return (-1);
 	if (ft_mods(comm) == 4 || ft_strchr(comm, 'S'))
 	{
-		variable = ft_wchar(ap[0], ap[1], siz_cuant, comm);
+		variable = ft_wchar(ap, ap+1, siz_cuant, comm);
 		if (!variable)
 			return (-1);
 	}
 	else
-		variable = (char *)ft_locate_pointer(comm, ap[0], ap[1]);
+		variable = (char *)ft_locate_pointer(comm, ap, ap+1);
 	if (comm[ft_strlen(comm) - 1] == 's' && !variable)
 		variable = "(null)";
 	ft_ajust_params(siz_cuant, variable, comm);

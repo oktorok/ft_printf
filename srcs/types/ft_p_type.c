@@ -47,7 +47,7 @@ int	ft_p_type(char *comm, va_list *ap, char **res, size_t len)
 	char	*variable;
 
 	ft_field_format(siz_cuant, &comm, ap);
-	variable = (char *)ft_locate_pointer(comm, ap[0], ap[1]);
+	variable = (char *)ft_locate_pointer(comm, ap, ap+1);
 	variable = ft_dectohex(&variable, sizeof(void *), comm);
 	if (!variable)
 		return (-1);

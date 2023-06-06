@@ -85,7 +85,7 @@ int	ft_feleglg_type(char *comm, va_list *ap, char **res, size_t len)
 	ft_field_format(siz_cuant, &comm, ap);
 	if (siz_cuant[0] == -2 || siz_cuant[1] == -2)
 		return (-1);
-	variable = g_mod_selector[0](ap[0], ap[1], comm);
+	variable = g_mod_selector[0](ap, ap+1, comm);
 	if (!variable)
 		return (-1);
 	if (check_nan_inf(siz_cuant, variable, comm))
